@@ -24,7 +24,7 @@ public class Mazzo {
 	//la creazione del mazzo completo di tutte le carte avviene attraverso l'analisi delle immagini
 	//ognuna delle quali è associata ad una carta specifica("colore_valore.jpg")
 	public void CreaMazzoCompleto() {
-		
+		//aaaaaaa
         //percorso della cartella "Immagini" 
         String percorsoCartella = "src/Immagini";
 
