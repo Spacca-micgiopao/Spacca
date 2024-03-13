@@ -33,27 +33,25 @@ public class LoginController {
 	//per poter usare i dati salvati nella classe Datiaccesso
 	Datiaccesso DatiAccesso = new Datiaccesso();
 	
+	
+	//Circa funziona,se si mette la password 1234 oppure 4567 
 	public void conferma(ActionEvent event) throws IOException {
 		Nome = inputnome.getText();
 		Password = inputpassword.getText();
 		HashMap<String,String> login = new HashMap<String,String>();
 		login.put(Nome,Password);
-		if(DatiAccesso.accesso.containsValue(Nome)) 
-		System.out.println("godo");
-		else
-			System.out.println("non godo");
+		if(DatiAccesso.accesso.containsValue(Password)) {
+			Parent root = FXMLLoader.load(getClass().getResource("ScenaGioco.fxml"));
+			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+			scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+		}
+		
 
 			
 				
 	}
-	
-	//HashMap<String,String> accesso = new HashMap<String,String>();
-	//LoginPage(HashMap<String,String> accesso1){
-		//accesso = accesso1;
-	//}
-	
-	
-	
 	
 	//Tasto temporaneo per saltare direttamente al tabellone senza dover fare login
 	//Ho tolto il loader del game controller non so potrebbe dover essere rimesso

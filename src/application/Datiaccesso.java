@@ -10,6 +10,7 @@ public class Datiaccesso {
 	//creo istanze di "accesso" in hashmap
 	Datiaccesso(){
 		accesso.put("Gio", "1234");
+		accesso.put("Sgro", "4567");
 	}
 	
 	//metodo per ottenere i dati di accesso devo aggiungere funzioni dell'hashmap
