@@ -11,6 +11,7 @@ public class Datiaccesso {
 	Datiaccesso(){
 		accesso.put("Gio", "1234");
 		accesso.put("Sgro", "4567");
+		accesso.put("Imen", "Clown");
 	}
 	
 	//metodo per ottenere i dati di accesso devo aggiungere funzioni dell'hashmap

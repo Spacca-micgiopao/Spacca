@@ -34,13 +34,14 @@ public class LoginController {
 	Datiaccesso DatiAccesso = new Datiaccesso();
 	
 	
-	//Circa funziona,se si mette la password 1234 oppure 4567 
+	//Circa funziona,da fare : salvare tutti i dati in un file da cui leggerli
+	//si può in teoria accedere con qualsiasi combinazione di username e password quindi va risolto
 	public void conferma(ActionEvent event) throws IOException {
 		Nome = inputnome.getText();
 		Password = inputpassword.getText();
 		HashMap<String,String> login = new HashMap<String,String>();
 		login.put(Nome,Password);
-		if(DatiAccesso.accesso.containsValue(Password)) {
+		if(DatiAccesso.accesso.containsValue(Password) && DatiAccesso.accesso.containsKey(Nome)) {
 			Parent root = FXMLLoader.load(getClass().getResource("ScenaGioco.fxml"));
 			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			scene = new Scene(root);
