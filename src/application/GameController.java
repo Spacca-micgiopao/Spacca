@@ -16,8 +16,6 @@ import java.util.List;
 
 public class GameController {
 	 
-
-   
 	private Mazzo mazzoGiocatore1;
     private Mazzo mazzoGiocatore2;
     private Mazzo mazzoCompleto;
@@ -56,11 +54,12 @@ public class GameController {
     private List<ImageView> imageViewsTavolo2;
     @FXML
     private List<ImageView> imageViewsTavolo3;
+    /*
     @FXML
     private Button PescaGiocatore1;
     @FXML
     private Button PescaGiocatore2;
-    
+    */
   //tavoli da gioco
     //tavolo1
     @FXML 
@@ -167,25 +166,22 @@ public class GameController {
         CartaT3p11.setOnMouseClicked(this::handleClickPosizioneTavolo3);
     }
 
-    //all'inizio vengono caricate tre(numero da rivedere)carte nel mazzo di ogni giocatore 
     public void caricaCarteIniziali() {
-    	//carica tre carte nel mazzo di ogni giocatore
-    	for(int i=0;i<3;i++) {
+    	//carica 4 carte nel mazzo di ogni giocatore
+    	for(int i=0;i<4;i++) {
     		Carta cartaCasuale = mazzoCompleto.pescaCartaCasuale();
 	    	if (cartaCasuale != null) {
 	             mazzoGiocatore1.aggiungiCarta(cartaCasuale);
 	         }
     	}
-    	for(int i=0;i<3;i++) {
+    	for(int i=0;i<4;i++) {
     		Carta cartaCasuale = mazzoCompleto.pescaCartaCasuale();
 	    	if (cartaCasuale != null) {
 	             mazzoGiocatore2.aggiungiCarta(cartaCasuale);
 	         }
     	}
-    	//System.out.println("dimensione del mazzo giocatore 1 è "+mazzoGiocatore1.getCarte().size());
-    	//System.out.println("dimensione del mazzo giocatore 2 è "+mazzoGiocatore2.getCarte().size());
     }
-    
+    /*BOTTONI PESCA FACOLTATIVI
     //pesca una carta per il giocatore 1 (per ora visivamente si riesce a pescare solo una carta)
     public void handlePescaGiocatore1Action(ActionEvent event) {
     	System.out.println("bottone pesca cliccato per G1");
@@ -229,50 +225,61 @@ public class GameController {
     	
     }
     
+   */
     public void aggiornaInterfaccia() {
-    	//aggiorna immagini mazzo Giocatore 1
-        for(int i=0;i<mazzoGiocatore1.getCarte().size()&& i < imageViewsGiocatore1.size();i++ ) {
-        	Carta c = mazzoGiocatore1.getCarta(i);
-        	// immagine dalla carta
-            Image immagine = c.getImmagine();
-
-         // Aggiorna l'ImageView con l'immagine della carta
-            imageViewsGiocatore1.get(i).setImage(immagine);
-           // imageViewsGiocatore1.get(i).setDisable(false);
+        // Aggiorna le immagini del mazzo del giocatore 1
+        for (int i = 0; i < imageViewsGiocatore1.size(); i++) {
+            if (i < mazzoGiocatore1.getCarte().size()) {
+                Carta c = mazzoGiocatore1.getCarta(i);
+                if (c != null) {
+                    Image immagine = c.getImmagine();
+                    imageViewsGiocatore1.get(i).setImage(immagine);
+                } else {
+                    // Se la carta è null
+                    imageViewsGiocatore1.get(i).setImage(null);
+                }
+            } else {
+                // Se non ci sono più carte nel mazzo del giocatore l'immagine dell'ImageView diventa null
+                imageViewsGiocatore1.get(i).setImage(null);
+            }
         }
-        
-        //aggiorna immagini mazzo Giocatore 2
-        for(int i=0;i<mazzoGiocatore2.getCarte().size() && i < imageViewsGiocatore2.size();i++) {
-        	Carta c = mazzoGiocatore2.getCarta(i);
-        	// immagine dalla carta
-            Image immagine = c.getImmagine();
 
-         // Aggiorna l'ImageView con l'immagine della carta
-            imageViewsGiocatore2.get(i).setImage(immagine);
-        	//rendere cliccabile la  carta
-         //  imageViewsGiocatore2.get(i).setDisable(false);
+        // Aggiorna le immagini del mazzo del giocatore 2
+        for (int i = 0; i < imageViewsGiocatore2.size(); i++) {
+            if (i < mazzoGiocatore2.getCarte().size()) {
+                Carta c = mazzoGiocatore2.getCarta(i);
+                if (c != null) {
+                    Image immagine = c.getImmagine();
+                    imageViewsGiocatore2.get(i).setImage(immagine);
+                } else {
+                    // Se la carta è null
+                    imageViewsGiocatore2.get(i).setImage(null);
+                }
+            } else {
+                // Se non ci sono più carte nel mazzo del giocatore l'immagine dell'ImageView diventa null
+                imageViewsGiocatore2.get(i).setImage(null);
+            }
         }
-        
-        
-     
     }
-    
+
 
     private void spostaCartaSuTavolo(Carta carta, ImageView posizioneTavolo) {
         // Imposta l'immagine della carta sulla posizione del tavolo
-        posizioneTavolo.setImage(carta.getImmagine());
-        System.out.println("chiamata metodo spostaCartaTavolo");
-        
-    }
+    	 if (carta != null) {
+    	        // Imposta l'immagine della carta sulla posizione del tavolo
+    	        posizioneTavolo.setImage(carta.getImmagine());
+    	    } else {
+    	        System.out.println("Errore: carta selezionata è nulla");
+    	    }
+	}
     
+    //GESTORE DEI CLICK SULLE CARTE DEI MAZZI DEI DUE GIOCATORI
     public void handleClickCartaGiocatore1(MouseEvent event) {
-    	System.out.println("carta cliccata da giocatore1");
         ImageView cartaCliccata = (ImageView) event.getSource();
         
         // Trova l'indice dell'ImageView cliccata
         int index = imageViewsGiocatore1.indexOf(cartaCliccata);
         if (index == -1) {
-        	System.out.println("sembra che indice non vada bene");
             return;
             
         }
@@ -281,7 +288,6 @@ public class GameController {
         if (index != -1) {
             if (index < mazzoGiocatore1.getCarte().size()) {
                 cartaSelezionata = mazzoGiocatore1.getCarta(index);
-                System.out.println("carta selezionata");
             } else {
                 return;
             }
@@ -289,21 +295,17 @@ public class GameController {
         
     }
     public void handleClickCartaGiocatore2(MouseEvent event) {
-    	System.out.println("carta cliccata da giocatore 2");
         ImageView cartaCliccata = (ImageView) event.getSource();
-        
         // Trova l'indice dell'ImageView cliccata
         int index = imageViewsGiocatore2.indexOf(cartaCliccata);
         if (index == -1) {
-        	System.out.println("problema con indice");
             return;
         }
 
         // Ottiene la carta associata all'immagine cliccata
         if (index != -1) {
-            if (index < mazzoGiocatore2.getCarte().size()) {
-                cartaSelezionata = mazzoGiocatore2.getCarta(index);
-                System.out.println("carta selezionata");
+           if (index < mazzoGiocatore2.getCarte().size()) {
+        		cartaSelezionata = mazzoGiocatore2.getCarta(index);
             } else {
                 return;
             }
@@ -311,9 +313,9 @@ public class GameController {
         
     }
    
-    
+    //GESTORE DEI CLICK SU UNA POSIZIONE DEI TAVOLI
+    //CLICK SU PRIMO TAVOLO
     public void handleClickPosizioneTavolo1(MouseEvent event) { // metodo funziona solo se le carte sono diverse
-    	System.out.println("cliccata posizione tavolo 1");
         if (cartaSelezionata != null ) {
             ImageView posizioneTavoloCliccata = (ImageView) event.getSource();
             
@@ -321,14 +323,12 @@ public class GameController {
             int index = imageViewsTavolo1.indexOf(posizioneTavoloCliccata);
             if (index == -1) {
                 // ImageView non trovata, esci dalla funzione
-            	System.out.println("imageView non trovata del tavolo 1");
                 return;
             }
             
             //controllo se la posizione del tavolo è già stata occupata
             if (posizioneTavoloCliccata.getImage() != null) {
                 // La posizione è già occupata, quindi non posso posizionare la carta
-                System.out.println("Posizione del tavolo già occupata.");
                 return;
             }
             
@@ -337,17 +337,14 @@ public class GameController {
             // Rimuovi la carta dal mazzo del giocatore
             if (mazzoGiocatore1.contieneCarta(cartaSelezionata)) {
                 mazzoGiocatore1.rimuoviCarta(cartaSelezionata);
-                System.out.println("rimossa carta da mazzoGiocatore1");
             } else if (mazzoGiocatore2.contieneCarta(cartaSelezionata)) {
                 mazzoGiocatore2.rimuoviCarta(cartaSelezionata);
-                System.out.println("rimossa carta da mazzoGiocatore2");
             }
             //svuota imageView dal mazzoGiocatore1
             for(int i=0;i < imageViewsGiocatore1.size();i++ ) {
             	
             	if(imageViewsGiocatore1.get(i).getImage()==cartaSelezionata.getImmagine()) {
             		imageViewsGiocatore1.get(i).setImage(null);
-            		System.out.println("svuotata ImageView lista Giocatore 1");
             		break;
             	}
             }
@@ -356,25 +353,21 @@ public class GameController {
             	
             	if(imageViewsGiocatore2.get(i).getImage()==cartaSelezionata.getImmagine()) {
             		imageViewsGiocatore2.get(i).setImage(null);
-            		System.out.println("svuotata ImageView lista Giocatore 1");
             		break;
             	}
             }
             // Resetta la carta selezionata
             cartaSelezionata = null;
-            System.out.println("resetta carta selezionata");
-           // aggiornaInterfaccia();
+         
             System.out.println("dimensione del mazzo giocatore 1 è "+mazzoGiocatore1.getCarte().size());
             System.out.println("dimensione del mazzo giocatore 2 è "+mazzoGiocatore2.getCarte().size());
             
         }
-        else {
-        	System.out.println("sembra che carta sia nulla");
-        }
+        aggiornaInterfaccia();
 
     }
+    //CLICK SUL SECONDO TAVOLO
     public void handleClickPosizioneTavolo2(MouseEvent event) { // metodo funziona solo se le carte sono diverse
-    	System.out.println("cliccato posizione nel tavolo2");
         if (cartaSelezionata != null ) {
             ImageView posizioneTavoloCliccata = (ImageView) event.getSource();
             
@@ -382,14 +375,12 @@ public class GameController {
             int index = imageViewsTavolo2.indexOf(posizioneTavoloCliccata);
             if (index == -1) {
                 // ImageView non trovata, esci dalla funzione
-            	System.out.println("imageView del tavolo2 non trovata");
                 return;
             }
             
             //controllo se la posizione del tavolo è già stata occupata
             if (posizioneTavoloCliccata.getImage() != null) {
                 // La posizione è già occupata, quindi non posso posizionare la carta
-                System.out.println("Posizione del tavolo già occupata.");
                 return;
             }
             
@@ -398,18 +389,15 @@ public class GameController {
             // Rimuovi la carta dal mazzo del giocatore
             if (mazzoGiocatore1.contieneCarta(cartaSelezionata)) {
                 mazzoGiocatore1.rimuoviCarta(cartaSelezionata);
-                System.out.println("rimozione carta da mazzoGiocatore1");
             } else if (mazzoGiocatore2.contieneCarta(cartaSelezionata)) {
                 mazzoGiocatore2.rimuoviCarta(cartaSelezionata);
-                System.out.println("rimozione carta da mazzoGiocatore2");
             }
             //svuota imageView dal mazzoGiocatore1
             for(int i=0;i < imageViewsGiocatore1.size();i++ ) {
             	
             	if(imageViewsGiocatore1.get(i).getImage()==cartaSelezionata.getImmagine()) {
             		imageViewsGiocatore1.get(i).setImage(null);
-            		System.out.println("svuotamento iamgeView da lista giocatore1");
-            		//break;
+            		break;
             	}
             }
           //svuota imageView dal mazzoGiocatore2
@@ -417,23 +405,19 @@ public class GameController {
             	
             	if(imageViewsGiocatore2.get(i).getImage()==cartaSelezionata.getImmagine()) {
             		imageViewsGiocatore2.get(i).setImage(null);
-            		System.out.println("svuotamento iamgeView da lista giocatore2");
-            		//break;
+            		break;
             	}
             }
             // Resetta la carta selezionata
             cartaSelezionata = null;
-            System.out.println("resetta carta selezionata");
-           // aggiornaInterfaccia();
+           
             System.out.println("dimensione del mazzo giocatore 1 è "+mazzoGiocatore1.getCarte().size());
             System.out.println("dimensione del mazzo giocatore 2 è "+mazzoGiocatore2.getCarte().size());
             
         }
-        else {
-        	System.out.println("sembra che carta sia nulla");
-        }
-
+        aggiornaInterfaccia();
     }
+    //CLICK SUL TERZO TAVOLO
     public void handleClickPosizioneTavolo3(MouseEvent event) { // metodo funziona solo se le carte sono diverse
     	System.out.println("cliccato posizione nel tavolo3");
         if (cartaSelezionata != null ) {
@@ -442,7 +426,6 @@ public class GameController {
             // Verifica che l'indice dell'ImageView sia valido
             int index = imageViewsTavolo3.indexOf(posizioneTavoloCliccata);
             if (index == -1) {
-            	System.out.println("imageView del tavolo3 non trovata");
                 // ImageView non trovata, esci dalla funzione
                 return;
             }
@@ -450,7 +433,6 @@ public class GameController {
             //controllo se la posizione del tavolo è già stata occupata
             if (posizioneTavoloCliccata.getImage() != null) {
                 // La posizione è già occupata, quindi non posso posizionare la carta
-                System.out.println("Posizione del tavolo già occupata.");
                 return;
             }
             
@@ -459,10 +441,8 @@ public class GameController {
             // Rimuovi la carta dal mazzo del giocatore
             if (mazzoGiocatore1.contieneCarta(cartaSelezionata)) {
                 mazzoGiocatore1.rimuoviCarta(cartaSelezionata);
-                System.out.println("rimozione carta da mazzoGiocatore1");
             } else if (mazzoGiocatore2.contieneCarta(cartaSelezionata)) {
                 mazzoGiocatore2.rimuoviCarta(cartaSelezionata);
-                System.out.println("rimozione carta da mazzoGiocatore2");
             }
             //svuota imageView dal mazzoGiocatore1
             for(int i=0;i < imageViewsGiocatore1.size();i++ ) {
@@ -470,7 +450,7 @@ public class GameController {
             	if(imageViewsGiocatore1.get(i).getImage()==cartaSelezionata.getImmagine()) {
             		imageViewsGiocatore1.get(i).setImage(null);
             		System.out.println("svuotamento iamgeView da lista giocatore1");
-            		//break;
+            		break;
             	}
             }
           //svuota imageView dal mazzoGiocatore2
@@ -478,24 +458,20 @@ public class GameController {
             	
             	if(imageViewsGiocatore2.get(i).getImage()==cartaSelezionata.getImmagine()) {
             		imageViewsGiocatore2.get(i).setImage(null);
-            		System.out.println("svuotamento iamgeView da lista giocatore2");
-            		//break;
+            		break;
             	}
             }
             // Resetta la carta selezionata
             cartaSelezionata = null;
-            System.out.println("carta resettata");
-           // aggiornaInterfaccia();
+           
             System.out.println("dimensione del mazzo giocatore 1 è "+mazzoGiocatore1.getCarte().size());
             System.out.println("dimensione del mazzo giocatore 2 è "+mazzoGiocatore2.getCarte().size());
             
-        }else {
-        	System.out.println("sembra che la carta sia nulla");
         }
-
+        aggiornaInterfaccia();
     }
+   
     
 }
-    
     
 

@@ -33,7 +33,7 @@ public class Mazzo {
 	public void CreaMazzoCompleto() {
 		
         //percorso della cartella "Immagini" 
-        String percorsoCartella = "C:\\Users\\mikym\\OneDrive\\Desktop\\Università\\1 anno\\informatica\\Spacca\\src\\Immagini";
+        String percorsoCartella = "src\\Immagini";
 
         // Creazione un oggetto File per la cartella
         File cartella = new File(percorsoCartella);
