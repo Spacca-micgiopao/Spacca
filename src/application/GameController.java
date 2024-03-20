@@ -131,7 +131,7 @@ public class GameController {
     	//Impostazione SFONDO
     	try {
             // Percorso del file immagine
-            String filePath = "src/Sfondo/Background_gioco_prova1.jpg";
+            String filePath = "src/Sfondo/Background_gioco_prova2.jpg";
 
             // Creazione di un oggetto File con il percorso del file
             File file = new File(filePath);
@@ -270,7 +270,12 @@ public class GameController {
     		//Calcolo punteggio finale
     		if(vittoriaSuTavoloG1 > vittoriaSuTavoloG2) {
     			turnoLabel.setText("VINCITORE FINALE E' GIOCATORE 1");
-    		}else {
+    		}
+    		if(vittoriaSuTavoloG1 == vittoriaSuTavoloG2){
+    			turnoLabel.setText("PAREGGIO FINALE");
+    		}
+    		else {
+    		
     			turnoLabel.setText("VINCITORE FINALE E' GIOCATORE 2");
     		}
     		
@@ -549,7 +554,7 @@ public class GameController {
         }
         aggiornaInterfaccia();
         verificaFinePartita();
-    }
+    }sss
     //CLICK SUL TERZO TAVOLO
     public void handleClickPosizioneTavolo3(MouseEvent event) { // metodo funziona solo se le carte sono diverse
         if (cartaSelezionata != null ) {
