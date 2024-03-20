@@ -33,11 +33,12 @@ public class ControllerPrePartita {
 	public String G1;
 	public String G2;
 	
+	//InfoPartita per caricare e scrivere i risultati
+	InfoPartita infopartita = new InfoPartita();
+	
 	//Per prendere il nome dell'admin
 	@FXML
 	Label LogNome;
-	
-	LoginController logincontroller = new LoginController();
 	
 	//NOME Admin
 	public void displayLogNome(String nome) {
@@ -49,7 +50,8 @@ public class ControllerPrePartita {
 			G1 = InputG1.getText();
 			G2 = InputG2.getText();
 			ContaPartite++;
-			FW.write("Partita/"+ContaPartite+"/    G1:"+G1+"    G2:"+G2);
+			infopartita.getG(G1);
+			infopartita.ScriviDati();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("ScenaGioco.fxml"));
 			root = loader.load();
 			GameController gamecontroller = loader.getController();
