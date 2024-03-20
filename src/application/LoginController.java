@@ -28,21 +28,29 @@ public class LoginController {
 	@FXML
 	private Button tastoconferma;
 	
+	//Hashmap per avere username e password per l'admin
+	HashMap<String,String> accesso = new HashMap<String,String>();
+	
 	String Nome;
 	String Password;
-	//per poter usare i dati salvati nella classe Datiaccesso
-	Datiaccesso DatiAccesso = new Datiaccesso();
+
 	
 	
 	//Circa funziona,da fare : salvare tutti i dati in un file da cui leggerli
 	//si può in teoria accedere con qualsiasi combinazione di username e password quindi va risolto
 	public void conferma(ActionEvent event) throws IOException {
+		//Modificare qui per decidere nome utente e password dell'admin
+		accesso.put("Gio", "Cacco");
 		Nome = inputnome.getText();
 		Password = inputpassword.getText();
 		HashMap<String,String> login = new HashMap<String,String>();
 		login.put(Nome,Password);
-		if(DatiAccesso.accesso.containsValue(Password) && DatiAccesso.accesso.containsKey(Nome)) {
-			Parent root = FXMLLoader.load(getClass().getResource("ScenaGioco.fxml"));
+		if(accesso.containsValue(Password) && accesso.containsKey(Nome)) {
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("Prepartita.fxml"));
+			root = loader.load();
+			ControllerPrePartita controllerprepartita = loader.getController();
+			controllerprepartita.displayLogNome(Nome);
 			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			scene = new Scene(root);
 			stage.setScene(scene);
@@ -64,5 +72,6 @@ public class LoginController {
 		stage.show();
 
 	}
+		
+	}
 	
-}
