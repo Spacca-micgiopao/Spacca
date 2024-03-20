@@ -131,7 +131,7 @@ public class GameController {
     	//Impostazione SFONDO
     	try {
             // Percorso del file immagine
-            String filePath = "src/Sfondo/Background_gioco_prova2.jpg";
+            String filePath = "src/Sfondo/Background_gioco_prova1.jpg";
 
             // Creazione di un oggetto File con il percorso del file
             File file = new File(filePath);
@@ -554,7 +554,7 @@ public class GameController {
         }
         aggiornaInterfaccia();
         verificaFinePartita();
-    }sss
+    }
     //CLICK SUL TERZO TAVOLO
     public void handleClickPosizioneTavolo3(MouseEvent event) { // metodo funziona solo se le carte sono diverse
         if (cartaSelezionata != null ) {
