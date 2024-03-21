@@ -1,6 +1,9 @@
 package application;
 
+
+
 public class Imprevisti {
+	
 
     private TipoImprevisti tipo;
 
@@ -13,24 +16,24 @@ public class Imprevisti {
     }
 
     // Implementa l'effetto dell'imprevisto in base al tipo
-    public void applicaEffetto(Gioco gioco) {
+    public void applicaEffetto(Mazzo mazzo) {
         switch (tipo) {
             case RADDOppia_VERDI:
-                for (Carta carta : gioco.getGiocatore().getMano()) {
+                for (Carta carta : mazzo.getCarte()) {
                     if (carta.getColore().equals("Verde")) {
                         carta.setValore(carta.getValore() * 2);
                     }
                 }
                 break;
             case DIMEZZA_ROSSE:
-                for (Carta carta : gioco.getGiocatore().getMano()) {
+                for (Carta carta : mazzo.getCarte()) {
                     if (carta.getColore().equals("Rosso")) {
                         carta.setValore(carta.getValore() / 2);
                     }
                 }
                 break;
             case AUMENTA_DISPARI:
-                for (Carta carta : gioco.getGiocatore().getMano()) {
+                for (Carta carta : mazzo.getCarte()) {
                     if (carta.getValore() % 2 == 1) {
                         carta.setValore(carta.getValore() + 2);
                     }
@@ -40,6 +43,21 @@ public class Imprevisti {
                 // Ignora l'imprevisto
                 break;
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        // Verifica se l'oggetto passato è lo stesso oggetto di questa istanza
+        if (this == o) return true;
+
+        // Verifica se l'oggetto passato è null o non è della stessa classe di questa istanza
+        if (o == null || getClass() != o.getClass()) return false;
+
+        // Esegue il casting dell'oggetto passato a tipo Carta
+        Imprevisti imprevisto = (Imprevisti) o;
+
+        // Confronta i tipi degli imprevisti
+        return tipo == imprevisto.tipo;
     }
 
     public String toString() {
@@ -54,12 +72,8 @@ public class Imprevisti {
                 return "Imprevisto sconosciuto";
         }
     }
-    public enum TipoImprevisti {
-        RADDOppia_VERDI,
-        DIMEZZA_ROSSE,
-        AUMENTA_DISPARI
-    }
 
-
+   
+    
 }
 
