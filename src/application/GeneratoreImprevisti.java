@@ -1,7 +1,7 @@
 package application;
 
 import java.util.ArrayList;
-import java.util.Random;
+
 
 public class GeneratoreImprevisti {
 
@@ -26,7 +26,9 @@ public class GeneratoreImprevisti {
     public void setListaImprevisti(ArrayList<Imprevisti> listaImprevisti) {
         this.listaImprevisti = listaImprevisti;
     }
+  
 }
 
 //l'idea è quella di avere una classe che generi tutti gli imprevisti possibili, e li metta in un arraylist ordinato. 
-//a quel punto, quando il gioco si avvia, in maniera random prende un numero da 1 a 10 e sceglie quinid uno degli imprevisti dell'arraylist
+//a quel punto, quando il gioco si avvia, 
+//in maniera random prende un numero da 1 a 10 e sceglie quinid uno degli imprevisti dell'arraylist
