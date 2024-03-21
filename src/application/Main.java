@@ -15,8 +15,14 @@ public class Main extends Application {
 	
 	public void start(Stage stage) throws Exception {
 	    try {
-	        FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+	        FXMLLoader loader = new FXMLLoader(getClass().getResource("ScenaGioco.fxml"));
 	        Parent root = loader.load();
+	       
+
+	        GameController controller = loader.getController();
+	        controller.setStage(stage);  // Passa lo Stage al controller
+	        controller.initialize();     // Inizializza il controller, se necessario
+	       
 	        Scene scene1 = new Scene(root);
 	        stage.setScene(scene1);
 	        stage.setResizable(true);
@@ -27,11 +33,3 @@ public class Main extends Application {
 	    }
 	}
 }
-/*
-FILE FXML
-Il file è composto per adesso da 8 ImageView e due bottoni,
-le 4 imageView in alto sono quelle che servono per visualizzare 
-le carte del mazzo del giocatore1 , mentre quelle in basso sono del giocatore2.
-Ogni giocatore ha anche un bottone pesca che aggiunge una carta al proprio 
-mazzo( per ora visivamente si può aggiungere una sola carta).
-*/
