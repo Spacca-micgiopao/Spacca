@@ -271,7 +271,7 @@ public class GameController {
     		if(vittoriaSuTavoloG1 > vittoriaSuTavoloG2) {
     			turnoLabel.setText("VINCITORE FINALE E' GIOCATORE 1");
     		}
-    		if(vittoriaSuTavoloG1 == vittoriaSuTavoloG2){
+    		else if(vittoriaSuTavoloG1 == vittoriaSuTavoloG2){
     			turnoLabel.setText("PAREGGIO FINALE");
     		}
     		else {
