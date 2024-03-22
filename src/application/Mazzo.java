@@ -21,12 +21,19 @@ public class Mazzo {
 	public void aggiungiCarta(Carta carta) {
 		carte.add(carta);
 	}
+	
+	public void rimuoviCarta(Carta carta) {
+		carte.remove(carta);
+	}
+	public boolean contieneCarta(Carta carta) {
+		return carte.contains(carta);
+	}
 	//la creazione del mazzo completo di tutte le carte avviene attraverso l'analisi delle immagini
 	//ognuna delle quali è associata ad una carta specifica("colore_valore.jpg")
 	public void CreaMazzoCompleto() {
 		
         //percorso della cartella "Immagini" 
-        String percorsoCartella = "C:\\Users\\mikym\\OneDrive\\Desktop\\Università\\1 anno\\informatica\\Spacca\\src\\Immagini";
+        String percorsoCartella = "src\\Immagini";
 
         // Creazione un oggetto File per la cartella
         File cartella = new File(percorsoCartella);
@@ -74,13 +81,14 @@ public class Mazzo {
         //System.out.println(" dimensione mazzo completo è"+ mazzoCompleto.getCarte().size());
         mescolaMazzo();
      }
-	//pesca una carta casualmente per adesso la carta pescata non viene
-	//tolta dal mazzo
+	//pesca una carta casualmente, la carta pescata viene tolta dal mazzo
 	public Carta pescaCartaCasuale() {
 	    if (!carte.isEmpty()) {
 	        Random rand = new Random();
 	        int index = rand.nextInt(carte.size());
-	        return carte.get(index);  
+	        Carta cartaCasuale = carte.get(index);
+	        carte.remove(cartaCasuale);
+	        return cartaCasuale ;
 	    } else {
 	        System.out.println("Il mazzo è vuoto.");
 	        return null;
@@ -96,6 +104,9 @@ public class Mazzo {
         Collections.shuffle(carte);
     }
     
+    public int getNumeroCarte() {
+        return carte.size();
+    }
     public List<Carta> getCarte() {
         return carte;
     }

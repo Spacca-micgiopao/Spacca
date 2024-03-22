@@ -30,5 +30,4 @@ public class GeneratoreImprevisti {
 }
 
 //l'idea è quella di avere una classe che generi tutti gli imprevisti possibili, e li metta in un arraylist ordinato. 
-//a quel punto, quando il gioco si avvia, 
-//in maniera random prende un numero da 1 a 10 e sceglie quinid uno degli imprevisti dell'arraylist
+//a quel punto, quando il gioco si avvia, in maniera random prende un numero da 1 a 10 e sceglie quinid uno degli imprevisti dell'arraylist
