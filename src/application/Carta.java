@@ -27,7 +27,9 @@ public class Carta {
     public String getColore() {
         return colore;
     }
-    
+   public void setValore(int valore) {
+		this.valore=valore;
+	}
     @Override
     public boolean equals(Object o) {
         // Verifica se l'oggetto passato è lo stesso oggetto di questa istanza
