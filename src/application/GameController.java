@@ -229,28 +229,34 @@ public class GameController {
     }
 
     // Metodo per caricare e visualizzare le immagini degli imprevisti
-    public void visualizzaImprevisti() {
+     public void visualizzaImprevisti() {
         String percorsoCartellaImprevisti = "src\\Imprevisti";
-        
-        // Ottieni il percorso di due file immagine casuali
+
         String percorsoImprevisto1 = getPercorsoFileCasuale(percorsoCartellaImprevisti);
-        
-        // Carica le immagini dai percorsi ottenuti
-        Image immagine1 = new Image(new File(percorsoImprevisto1).toURI().toString());
-        
-        // Visualizza le immagini nelle ImageView
-        imprevisto1.setImage(immagine1);
-        
-        // Salva i nomi dei file immagine
-        nomeImprevisto1 = new File(percorsoImprevisto1).getName();
-        
-        // Analizza il nome dell'imprevisto per ottenere le informazioni necessarie
-        if (nomeImprevisto1.startsWith("raddopia") && nomeImprevisto1.contains("verdi")) {
-            tipoImprevisto1 = "raddopia_verdi";
-        } else if (nomeImprevisto1.startsWith("dimezza") && nomeImprevisto1.contains("rosse")) {
-            tipoImprevisto1 = "dimezza_rosse";
-        } else {
-            tipoImprevisto1 = null; // Assicura che tipoImprevisto1 sia null se non corrisponde a nessun'imprevisto riconosciuto
+
+        if (percorsoImprevisto1 != null) {
+            try (FileInputStream inputStream = new FileInputStream(percorsoImprevisto1)) {
+                Image immagine1 = new Image(inputStream);
+
+                // Visualizza le immagini nelle ImageView
+                imprevisto1.setImage(immagine1);
+
+                // Salva i nomi dei file immagine
+                nomeImprevisto1 = new File(percorsoImprevisto1).getName();
+
+                if ("raddopia_verdi".equalsIgnoreCase(nomeImprevisto1) && nomeImprevisto1.contains("verdi")) {
+                    tipoImprevisto1 = "raddopia_verdi";
+                } else if ("dimezza_rosse".equalsIgnoreCase(nomeImprevisto1) && nomeImprevisto1.contains("rosse")) {
+                    tipoImprevisto1 = "dimezza_rosse";
+                } else {
+                    tipoImprevisto1 = null; // Assicura che tipoImprevisto1 sia null se non corrisponde a nessun'imprevisto riconosciuto
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+               
+                // Aggiungi un log per catturare eventuali eccezioni durante il caricamento dell'immagine
+                System.err.println("Errore durante il caricamento dell'immagine dell'imprevisto 1: " + e.getMessage());
+            }
         }
     }
 
