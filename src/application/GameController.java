@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -228,30 +229,38 @@ public class GameController {
         }
     }
 
-    // Metodo per caricare e visualizzare le immagini degli imprevisti
     public void visualizzaImprevisti() {
         String percorsoCartellaImprevisti = "src\\Imprevisti";
-        
-        // Ottieni il percorso di due file immagine casuali
+
         String percorsoImprevisto1 = getPercorsoFileCasuale(percorsoCartellaImprevisti);
-        
-        // Carica le immagini dai percorsi ottenuti
-        Image immagine1 = new Image(new File(percorsoImprevisto1).toURI().toString());
-        
-        // Visualizza le immagini nelle ImageView
-        imprevisto1.setImage(immagine1);
-        
-        // Salva i nomi dei file immagine
-        nomeImprevisto1 = new File(percorsoImprevisto1).getName();
-        
-        // Analizza il nome dell'imprevisto per ottenere le informazioni necessarie
-        if (nomeImprevisto1.startsWith("raddopia") && nomeImprevisto1.contains("verdi")) {
-            tipoImprevisto1 = "raddopia_verdi";
-        } else if (nomeImprevisto1.startsWith("dimezza") && nomeImprevisto1.contains("rosse")) {
-            tipoImprevisto1 = "dimezza_rosse";
-        } else {
-            tipoImprevisto1 = null; // Assicura che tipoImprevisto1 sia null se non corrisponde a nessun'imprevisto riconosciuto
+
+        if (percorsoImprevisto1 != null) {
+            try (FileInputStream inputStream = new FileInputStream(percorsoImprevisto1)) {
+                Image immagine1 = new Image(inputStream);
+
+                // Visualizza le immagini nelle ImageView
+                imprevisto1.setImage(immagine1);
+
+                // Salva i nomi dei file immagine
+                nomeImprevisto1 = new File(percorsoImprevisto1).getName();
+                System.out.println(nomeImprevisto1);
+
+                if ("raddoppia_verdi.jpg".equalsIgnoreCase(nomeImprevisto1) ) {
+                    tipoImprevisto1 = "raddopia_verdi";
+                } else if ("dimezza_rosse.jpg".equalsIgnoreCase(nomeImprevisto1) ) {
+                    tipoImprevisto1 = "dimezza_rosse";
+                } else {
+                    tipoImprevisto1 = null; //null se non corrisponde a nessun'imprevisto riconosciuto
+                }
+                System.out.println(tipoImprevisto1 + " aaa ");
+            } catch (IOException e) {
+                e.printStackTrace();
+               
+                
+                System.err.println("Errore durante il caricamento dell'immagine dell'imprevisto 1: " + e.getMessage());
+            }
         }
+        
     }
 
     private void aggiornaTurnoLabel() {
@@ -370,6 +379,7 @@ public class GameController {
 				}
 	    	}	
     	}
+    	
 	
     }
     //pesca una carta per il giocatore2
@@ -398,6 +408,7 @@ public class GameController {
     }
    //AGGIORNA INTERFACCIA
     public void aggiornaInterfaccia() {
+    	
         // Aggiorna le immagini del mazzo del giocatore 1
         for (int i = 0; i < imageViewsGiocatore1.size(); i++) {
             if (i < mazzoGiocatore1.getCarte().size()) {
@@ -517,11 +528,14 @@ public class GameController {
             if (tipoImprevisto1 != null) {
                 if (tipoImprevisto1.equals("raddopia_verdi") && cartaSelezionata.getColore().equals("verde")) {
                     valoreCartaSelezionata *= 2; // Se la carta è "raddopia_verdi" e verde, raddoppia il suo valore
+                  
                 } else if (tipoImprevisto1.equals("dimezza_rosse") && cartaSelezionata.getColore().equals("rosso")) {
                     valoreCartaSelezionata /= 2; // Se la carta è "dimezza_rosse" e rossa, dimezza il suo valore
+                    
                 }
             }
             cartaSelezionata.setValore(valoreCartaSelezionata);
+            System.out.println(cartaSelezionata.getValore() + "  " + cartaSelezionata.getColore());
             //Aggiornamento punteggio
             if(mazzoProvenienzaCartaSelezionata == mazzoGiocatore1) {
             	punteggioG1Tavolo1 += cartaSelezionata.getValore();
@@ -585,6 +599,7 @@ public class GameController {
                 }
             }
             cartaSelezionata.setValore(valoreCartaSelezionata);
+            System.out.println(cartaSelezionata.getValore() + "  " + cartaSelezionata.getColore());
           //Aggiornamento punteggio
             if(mazzoProvenienzaCartaSelezionata == mazzoGiocatore1) {
             	punteggioG1Tavolo2 += cartaSelezionata.getValore();
@@ -648,6 +663,7 @@ public class GameController {
                 }
             }
             cartaSelezionata.setValore(valoreCartaSelezionata);
+            System.out.println(cartaSelezionata.getValore() + "  " + cartaSelezionata.getColore());
           //Aggiornamento punteggio
             if(mazzoProvenienzaCartaSelezionata == mazzoGiocatore1) {
             	punteggioG1Tavolo3 += cartaSelezionata.getValore();
