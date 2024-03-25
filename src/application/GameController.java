@@ -20,7 +20,12 @@ import java.util.List;
 
 
 public class GameController {
-	 
+	
+	private Main main;
+	
+	public String player1Name;
+	public String player2Name;
+	    
 	private Mazzo mazzoGiocatore1;
     private Mazzo mazzoGiocatore2;
     private Mazzo mazzoCompleto;
@@ -125,9 +130,23 @@ public class GameController {
     private ImageView CartaT3p01;                        
     @FXML               
     private ImageView CartaT3p11;
-    
+    //serve per il cambio scena
+    public void setMain(Main main) {
+    	this.main= main;
+    }
+    //nomi dei giocatori
+    public void setPlayersNames() {
+        this.player1Name = ControllerPrePartita.getPlayer1(); 
+        this.player2Name = ControllerPrePartita.getPlayer2();
+      
+    }
+
+
     //INIZIALIZZAZIONE
     public void initialize() {
+    	setPlayersNames();
+    	turnoLabel.setText("TURNO DI "+ " "+ this.player1Name);
+    	turnoLabel.setStyle("-fx-text-fill: black;");
     	//Impostazione SFONDO
     	try {
             // Percorso del file immagine
@@ -186,7 +205,6 @@ public class GameController {
         imageViewsTavolo3.add(CartaT3p10);
         imageViewsTavolo3.add(CartaT3p01);
         imageViewsTavolo3.add(CartaT3p11);
-       
     }
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -207,11 +225,12 @@ public class GameController {
     	}
     }
     private void aggiornaTurnoLabel() {
+ 
         if (turnoGiocatore1) {
-            turnoLabel.setText("TURNO DEL GIOCATORE 1");
+            turnoLabel.setText("TURNO DI "+ " "+ this.player1Name);
             turnoLabel.setStyle("-fx-text-fill: black;");
         } else {
-            turnoLabel.setText("TURNO DEL GIOCATORE 2");
+            turnoLabel.setText("TURNO DI "+ " "+ this.player2Name);
             turnoLabel.setStyle("-fx-text-fill: blue;");
         }
     }
@@ -230,53 +249,53 @@ public class GameController {
     		//Verifica punteggi su tavolo1
     		if(punteggioG1Tavolo1 > punteggioG2Tavolo1) {
     			vittoriaSuTavoloG1+=1;
-    			LabelVincitaT1.setText("G1 \n V \n I \n N \n C \n E \n T1");
+    			LabelVincitaT1.setText(this.player1Name+" VINCE");
     		}else {
     			if(punteggioG1Tavolo1 <  punteggioG2Tavolo1) {
     				vittoriaSuTavoloG2+=1;
-    				LabelVincitaT1.setText("G2 \n V \n I \n N  \n C \n E \n T1");
+    				LabelVincitaT1.setText(this.player2Name+" VINCE ");
     			}
     			else {
-    				LabelVincitaT1.setText("P \n A \n R \n E \n G \n G \n I \n O");
+    				LabelVincitaT1.setText("PAREGGIO");
     			}
     		}
     		//Punteggi su tavolo2
     		if(punteggioG1Tavolo2 > punteggioG2Tavolo2) {
     			vittoriaSuTavoloG1+=1;
-    			LabelVincitaT2.setText("G1 \n V \n I \n N  \n C \n E \n T2");
+    			LabelVincitaT2.setText(this.player1Name+" VINCE ");
     		}else {
     			if(punteggioG1Tavolo2 <  punteggioG2Tavolo2) {
     				vittoriaSuTavoloG2+=1;
-    				LabelVincitaT2.setText("G2 \n V \n I \n N  \n C \n E \n T2");
+    				LabelVincitaT2.setText(this.player2Name+" VINCE");
     			}
     			else {
-    				LabelVincitaT2.setText("P \n A \n R \n E \n G \n G \n I \n O");
+    				LabelVincitaT2.setText("PAREGGIO");
     			}
     		}
     		//punteggi su tavolo 3
     		if(punteggioG1Tavolo3 > punteggioG2Tavolo3) {
     			vittoriaSuTavoloG1+=1;
-    			LabelVincitaT3.setText("G1 \n V \n I \n N  \n C \n E \n T3");
+    			LabelVincitaT3.setText(this.player1Name+ " VINCE");
     		}else {
     			if(punteggioG1Tavolo3 <  punteggioG2Tavolo3) {
     				vittoriaSuTavoloG2+=1;
-    				LabelVincitaT3.setText("G2 \n V \n I \n N  \n C \n E \n T3");
+    				LabelVincitaT3.setText(this.player2Name+" VINCE");
     			}
     			else {
-    				LabelVincitaT3.setText("P \n A \n R \n E \n G \n G \n I \n O");
+    				LabelVincitaT3.setText("PAREGGIO");
     			}
     		}
     		
     		//Calcolo punteggio finale
     		if(vittoriaSuTavoloG1 > vittoriaSuTavoloG2) {
-    			turnoLabel.setText("VINCITORE FINALE E' GIOCATORE 1");
+    			turnoLabel.setText("VINCITORE FINALE E' "+ " " + player1Name+ " !");
     		}
     		else if(vittoriaSuTavoloG1 == vittoriaSuTavoloG2){
     			turnoLabel.setText("PAREGGIO FINALE");
     		}
     		else {
     		
-    			turnoLabel.setText("VINCITORE FINALE E' GIOCATORE 2");
+    			turnoLabel.setText("VINCITORE FINALE E' "+" "+ player2Name+" !");
     		}
     		
     	}
