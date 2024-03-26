@@ -2,7 +2,10 @@ package application;
 
 
 import javafx.event.ActionEvent;
+
+import javafx.scene.Scene;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -17,15 +20,17 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
-
-
+import javafx.scene.media.*;
+import javafx.scene.layout.*;
 public class GameController {
 	
 	private Main main;
+	private Stage primaryStage;
+	private Stage stage;
 	
 	public String player1Name;
 	public String player2Name;
-	    
+	
 	private Mazzo mazzoGiocatore1;
     private Mazzo mazzoGiocatore2;
     private Mazzo mazzoCompleto;
@@ -39,12 +44,12 @@ public class GameController {
     private int punteggioG2Tavolo1;
     private int punteggioG2Tavolo2;
     private int punteggioG2Tavolo3;
-    private int vittoriaSuTavoloG1;
-    private int vittoriaSuTavoloG2;
+    private static int vittoriaSuTavoloG1;
+    private static int vittoriaSuTavoloG2;
     private boolean tuttiTavoliPieni=false;
    // private boolean partitaFinita= false; 
     
-    private Stage stage;
+   
     @FXML
     private AnchorPane backgroundPane;
     
@@ -90,6 +95,7 @@ public class GameController {
     @FXML
     private List<ImageView> imageViewsTavolo3;
     
+ //   Parent root;
     @FXML
     private Button PescaGiocatore1;
     @FXML
@@ -289,16 +295,39 @@ public class GameController {
     		//Calcolo punteggio finale
     		if(vittoriaSuTavoloG1 > vittoriaSuTavoloG2) {
     			turnoLabel.setText("VINCITORE FINALE E' "+ " " + player1Name+ " !");
+    			try {
+					main.showFilmatoFinale();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
     		}
     		else if(vittoriaSuTavoloG1 == vittoriaSuTavoloG2){
     			turnoLabel.setText("PAREGGIO FINALE");
+    			try {
+					main.showFilmatoFinale();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
     		}
     		else {
     		
     			turnoLabel.setText("VINCITORE FINALE E' "+" "+ player2Name+" !");
+    			try {
+					main.showFilmatoFinale();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
     		}
     		
+    		
     	}
+    }
+    public static  int getVittoriaSuTavoloG1() {
+    	return vittoriaSuTavoloG1;
+    }
+    public static  int getVittoriaSuTavoloG2() {
+    	return vittoriaSuTavoloG2;
     }
     //condizione della fine partita: tutti tavoli risultano pieni
     public boolean verificaTuttiTavoliSonoPieni() {

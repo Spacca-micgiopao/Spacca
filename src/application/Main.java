@@ -51,7 +51,20 @@ public class Main extends Application {
 	        primaryStage.setFullScreen(true);
 	        primaryStage.show();
 	    }
-
+	    public void showFilmatoFinale() throws Exception{
+	    	FXMLLoader loader = new FXMLLoader(getClass().getResource("FilmatiFinali.fxml"));
+		    Parent root = loader.load();
+	        FilmatiFinaliController controller = loader.getController();
+	        controller.setMain(this);
+	        controller.setStage(primaryStage);
+	        Scene scene = new Scene(root);
+	        
+	        primaryStage.setScene(scene);
+	        primaryStage.setFullScreen(true);
+	        primaryStage.show();
+    	
+	    	
+	    }
 	    public static void main(String[] args) {
 	        launch(args);
 	    }
