@@ -62,6 +62,7 @@ public class FilmatiFinaliController {
 	        mediaView.setFitHeight(800); // Imposta l'altezza desiderata
 	        LabelGiocatore.setText( this.player1Name+" VINCE !");
 	        LabelGiocatore.setStyle("-fx-background-color: transparent;");
+	        LabelGiocatore.setStyle("-fx-text-fill: blue;");
 	        LabelGiocatore.setVisible(false);
 	        // Listener per monitorare il tempo di riproduzione del video
 	        mediaPlayer.currentTimeProperty().addListener((observable, oldValue, newValue) -> {
@@ -95,6 +96,7 @@ public class FilmatiFinaliController {
 	        mediaView.setFitHeight(800); // Imposta l'altezza desiderata
         	LabelGiocatore.setText( this.player2Name+" VINCE !");
  	        LabelGiocatore.setStyle("-fx-background-color: transparent;");
+	        LabelGiocatore.setStyle("-fx-text-fill: blue;");
  	        LabelGiocatore.setVisible(false);
  	        // Listener per monitorare il tempo di riproduzione del video
  	        mediaPlayer.currentTimeProperty().addListener((observable, oldValue, newValue) -> {
@@ -134,7 +136,7 @@ public class FilmatiFinaliController {
         LabelGiocatore.setStyle("-fx-background-color: transparent;");
 	    LabelGiocatore.setLayoutX(420);
 	    LabelGiocatore.setLayoutY(369);
-	        
+	    LabelGiocatore.setStyle("-fx-text-fill: blue;");
 	        
 	     // Riproduci il video
 	     mediaPlayer.play();

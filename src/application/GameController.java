@@ -147,12 +147,19 @@ public class GameController {
       
     }
 
-
-    //INIZIALIZZAZIONE
-    public void initialize() {
-    	setPlayersNames();
-    	turnoLabel.setText("TURNO DI "+ " "+ this.player1Name);
-    	turnoLabel.setStyle("-fx-text-fill: black;");
+    public void insertMusic() {
+	//MUSICA
+    	try {
+			 Media sound = new Media(new File("src/Musica/MusicaSottofondoGioco1.mp3").toURI().toString());
+			   MediaPlayer player = new MediaPlayer(sound);
+			   //continua sempre a suonare
+			   player.setCycleCount(MediaPlayer.INDEFINITE);
+			   player.play();
+		}catch(Exception e ) {
+			System.out.println("errore riproduzione");
+		}
+    }
+    public void insertSfondo() {
     	//Impostazione SFONDO
     	try {
             // Percorso del file immagine
@@ -170,6 +177,18 @@ public class GameController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    //INIZIALIZZAZIONE
+    public void initialize() {
+    	
+    	setPlayersNames();
+    	turnoLabel.setText("TURNO DI "+ " "+ this.player1Name);
+    	turnoLabel.setStyle("-fx-text-fill: black;");
+    	insertMusic();
+    	insertSfondo();
+    	
+    	//PREPARAZIONE GIOCO
+        
     	//mazzo con tutte le carte disponibili
     	mazzoCompleto = new Mazzo();
     	mazzoCompleto.CreaMazzoCompleto();
@@ -211,6 +230,7 @@ public class GameController {
         imageViewsTavolo3.add(CartaT3p10);
         imageViewsTavolo3.add(CartaT3p01);
         imageViewsTavolo3.add(CartaT3p11);
+    
     }
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -298,7 +318,7 @@ public class GameController {
     			try {
 					main.showFilmatoFinale();
 				} catch (Exception e) {
-					e.printStackTrace();
+					System.out.println("errore nei filmati finali");
 				}
 				
     		}
@@ -307,7 +327,7 @@ public class GameController {
     			try {
 					main.showFilmatoFinale();
 				} catch (Exception e) {
-					e.printStackTrace();
+					System.out.println("errore nei filmati  finali");
 				}
     		}
     		else {
@@ -316,7 +336,7 @@ public class GameController {
     			try {
 					main.showFilmatoFinale();
 				} catch (Exception e) {
-					e.printStackTrace();
+					System.out.println("errore  nei  filmati finali");
 				}
     		}
     		
@@ -639,7 +659,6 @@ public class GameController {
             	
             	if(imageViewsGiocatore1.get(i).getImage()==cartaSelezionata.getImmagine()) {
             		imageViewsGiocatore1.get(i).setImage(null);
-            		System.out.println("svuotamento iamgeView da lista giocatore1");
             		break;
             	}
             }
