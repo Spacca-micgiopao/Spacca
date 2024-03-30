@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.Node;
 import javafx.stage.Stage;
@@ -27,6 +28,8 @@ public class LoginController {
 	private TextField inputpassword;
 	@FXML
 	private Button tastoconferma;
+	@FXML
+	private Label errori;
 	
 	//Hashmap per avere username e password per l'admin
 	HashMap<String,String> accesso = new HashMap<String,String>();
@@ -34,12 +37,7 @@ public class LoginController {
 	String Nome;
 	String Password;
 	
-	//
-	InfoPartita infopartita = new InfoPartita();
-	
-	
-	//Circa funziona,da fare : salvare tutti i dati in un file da cui leggerli
-	//si può in teoria accedere con qualsiasi combinazione di username e password quindi va risolto
+	//Per confermare le credenziali e passare al menu principale
 	public void conferma(ActionEvent event) throws IOException {
 		//Modificare qui per decidere nome utente e password dell'admin
 		accesso.put("", "");
@@ -48,32 +46,25 @@ public class LoginController {
 		HashMap<String,String> login = new HashMap<String,String>();
 		login.put(Nome,Password);
 		if(accesso.containsValue(Password) && accesso.containsKey(Nome)) {
-			infopartita.Preparazione();
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("Prepartita.fxml"));
-			root = loader.load();
-			ControllerPrePartita controllerprepartita = loader.getController();
-			controllerprepartita.displayLogNome(Nome);
+			Parent root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
 			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
 		}
-		
-
-			
-				
+		else
+			errori.setText("Username o password errati,in caso di problemi rivolgersi all'assistenza");
 	}
 	
 	//Tasto temporaneo per saltare direttamente al tabellone senza dover fare login
 	//Ho tolto il loader del game controller non so potrebbe dover essere rimesso
 	public void switchtoTabellone(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("ScenaGioco.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("GameController.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
 
 	}
-		
-	}
+}
 	

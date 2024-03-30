@@ -20,7 +20,7 @@ public class InfoPartita {
 	protected static String[] Partite;
 	//protected String[] partite = new String[Partite.size()];
 	//Caricare il file con i dati delle partite
-	File DatiPartita = new File("src/application/DatiPartita.txt");
+	File DatiPartita = new File("src/Data/DatiPartita.txt");
 	
 	//Creazione dell'oggetto che contiene le informazioni della partita
 	protected void InfoPartita(String G1,String G2,String IDpartita) {

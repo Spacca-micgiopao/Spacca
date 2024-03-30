@@ -9,18 +9,13 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerPrePartita">
    <children>
-      <Label layoutX="37.0" layoutY="42.0" text="Benvenuto!">
+      <Label layoutX="168.0" layoutY="30.0" text="Crea una partita!">
          <font>
-            <Font size="18.0" />
+            <Font size="36.0" />
          </font>
       </Label>
       <TextField fx:id="InputG1" layoutX="411.0" layoutY="160.0" />
       <TextField fx:id="InputG2" layoutX="411.0" layoutY="194.0" />
-      <Label fx:id="LogNome" layoutX="65.0" layoutY="88.0" prefHeight="27.0" prefWidth="35.0">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
       <Button fx:id="Startthegame" layoutX="452.0" layoutY="230.0" mnemonicParsing="false" onAction="#IniziaPartita" text="Conferma" />
       <Label fx:id="Errori" layoutX="412.0" layoutY="279.0" prefHeight="82.0" prefWidth="149.0" textAlignment="CENTER" textFill="RED" wrapText="true">
          <font>
@@ -50,5 +45,6 @@
          </font>
       </Label>
       <Button layoutX="106.0" layoutY="230.0" mnemonicParsing="false" text="Conferma" />
+      <Button fx:id="Back" layoutX="254.0" layoutY="327.0" mnemonicParsing="false" text="Torna al menu" />
    </children>
 </AnchorPane>
