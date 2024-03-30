@@ -33,7 +33,11 @@ public class LoginController {
 	
 	String Nome;
 	String Password;
-
+	
+	//
+	InfoPartita infopartita = new InfoPartita();
+	
+	
 	//Circa funziona,da fare : salvare tutti i dati in un file da cui leggerli
 	//si può in teoria accedere con qualsiasi combinazione di username e password quindi va risolto
 	public void conferma(ActionEvent event) throws IOException {
@@ -44,6 +48,7 @@ public class LoginController {
 		HashMap<String,String> login = new HashMap<String,String>();
 		login.put(Nome,Password);
 		if(accesso.containsValue(Password) && accesso.containsKey(Nome)) {
+			infopartita.Preparazione();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("Prepartita.fxml"));
 			root = loader.load();
 			ControllerPrePartita controllerprepartita = loader.getController();
