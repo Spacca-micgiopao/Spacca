@@ -15,13 +15,10 @@ public class Main extends Application {
 	
 	public void start(Stage stage) throws Exception {
 	    try {
-	        FXMLLoader loader = new FXMLLoader(getClass().getResource("ScenaGioco.fxml"));
+	        FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
 	        Parent root = loader.load();
 	       
 
-	        GameController controller = loader.getController();
-	        controller.setStage(stage);  // Passa lo Stage al controller
-	        controller.initialize();     // Inizializza il controller, se necessario
 	       
 	        Scene scene1 = new Scene(root);
 	        stage.setScene(scene1);

@@ -29,7 +29,6 @@ public class ControllerPrePartita {
 	
 	//FILE per salvare le informazioni
 	File DatiPartita = new File("DatiPartita.txt");
-	private int ContaPartite = 0000;
 	public String G1;
 	public String G2;
 	
@@ -46,11 +45,15 @@ public class ControllerPrePartita {
 	}
 	
 	public void IniziaPartita(ActionEvent event) throws IOException {
-		FileWriter FW = new FileWriter(DatiPartita);
+			//Ottiene in nomi dei 2 giocatori se sono vuoti la partita non puo iniziare
 			G1 = InputG1.getText();
 			G2 = InputG2.getText();
-			ContaPartite++;
-			infopartita.getG(G1);
+			if(G1.isBlank() || G2.isBlank()) {
+				System.out.println("Nomi vuoti");
+			}
+			//Se i nomi non sono vuoti vengono scritti sul file dei dati e viene caricata la scena del gioco
+			else {
+			infopartita.getG(G1,G2);
 			infopartita.ScriviDati();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("ScenaGioco.fxml"));
 			root = loader.load();
@@ -59,6 +62,7 @@ public class ControllerPrePartita {
 			scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
+			}
 		}
 	
 }
