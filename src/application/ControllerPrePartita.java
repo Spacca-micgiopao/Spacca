@@ -44,14 +44,14 @@ public class ControllerPrePartita{
 	@FXML
 	Label PartitaScelta;
 	@FXML
-	ChoiceBox<String> Cacco;
+	ChoiceBox<String> ScegliPartita;
 	
 	
 	
 	//Scrivere il nome dell'Admin
 	public void displayLogNome(String nome) {
 		LogNome.setText(nome);
-		//Cacco.getItems().addAll(infopartita.partite);
+		ScegliPartita.getItems().addAll(infopartita.Partite);
 	}
 	
 	//Costruzione di una nuova partita

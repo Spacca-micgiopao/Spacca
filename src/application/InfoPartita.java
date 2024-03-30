@@ -7,24 +7,26 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 import java.io.LineNumberReader;
 
 public class InfoPartita {
 	
-	String G1;
-	String G2;
+	protected String G1;
+	protected String G2;
+	private String IDpartita;
 	static int NumeroPartita = 0;
 	protected static String[] Partite;
-	protected String[] partite;
 	//protected String[] partite = new String[Partite.size()];
 	//Caricare il file con i dati delle partite
 	File DatiPartita = new File("src/application/DatiPartita.txt");
 	
 	//Creazione dell'oggetto che contiene le informazioni della partita
-	protected void InfoPartita(String G1,String G2) {
+	protected void InfoPartita(String G1,String G2,String IDpartita) {
 		this.G1 = G1;
 		this.G2 = G2;
+		this.IDpartita = IDpartita;
 	}
 	
 	//Questo Metodo parte ogni volta che viene fatto il login,tiene conto del numero di partite
@@ -40,7 +42,6 @@ public class InfoPartita {
 				Partite = new String[NumeroPartita];
 				for(int i =0;i<NumeroPartita;i++) 
 					Partite[i]= Scan.nextLine();
-				partite = Partite;
 			}
 		catch(IOException e) {
 			e.printStackTrace();
@@ -51,6 +52,9 @@ public class InfoPartita {
 	protected void getG(String IG1,String IG2) {
 		G1 = IG1;
 		G2 = IG2;
+		Random rand = new Random();
+		char c = (char)(rand.nextInt(26)+'a');
+		IDpartita = NumeroPartita+""+rand.nextInt(10)+""+c;
 	}
 	
 	//Metodo per scrivere i dati sul file
@@ -60,7 +64,7 @@ public class InfoPartita {
 			BufferedWriter BW = new BufferedWriter(FW);
 			PrintWriter Writer = new PrintWriter(BW);
 			Scanner Scan = new Scanner(DatiPartita);
-			Writer.println(NumeroPartita+","+G1+","+G2);
+			Writer.println(IDpartita+","+G1+","+G2);
 			Writer.close();
 		}
 		catch(IOException e) {
