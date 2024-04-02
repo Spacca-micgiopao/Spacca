@@ -1,3 +1,2 @@
-
-12j,Pippo,Paperino
-27c,23,323
+00h,mic ,gio
+19z,yolo,polo

@@ -46,4 +46,14 @@ public class MenuController {
 		stage.setScene(scene);
 		stage.show();
 	}
+	//per fare il logout e tornare alla pagina di login infopartita serve per creare la lista dei giocatori la prima volta
+		public void VaiaClassifica(ActionEvent event) throws IOException {
+			infopartita.Preparazione();
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("Classifica.fxml"));
+			root = loader.load();
+			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+			scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+		}
 }

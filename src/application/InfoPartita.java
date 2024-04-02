@@ -18,9 +18,8 @@ public class InfoPartita {
 	private String IDpartita;
 	static int NumeroPartita = 0;
 	protected static String[] Partite;
-	//protected String[] partite = new String[Partite.size()];
 	//Caricare il file con i dati delle partite
-	File DatiPartita = new File("src/Data/DatiPartita.txt");
+	protected File DatiPartita = new File("src/Data/DatiPartita.txt");
 	
 	//Creazione dell'oggetto che contiene le informazioni della partita
 	protected void InfoPartita(String G1,String G2,String IDpartita) {
@@ -29,8 +28,7 @@ public class InfoPartita {
 		this.IDpartita = IDpartita;
 	}
 	
-	//Questo Metodo parte ogni volta che viene fatto il login,tiene conto del numero di partite
-	//E salva in un array la lista di tutte le partite per farla scegliere all'admin
+	//Conta il numero delle partite salvate per poi elencarle in un array
 	protected void Preparazione() {
 		try {
 			Scanner Scan = new Scanner(DatiPartita);
@@ -48,7 +46,7 @@ public class InfoPartita {
 		}
 	}
 	
-	//Passo i valori dei nomi dei giocatori,se presenti
+	//Passo i valori dei nomi dei giocatori e crea un codice partita
 	protected void getG(String IG1,String IG2) {
 		G1 = IG1;
 		G2 = IG2;
