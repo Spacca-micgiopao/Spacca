@@ -61,7 +61,7 @@ public class ControllerPrePartita {
 				main.showScenaGiocoScene();
 				
 			} catch (Exception e) {
-				System.out.println("errore");
+				System.out.println("errore visualizzazione scena gioco");
 			}
 	}
 	public static String getPlayer1(){

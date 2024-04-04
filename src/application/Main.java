@@ -58,7 +58,8 @@ public class Main extends Application {
 	        controller.setMain(this);
 	        controller.setStage(primaryStage);
 	        Scene scene = new Scene(root);
-	        
+	        primaryStage.setHeight(800);
+	        primaryStage.setWidth(1280);
 	        primaryStage.setScene(scene);
 	        primaryStage.setFullScreen(true);
 	        primaryStage.show();

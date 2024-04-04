@@ -43,10 +43,7 @@ public class FilmatiFinaliController {
 		getPlayerName();
 		getVittoriaSuTavolo();
 		//VIDEO NEL CASO  DI VINCITA
-		
-        
-        
-        if(vittoriaSuTavoloG1>vittoriaSuTavoloG2) {
+		 if(vittoriaSuTavoloG1>vittoriaSuTavoloG2) {
         	String videoPath1 = "src/AnimazioniVincita/AnimazioneVincita.mp4";
 			Media media = new Media(new File(videoPath1).toURI().toString());
 			// Crea il media player
@@ -67,7 +64,7 @@ public class FilmatiFinaliController {
 	        // Listener per monitorare il tempo di riproduzione del video
 	        mediaPlayer.currentTimeProperty().addListener((observable, oldValue, newValue) -> {
 	            // Definire il punto (in secondi) in cui mostrare la Label
-	            double tempoDiVisualizzazione = 10; // Esempio: mostrare la Label a 10 secondi nel video
+	            double tempoDiVisualizzazione = 10; //mostrare la Label a 10 secondi nel video
 	
 	            // Se il tempo corrente di riproduzione supera il punto desiderato, mostra la Label
 	            if (newValue.toSeconds() >= tempoDiVisualizzazione) {
@@ -75,8 +72,6 @@ public class FilmatiFinaliController {
 	            }
 	        });
 	
-	        
-	        
 	        // Riproduci il video
 	        mediaPlayer.play();
         }

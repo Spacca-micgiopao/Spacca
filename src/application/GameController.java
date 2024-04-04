@@ -678,14 +678,6 @@ public class GameController {
         verificaFinePartita();
     }
    
-    
-    
-    
-    
-    
-    
-    
-    
 }
     
 
