@@ -25,7 +25,6 @@ import javafx.scene.layout.*;
 public class GameController {
 	
 	private Main main;
-	private Stage primaryStage;
 	private Stage stage;
 	
 	public String player1Name;
@@ -49,7 +48,7 @@ public class GameController {
     private boolean tuttiTavoliPieni=false;
    // private boolean partitaFinita= false; 
     
-   
+   //TUTTO FXML
     @FXML
     private AnchorPane backgroundPane;
     
@@ -95,7 +94,7 @@ public class GameController {
     @FXML
     private List<ImageView> imageViewsTavolo3;
     
- //   Parent root;
+ 
     @FXML
     private Button PescaGiocatore1;
     @FXML

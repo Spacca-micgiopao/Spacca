@@ -57,7 +57,7 @@ public class FilmatiFinaliController {
 	        // Imposta le dimensioni della vista media
 	        mediaView.setFitWidth(1280); // Imposta la larghezza desiderata
 	        mediaView.setFitHeight(800); // Imposta l'altezza desiderata
-	        LabelGiocatore.setText( this.player1Name+" VINCE !");
+	        LabelGiocatore.setText( this.player1Name+"\n"+" VINCE !");
 	        LabelGiocatore.setStyle("-fx-background-color: transparent;");
 	        LabelGiocatore.setStyle("-fx-text-fill: blue;");
 	        LabelGiocatore.setVisible(false);

@@ -9,11 +9,8 @@ import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -39,6 +36,8 @@ public class ControllerPrePartita implements Initializable{
 		private TextField InputG2;
 		@FXML
 		private Label Errori;
+		@FXML
+		private Button Back;
 		@FXML
 		Label PartitaScelta;
 		@FXML
@@ -82,6 +81,14 @@ public class ControllerPrePartita implements Initializable{
 				System.out.println("errore nel caricamento scenaGioco");
 			}
 		}	
+	}
+	//per tornare alla schermata del menu
+	public void BackToMenu(ActionEvent event) throws IOException {
+		try {
+			main.showMainMenuScene();
+		} catch (Exception e) {
+			System.out.println("errore nel caricamento scene Main Menu");
+		}
 	}
 	public static String getPlayer1(){
 		return G1;

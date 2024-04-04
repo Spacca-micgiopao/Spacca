@@ -16,13 +16,18 @@ import javafx.stage.Stage;
 public class ClassificaController implements Initializable{
 
 	private Stage stage;
-	private Scene scene;
-	private Parent root;	
+	private Main main;	
 	
 	protected ArrayList<String> Classifica = new ArrayList<String>();
 	protected ArrayList<String> id = new ArrayList<String>();
 	private InfoPartita infopartita = new InfoPartita();
 	
+	public void setMain(Main main) {
+		this.main = main;
+	}
+	public void setStage(Stage stage) {
+		this.stage= stage;
+	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {

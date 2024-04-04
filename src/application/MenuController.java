@@ -4,19 +4,14 @@ import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class MenuController {
 	
 	private Stage stage;
-	private Scene scene;
-	private Parent root;
 	
+	private Main main;
 	@FXML
 	private Button VediClassifica;
 	@FXML
@@ -28,32 +23,38 @@ public class MenuController {
 	
 	InfoPartita infopartita = new InfoPartita();
 	
+	public void setMain(Main main) {
+    	this.main= main;
+    }	
+	public void setStage(Stage stage) {
+			this.stage= stage;
+	}
 	//per creare una partita,il metodo preparazione prepara la lista delle partite salvate
 	public void VaiaPrePartita(ActionEvent event) throws IOException {
 		infopartita.Preparazione();
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("PrePartita.fxml"));
-		root = loader.load();
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
+		try {
+			main.showPrePartitaScene();
+		} catch (Exception e) {
+			System.out.println("errore nel caricamento scena prePartita");
+		}
 	}
 	//per fare il logout e tornare alla pagina di login
 	public void Logout(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
+		try {
+			main.showLoginScene();
+		}
+		catch(Exception e) {
+			System.out.println("errore nel caricamento scena Login");
+		}
 	}
 	//per fare il logout e tornare alla pagina di login infopartita serve per creare la lista dei giocatori la prima volta
 		public void VaiaClassifica(ActionEvent event) throws IOException {
 			infopartita.Preparazione();
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("Classifica.fxml"));
-			root = loader.load();
-			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-			scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
+			try {
+				main.showClassificaScene();
+			} catch (Exception e) {
+				System.out.println("errore nel caricamento scene classifica");
+			}
 		}
+	
 }
