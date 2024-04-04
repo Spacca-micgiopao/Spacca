@@ -25,6 +25,17 @@ public class Main extends Application {
 	        primaryStage.setScene(scene);
 	        primaryStage.show();
 	    }
+	    public void showMainMenuScene() throws Exception {
+	        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
+	        Parent root = loader.load();
+	        MenuController controller = loader.getController();
+	        controller.setMain(this);
+	        controller.setStage(primaryStage);
+	        Scene scene = new Scene(root);
+	        primaryStage.setScene(scene);
+	        primaryStage.show();
+	    }
+
 
 	    public void showPrePartitaScene() throws Exception {
 	        FXMLLoader loader = new FXMLLoader(getClass().getResource("Prepartita.fxml"));
@@ -66,9 +77,18 @@ public class Main extends Application {
     	
 	    	
 	    }
-	    public static void main(String[] args) {
-	        launch(args);
+	    public void showClassificaScene() throws Exception {
+	        FXMLLoader loader = new FXMLLoader(getClass().getResource("Classifica.fxml"));
+	        Parent root = loader.load();
+	        ClassificaController controller = loader.getController();
+	        controller.setMain(this);
+	        controller.setStage(primaryStage);
+	        Scene scene = new Scene(root);
+	        primaryStage.setScene(scene);
+	        primaryStage.show();
 	    }
+
+	 
 }
 	
 
