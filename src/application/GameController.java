@@ -2,7 +2,10 @@ package application;
 
 
 import javafx.event.ActionEvent;
+
+import javafx.scene.Scene;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -15,14 +18,18 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-
-
+import javafx.scene.media.*;
+import javafx.scene.layout.*;
 public class GameController {
-	 
+	
+	private Main main;
+	private Stage stage;
+	
+	public String player1Name;
+	public String player2Name;
+	
 	private Mazzo mazzoGiocatore1;
     private Mazzo mazzoGiocatore2;
     private Mazzo mazzoCompleto;
@@ -90,6 +97,7 @@ public class GameController {
     @FXML
     private List<ImageView> imageViewsTavolo3;
     
+ 
     @FXML
     private Button PescaGiocatore1;
     @FXML
@@ -130,14 +138,30 @@ public class GameController {
     private ImageView CartaT3p01;                        
     @FXML               
     private ImageView CartaT3p11;
-    
-    @FXML
-    private ImageView imprevisto1;
-    
-    
-    
-    //INIZIALIZZAZIONE
-    public void initialize() {
+    //serve per il cambio scena
+    public void setMain(Main main) {
+    	this.main= main;
+    }
+    //nomi dei giocatori
+    public void setPlayersNames() {
+        this.player1Name = ControllerPrePartita.getPlayer1(); 
+        this.player2Name = ControllerPrePartita.getPlayer2();
+      
+    }
+
+    public void insertMusic() {
+	//MUSICA
+    	try {
+			 Media sound = new Media(new File("src/Musica/MusicaSottofondoGioco1.mp3").toURI().toString());
+			   MediaPlayer player = new MediaPlayer(sound);
+			   //continua sempre a suonare
+			   player.setCycleCount(MediaPlayer.INDEFINITE);
+			   player.play();
+		}catch(Exception e ) {
+			System.out.println("errore riproduzione");
+		}
+    }
+    public void insertSfondo() {
     	//Impostazione SFONDO
     	try {
             // Percorso del file immagine
@@ -155,6 +179,18 @@ public class GameController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    //INIZIALIZZAZIONE
+    public void initialize() {
+    	
+    	setPlayersNames();
+    	turnoLabel.setText("TURNO DI "+ " "+ this.player1Name);
+    	turnoLabel.setStyle("-fx-text-fill: black;");
+    	insertMusic();
+    	insertSfondo();
+    	
+    	//PREPARAZIONE GIOCO
+        
     	//mazzo con tutte le carte disponibili
     	mazzoCompleto = new Mazzo();
     	mazzoCompleto.CreaMazzoCompleto();
@@ -196,7 +232,7 @@ public class GameController {
         imageViewsTavolo3.add(CartaT3p10);
         imageViewsTavolo3.add(CartaT3p01);
         imageViewsTavolo3.add(CartaT3p11);
-       
+    
     }
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -282,11 +318,12 @@ public class GameController {
     }
 
     private void aggiornaTurnoLabel() {
+ 
         if (turnoGiocatore1) {
-            turnoLabel.setText("TURNO DEL GIOCATORE 1");
+            turnoLabel.setText("TURNO DI "+ " "+ this.player1Name);
             turnoLabel.setStyle("-fx-text-fill: black;");
         } else {
-            turnoLabel.setText("TURNO DEL GIOCATORE 2");
+            turnoLabel.setText("TURNO DI "+ " "+ this.player2Name);
             turnoLabel.setStyle("-fx-text-fill: blue;");
         }
     }
@@ -294,7 +331,6 @@ public class GameController {
     	turnoGiocatore1= !turnoGiocatore1; 
     	
     }
-   
     //FINE PARTITA
     public void verificaFinePartita(){
     	tuttiTavoliPieni = verificaTuttiTavoliSonoPieni();
@@ -306,56 +342,79 @@ public class GameController {
     		//Verifica punteggi su tavolo1
     		if(punteggioG1Tavolo1 > punteggioG2Tavolo1) {
     			vittoriaSuTavoloG1+=1;
-    			LabelVincitaT1.setText("G1 \n V \n I \n N \n C \n E \n T1");
+    			LabelVincitaT1.setText(this.player1Name+" VINCE");
     		}else {
     			if(punteggioG1Tavolo1 <  punteggioG2Tavolo1) {
     				vittoriaSuTavoloG2+=1;
-    				LabelVincitaT1.setText("G2 \n V \n I \n N  \n C \n E \n T1");
+    				LabelVincitaT1.setText(this.player2Name+" VINCE ");
     			}
     			else {
-    				LabelVincitaT1.setText("P \n A \n R \n E \n G \n G \n I \n O");
+    				LabelVincitaT1.setText("PAREGGIO");
     			}
     		}
     		//Punteggi su tavolo2
     		if(punteggioG1Tavolo2 > punteggioG2Tavolo2) {
     			vittoriaSuTavoloG1+=1;
-    			LabelVincitaT2.setText("G1 \n V \n I \n N  \n C \n E \n T2");
+    			LabelVincitaT2.setText(this.player1Name+" VINCE ");
     		}else {
     			if(punteggioG1Tavolo2 <  punteggioG2Tavolo2) {
     				vittoriaSuTavoloG2+=1;
-    				LabelVincitaT2.setText("G2 \n V \n I \n N  \n C \n E \n T2");
+    				LabelVincitaT2.setText(this.player2Name+" VINCE");
     			}
     			else {
-    				LabelVincitaT2.setText("P \n A \n R \n E \n G \n G \n I \n O");
+    				LabelVincitaT2.setText("PAREGGIO");
     			}
     		}
     		//punteggi su tavolo 3
     		if(punteggioG1Tavolo3 > punteggioG2Tavolo3) {
     			vittoriaSuTavoloG1+=1;
-    			LabelVincitaT3.setText("G1 \n V \n I \n N  \n C \n E \n T3");
+    			LabelVincitaT3.setText(this.player1Name+ " VINCE");
     		}else {
     			if(punteggioG1Tavolo3 <  punteggioG2Tavolo3) {
     				vittoriaSuTavoloG2+=1;
-    				LabelVincitaT3.setText("G2 \n V \n I \n N  \n C \n E \n T3");
+    				LabelVincitaT3.setText(this.player2Name+" VINCE");
     			}
     			else {
-    				LabelVincitaT3.setText("P \n A \n R \n E \n G \n G \n I \n O");
+    				LabelVincitaT3.setText("PAREGGIO");
     			}
     		}
     		
     		//Calcolo punteggio finale
     		if(vittoriaSuTavoloG1 > vittoriaSuTavoloG2) {
-    			turnoLabel.setText("VINCITORE FINALE E' GIOCATORE 1");
+    			turnoLabel.setText("VINCITORE FINALE E' "+ " " + player1Name+ " !");
+    			try {
+					main.showFilmatoFinale();
+				} catch (Exception e) {
+					System.out.println("errore nei filmati finali");
+				}
+				
     		}
     		else if(vittoriaSuTavoloG1 == vittoriaSuTavoloG2){
     			turnoLabel.setText("PAREGGIO FINALE");
+    			try {
+					main.showFilmatoFinale();
+				} catch (Exception e) {
+					System.out.println("errore nei filmati  finali");
+				}
     		}
     		else {
     		
-    			turnoLabel.setText("VINCITORE FINALE E' GIOCATORE 2");
+    			turnoLabel.setText("VINCITORE FINALE E' "+" "+ player2Name+" !");
+    			try {
+					main.showFilmatoFinale();
+				} catch (Exception e) {
+					System.out.println("errore  nei  filmati finali");
+				}
     		}
     		
+    		
     	}
+    }
+    public static  int getVittoriaSuTavoloG1() {
+    	return vittoriaSuTavoloG1;
+    }
+    public static  int getVittoriaSuTavoloG2() {
+    	return vittoriaSuTavoloG2;
     }
     //condizione della fine partita: tutti tavoli risultano pieni
     public boolean verificaTuttiTavoliSonoPieni() {
@@ -397,7 +456,6 @@ public class GameController {
 				}
 	    	}	
     	}
-    	
 	
     }
     //pesca una carta per il giocatore2
@@ -426,7 +484,6 @@ public class GameController {
     }
    //AGGIORNA INTERFACCIA
     public void aggiornaInterfaccia() {
-    	
         // Aggiorna le immagini del mazzo del giocatore 1
         for (int i = 0; i < imageViewsGiocatore1.size(); i++) {
             if (i < mazzoGiocatore1.getCarte().size()) {
@@ -756,7 +813,6 @@ public class GameController {
             	
             	if(imageViewsGiocatore1.get(i).getImage()==cartaSelezionata.getImmagine()) {
             		imageViewsGiocatore1.get(i).setImage(null);
-            		System.out.println("svuotamento iamgeView da lista giocatore1");
             		break;
             	}
             }
@@ -776,7 +832,6 @@ public class GameController {
         verificaFinePartita();
     }
    
-    
 }
     
 
