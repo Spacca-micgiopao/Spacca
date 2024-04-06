@@ -18,8 +18,11 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
 import javafx.scene.media.*;
 import javafx.scene.layout.*;
 public class GameController {
@@ -43,15 +46,15 @@ public class GameController {
     private int punteggioG2Tavolo1;
     private int punteggioG2Tavolo2;
     private int punteggioG2Tavolo3;
-    private int vittoriaSuTavoloG1;
-    private int vittoriaSuTavoloG2;
+    private static int vittoriaSuTavoloG1;
+    private static int vittoriaSuTavoloG2;
     private String nomeImprevisto1;
     private String tipoImprevisto1;
     
     private boolean tuttiTavoliPieni=false;
    // private boolean partitaFinita= false; 
     
-    private Stage stage;
+   
     @FXML
     private AnchorPane backgroundPane;
     
@@ -138,6 +141,9 @@ public class GameController {
     private ImageView CartaT3p01;                        
     @FXML               
     private ImageView CartaT3p11;
+    
+    private ImageView imprevisto1;
+    
     //serve per il cambio scena
     public void setMain(Main main) {
     	this.main= main;
