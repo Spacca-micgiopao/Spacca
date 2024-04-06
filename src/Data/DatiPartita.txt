@@ -1,5 +1,0 @@
-00h,gia ,gio
-19z,yolo,polo
-21e,giorgio,ciao
-35s,provauno,provadue
-47u,nome1,nome2
