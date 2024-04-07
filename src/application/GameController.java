@@ -54,7 +54,7 @@ public class GameController {
     private boolean tuttiTavoliPieni=false;
    // private boolean partitaFinita= false; 
     
-   
+    
     @FXML
     private AnchorPane backgroundPane;
     
@@ -141,8 +141,10 @@ public class GameController {
     private ImageView CartaT3p01;                        
     @FXML               
     private ImageView CartaT3p11;
-    
+    @FXML
     private ImageView imprevisto1;
+    
+    
     
     //serve per il cambio scena
     public void setMain(Main main) {
@@ -155,18 +157,7 @@ public class GameController {
       
     }
 
-    public void insertMusic() {
-	//MUSICA
-    	try {
-			 Media sound = new Media(new File("src/Musica/MusicaSottofondoGioco1.mp3").toURI().toString());
-			   MediaPlayer player = new MediaPlayer(sound);
-			   //continua sempre a suonare
-			   player.setCycleCount(MediaPlayer.INDEFINITE);
-			   player.play();
-		}catch(Exception e ) {
-			System.out.println("errore riproduzione");
-		}
-    }
+  
     public void insertSfondo() {
     	//Impostazione SFONDO
     	try {
@@ -192,9 +183,9 @@ public class GameController {
     	setPlayersNames();
     	turnoLabel.setText("TURNO DI "+ " "+ this.player1Name);
     	turnoLabel.setStyle("-fx-text-fill: black;");
-    	insertMusic();
-    	insertSfondo();
     	
+    	insertSfondo();
+    	imprevisto1 = new ImageView();
     	//PREPARAZIONE GIOCO
         
     	//mazzo con tutte le carte disponibili
@@ -839,5 +830,3 @@ public class GameController {
     }
    
 }
-    
-

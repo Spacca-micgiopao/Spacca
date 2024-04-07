@@ -73,10 +73,10 @@
             </Button>
             <AnchorPane layoutX="52.0" layoutY="272.0" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <ImageView id="imprevisto1" fitHeight="150.0" fitWidth="200.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView id="imprevisto1" fx:id="imprevisto1" fitHeight="150.0" fitWidth="200.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </AnchorPane>
-            <Label layoutX="86.0" layoutY="262.0" prefHeight="17.0" prefWidth="131.0" text="       IMPREVISTI">
+            <Label layoutX="86.0" layoutY="262.0" prefHeight="17.0" prefWidth="131.0" text="       IMPREVISTI" textFill="#76c72f">
                <font>
                   <Font name="System Bold Italic" size="13.0" />
                </font>
