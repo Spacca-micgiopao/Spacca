@@ -19,6 +19,7 @@ public class ClassificaController implements Initializable{
 	private Main main;	
 	
 	protected ArrayList<String> Classifica = new ArrayList<String>();
+	protected ArrayList<Giocatori> Giocatori = new ArrayList<Giocatori>();
 	protected ArrayList<String> id = new ArrayList<String>();
 	private InfoPartita infopartita = new InfoPartita();
 	
@@ -36,13 +37,14 @@ public class ClassificaController implements Initializable{
 			StringTokenizer st = new StringTokenizer(scan.next(),",");
 				for(int i=0;i<infopartita.Partite.length-1;i++) {
 					st.nextToken();
-					Classifica.add(st.nextToken());
-					Classifica.add(st.nextToken());
+					Giocatori.add(new Giocatori(st.nextToken()));
+					Giocatori.add(new Giocatori(st.nextToken()));
 					st = new StringTokenizer(scan.next(),",");
 				}
 			st.nextToken();
-			Classifica.add(st.nextToken());
-			Classifica.add(st.nextToken());
+			Giocatori.add(new Giocatori(st.nextToken()));
+			Giocatori.add(new Giocatori(st.nextToken()));
+			scan.close();
 		}
 		catch(IOException e) {
 			e.printStackTrace();
@@ -52,17 +54,18 @@ public class ClassificaController implements Initializable{
 		for(int i=0;i<Classifica.size();i++) {
 			int cont = 0;
 			for(int j=0;j<Classifica.size();j++) {
-				if(Classifica.get(i).equals(Classifica.get(j))) {
+				if(Giocatori.get(i).getNome().equals(Giocatori.get(j).getNome())) {
 					cont++;
 				}
 				if(cont>1)
-					Classifica.remove(i);
+					Giocatori.remove(i);
 			}
 		}
 	}
 	public void Mostraclassifia() {
-		for(int i = 0;i<Classifica.size();i++) {
-			System.out.println(Classifica.get(i));
+		System.out.println("NOME/VITTORIE");
+		for(int i = 0;i<Giocatori.size();i++) {		
+			System.out.println(Giocatori.get(i).toString());
 		}
 		
 	}
