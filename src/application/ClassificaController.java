@@ -28,20 +28,36 @@ public class ClassificaController implements Initializable{
 	public void setStage(Stage stage) {
 		this.stage= stage;
 	}
-	@Override
+	
+	//Prendere tutti i nomi dei giocatori
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {
 			Scanner scan = new Scanner(infopartita.DatiPartita);
 			StringTokenizer st = new StringTokenizer(scan.next(),",");
-			//for(int i=0;i<2;i++) {
-				st.nextToken();
-				Classifica.add(st.nextToken());
-				//Classifica.add(st.nextToken());
-				st = new StringTokenizer(scan.next(),",");
-			//}
+				for(int i=0;i<infopartita.Partite.length-1;i++) {
+					st.nextToken();
+					Classifica.add(st.nextToken());
+					Classifica.add(st.nextToken());
+					st = new StringTokenizer(scan.next(),",");
+				}
+			st.nextToken();
+			Classifica.add(st.nextToken());
+			Classifica.add(st.nextToken());
 		}
 		catch(IOException e) {
 			e.printStackTrace();
+		}
+		
+		//Rimuovere i doppioni
+		for(int i=0;i<Classifica.size();i++) {
+			int cont = 0;
+			for(int j=0;j<Classifica.size();j++) {
+				if(Classifica.get(i).equals(Classifica.get(j))) {
+					cont++;
+				}
+				if(cont>1)
+					Classifica.remove(i);
+			}
 		}
 	}
 	public void Mostraclassifia() {

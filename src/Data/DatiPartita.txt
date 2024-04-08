@@ -1,4 +1,4 @@
-00h,gia ,gio
+00h,gia,gio
 19z,yolo,polo
 21e,giorgio,ciao
 35s,provauno,provadue
