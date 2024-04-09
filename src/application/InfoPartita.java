@@ -6,7 +6,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 import java.io.LineNumberReader;
@@ -21,13 +20,6 @@ public class InfoPartita {
 	//Caricare il file con i dati delle partite
 	protected File DatiPartita = new File("src/Data/DatiPartita.txt");
 	
-	//Creazione dell'oggetto che contiene le informazioni della partita
-	protected void InfoPartita(String G1,String G2,String IDpartita) {
-		this.G1 = G1;
-		this.G2 = G2;
-		this.IDpartita = IDpartita;
-	}
-	
 	//Conta il numero delle partite salvate per poi elencarle in un array
 	protected void Preparazione() {
 		try {
@@ -40,6 +32,8 @@ public class InfoPartita {
 				Partite = new String[NumeroPartita];
 				for(int i =0;i<NumeroPartita;i++) 
 					Partite[i]= Scan.nextLine();
+			LN.close();
+			Scan.close();
 			}
 		catch(IOException e) {
 			e.printStackTrace();
@@ -61,7 +55,6 @@ public class InfoPartita {
 			FileWriter FW = new FileWriter(DatiPartita,true);
 			BufferedWriter BW = new BufferedWriter(FW);
 			PrintWriter Writer = new PrintWriter(BW);
-			Scanner Scan = new Scanner(DatiPartita);
 			Writer.println(IDpartita+","+G1+","+G2);
 			Writer.close();
 		}

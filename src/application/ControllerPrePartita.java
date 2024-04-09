@@ -61,8 +61,8 @@ public class ControllerPrePartita implements Initializable{
 	//Costruzione di una nuova partita
 	public void IniziaPartita(ActionEvent event) throws IOException {
 		//Ottiene in nomi dei 2 giocatori se sono vuoti la partita non puo iniziare
-		G1 = InputG1.getText();
-		G2 = InputG2.getText();
+		G1 = InputG1.getText().replaceAll("\\s+","");
+		G2 = InputG2.getText().replaceAll("\\s+","");
 		if(G1.isBlank() || G2.isBlank())
 			Errori.setText("Almeno uno dei nomi non è stato inserito!");
 		else if(G1.length() > 20 || G2.length() > 20) {
