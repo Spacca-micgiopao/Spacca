@@ -13,6 +13,8 @@ public class Main extends Application {
 	    @Override
 	    public void start(Stage primaryStage) throws Exception {
 	        this.primaryStage = primaryStage;
+	        InfoPartita infopartita = new InfoPartita();
+	        infopartita.Preparazione(); // Chiamata a Preparazione appena si crea InfoPartita
 	        showLoginScene();
 	    }
 

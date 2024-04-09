@@ -4,3 +4,5 @@
 35s,provauno,provadue
 47u,nome1,nome2
 50b,Luigi,Mario
+64a,Luigi,Mario
+73c,nomeProva,nome2
