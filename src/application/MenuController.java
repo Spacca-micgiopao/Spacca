@@ -9,9 +9,10 @@ import javafx.stage.Stage;
 
 public class MenuController {
 	
-	private Stage stage;
 	
+	private Stage stage;
 	private Main main;
+	
 	@FXML
 	private Button VediClassifica;
 	@FXML
@@ -31,7 +32,6 @@ public class MenuController {
 	}
 	//per creare una partita,il metodo preparazione prepara la lista delle partite salvate
 	public void VaiaPrePartita(ActionEvent event) throws IOException {
-		infopartita.Preparazione();
 		try {
 			main.showPrePartitaScene();
 		} catch (Exception e) {
@@ -49,7 +49,6 @@ public class MenuController {
 	}
 	//per fare il logout e tornare alla pagina di login infopartita serve per creare la lista dei giocatori la prima volta
 		public void VaiaClassifica(ActionEvent event) throws IOException {
-			infopartita.Preparazione();
 			try {
 				main.showClassificaScene();
 			} catch (Exception e) {

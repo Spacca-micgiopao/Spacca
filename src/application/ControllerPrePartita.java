@@ -54,8 +54,8 @@ public class ControllerPrePartita implements Initializable{
 	//Carica la lista delle partite salvate nella checkbox
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		infopartita.Preparazione();
 		ScegliPartita.getItems().addAll(infopartita.Partite);
-
 	}
 	
 	//Costruzione di una nuova partita
@@ -90,6 +90,7 @@ public class ControllerPrePartita implements Initializable{
 			System.out.println("errore nel caricamento scene Main Menu");
 		}
 	}
+	
 	public static String getPlayer1(){
 		return G1;
 	}

@@ -1,12 +1,17 @@
 package application;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -19,9 +24,9 @@ public class ClassificaController implements Initializable{
 	private Main main;	
 	
 	protected ArrayList<String> Classifica = new ArrayList<String>();
-	protected ArrayList<Giocatori> Giocatori = new ArrayList<Giocatori>();
+	public static ArrayList<Giocatori> Giocatori = new ArrayList<Giocatori>();
 	protected ArrayList<String> id = new ArrayList<String>();
-	private InfoPartita infopartita = new InfoPartita();
+	protected static File DatiGiocatori = new File("src/Data/DatiGiocatori.txt");
 	
 	public void setMain(Main main) {
 		this.main = main;
@@ -30,46 +35,42 @@ public class ClassificaController implements Initializable{
 		this.stage= stage;
 	}
 	
-	//Prendere tutti i nomi dei giocatori
+	//Verrà construita la classifica dai nomi in DatiGiocatori
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		try {
-			Scanner scan = new Scanner(infopartita.DatiPartita);
-			StringTokenizer st = new StringTokenizer(scan.next(),",");
-				for(int i=0;i<infopartita.Partite.length-1;i++) {
-					st.nextToken();
-					Giocatori.add(new Giocatori(st.nextToken()));
-					Giocatori.add(new Giocatori(st.nextToken()));
-					st = new StringTokenizer(scan.next(),",");
-				}
-			st.nextToken();
-			Giocatori.add(new Giocatori(st.nextToken()));
-			Giocatori.add(new Giocatori(st.nextToken()));
-			scan.close();
-		}
-		catch(IOException e) {
-			e.printStackTrace();
-		}
-		
-		//Rimuovere i doppioni
-		for(int i=0;i<Classifica.size();i++) {
-			int cont = 0;
-			for(int j=0;j<Classifica.size();j++) {
-				if(Giocatori.get(i).getNome().equals(Giocatori.get(j).getNome())) {
-					cont++;
-				}
-				if(cont>1)
-					Giocatori.remove(i);
-			}
-		}
+	
 	}
+	
+	
+	//Per mostrare la classifica PROVVISORIO
 	public void Mostraclassifia() {
 		System.out.println("NOME/VITTORIE");
 		for(int i = 0;i<Giocatori.size();i++) {		
 			System.out.println(Giocatori.get(i).toString());
 		}
-		
 	}
 	
+	//Prende i nomi dal controller pre partita e li scrive nella lista
+	protected void getNomi(String G1,String G2) {
+		try {
+			FileWriter FW = new FileWriter(DatiGiocatori,true);
+			BufferedWriter BW = new BufferedWriter(FW);
+			PrintWriter Writer = new PrintWriter(BW);
+			Writer.println(G1);
+			Writer.println(G2);
+			Writer.close();
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
+	//per tornare alla schermata del menu
+	public void BackToMenu(ActionEvent event) throws IOException {
+		try {
+			main.showMainMenuScene();
+		} catch (Exception e) {
+			System.out.println("errore nel caricamento scene Main Menu");
+		}
+	}
 	
 }

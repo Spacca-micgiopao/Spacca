@@ -13,5 +13,6 @@
          </image>
       </ImageView>
       <Button layoutX="216.0" layoutY="144.0" mnemonicParsing="false" onAction="#Mostraclassifia" text="Mostra classifica(Provvisorio)" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#BackToMenu" text="Torna al Menu" />
    </children>
 </AnchorPane>

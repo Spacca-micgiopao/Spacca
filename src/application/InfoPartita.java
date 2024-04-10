@@ -30,13 +30,15 @@ public class InfoPartita {
 					NumeroPartita++;
 				}
 				Partite = new String[NumeroPartita];
-				for(int i =0;i<NumeroPartita;i++) 
+				for(int i =0;i<NumeroPartita;i++) {
+					if(Scan.hasNextLine())
 					Partite[i]= Scan.nextLine();
+				}
 			LN.close();
 			Scan.close();
 			}
 		catch(IOException e) {
-			e.printStackTrace();
+			System.out.println("ERRORE");
 		}
 	}
 	
