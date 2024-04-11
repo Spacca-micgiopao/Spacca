@@ -50,6 +50,7 @@ public class GameController {
     private static int vittoriaSuTavoloG2;
     private String nomeImprevisto1;
     private String tipoImprevisto1;
+    private boolean annullatore;
     
     private boolean tuttiTavoliPieni=false;
    // private boolean partitaFinita= false; 
@@ -590,7 +591,16 @@ public class GameController {
                 // ImageView non trovata, esci dalla funzione
                 return;
             }
-            
+            if(cartaSelezionata.getColore().equals("annulla")) {
+            	annullatore = true;
+            }
+            if(cartaSelezionata.getColore().equals("random")) {
+            	Random rand = new Random();
+            	int randomnum = rand.nextInt();       
+                int valore = (randomnum == 0) ? 0 : 8;
+                cartaSelezionata.setValore(valore);
+                System.out.println("Il valore di random è  " + cartaSelezionata.getValore());
+            }
             //controllo se la posizione del tavolo è già stata occupata
             if (posizioneTavoloCliccata.getImage() != null) {
                 // La posizione è già occupata, quindi non posso posizionare la carta
@@ -659,6 +669,11 @@ public class GameController {
             cartaSelezionata = null;
          
         }
+        if(annullatore){
+        	punteggioG1Tavolo1 = 0;
+        	punteggioG2Tavolo1 =0;
+        	annullatore=false;
+        }
         aggiornaInterfaccia();
         verificaFinePartita();
     }
@@ -669,6 +684,16 @@ public class GameController {
             
             // Verifica che l'indice dell'ImageView sia valido
             int index = imageViewsTavolo2.indexOf(posizioneTavoloCliccata);
+            if(cartaSelezionata.getColore().equals("annulla")) {
+            	annullatore = true;
+            }
+            if(cartaSelezionata.getColore().equals("random")) {
+            	Random rand = new Random();
+            	int randomnum = rand.nextInt();       
+                int valore = (randomnum == 0) ? 0 : 8;
+                cartaSelezionata.setValore(valore);
+                System.out.println("Il valore di random è  " + cartaSelezionata.getValore());
+            }
             if (index == -1) {
                 // ImageView non trovata, esci dalla funzione
                 return;
@@ -742,6 +767,11 @@ public class GameController {
             cartaSelezionata = null;
          
         }
+        if(annullatore){
+        	punteggioG1Tavolo2 = 0;
+        	punteggioG2Tavolo2 =0;
+        	annullatore=false;
+        }
         aggiornaInterfaccia();
         verificaFinePartita();
     }
@@ -752,6 +782,16 @@ public class GameController {
             
             // Verifica che l'indice dell'ImageView sia valido
             int index = imageViewsTavolo3.indexOf(posizioneTavoloCliccata);
+            if(cartaSelezionata.getColore().equals("annulla")) {
+            	annullatore = true;
+            }
+            if(cartaSelezionata.getColore().equals("random")) {
+            	Random rand = new Random();
+            	int randomnum = rand.nextInt();       
+                int valore = (randomnum == 0) ? 0 : 8;
+                cartaSelezionata.setValore(valore);
+                System.out.println("Il valore di random è  " + cartaSelezionata.getValore());
+            }
             if (index == -1) {
                 // ImageView non trovata, esci dalla funzione
                 return;
@@ -824,6 +864,11 @@ public class GameController {
             // Resetta la carta selezionata
             cartaSelezionata = null;
            
+        }
+        if(annullatore){
+        	punteggioG1Tavolo3 = 0;
+        	punteggioG2Tavolo3 =0;
+        	annullatore=false;
         }
         aggiornaInterfaccia();
         verificaFinePartita();
