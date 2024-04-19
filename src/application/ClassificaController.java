@@ -2,6 +2,7 @@ package application;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -40,6 +41,18 @@ public class ClassificaController implements Initializable{
 	
 	}
 	
+	//Carica i dati dei giocatori
+	public static void Preparazione() {
+		try {
+			Scanner scan = new Scanner(DatiGiocatori);
+			while(scan.hasNextLine()) {
+				Giocatori.add(new Giocatori(scan.nextLine()));
+			}
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	//Per mostrare la classifica PROVVISORIO
 	public void Mostraclassifia() {
@@ -49,13 +62,23 @@ public class ClassificaController implements Initializable{
 		}
 	}
 	
-	//Prende i nomi dal controller pre partita e li scrive nella lista
-	protected void getNomi(String G1,String G2) {
+	//Prende i nomi dal controller pre partita e li scrive nella lista ed esclude i doppioni
+	protected void getNomi(String IG1,String IG2) {
 		try {
+			String G1 = IG1;
+			String G2 = IG2;
 			FileWriter FW = new FileWriter(DatiGiocatori,true);
 			BufferedWriter BW = new BufferedWriter(FW);
 			PrintWriter Writer = new PrintWriter(BW);
+			for(int i = 0;i<Giocatori.size();i++) {
+					if(Giocatori.get(i).Nome == G1)
+						G1 = null;
+					else if(Giocatori.get(i).Nome == G2)
+						G2 = null;
+			}
+			if(G1 != null)
 			Writer.println(G1);
+			if(G2 != null)
 			Writer.println(G2);
 			Writer.close();
 		}
@@ -72,5 +95,4 @@ public class ClassificaController implements Initializable{
 			System.out.println("errore nel caricamento scene Main Menu");
 		}
 	}
-	
 }

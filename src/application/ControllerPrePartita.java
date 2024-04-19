@@ -28,6 +28,7 @@ public class ControllerPrePartita implements Initializable{
 	//FILE per salvare le informazioni
 		//istanza di infoPartita per caricare e scrivere i risultati
 		InfoPartita infopartita = new InfoPartita();
+		ClassificaController classficacontroller = new ClassificaController();
 		
 		//TUTTO FXML
 		@FXML
@@ -54,7 +55,6 @@ public class ControllerPrePartita implements Initializable{
 	//Carica la lista delle partite salvate nella checkbox
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		infopartita.Preparazione();
 		ScegliPartita.getItems().addAll(infopartita.Partite);
 	}
 	
@@ -75,6 +75,7 @@ public class ControllerPrePartita implements Initializable{
 		else {
 			infopartita.getG(G1,G2);
 			infopartita.ScriviDati();
+			classficacontroller.getNomi(G1, G2);
 			try {
 				main.showScenaGiocoScene();
 			} catch (Exception e) {

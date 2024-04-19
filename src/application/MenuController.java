@@ -1,5 +1,6 @@
 package application;
 
+import java.io.FileWriter;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
@@ -55,5 +56,20 @@ public class MenuController {
 				System.out.println("errore nel caricamento scene classifica");
 			}
 		}
-	
+		
+		//Per cancellare tutti i dati salvati sui file
+		public void Pulisci(ActionEvent event) throws IOException {
+			if(InfoPartita.DatiPartita.exists() && ClassificaController.DatiGiocatori.exists()) {
+				FileWriter writer = new FileWriter(InfoPartita.DatiPartita);	
+				writer.write("");
+				writer.close();
+				writer = new FileWriter(ClassificaController.DatiGiocatori);
+				writer.write("");
+				writer.close();
+				//Per ricaricare i dati ora vuoti
+				InfoPartita.Preparazione();
+				ClassificaController.Preparazione();
+			}
+		}
+		
 }

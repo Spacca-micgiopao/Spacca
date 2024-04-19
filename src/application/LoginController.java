@@ -47,6 +47,8 @@ public class LoginController {
 		if(accesso.containsValue(Password) && accesso.containsKey(Nome)) {
 			 try {
 				main.showMainMenuScene();
+				InfoPartita.Preparazione();
+				ClassificaController.Preparazione();
 			} catch (Exception e) {
 				System.out.println("errore nel caricamento MainMenu");
 			}

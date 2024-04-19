@@ -18,10 +18,10 @@ public class InfoPartita {
 	static int NumeroPartita = 0;
 	protected static String[] Partite;
 	//Caricare il file con i dati delle partite
-	protected File DatiPartita = new File("src/Data/DatiPartita.txt");
+	protected static File DatiPartita = new File("src/Data/DatiPartita.txt");
 	
 	//Conta il numero delle partite salvate per poi elencarle in un array
-	protected void Preparazione() {
+	public static void Preparazione() {
 		try {
 			Scanner Scan = new Scanner(DatiPartita);
 			FileReader FR = new FileReader(DatiPartita);

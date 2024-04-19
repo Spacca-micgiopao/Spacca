@@ -5,13 +5,13 @@ public class Giocatori {
 	protected String Nome;
 	protected int Vittorie;
 	
+	
 	public Giocatori(String Nome) {
 		this.Nome= Nome;
-		this.Vittorie = 0;
 	}
 	
 	public String toString() {
-		return Nome+"/"+Vittorie;
+		return Nome;
 	}
 	
 	public String getNome() {
