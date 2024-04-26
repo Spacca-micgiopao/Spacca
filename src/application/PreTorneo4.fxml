@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PreTorneo4Controller">
+   <children>
+      <ImageView fitHeight="821.0" fitWidth="1329.0" layoutX="-26.0">
+         <image>
+            <Image url="@../Sfondo/PreTorneo4Sfondo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="817.0" layoutY="113.0" text="ELENCO PARTITE" textFill="WHITE">
+         <font>
+            <Font name="Cooper Black" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="187.0" layoutY="211.0" text="NOMI GIOCATORI" textFill="WHITE">
+         <font>
+            <Font name="Cooper Black" size="27.0" />
+         </font>
+      </Label>
+      <Label layoutX="130.0" layoutY="313.0" text="GIOCATORE 1" textFill="WHITE">
+         <font>
+            <Font name="Cooper Black" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="InputG1" layoutX="293.0" layoutY="292.0" prefHeight="38.0" prefWidth="183.0" />
+      <Label layoutX="130.0" layoutY="431.0" text="GIOCATORE 3" textFill="WHITE">
+         <font>
+            <Font name="Cooper Black" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="130.0" layoutY="372.0" text="GIOCATORE 2" textFill="WHITE">
+         <font>
+            <Font name="Cooper Black" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="130.0" layoutY="490.0" text="GIOCATORE 4" textFill="WHITE">
+         <font>
+            <Font name="Cooper Black" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="InputG2" layoutX="293.0" layoutY="354.0" prefHeight="38.0" prefWidth="183.0" />
+      <TextField fx:id="InputG3" layoutX="293.0" layoutY="416.0" prefHeight="38.0" prefWidth="183.0" />
+      <TextField fx:id="InputG4" layoutX="293.0" layoutY="476.0" prefHeight="38.0" prefWidth="183.0" />
+      <Button layoutX="267.0" layoutY="576.0" mnemonicParsing="false" onAction="#HandleConfermaGiocatori" text="CONFERMA">
+         <font>
+            <Font name="Cooper Black" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="80.0" layoutY="671.0" mnemonicParsing="false" onAction="#handleBottoneMenu" text="TORNA AL MENU'">
+         <font>
+            <Font name="Cooper Black" size="11.0" />
+         </font>
+      </Button>
+      <Button layoutX="770.0" layoutY="619.0" mnemonicParsing="false" onAction="#handleBottoneIniziaAGiocare" text="INIZIA A GIOCARE" textFill="#ff2fd5">
+         <font>
+            <Font name="Cooper Black" size="23.0" />
+         </font>
+      </Button>
+      <Button layoutX="1171.0" layoutY="32.0" mnemonicParsing="false" onAction="#handleBottoneUscita" text="CLOSE" textFill="RED">
+         <font>
+            <Font name="Cooper Black" size="12.0" />
+         </font>
+      </Button>
+      <Label fx:id="G1P1" layoutX="702.0" layoutY="149.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
+         <font>
+            <Font name="Cooper Black" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="G1P2" layoutX="702.0" layoutY="220.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
+         <font>
+            <Font name="Cooper Black" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="G1P3" layoutX="702.0" layoutY="289.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
+         <font>
+            <Font name="Cooper Black" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="G1P4" layoutX="702.0" layoutY="366.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
+         <font>
+            <Font name="Cooper Black" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="G1P5" layoutX="702.0" layoutY="431.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
+         <font>
+            <Font name="Cooper Black" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="G1P6" layoutX="702.0" layoutY="509.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
+         <font>
+            <Font name="Cooper Black" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="G2P1" layoutX="940.0" layoutY="149.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
+         <font>
+            <Font name="Cooper Black" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="G2P2" layoutX="940.0" layoutY="220.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
+         <font>
+            <Font name="Cooper Black" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="G2P3" layoutX="940.0" layoutY="289.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
+         <font>
+            <Font name="Cooper Black" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="G2P4" layoutX="940.0" layoutY="366.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
+         <font>
+            <Font name="Cooper Black" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="G2P5" layoutX="940.0" layoutY="431.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
+         <font>
+            <Font name="Cooper Black" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="G2P6" layoutX="940.0" layoutY="509.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
+         <font>
+            <Font name="Cooper Black" size="17.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

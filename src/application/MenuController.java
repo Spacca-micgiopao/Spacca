@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 public class MenuController {
 	
 	private Stage stage;
-	
+	private static boolean Torneo;
 	private Main main;
 	@FXML
 	private Button VediClassifica;
@@ -56,5 +56,18 @@ public class MenuController {
 				System.out.println("errore nel caricamento scene classifica");
 			}
 		}
+		public void VaiaTorneo(ActionEvent event) throws IOException {
+			Torneo=true;
+			try {
+				main.showPreTorneoScene();
+			}
+			catch(Exception e) {
+				System.out.println("errore nel caricamento scena PreTorneo");
+			}
+		}
+		public static boolean getTorneo() {
+			return Torneo;
+		}
+		
 	
 }

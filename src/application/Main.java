@@ -25,6 +25,7 @@ public class Main extends Application {
 	        LoginController.setMain(this);
 	        Scene scene = new Scene(root);
 	        primaryStage.setScene(scene);
+	        
 	        primaryStage.show();
 	    }
 	    public void showMainMenuScene() throws Exception {
@@ -35,21 +36,54 @@ public class Main extends Application {
 	        controller.setStage(primaryStage);
 	        Scene scene = new Scene(root);
 	        primaryStage.setScene(scene);
+	        primaryStage.setHeight(400);
+	        primaryStage.setWidth(600);
 	        primaryStage.show();
 	    }
 
 
 	    public void showPrePartitaScene() throws Exception {
-	        FXMLLoader loader = new FXMLLoader(getClass().getResource("Prepartita.fxml"));
+	        FXMLLoader loader = new FXMLLoader(getClass().getResource("PrePartita.fxml"));
 	        Parent root = loader.load();
 	        ControllerPrePartita controller = loader.getController();
 	        controller.setMain(this);
 	        controller.setStage(primaryStage);
 	        Scene scene = new Scene(root);
+	        primaryStage.setHeight(400);
+	        primaryStage.setWidth(600);
 	        primaryStage.setScene(scene);
 	        primaryStage.show();
 	    }
-
+	    public void showPreTorneoScene() throws Exception{
+	    	FXMLLoader loader = new FXMLLoader(getClass().getResource("PreparazioneTorneo.fxml"));
+		    Parent root = loader.load();
+	        PreTorneoController controller = loader.getController();
+	        controller.setMain(this);
+	        controller.setStage(primaryStage);
+	        Scene scene = new Scene(root);
+	        primaryStage.setHeight(800);
+	        primaryStage.setWidth(1280);
+	        primaryStage.setScene(scene);
+	        primaryStage.setFullScreen(true);
+	        primaryStage.show();
+    	
+	    	
+	    }
+	    public void showPreTorneo4Scene() throws Exception{
+	    	FXMLLoader loader = new FXMLLoader(getClass().getResource("PreTorneo4.fxml"));
+		    Parent root = loader.load();
+	        PreTorneo4Controller controller = loader.getController();
+	        controller.setMain(this);
+	        controller.setStage(primaryStage);
+	        Scene scene = new Scene(root);
+	        primaryStage.setHeight(800);
+	        primaryStage.setWidth(1280);
+	        primaryStage.setScene(scene);
+	        primaryStage.setFullScreen(true);
+	        primaryStage.show();
+    	
+	    	
+	    }
 	    public void showScenaGiocoScene() throws Exception {
 	        FXMLLoader loader = new FXMLLoader(getClass().getResource("ScenaGioco.fxml"));
 	        Parent root = loader.load();
@@ -68,6 +102,36 @@ public class Main extends Application {
 	    	FXMLLoader loader = new FXMLLoader(getClass().getResource("FilmatiFinali.fxml"));
 		    Parent root = loader.load();
 	        FilmatiFinaliController controller = loader.getController();
+	        controller.setMain(this);
+	        controller.setStage(primaryStage);
+	        Scene scene = new Scene(root);
+	        primaryStage.setHeight(800);
+	        primaryStage.setWidth(1280);
+	        primaryStage.setScene(scene);
+	        primaryStage.setFullScreen(true);
+	        primaryStage.show();
+    	
+	    	
+	    }
+	    public void showWinningScene() throws Exception{
+	    	FXMLLoader loader = new FXMLLoader(getClass().getResource("winning.fxml"));
+		    Parent root = loader.load();
+	        WinningController controller = loader.getController();
+	        controller.setMain(this);
+	        controller.setStage(primaryStage);
+	        Scene scene = new Scene(root);
+	        primaryStage.setHeight(800);
+	        primaryStage.setWidth(1280);
+	        primaryStage.setScene(scene);
+	        primaryStage.setFullScreen(true);
+	        primaryStage.show();
+    	
+	    	
+	    }
+	    public void showGameOverTorneoScene() throws Exception{
+	    	FXMLLoader loader = new FXMLLoader(getClass().getResource("GameOverTorneo.fxml"));
+		    Parent root = loader.load();
+	        GameOverTorneoController controller = loader.getController();
 	        controller.setMain(this);
 	        controller.setStage(primaryStage);
 	        Scene scene = new Scene(root);
