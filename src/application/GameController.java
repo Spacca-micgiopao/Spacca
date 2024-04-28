@@ -29,7 +29,7 @@ import javafx.scene.layout.*;
 public class GameController implements Serializable{
 	
 	private Main main;
-	private Stage stage;
+	private transient Stage stage;
 	private Salvataggi salvataggio = new Salvataggi(this);
 	public String player1Name;
 	public String player2Name;
@@ -41,12 +41,8 @@ public class GameController implements Serializable{
     private Carta cartaSelezionata; //selezionata da utente serve per lo spostamento
     private ImageView cartaCliccata;
     private Mazzo mazzoProvenienzaCartaSelezionata;
-    private int punteggioG1Tavolo1;
-    private int punteggioG1Tavolo2;
-    private int punteggioG1Tavolo3;
-    private int punteggioG2Tavolo1;
-    private int punteggioG2Tavolo2;
-    private int punteggioG2Tavolo3;
+    private int punteggioG1Tavolo1, punteggioG1Tavolo2, punteggioG1Tavolo3;
+    private int punteggioG2Tavolo1, punteggioG2Tavolo2, punteggioG2Tavolo3;
     private static int vittoriaSuTavoloG1;
     private static int vittoriaSuTavoloG2;
     private String nomeImprevisto1;
@@ -57,92 +53,51 @@ public class GameController implements Serializable{
     
     
     @FXML
-    private AnchorPane backgroundPane;
+    private transient AnchorPane backgroundPane;
     
     private boolean turnoGiocatore1= true;  //Prima turno giocatore1: pesca poi gioca una carta poi turno giocatore2...
     
     @FXML
-    private Label LabelPunteggioG1T1, LabelPunteggioG2T1, LabelNomePunteggioG1T1, LabelNomePunteggioG2T1,
+    private transient Label LabelPunteggioG1T1, LabelPunteggioG2T1, LabelNomePunteggioG1T1, LabelNomePunteggioG2T1,
                   LabelPunteggioG1T2, LabelPunteggioG2T2, LabelNomePunteggioG1T2, LabelNomePunteggioG2T2,
                   LabelPunteggioG1T3, LabelPunteggioG2T3, LabelNomePunteggioG1T3, LabelNomePunteggioG2T3,
                   LabelIconaNomeG1, LabelIconaNomeG2, turnoLabel, LabelVincitaT1, LabelVincitaT2, LabelVincitaT3;
 
     @FXML
-    private ListView<Carta> listaCarteGiocatore1;
+    private transient ListView<Carta> listaCarteGiocatore1;
     @FXML
-    private ListView<Carta> listaCarteGiocatore2;
+    private transient ListView<Carta> listaCarteGiocatore2;
     @FXML
-    private ImageView Carta1G1;  //prima carta del mazzo del giocatore 1
+    private transient ImageView Carta1G1, Carta2G1, Carta3G1, Carta4G1;//prima carta del mazzo del giocatore 1
     @FXML
-    private ImageView Carta2G1;
-    @FXML
-    private ImageView Carta3G1;
-    @FXML
-    private ImageView Carta4G1;
-    
-    @FXML
-    private ImageView Carta1G2; //prima carta del mazzo del giocatore 2
-    @FXML
-    private ImageView Carta2G2;
-    @FXML
-    private ImageView Carta3G2;
-    @FXML
-    private ImageView Carta4G2;
-    
-    @FXML
-    private List<ImageView> imageViewsGiocatore1;
-    @FXML
-    private List<ImageView> imageViewsGiocatore2;
-    @FXML
-    private List<ImageView> imageViewsTavolo1;
-    @FXML
-    private List<ImageView> imageViewsTavolo2;
-    @FXML
-    private List<ImageView> imageViewsTavolo3;
-    
+    private transient ImageView Carta1G2, Carta2G2, Carta3G2, Carta4G2; //prima carta del mazzo del giocatore 2
  
     @FXML
-    private Button PescaGiocatore1;
+    private transient List<ImageView> imageViewsGiocatore1, imageViewsGiocatore2, imageViewsTavolo1, imageViewsTavolo2, imageViewsTavolo3;
+    
     @FXML
-    private Button PescaGiocatore2;
-    @FXML
-   	private Button BottoneUscita;
+    private transient Button PescaGiocatore1, PescaGiocatore2, BottoneUscita;
   //tavoli da gioco
-    //tavolo1
+    //tavolo1--------------------
+    
     @FXML 
-    private GridPane Tavolo1;
+    private transient GridPane Tavolo1;
     @FXML
-    private ImageView CartaT1p00; //Carta nel tavolo1 in posizione 0,0
+    private transient ImageView CartaT1p00; //Carta nel tavolo1 in posizione 0,0
     @FXML
-    private ImageView CartaT1p10;
-    @FXML
-    private ImageView CartaT1p01;
-    @FXML
-    private ImageView CartaT1p11;
-    //tavolo2
+    private transient ImageView CartaT1p10, CartaT1p01, CartaT1p11;
+    //tavolo2--------------------
+    
     @FXML 
-    private GridPane Tavolo2;
+    private transient GridPane Tavolo2;
     @FXML
-    private ImageView CartaT2p00; 
+    private transient ImageView CartaT2p00, CartaT2p10, CartaT2p01, CartaT2p11;
+    
+    //tavolo3---------------------
     @FXML
-    private ImageView CartaT2p10;
+    private transient GridPane Tavolo3;
     @FXML
-    private ImageView CartaT2p01;
-    @FXML
-    private ImageView CartaT2p11;
-    //tavolo3
-    @FXML
-    private GridPane Tavolo3;
-    @FXML
-    private ImageView CartaT3p00; 
-    @FXML
-    private ImageView CartaT3p10;
-    @FXML
-    private ImageView CartaT3p01;                        
-    @FXML               
-    private ImageView CartaT3p11;
-    @FXML
-    private ImageView imprevisto1;
+    private transient ImageView CartaT3p00, CartaT3p10, CartaT3p01, CartaT3p11, imprevisto1;
     
     
     
@@ -185,6 +140,7 @@ public class GameController implements Serializable{
     			   //continua sempre a suonare
     			   player.setCycleCount(MediaPlayer.INDEFINITE);
     			   player.play();
+    			   player.stop();
     		}catch(Exception e ) {
     			System.out.println("errore riproduzione");
     		}

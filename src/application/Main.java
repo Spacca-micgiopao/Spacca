@@ -1,12 +1,14 @@
 package application;
 	
+import java.io.Serializable;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
-public class Main extends Application {
+public class Main extends Application implements Serializable{
 
 	 private Stage primaryStage;
 
@@ -60,8 +62,25 @@ public class Main extends Application {
 	        primaryStage.setHeight(800);
 	        primaryStage.setWidth(1280);
 	        primaryStage.setFullScreen(true);
+	        primaryStage.show();     
+	    }
+	    
+	    public void showScenaGiocoSceneCaricata() throws Exception {
+	        Salvataggi salvataggio = new Salvataggi();
+	        GameController controller = salvataggio.caricaPartita(); // Carica la partita dal file .ser
+	        FXMLLoader loader = new FXMLLoader(getClass().getResource("ScenaGioco.fxml"));
+	        Parent root = loader.load();
+	        controller.setMain(this);
+	        controller.setStage(primaryStage);
+	        Scene scene = new Scene(root);
+
+	        primaryStage.setScene(scene);
+	        primaryStage.setHeight(800);
+	        primaryStage.setWidth(1280);
+	        primaryStage.setFullScreen(true);
 	        primaryStage.show();
 	    }
+
 	    public void showFilmatoFinale() throws Exception{
 	    	FXMLLoader loader = new FXMLLoader(getClass().getResource("FilmatiFinali.fxml"));
 		    Parent root = loader.load();

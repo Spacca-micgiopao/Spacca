@@ -93,7 +93,7 @@ public class ControllerPrePartita implements Initializable{
 	
 	public void Caricatest(ActionEvent event) throws IOException {
 		try {
-			main.showScenaGiocoScene();
+			main.showScenaGiocoSceneCaricata();
 		} catch (Exception e) {
 			System.out.println("errore nel caricamento scene Main Menu");
 		}
