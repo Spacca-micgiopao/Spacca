@@ -19,17 +19,18 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import javafx.scene.media.*;
 import javafx.scene.layout.*;
-public class GameController {
+public class GameController implements Serializable{
 	
 	private Main main;
 	private Stage stage;
-	
+	private Salvataggi salvataggio = new Salvataggi(this);
 	public String player1Name;
 	public String player2Name;
 	
@@ -61,41 +62,11 @@ public class GameController {
     private boolean turnoGiocatore1= true;  //Prima turno giocatore1: pesca poi gioca una carta poi turno giocatore2...
     
     @FXML
-    private Label LabelPunteggioG1T1;
-    @FXML
-    private Label LabelPunteggioG2T1;
-    @FXML
-    private Label LabelNomePunteggioG1T1;
-    @FXML
-    private Label LabelNomePunteggioG2T1;
-    @FXML
-    private Label LabelPunteggioG1T2;
-    @FXML
-    private Label LabelPunteggioG2T2;
-    @FXML
-    private Label LabelNomePunteggioG1T2;
-    @FXML
-    private Label LabelNomePunteggioG2T2;
-    @FXML
-    private Label LabelPunteggioG1T3;
-    @FXML
-    private Label LabelPunteggioG2T3;
-    @FXML
-    private Label LabelNomePunteggioG1T3;
-    @FXML
-    private Label LabelNomePunteggioG2T3;
-    @FXML
-    private Label LabelIconaNomeG1;
-    @FXML
-    private Label LabelIconaNomeG2;
-    @FXML
-    private Label turnoLabel;
-    @FXML
-    private Label LabelVincitaT1;
-    @FXML
-    private Label LabelVincitaT2;
-    @FXML
-    private Label LabelVincitaT3;
+    private Label LabelPunteggioG1T1, LabelPunteggioG2T1, LabelNomePunteggioG1T1, LabelNomePunteggioG2T1,
+                  LabelPunteggioG1T2, LabelPunteggioG2T2, LabelNomePunteggioG1T2, LabelNomePunteggioG2T2,
+                  LabelPunteggioG1T3, LabelPunteggioG2T3, LabelNomePunteggioG1T3, LabelNomePunteggioG2T3,
+                  LabelIconaNomeG1, LabelIconaNomeG2, turnoLabel, LabelVincitaT1, LabelVincitaT2, LabelVincitaT3;
+
     @FXML
     private ListView<Carta> listaCarteGiocatore1;
     @FXML
@@ -527,7 +498,13 @@ public class GameController {
     }
     //Bottone uscita dalla finestra
     public void handleBottoneUscita(ActionEvent event) {
-    	stage.close();
+    	salvataggio.salvaPartita();
+    	try {
+			main.showPrePartitaScene();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
    //AGGIORNA INTERFACCIA
     public void aggiornaInterfaccia() {

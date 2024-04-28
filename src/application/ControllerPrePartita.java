@@ -29,7 +29,6 @@ public class ControllerPrePartita implements Initializable{
 		//istanza di infoPartita per caricare e scrivere i risultati
 		InfoPartita infopartita = new InfoPartita();
 		ClassificaController classficacontroller = new ClassificaController();
-		
 		//TUTTO FXML
 		@FXML
 		private TextField InputG1;
@@ -87,6 +86,14 @@ public class ControllerPrePartita implements Initializable{
 	public void BackToMenu(ActionEvent event) throws IOException {
 		try {
 			main.showMainMenuScene();
+		} catch (Exception e) {
+			System.out.println("errore nel caricamento scene Main Menu");
+		}
+	}
+	
+	public void Caricatest(ActionEvent event) throws IOException {
+		try {
+			main.showScenaGiocoScene();
 		} catch (Exception e) {
 			System.out.println("errore nel caricamento scene Main Menu");
 		}
