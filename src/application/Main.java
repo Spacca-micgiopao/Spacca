@@ -66,19 +66,18 @@ public class Main extends Application implements Serializable{
 	    }
 	    
 	    public void showScenaGiocoSceneCaricata() throws Exception {
-	        Salvataggi salvataggio = new Salvataggi();
-	        GameController controller = salvataggio.caricaPartita(); // Carica la partita dal file .ser
 	        FXMLLoader loader = new FXMLLoader(getClass().getResource("ScenaGioco.fxml"));
 	        Parent root = loader.load();
+	        GameController controller = loader.getController();
 	        controller.setMain(this);
 	        controller.setStage(primaryStage);
 	        Scene scene = new Scene(root);
-
+	        
 	        primaryStage.setScene(scene);
 	        primaryStage.setHeight(800);
 	        primaryStage.setWidth(1280);
 	        primaryStage.setFullScreen(true);
-	        primaryStage.show();
+	        primaryStage.show();     
 	    }
 
 	    public void showFilmatoFinale() throws Exception{

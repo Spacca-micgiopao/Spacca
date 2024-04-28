@@ -18,7 +18,8 @@ public class Salvataggi implements Serializable{
         try {
             FileOutputStream fileout = new FileOutputStream(file);
             ObjectOutputStream out = new ObjectOutputStream(fileout);
-            out.writeObject(gamecontroller);
+            out.writeObject(gamecontroller.player1Name);
+            out.writeObject(gamecontroller.player2Name);
             out.close();
             fileout.close();
             }
