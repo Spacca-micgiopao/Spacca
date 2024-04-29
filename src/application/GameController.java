@@ -27,7 +27,7 @@ import java.util.Random;
 import javafx.scene.media.*;
 import javafx.scene.layout.*;
 public class GameController implements Serializable{
-	
+	public static int flag = 0;
 	private Main main;
 	private Stage stage;
 	private Salvataggi salvataggio = new Salvataggi(this);
@@ -154,7 +154,6 @@ public class GameController implements Serializable{
     public void setPlayersNames() {
         this.player1Name = ControllerPrePartita.getPlayer1(); 
         this.player2Name = ControllerPrePartita.getPlayer2();
-      
     }
 
   
@@ -191,12 +190,10 @@ public class GameController implements Serializable{
         }
     //INIZIALIZZAZIONE
     public void initialize() {
-    	
     	setPlayersNames();
     	insertMusic();
     	LabelIconaNomeG1.setText(this.player1Name);
-    	LabelIconaNomeG2.setText(this.player2Name);
-    	
+    	LabelIconaNomeG2.setText(this.player2Name);	
     	turnoLabel.setText("Turno di "+ " "+ this.player1Name+"!");
     	turnoLabel.setStyle("-fx-text-fill: black;");
     	LabelNomePunteggioG1T1.setText(this.player1Name);
@@ -250,6 +247,8 @@ public class GameController implements Serializable{
         imageViewsTavolo3.add(CartaT3p10);
         imageViewsTavolo3.add(CartaT3p01);
         imageViewsTavolo3.add(CartaT3p11);
+    	if(flag == 1)
+    		salvataggio.caricaPartita();
     
     }
     public void setStage(Stage stage) {

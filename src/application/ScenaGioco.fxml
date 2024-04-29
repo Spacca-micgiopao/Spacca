@@ -62,7 +62,7 @@
                   <Font name="Cooper Black" size="13.0" />
                </font>
             </Label>
-            <Button fx:id="BottoneUscita" layoutX="1213.0" layoutY="9.0" mnemonicParsing="false" onAction="#salvaedesci" text="CLOSE" textFill="#ef2323">
+            <Button fx:id="BottoneUscita" layoutX="1213.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleBottoneUscita" text="CLOSE" textFill="#ef2323">
                <font>
                   <Font name="Cooper Black" size="12.0" />
                </font>
