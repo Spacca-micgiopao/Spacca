@@ -96,10 +96,7 @@ public class PreTorneo4Controller {
 		}
 		//DA INSERIRE CONTROLLI PER VERIFICARE CORRETTEZZA NOMI INSERITI
 		inserimentoPartite();
-		//quando si confermano i nommi giocatori viene visualizzato elenco di tutte le partite
-		for(int i =0;i<partite.size();i++) {
-			System.out.print(" "+partite.get(i)+" ");
-		}
+		//quando si confermano i nomi giocatori viene visualizzato elenco di tutte le partite
 	}
 	public void inserimentoPartite() {
 		 int partitaIndex = 0;

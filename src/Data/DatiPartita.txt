@@ -36,3 +36,16 @@
 358k,giocatore1,giocatore2
 369i,Giocatore1,Giocatore2
 377g,Prova,Provaa
+385k,1,2
+392z,1,2
+392s,1,2
+418t,12,2
+413x,12,2
+433o,1,2
+447k,1,2
+453p,1,2
+468l,1,2
+479j,1,2
+482x,1,2
+494q,1,2
+507x,1,2
