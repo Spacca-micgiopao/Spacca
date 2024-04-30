@@ -30,12 +30,12 @@ public class GameController implements Serializable{
 	public static int flag = 0;
 	private Main main;
 	private transient Stage stage;
-	private Salvataggi salvataggio = new Salvataggi();
+	private Salvataggi salvataggio = new Salvataggi(this);
 	public String player1Name;
 	public String player2Name;
 	
-	private Mazzo mazzoGiocatore1;
-    private Mazzo mazzoGiocatore2;
+	protected Mazzo mazzoGiocatore1;
+    protected Mazzo mazzoGiocatore2;
     private Mazzo mazzoCompleto;
     
     private Carta cartaSelezionata; //selezionata da utente serve per lo spostamento
@@ -147,33 +147,6 @@ public class GameController implements Serializable{
         }
     //INIZIALIZZAZIONE
     public void initialize() {
-    	
-    	//Se viene caricata una partita chiama il metodo della classe salvataggio sul gamecontroller stesso e scrive alcuni dati
-    	if(flag == 1) {
-    		salvataggio.caricaPartita(this);
-    	}
-    	//Se la partita non viene caricata allora i nomi sono presi dal controller pre partita
-    	if(flag == 0) {
-    	setPlayersNames();
-    	}
-    	
-    	//insertMusic();
-    	
-    	//Legge i nomi e li inserisce nelle label
-    	LabelIconaNomeG1.setText(this.player1Name);
-    	LabelIconaNomeG2.setText(this.player2Name);	
-    	turnoLabel.setText("Turno di "+ " "+ this.player1Name+"!");
-    	turnoLabel.setStyle("-fx-text-fill: black;");
-    	LabelNomePunteggioG1T1.setText(this.player1Name);
-    	LabelNomePunteggioG2T1.setText(this.player2Name);
-    	LabelNomePunteggioG1T2.setText(this.player1Name);
-    	LabelNomePunteggioG2T2.setText(this.player2Name);
-    	LabelNomePunteggioG1T3.setText(this.player1Name);
-    	LabelNomePunteggioG2T3.setText(this.player2Name);
-    	
-    	insertSfondo();
-    	imprevisto1 = new ImageView();
-    	
     	//PREPARAZIONE GIOCO
     	//mazzo con tutte le carte disponibili
     	mazzoCompleto = new Mazzo();
@@ -181,6 +154,18 @@ public class GameController implements Serializable{
        // System.out.println("numero carte nel mazzo iniziale completo"+mazzoCompleto.getNumeroCarte());
     	mazzoGiocatore1 = new Mazzo();
     	mazzoGiocatore2 = new Mazzo();
+    	
+    	//Se la partita non viene caricata allora i nomi sono presi dal controller pre partita
+    	if(flag == 0) {
+    	setPlayersNames();
+    	}
+    	
+    	//insertMusic();
+    	
+    	insertSfondo();
+    	imprevisto1 = new ImageView();
+    	
+    	if(flag == 0)
         caricaCarteIniziali();
         
         //per le ImageView: creazione di una lista contenente tutte le ImageView per facilitare 
@@ -216,6 +201,30 @@ public class GameController implements Serializable{
         imageViewsTavolo3.add(CartaT3p10);
         imageViewsTavolo3.add(CartaT3p01);
         imageViewsTavolo3.add(CartaT3p11);
+        
+    	//Se viene caricata una partita chiama il metodo della classe salvataggio sul gamecontroller stesso e scrive alcuni dati
+    	if(flag == 1) {
+    		salvataggio.caricaPartita(this);
+    	//Come per i nomi vanno aggiornati i punteggi nel caso siano stati caricati
+    		LabelPunteggioG1T1.setText(this.punteggioG1Tavolo1+"");
+    		LabelPunteggioG1T2.setText(this.punteggioG1Tavolo2+"");
+    		LabelPunteggioG1T3.setText(this.punteggioG1Tavolo3+"");
+    		LabelPunteggioG2T1.setText(this.punteggioG2Tavolo1+"");
+    		LabelPunteggioG2T2.setText(this.punteggioG2Tavolo2+"");
+    		LabelPunteggioG2T3.setText(this.punteggioG2Tavolo3+"");
+    	}
+    	
+    	//Legge i nomi e li inserisce nelle label va fatto per forza dopo aver caricato la partita
+    	LabelIconaNomeG1.setText(this.player1Name);
+    	LabelIconaNomeG2.setText(this.player2Name);	
+    	turnoLabel.setText("Turno di "+ " "+ this.player1Name+"!");
+    	turnoLabel.setStyle("-fx-text-fill: black;");
+    	LabelNomePunteggioG1T1.setText(this.player1Name);
+    	LabelNomePunteggioG2T1.setText(this.player2Name);
+    	LabelNomePunteggioG1T2.setText(this.player1Name);
+    	LabelNomePunteggioG2T2.setText(this.player2Name);
+    	LabelNomePunteggioG1T3.setText(this.player1Name);
+    	LabelNomePunteggioG2T3.setText(this.player2Name);
     }
     public void setStage(Stage stage) {
         this.stage = stage;

@@ -8,7 +8,7 @@ import javafx.scene.image.Image;
 public class Carta implements Serializable{
 	private int valore;
     private String colore;
-    private Image immagine;
+    private transient Image immagine;
 
     public Carta(int valore, String colore,Image immagine) {
         this.valore = valore;
