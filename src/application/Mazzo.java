@@ -7,10 +7,11 @@ import java.util.Random;
 import java.io.File;
 import javafx.scene.image.*;
 import java.io.FileInputStream;
+import java.io.Serializable;
 
 
 
-public class Mazzo {
+public class Mazzo implements Serializable{
 	private List<Carta> carte;
 
 	public Mazzo() {

@@ -29,8 +29,8 @@ import javafx.scene.layout.*;
 public class GameController implements Serializable{
 	public static int flag = 0;
 	private Main main;
-	private Stage stage;
-	private Salvataggi salvataggio = new Salvataggi(this);
+	private transient Stage stage;
+	private Salvataggi salvataggio = new Salvataggi();
 	public String player1Name;
 	public String player2Name;
 	
@@ -39,14 +39,14 @@ public class GameController implements Serializable{
     private Mazzo mazzoCompleto;
     
     private Carta cartaSelezionata; //selezionata da utente serve per lo spostamento
-    private ImageView cartaCliccata;
+    private transient ImageView cartaCliccata;
     private Mazzo mazzoProvenienzaCartaSelezionata;
-    private int punteggioG1Tavolo1;
-    private int punteggioG1Tavolo2;
-    private int punteggioG1Tavolo3;
-    private int punteggioG2Tavolo1;
-    private int punteggioG2Tavolo2;
-    private int punteggioG2Tavolo3;
+    protected int punteggioG1Tavolo1;
+    protected int punteggioG1Tavolo2;
+    protected int punteggioG1Tavolo3;
+    protected int punteggioG2Tavolo1;
+    protected int punteggioG2Tavolo2;
+    protected int punteggioG2Tavolo3;
     private static int vittoriaSuTavoloG1;
     private static int vittoriaSuTavoloG2;
     private String nomeImprevisto1;
@@ -57,94 +57,51 @@ public class GameController implements Serializable{
     
     
     @FXML
-    private AnchorPane backgroundPane;
+    private transient AnchorPane backgroundPane;
     
     private boolean turnoGiocatore1= true;  //Prima turno giocatore1: pesca poi gioca una carta poi turno giocatore2...
     
     @FXML
-    private Label LabelPunteggioG1T1, LabelPunteggioG2T1, LabelNomePunteggioG1T1, LabelNomePunteggioG2T1,
+    private transient Label LabelPunteggioG1T1, LabelPunteggioG2T1, LabelNomePunteggioG1T1, LabelNomePunteggioG2T1,
                   LabelPunteggioG1T2, LabelPunteggioG2T2, LabelNomePunteggioG1T2, LabelNomePunteggioG2T2,
                   LabelPunteggioG1T3, LabelPunteggioG2T3, LabelNomePunteggioG1T3, LabelNomePunteggioG2T3,
                   LabelIconaNomeG1, LabelIconaNomeG2, turnoLabel, LabelVincitaT1, LabelVincitaT2, LabelVincitaT3;
 
     @FXML
-    private ListView<Carta> listaCarteGiocatore1;
+    public ListView<Carta> listaCarteGiocatore1;
     @FXML
-    private ListView<Carta> listaCarteGiocatore2;
+    public ListView<Carta> listaCarteGiocatore2;
     @FXML
-    private ImageView Carta1G1;  //prima carta del mazzo del giocatore 1
+    private transient ImageView Carta1G1, Carta2G1, Carta3G1, Carta4G1;
     @FXML
-    private ImageView Carta2G1;
-    @FXML
-    private ImageView Carta3G1;
-    @FXML
-    private ImageView Carta4G1;
+    private transient ImageView Carta1G2, Carta2G2, Carta3G2, Carta4G2;
+
     
     @FXML
-    private ImageView Carta1G2; //prima carta del mazzo del giocatore 2
+    private transient List<ImageView> imageViewsGiocatore1, imageViewsGiocatore2, imageViewsTavolo1, imageViewsTavolo2, imageViewsTavolo3;
+
     @FXML
-    private ImageView Carta2G2;
-    @FXML
-    private ImageView Carta3G2;
-    @FXML
-    private ImageView Carta4G2;
+    private transient Button PescaGiocatore1, PescaGiocatore2, BottoneUscita;
     
-    @FXML
-    private List<ImageView> imageViewsGiocatore1;
-    @FXML
-    private List<ImageView> imageViewsGiocatore2;
-    @FXML
-    private List<ImageView> imageViewsTavolo1;
-    @FXML
-    private List<ImageView> imageViewsTavolo2;
-    @FXML
-    private List<ImageView> imageViewsTavolo3;
-    
- 
-    @FXML
-    private Button PescaGiocatore1;
-    @FXML
-    private Button PescaGiocatore2;
-    @FXML
-   	private Button BottoneUscita;
-  //tavoli da gioco
-    //tavolo1
+    //tavoli da gioco
+    //tavolo1----------------------------------------------------------------------
     @FXML 
-    private GridPane Tavolo1;
+    private transient GridPane Tavolo1;
     @FXML
-    private ImageView CartaT1p00; //Carta nel tavolo1 in posizione 0,0
-    @FXML
-    private ImageView CartaT1p10;
-    @FXML
-    private ImageView CartaT1p01;
-    @FXML
-    private ImageView CartaT1p11;
-    //tavolo2
+    private transient ImageView CartaT1p00, CartaT1p10, CartaT1p01, CartaT1p11;
+
+    //tavolo2-------------------------------------------------------------------
     @FXML 
-    private GridPane Tavolo2;
+    private transient GridPane Tavolo2;
     @FXML
-    private ImageView CartaT2p00; 
+    private transient ImageView CartaT2p00, CartaT2p10, CartaT2p01, CartaT2p11;
+
+    //tavolo3--------------------------------------------------------------------
     @FXML
-    private ImageView CartaT2p10;
+    private transient GridPane Tavolo3;
     @FXML
-    private ImageView CartaT2p01;
-    @FXML
-    private ImageView CartaT2p11;
-    //tavolo3
-    @FXML
-    private GridPane Tavolo3;
-    @FXML
-    private ImageView CartaT3p00; 
-    @FXML
-    private ImageView CartaT3p10;
-    @FXML
-    private ImageView CartaT3p01;                        
-    @FXML               
-    private ImageView CartaT3p11;
-    @FXML
-    private ImageView imprevisto1;
-    
-    
+    private transient ImageView CartaT3p00, CartaT3p10, CartaT3p01, CartaT3p11, imprevisto1;
+
     
     //serve per il cambio scena
     public void setMain(Main main) {
@@ -190,8 +147,19 @@ public class GameController implements Serializable{
         }
     //INIZIALIZZAZIONE
     public void initialize() {
+    	
+    	//Se viene caricata una partita chiama il metodo della classe salvataggio sul gamecontroller stesso e scrive alcuni dati
+    	if(flag == 1) {
+    		salvataggio.caricaPartita(this);
+    	}
+    	//Se la partita non viene caricata allora i nomi sono presi dal controller pre partita
+    	if(flag == 0) {
     	setPlayersNames();
-    	insertMusic();
+    	}
+    	
+    	//insertMusic();
+    	
+    	//Legge i nomi e li inserisce nelle label
     	LabelIconaNomeG1.setText(this.player1Name);
     	LabelIconaNomeG2.setText(this.player2Name);	
     	turnoLabel.setText("Turno di "+ " "+ this.player1Name+"!");
@@ -202,10 +170,11 @@ public class GameController implements Serializable{
     	LabelNomePunteggioG2T2.setText(this.player2Name);
     	LabelNomePunteggioG1T3.setText(this.player1Name);
     	LabelNomePunteggioG2T3.setText(this.player2Name);
+    	
     	insertSfondo();
     	imprevisto1 = new ImageView();
+    	
     	//PREPARAZIONE GIOCO
-        
     	//mazzo con tutte le carte disponibili
     	mazzoCompleto = new Mazzo();
     	mazzoCompleto.CreaMazzoCompleto();
@@ -247,9 +216,6 @@ public class GameController implements Serializable{
         imageViewsTavolo3.add(CartaT3p10);
         imageViewsTavolo3.add(CartaT3p01);
         imageViewsTavolo3.add(CartaT3p11);
-    	if(flag == 1)
-    		salvataggio.caricaPartita();
-    
     }
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -498,6 +464,7 @@ public class GameController implements Serializable{
     //Bottone uscita dalla finestra
     public void handleBottoneUscita(ActionEvent event) {
     	salvataggio.salvaPartita();
+    	flag = 0;
     	try {
 			main.showPrePartitaScene();
 		} catch (Exception e) {

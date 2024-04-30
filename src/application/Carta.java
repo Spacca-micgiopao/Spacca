@@ -1,10 +1,11 @@
 package application;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javafx.scene.image.Image;
 
-public class Carta {
+public class Carta implements Serializable{
 	private int valore;
     private String colore;
     private Image immagine;

@@ -96,7 +96,7 @@ public class ControllerPrePartita implements Initializable{
 			GameController.flag = 1;
 			main.showScenaGiocoScene();
 		} catch (Exception e) {
-			System.out.println("errore nel caricamento scene Main Menu");
+			e.printStackTrace();
 		}
 	}
 	
