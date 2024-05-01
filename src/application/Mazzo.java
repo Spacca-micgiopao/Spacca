@@ -12,7 +12,7 @@ import java.io.Serializable;
 
 
 public class Mazzo implements Serializable{
-	private List<Carta> carte;
+	protected List<Carta> carte;
 
 	public Mazzo() {
         carte = new ArrayList<>();

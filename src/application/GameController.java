@@ -72,7 +72,7 @@ public class GameController implements Serializable{
     @FXML
     public ListView<Carta> listaCarteGiocatore2;
     @FXML
-    private transient ImageView Carta1G1, Carta2G1, Carta3G1, Carta4G1;
+    protected ImageView Carta1G1, Carta2G1, Carta3G1, Carta4G1;
     @FXML
     private transient ImageView Carta1G2, Carta2G2, Carta3G2, Carta4G2;
 

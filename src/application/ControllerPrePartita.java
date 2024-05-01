@@ -31,9 +31,7 @@ public class ControllerPrePartita implements Initializable{
 		ClassificaController classficacontroller = new ClassificaController();
 		//TUTTO FXML
 		@FXML
-		private TextField InputG1;
-		@FXML
-		private TextField InputG2;
+		private TextField InputG1,InputG2;
 		@FXML
 		private Label Errori;
 		@FXML
@@ -90,12 +88,21 @@ public class ControllerPrePartita implements Initializable{
 			System.out.println("errore nel caricamento scene Main Menu");
 		}
 	}
-	
-	public void Caricatest(ActionEvent event) throws IOException {
+	//Legge dalla ChoiceBox quale partita caricare con la stringa di ricerca
+	//Dato che ogni partita ha un id diverso anche se i giocatori sono gli stessi
+	//Sono create partite diverse
+	public void CaricaPartita(ActionEvent event) throws IOException {
 		try {
-			GameController.flag = 1;
-			main.showScenaGiocoScene();
-		} catch (Exception e) {
+			if(ScegliPartita.getValue() == null) {
+				Errori.setText("Devi scegliere una partita");
+			}
+			else {
+				Salvataggi.setFile(ScegliPartita.getValue()); 
+				GameController.flag = 1;
+				main.showScenaGiocoScene();
+			}
+		} 
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

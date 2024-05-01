@@ -44,8 +44,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button layoutX="106.0" layoutY="230.0" mnemonicParsing="false" text="Conferma" />
       <Button fx:id="Back" layoutX="254.0" layoutY="327.0" mnemonicParsing="false" onAction="#BackToMenu" text="Torna al menu" />
-      <Button layoutX="266.0" layoutY="260.0" mnemonicParsing="false" onAction="#Caricatest" text="CaricaTest" />
+      <Button layoutX="116.0" layoutY="230.0" mnemonicParsing="false" onAction="#CaricaPartita" text="Carica" />
    </children>
 </AnchorPane>

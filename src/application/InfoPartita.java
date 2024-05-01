@@ -57,7 +57,9 @@ public class InfoPartita {
 			FileWriter FW = new FileWriter(DatiPartita,true);
 			BufferedWriter BW = new BufferedWriter(FW);
 			PrintWriter Writer = new PrintWriter(BW);
-			Writer.println(IDpartita+","+G1+","+G2);
+			String Nome = IDpartita+","+G1+","+G2;
+			Writer.println(Nome);
+			Salvataggi.setFile(Nome);
 			Writer.close();
 		}
 		catch(IOException e) {

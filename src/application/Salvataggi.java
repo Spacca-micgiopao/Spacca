@@ -1,16 +1,25 @@
 package application;
 
 import java.io.*;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.ImageView;
+import javax.imageio.ImageIO;
+import javafx.scene.image.Image;
+import javafx.scene.layout.StackPane;
 
 import javafx.scene.control.ListView;
 
 public class Salvataggi implements Serializable{
 	
 	protected GameController gamecontroller;
-	File file = new File("partita2.ser");
+	protected static File file = new File("");
 
 	public Salvataggi(GameController gamecontroller) {
 		this.gamecontroller = gamecontroller;
+	}
+	
+	public static void setFile(String nome) {
+			file = new File("src/Salvataggi/"+nome+".ser");
 	}
 	
 	//Salva in un file serializzato i dati importanti di una partita,in questo caso salva
@@ -35,6 +44,7 @@ public class Salvataggi implements Serializable{
 	        //Mazzi
 	        out.writeObject(gamecontroller.mazzoGiocatore1);
 	        out.writeObject(gamecontroller.mazzoGiocatore2);
+	        //Carte
 	        out.close();
 	    } catch (IOException e) {
 	        e.printStackTrace();
