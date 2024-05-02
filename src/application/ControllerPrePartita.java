@@ -50,8 +50,11 @@ public class ControllerPrePartita implements Initializable{
 		this.main = main;
 	}
 	//Carica la lista delle partite salvate nella checkbox
+	//La aggiorna ogni volta che viene aperta la pagina
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		ScegliPartita.getItems().clear();
+		ScegliPartita.getItems().removeAll();
 		ScegliPartita.getItems().addAll(infopartita.Partite);
 	}
 	

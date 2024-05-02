@@ -73,4 +73,9 @@ public class Salvataggi implements Serializable{
 			e.printStackTrace();
 		}
 	}
+	
+	//Elimina il file
+	public void Elimina() {
+		file.delete();
+	}
 }

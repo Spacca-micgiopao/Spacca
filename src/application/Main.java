@@ -40,6 +40,7 @@ public class Main extends Application implements Serializable {
 
 
 	    public void showPrePartitaScene() throws Exception {
+	    	InfoPartita.Preparazione();
 	        FXMLLoader loader = new FXMLLoader(getClass().getResource("Prepartita.fxml"));
 	        Parent root = loader.load();
 	        ControllerPrePartita controller = loader.getController();

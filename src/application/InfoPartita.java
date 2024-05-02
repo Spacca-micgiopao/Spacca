@@ -23,12 +23,14 @@ public class InfoPartita {
 	//Conta il numero delle partite salvate per poi elencarle in un array
 	public static void Preparazione() {
 		try {
+			//Contare quante partite sono salvate
 			Scanner Scan = new Scanner(DatiPartita);
 			FileReader FR = new FileReader(DatiPartita);
 			LineNumberReader LN = new LineNumberReader(FR);
 				while(LN.readLine() !=null) {
 					NumeroPartita++;
 				}
+				//Aggiunge una partita alla choicebox
 				Partite = new String[NumeroPartita];
 				for(int i =0;i<NumeroPartita;i++) {
 					if(Scan.hasNextLine())
@@ -66,6 +68,8 @@ public class InfoPartita {
 			e.printStackTrace();
 		}
 	}
+	
+	
 	
 }
 	

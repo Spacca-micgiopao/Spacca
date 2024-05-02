@@ -1,5 +1,6 @@
 package application;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -7,6 +8,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class MenuController {
 	
@@ -57,8 +60,17 @@ public class MenuController {
 			}
 		}
 		
-		//Per cancellare tutti i dati salvati sui file
+		//Per cancellare tutti i dati salvati sui file e i file di salvataggio
 		public void Pulisci(ActionEvent event) throws IOException {
+			File dir = new File("src/Salvataggi/");
+			String[] n = dir.list();
+			if(dir.isDirectory() && dir.exists()) {
+				for(int i = 0;i<n.length;i++) {
+					File f = new File("src/Salvataggi/"+n[i]);
+					f.delete();
+				}
+			}
+			//Resetta i file che contengono le informazioni dei giocatori
 			if(InfoPartita.DatiPartita.exists() && ClassificaController.DatiGiocatori.exists()) {
 				FileWriter writer = new FileWriter(InfoPartita.DatiPartita);	
 				writer.write("");
