@@ -18,22 +18,18 @@ public class MenuController {
 	private Main main;
 	
 	@FXML
-	private Button VediClassifica;
-	@FXML
-	private Button CreaPartita;
-	@FXML
-	private Button CreaTorneo;
-	@FXML
-	private Button Logout;
+	private Button VediClassifica,CreaPartita,CreaTorneo,Logout;
 	
 	InfoPartita infopartita = new InfoPartita();
 	
 	public void setMain(Main main) {
     	this.main= main;
-    }	
+    }
+	
 	public void setStage(Stage stage) {
 			this.stage= stage;
 	}
+	
 	//per creare una partita,il metodo preparazione prepara la lista delle partite salvate
 	public void VaiaPrePartita(ActionEvent event) throws IOException {
 		try {
@@ -42,6 +38,7 @@ public class MenuController {
 			System.out.println("errore nel caricamento scena prePartita");
 		}
 	}
+	
 	//per fare il logout e tornare alla pagina di login
 	public void Logout(ActionEvent event) throws IOException {
 		try {
@@ -51,35 +48,33 @@ public class MenuController {
 			System.out.println("errore nel caricamento scena Login");
 		}
 	}
+	
 	//per fare il logout e tornare alla pagina di login infopartita serve per creare la lista dei giocatori la prima volta
-		public void VaiaClassifica(ActionEvent event) throws IOException {
-			try {
-				main.showClassificaScene();
-			} catch (Exception e) {
-				System.out.println("errore nel caricamento scene classifica");
-			}
+	public void VaiaClassifica(ActionEvent event) throws IOException {
+		try {
+			main.showClassificaScene();
+		} catch (Exception e) {
+			System.out.println("errore nel caricamento scene classifica");
 		}
+	}
 		
-		//Per cancellare tutti i dati salvati sui file e i file di salvataggio
-		public void Pulisci(ActionEvent event) throws IOException {
-			File dir = new File("src/Salvataggi/");
-			String[] n = dir.list();
+	//Per cancellare tutti i dati salvati sui file e i file di salvataggio
+	//La prima parte cancella la directory che contiene i salvataggi
+	public void Pulisci(ActionEvent event) throws IOException {
+		File dir = new File("src/Salvataggi/");
+		String[] n = dir.list();
 			if(dir.isDirectory() && dir.exists()) {
 				for(int i = 0;i<n.length;i++) {
 					File f = new File("src/Salvataggi/"+n[i]);
 					f.delete();
 				}
 			}
-			//Resetta i file che contengono le informazioni dei giocatori
-			if(InfoPartita.DatiPartita.exists() && ClassificaController.DatiGiocatori.exists()) {
-				FileWriter writer = new FileWriter(InfoPartita.DatiPartita);	
-				writer.write("");
-				writer.close();
-				writer = new FileWriter(ClassificaController.DatiGiocatori);
+			//Resetta il file che contiene le informazioni dei giocatori
+			if(ClassificaController.DatiGiocatori.exists()) {
+				FileWriter writer = new FileWriter(ClassificaController.DatiGiocatori);
 				writer.write("");
 				writer.close();
 				//Per ricaricare i dati ora vuoti
-				InfoPartita.Preparazione();
 				ClassificaController.Preparazione();
 			}
 		}
