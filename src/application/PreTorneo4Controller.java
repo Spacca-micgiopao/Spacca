@@ -99,18 +99,21 @@ public class PreTorneo4Controller {
 		//quando si confermano i nomi giocatori viene visualizzato elenco di tutte le partite
 	}
 	public void inserimentoPartite() {
-		 int partitaIndex = 0;
-		 for (int i = 0; i < G.length; i++) {
-	            String giocatore1 = G[i];
-	            // Per ogni avversario
-	            for (int j = i + 1; j < G.length; j++) {
-	                String giocatore2 = G[j];
-	                
-	                partite.add(giocatore1 + " vs " + giocatore2);
-	                labelGiocatori[partitaIndex].setText(giocatore1);
-	                labelGiocatori[partitaIndex + 1].setText(giocatore2);
-	                partitaIndex += 2;
-	            }
+		 partite.add(G[0] + " vs " + G[1]);
+		 partite.add(G[2] + " vs " + G[3]);
+		 partite.add(G[1] + " vs " + G[2]);
+		 partite.add(G[3] + " vs " + G[0]);
+		 partite.add(G[0] + " vs " + G[2]);
+		 partite.add(G[1] + " vs " + G[3]);
+		 int partitaIndex =0;
+	     for(int i=0;i<6;i++) {
+	    	String partita= partite.get(i);
+	    	String[] giocatori = partita.split(" vs ");
+	    	String giocatore1= giocatori[0];
+	    	String giocatore2= giocatori[1];
+	    	labelGiocatori[partitaIndex].setText(giocatore1);
+            labelGiocatori[partitaIndex + 1].setText(giocatore2);
+            partitaIndex+=2;
 	      }
 	}
 	public void handleBottoneIniziaAGiocare(ActionEvent event) {

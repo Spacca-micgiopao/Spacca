@@ -14,7 +14,7 @@
             <Image url="@../Sfondo/GameOverTorneo.png" />
          </image>
       </ImageView>
-      <Label fx:id="LabelVincitorFinale" layoutX="218.0" layoutY="48.0" prefHeight="49.0" prefWidth="612.0" text="VINCITORI PARIMERITO" textFill="#512121">
+      <Label fx:id="LabelVincitorFinale" layoutX="218.0" layoutY="48.0" prefHeight="49.0" prefWidth="612.0" textFill="#512121">
          <font>
             <Font name="Cooper Black" size="42.0" />
          </font>

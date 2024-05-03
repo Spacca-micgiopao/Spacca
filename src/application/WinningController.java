@@ -123,16 +123,11 @@ public class WinningController {
 			LabelVincita.setText(" PAREGGIO ! ");
 			vincitori.add("Pareggio");
 		}
-		for(int  i=0;i<vincitori.size();i++) {
-			System.out.println(vincitori.get(i));
-		}
+	
 		 
 	}
 	public void VaiAPartitaSuccessiva(ActionEvent event) throws IOException {
 		player.stop();
-		for(int i=0;i<numeroVittorieG.length;i++) {
-			System.out.print(" Vittorie vinte da giocatore "+i+" è "+numeroVittorieG[i]);
-		}
 		try {
 			main.showScenaGiocoScene();
 		} catch (Exception e) {

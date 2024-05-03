@@ -1,7 +1,10 @@
 package application;
 
 import java.io.File;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javafx.event.ActionEvent;
@@ -31,73 +34,23 @@ public class GameOverTorneoController {
 	@FXML
 	private Label LabelVincitorFinale;
 	@FXML 
-	private Label G1P1;
-	@FXML 
-	private Label G2P1;
-	@FXML 
-	private Label G1P2;
-	@FXML 
-	private Label G2P2;
-	@FXML 
-	private Label G1P3;
-	@FXML 
-	private Label G2P3;
-	@FXML 
-	private Label G1P4;
-	@FXML 
-	private Label G2P4;
-	@FXML 
-	private Label G1P5;
-	@FXML 
-	private Label G2P5;
-	@FXML 
-	private Label G1P6;
-	@FXML 
-	private Label G2P6;
+	private Label G1P1,G2P1,G1P2,G2P2,G1P3,G2P3,G1P4,G2P4,G1P5,G2P5,G1P6,G2P6;
 	@FXML
 	private Label[] InsiemeGiocatoriPartite;
 	@FXML
-	private Label Pareggiante1;
-	@FXML
-	private Label Pareggiante2;
-	@FXML
-	private Label Pareggiante3;
-	@FXML
-	private Label Pareggiante4;
+	private Label Pareggiante1,Pareggiante2,Pareggiante3,Pareggiante4;
 	@FXML 
 	private Label[] LabelPareggianti;
 	@FXML
-	private Label VincitoreP1;
-	@FXML
-	private Label VincitoreP2;
-	@FXML
-	private Label VincitoreP3;
-	@FXML
-	private Label VincitoreP4;
-	@FXML
-	private Label VincitoreP5;
-	@FXML
-	private Label VincitoreP6;
+	private Label VincitoreP1,VincitoreP2,VincitoreP3,VincitoreP4,VincitoreP5,VincitoreP6;
 	@FXML
 	private Label[] LabelVincitoriSingole;
 	@FXML
-	private Label G1;
-	@FXML
-	private Label G2;
-	@FXML
-	private Label G3;
-	@FXML
-	private Label G4;
+	private Label G1,G2,G3,G4;
 	@FXML
 	private Label[] LabelNomiTuttiGiocatori;
 	@FXML
-	private Label PunteggioVittoriaG1;
-	@FXML
-	private Label PunteggioVittoriaG2;
-	@FXML
-	private Label PunteggioVittoriaG3;
-	@FXML
-	private Label PunteggioVittoriaG4;
+	private Label PunteggioVittoriaG1,PunteggioVittoriaG2,PunteggioVittoriaG3,PunteggioVittoriaG4;
 	@FXML
 	private  Label[] LabelPunteggiVittorie;
 	//METODI SET E GET
@@ -200,9 +153,7 @@ public class GameOverTorneoController {
 		setNumeroVittorieG();
 		calcoloPunteggioUltimaPartita();
 		VincitoriPari = new ArrayList<>();
-		for(int i=0;i<numeroVittorieG.length;i++) {
-			System.out.print(" Vittorie vinte da giocatore "+i+" è "+numeroVittorieG[i]);
-		}
+		
 		boolean pareggio=false;
 		int max= numeroVittorieG[0];
 		
@@ -233,9 +184,6 @@ public class GameOverTorneoController {
 			}
 			Pareggiante2.setText(vincitore);
 		}
-		for(int i=0;i<G.length;i++) {
-			LabelNomiTuttiGiocatori[i].setText(G[i]);
-		}
 			
 	    for(int i=0;i<partite.size();i++) {
 			String  partita=  partite.get(i);
@@ -248,12 +196,57 @@ public class GameOverTorneoController {
 			LabelVincitoriSingole[i].setText(vincitori.get(i));
 		}
 		
-		for(int  i=0;i<numeroVittorieG.length;i++) {
-			String punteggio =  numeroVittorieG[i]+" ";
-			LabelPunteggiVittorie[i].setText(punteggio);
-		}
-		
+		visualizzaClassifica(G,numeroVittorieG,LabelPunteggiVittorie,LabelNomiTuttiGiocatori);
 	}
+	 public void visualizzaClassifica(String[] G, int[] numeroVittorieG, Label[] LabelPunteggiVittorie, Label[] LabelNomiTuttiGiocatori) {
+	        // mappa per associare punteggi a lista di nomi
+	        Map<Integer, List<String>> punteggioToNomi = new HashMap<>();
+
+	        // Associazione dei nomi ai punteggi
+	        for (int j = 0; j < G.length; j++) {
+	            int punteggio = numeroVittorieG[j];
+	            String nomeGiocatore = G[j];
+
+	            // se il punteggio è già presente nella mappa
+	            if (punteggioToNomi.containsKey(punteggio)) {
+	                // Se presente allora nome del giocatore aggiunto alla lista dei nomi
+	                punteggioToNomi.get(punteggio).add(nomeGiocatore);
+	            } else {
+	                // Se non presente nuova lista con il nome del giocatore
+	                List<String> nomiGiocatori = new ArrayList<>();
+	                nomiGiocatori.add(nomeGiocatore);
+	                punteggioToNomi.put(punteggio, nomiGiocatori);
+	            }
+	        }
+
+	        //punteggi in ordine decrescente
+	        int[] vittorieOrdinate = Arrays.copyOf(numeroVittorieG, numeroVittorieG.length);
+	        Arrays.sort(vittorieOrdinate);
+
+	        // Visualizzazione dei punteggi e dei nomi nella classifica
+	        int posizione = 0;
+	        for (int i = vittorieOrdinate.length - 1; i >= 0; i--) {
+	            int punteggio = vittorieOrdinate[i];
+
+	            //nomi dei giocatori associati a questo punteggio
+	            List<String> nomiGiocatori = punteggioToNomi.get(punteggio);
+	            if (nomiGiocatori != null && !nomiGiocatori.isEmpty()) {
+	                int numNomi = nomiGiocatori.size();
+	                for (int j = 0; j < numNomi; j++) {
+	                    String nome = nomiGiocatori.get(j);
+	                    if (posizione < LabelPunteggiVittorie.length && posizione < LabelNomiTuttiGiocatori.length) {
+	                      
+	                        LabelPunteggiVittorie[posizione].setText(punteggio + " ");
+	                  
+	                        LabelNomiTuttiGiocatori[posizione].setText(nome);
+	                        posizione++;
+	                    } else {
+	                        break; // Esci se assegnato tutti i punteggi e nomi disponibili alle label
+	                    }
+	                }
+	            }
+	        }
+	 }
 	public void handleBottoneUscita(ActionEvent event) {
     	stage.close();
     }

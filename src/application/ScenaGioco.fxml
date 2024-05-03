@@ -79,7 +79,7 @@
             </Label>
             <ImageView fitHeight="150.0" fitWidth="95.0" layoutX="1119.0" layoutY="13.0" rotate="-90.0">
                <image>
-                  <Image url="@../../../../../../RetroPokemon.jpg" />
+                  <Image url="@../Sfondo/RetroPokemon.jpg" />
                </image>
             </ImageView>
          	
@@ -90,7 +90,7 @@
             </Button>
             <ImageView fitHeight="150.0" fitWidth="95.0" layoutX="1119.0" layoutY="569.0" rotate="-90.0">
                <image>
-                  <Image url="@../../../../../../RetroPokemon.jpg" />
+                  <Image url="@../Sfondo/RetroPokemon.jpg" />
                </image>
             </ImageView>
             <Button layoutX="1130.0" layoutY="627.0" mnemonicParsing="false" onAction="#handlePescaGiocatore2Action" prefHeight="33.0" prefWidth="73.0" text="PESCA">

@@ -361,20 +361,11 @@ public class GameController {
     //pesca una carta per il giocatore 1 
     public void handlePescaGiocatore1Action(ActionEvent event) {
     	if(turnoGiocatore1) {
-	    	
 	    	Carta cartaCasuale = mazzoCompleto.pescaCartaCasuale();
-	    	
 	    	if(cartaCasuale != null &&  mazzoGiocatore1.getNumeroCarte()<4) {
 	    		mazzoGiocatore1.aggiungiCarta(cartaCasuale);
 	    		aggiornaInterfaccia();
-	    	}else {
-	    		if(cartaCasuale== null) 
-				{System.out.println("carta nulla");
-			}
-			if(mazzoGiocatore1.getNumeroCarte()>=4) {
-				System.out.println("non c'è spazio");
-				}
-	    	}	
+	    	}
     	}
 	
     }
@@ -382,19 +373,11 @@ public class GameController {
     public void handlePescaGiocatore2Action(ActionEvent event) {
     	if(!turnoGiocatore1) {
 	    	Carta cartaCasuale = mazzoCompleto.pescaCartaCasuale();
-	    	
 	    	if(cartaCasuale != null && mazzoGiocatore2.getNumeroCarte()<4 ) {
 	    		mazzoGiocatore2.aggiungiCarta(cartaCasuale);
 	    		aggiornaInterfaccia();
-	    		
-	    	}else {
-	    		if(cartaCasuale== null) 
-	    			{System.out.println("carta nulla");
-	    		}
-	    		if(mazzoGiocatore2.getNumeroCarte()>=4) {
-	    			System.out.println("non c'è spazio");
-	    			}
 	    	}
+	    		
     	}
     	
     }
@@ -448,9 +431,7 @@ public class GameController {
     	        posizioneTavolo.setImage(carta.getImmagine());
     	        cartaCliccata.setEffect(null);
     	        aggiornaTurnoLabel();
-    	    } else {
-    	        System.out.println("Errore: carta selezionata è nulla");
-    	    }
+    	    } 
 	}
     //GESTORI CLICK
     
