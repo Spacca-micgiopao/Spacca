@@ -41,12 +41,17 @@ public class ClassificaController implements Initializable{
 	
 	}
 	
-	//Carica i dati dei giocatori
+	//Carica i dati dei giocatori sia nella memoria che nella classifica stessa
+	//Questi dati vengono caricati in 2 istanze,quando si visualizza la partita e quando si va al menu principale
 	public static void Preparazione() {
 		try {
-			Scanner scan = new Scanner(DatiGiocatori);
-			while(scan.hasNextLine()) {
-				Giocatori.add(new Giocatori(scan.nextLine()));
+			if(DatiGiocatori.exists()) {
+				Scanner scan = new Scanner(DatiGiocatori);
+					while(scan.hasNextLine()) {
+						{
+						Giocatori.add(new Giocatori(scan.nextLine()));
+						}
+					}
 			}
 			
 		} catch (FileNotFoundException e) {

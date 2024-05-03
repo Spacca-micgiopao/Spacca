@@ -1,6 +1,8 @@
 package application;
 	
 import java.io.Serializable;
+import java.io.File;
+import java.io.FileWriter;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,9 +13,11 @@ import javafx.scene.Scene;
 public class Main extends Application implements Serializable {
 
 	 private transient Stage primaryStage;
-
+	 
 	    @Override
+	    //Oltre a settare lo stage crea il file di salvataggio dei giocatori in caso non sia presente
 	    public void start(Stage primaryStage) throws Exception {
+	    	File DatiGiocatori= new File("src/Data/DatiGiocatori.txt");
 	        this.primaryStage = primaryStage;
 	        showLoginScene();
 	    }
@@ -28,6 +32,7 @@ public class Main extends Application implements Serializable {
 	        primaryStage.show();
 	    }
 	    public void showMainMenuScene() throws Exception {
+	    	ClassificaController.Preparazione();
 	        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
 	        Parent root = loader.load();
 	        MenuController controller = loader.getController();
@@ -81,6 +86,7 @@ public class Main extends Application implements Serializable {
 	    	
 	    }
 	    public void showClassificaScene() throws Exception {
+	    	ClassificaController.Preparazione();
 	        FXMLLoader loader = new FXMLLoader(getClass().getResource("Classifica.fxml"));
 	        Parent root = loader.load();
 	        ClassificaController controller = loader.getController();

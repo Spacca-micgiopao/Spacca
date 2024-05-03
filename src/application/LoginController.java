@@ -48,7 +48,6 @@ public class LoginController {
 			 try {
 				main.showMainMenuScene();
 				InfoPartita.Preparazione();
-				ClassificaController.Preparazione();
 			} catch (Exception e) {
 				System.out.println("errore nel caricamento MainMenu");
 			}
