@@ -1,10 +1,7 @@
 package application;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -20,10 +17,7 @@ public class ControllerPrePartita implements Initializable{
 	
 	private Main main;
 	private Stage stage;
-
-	
-	public static String G1;
-	public static String G2;
+	public static String G1,G2;
 	
 	//FILE per salvare le informazioni
 		//istanza di infoPartita per caricare e scrivere i risultati

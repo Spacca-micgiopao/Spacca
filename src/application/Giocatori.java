@@ -1,6 +1,8 @@
 package application;
 
-public class Giocatori {
+import java.io.Serializable;
+
+public class Giocatori implements Serializable{
 	
 	protected String Nome;
 	protected int Vittorie;
@@ -17,8 +19,5 @@ public class Giocatori {
 	public String getNome() {
 		return Nome;
 	}
-	
-	
-	
 
 }

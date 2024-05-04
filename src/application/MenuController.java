@@ -71,13 +71,6 @@ public class MenuController {
 				}
 			}
 		//Resetta il file che contiene le informazioni dei giocatori
-		if(ClassificaController.DatiGiocatori.exists()) {
-			FileWriter writer = new FileWriter(ClassificaController.DatiGiocatori);
-			writer.write("");
-			writer.close();
-			//Per ricaricare i dati ora vuoti
 			ClassificaController.elimina();
 		}
-	}
-		
 }

@@ -331,6 +331,7 @@ public class GameController implements Serializable{
     		vittoriaSuTavoloG1 =0;
     		vittoriaSuTavoloG2=0;
     		turnoLabel.setText("FINE PARTITA");
+    		salvataggio.Elimina();
     		//Verifica punteggi su tavolo1
     		if(punteggioG1Tavolo1 > punteggioG2Tavolo1) {
     			vittoriaSuTavoloG1+=1;

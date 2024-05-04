@@ -1,32 +1,27 @@
 package application;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.Scanner;
-import java.util.StringTokenizer;
-
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class ClassificaController implements Initializable{
+public class ClassificaController implements Initializable,Serializable{
 	//Questa classe gestisce tutto cio che riguarda le classifiche
 	private Stage stage;
 	private Main main;	
 	protected ArrayList<String> Classifica = new ArrayList<String>();
 	public static ArrayList<Giocatori> LSGiocatori = new ArrayList<Giocatori>();
 	protected ArrayList<String> id = new ArrayList<String>();
-	protected static File DatiGiocatori = new File("src/Data/DatiGiocatori.txt");
+	protected static File DatiGiocatori = new File("src/Data/DatiGiocatori.ser");
 	
 	public void setMain(Main main) {
 		this.main = main;
@@ -38,16 +33,17 @@ public class ClassificaController implements Initializable{
 	//Verrà construita la classifica dai nomi in DatiGiocatori
 	public void initialize(URL arg0, ResourceBundle arg1) {
 	}
-	
+
 	//Carica in memoria dal file i nomi dei giocatori
-	public static void CaricaNomi() {
+	public static void CaricaNomi() throws ClassNotFoundException {
 		try {
-			Scanner scan = new Scanner(DatiGiocatori);
-			while(scan.hasNextLine()) {
-				LSGiocatori.add(new Giocatori(scan.nextLine()));
-			}
-		}
-		catch (FileNotFoundException e) {
+			FileInputStream fileIn = new FileInputStream(DatiGiocatori);
+	         ObjectInputStream in = new ObjectInputStream(fileIn);
+	         LSGiocatori = (ArrayList<Giocatori>) in.readObject();
+	         in.close();
+	         fileIn.close();
+	    } 
+		catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -55,6 +51,7 @@ public class ClassificaController implements Initializable{
 	//Resetta la lista dei giocatori
 	public static void elimina() {
 		LSGiocatori = new ArrayList<Giocatori>();
+		DatiGiocatori.delete();
 	}
 	
 	//Temporaneo mostra la classifica
@@ -68,23 +65,25 @@ public class ClassificaController implements Initializable{
 	//Prende i nomi dal controller pre partita e li scrive nella lista ed esclude i doppioni
 	protected void getNomi(String IG1,String IG2) throws IOException {
 		for(int i = 0;i < LSGiocatori.size();i++) {
-			if(LSGiocatori.get(i).getNome() == IG1) {
+			if(LSGiocatori.get(i).Nome.equals(IG1)) 
 				IG1 = null;
-			}
-			else if(LSGiocatori.get(i).getNome() == IG2)
+			if(LSGiocatori.get(i).Nome.equals(IG2)) 
 				IG2 = null;
 		}
-		FileWriter FW = new FileWriter(DatiGiocatori,true);
-		BufferedWriter BW = new BufferedWriter(FW);
-		PrintWriter Writer = new PrintWriter(BW);
-			if(IG1 != null) {
+			if(IG1 !=null)
 				LSGiocatori.add(new Giocatori(IG1));
-				Writer.println(IG1);
-			}
-			if(IG2 != null) {
+			if(IG2 !=null)
 				LSGiocatori.add(new Giocatori(IG2));
-				Writer.println(IG2);
-			}
+		try {
+			FileOutputStream fileOut = new FileOutputStream(DatiGiocatori);
+		    ObjectOutputStream out = new ObjectOutputStream(fileOut);
+		    out.writeObject(LSGiocatori);
+		    out.close();
+		    fileOut.close();
+		    } 
+		catch (IOException i) {
+		         i.printStackTrace();
+		}	
 	}
 	
 	//per tornare alla schermata del menu
