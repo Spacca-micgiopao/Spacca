@@ -69,7 +69,6 @@ public class Salvataggi implements Serializable{
 			gc.listaCarteGiocatore2 = (ListView<Carta>) in.readObject();
 			gc.mazzoGiocatore1 = (Mazzo) in.readObject();
 			gc.mazzoGiocatore2 = (Mazzo) in.readObject();
-			//List<ImageView
 			gc.aggiornaInterfaccia();
 			in.close();
 			filein.close();

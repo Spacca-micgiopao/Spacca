@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 
 public class LoginController {
@@ -37,7 +38,7 @@ public class LoginController {
 	}
 	//Per confermare le credenziali e passare al menu principale
 
-	public void conferma(ActionEvent event) throws IOException {
+	public void conferma(ActionEvent event) throws IOException, InterruptedException {
 		//Modificare qui per decidere nome utente e password dell'admin
 		accesso.put("", "");
 		Nome = inputnome.getText();
@@ -53,7 +54,7 @@ public class LoginController {
 			}
 			
 		}else
-			errori.setText("Username o password errati,in caso di problemi rivolgersi all'assistenza");
+			errori.setText("USERNAME O PASSWORD ERRATI");
 	}
 	
 	

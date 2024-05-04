@@ -3,20 +3,51 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginController">
    <children>
-      <Button fx:id="tastoconferma" layoutX="266.0" layoutY="248.0" mnemonicParsing="false" onAction="#conferma" text="Conferma" />
-      <TextField fx:id="inputpassword" layoutX="226.0" layoutY="208.0" />
-      <TextField fx:id="inputnome" layoutX="226.0" layoutY="175.0" />
-      <Label layoutX="121.0" layoutY="179.0" text="NOME UTENTE" />
-      <Label layoutX="130.0" layoutY="212.0" text="PASSWORD" />
-      <Button fx:id="TastotTabellone" layoutX="191.0" layoutY="73.0" mnemonicParsing="false" onAction="#switchtoTabellone" text="PASSA AL TABELLONE(TEMPORANEO)" />
-      <Label fx:id="errori" alignment="CENTER" layoutX="138.0" layoutY="288.0" prefHeight="60.0" prefWidth="325.0" textAlignment="CENTER" textFill="RED" wrapText="true">
+      <ImageView fitHeight="720.0" fitWidth="1280.0">
+         <image>
+            <Image url="@../Sfondo/freaky_animations_7.gif" />
+         </image>
+      </ImageView>
+      <Pane layoutX="14.0" layoutY="230.0" prefHeight="80.0" prefWidth="429.0" style="-fx-background-color: Black;" />
+      <Pane layoutX="14.0" layoutY="330.0" prefHeight="80.0" prefWidth="345.0" style="-fx-background-color: Black;" />
+      <Button fx:id="tastoconferma" layoutY="481.0" mnemonicParsing="false" onAction="#conferma" prefHeight="141.0" prefWidth="1280.0" style="-fx-background-color: Black;" text="CONFERMA" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="Pixelated Regular" size="32.0" />
+         </font></Button>
+      <TextField fx:id="inputpassword" layoutX="451.0" layoutY="352.0" prefHeight="36.0" prefWidth="325.0" />
+      <TextField fx:id="inputnome" layoutX="451.0" layoutY="252.0" prefHeight="36.0" prefWidth="325.0" />
+      <Label layoutX="14.0" layoutY="230.0" prefHeight="80.0" prefWidth="454.0" text="NOME UTENTE" textFill="WHITE">
+         <font>
+            <Font name="Pixelated Regular" size="70.0" />
+         </font>
+      </Label>
+      <Text fill="WHITE" layoutX="71.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SPACCA" wrappingWidth="380.0">
+         <font>
+            <Font name="Pixelated Regular" size="120.0" />
+         </font>
+      </Text>
+      <Label alignment="CENTER" layoutX="935.0" layoutY="3.0" prefHeight="200.0" prefWidth="345.0" text="BY : GIORGIO MISELLI MICHELA MANNI PAOLO VITOLO" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" wrapText="true">
+         <font>
+            <Font name="Pixelated Regular" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="319.0" prefHeight="101.0" prefWidth="325.0" text="PASSWORD" textFill="WHITE">
+         <font>
+            <Font name="Pixelated Regular" size="70.0" />
+         </font>
+      </Label>
+      <Label fx:id="errori" layoutX="885.0" layoutY="218.0" prefHeight="200.0" prefWidth="325.0" textFill="RED" wrapText="true">
+         <font>
+            <Font name="Pixelated Regular" size="48.0" />
          </font>
       </Label>
    </children>

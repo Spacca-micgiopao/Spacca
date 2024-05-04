@@ -1,5 +1,6 @@
 package application;
 
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -35,7 +36,7 @@ public class ClassificaController implements Initializable,Serializable{
 	}
 
 	//Carica in memoria dal file i nomi dei giocatori
-	public static void CaricaNomi() throws ClassNotFoundException {
+	public static void CaricaNomi() throws ClassNotFoundException, EOFException {
 		try {
 			FileInputStream fileIn = new FileInputStream(DatiGiocatori);
 	         ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -44,7 +45,6 @@ public class ClassificaController implements Initializable,Serializable{
 	         fileIn.close();
 	    } 
 		catch (IOException e) {
-			e.printStackTrace();
 		}
 	}
 	
@@ -63,7 +63,7 @@ public class ClassificaController implements Initializable,Serializable{
 	}
 	
 	//Prende i nomi dal controller pre partita e li scrive nella lista ed esclude i doppioni
-	protected void getNomi(String IG1,String IG2) throws IOException {
+	protected void getNomi(String IG1,String IG2) throws IOException,EOFException {
 		for(int i = 0;i < LSGiocatori.size();i++) {
 			if(LSGiocatori.get(i).Nome.equals(IG1)) 
 				IG1 = null;
