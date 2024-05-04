@@ -20,12 +20,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class ClassificaController implements Initializable{
-
+	//Questa classe gestisce tutto cio che riguarda le classifiche
 	private Stage stage;
 	private Main main;	
-	
 	protected ArrayList<String> Classifica = new ArrayList<String>();
-	public static ArrayList<Giocatori> Giocatori = new ArrayList<Giocatori>();
+	public static ArrayList<Giocatori> LSGiocatori = new ArrayList<Giocatori>();
 	protected ArrayList<String> id = new ArrayList<String>();
 	protected static File DatiGiocatori = new File("src/Data/DatiGiocatori.txt");
 	
@@ -38,58 +37,54 @@ public class ClassificaController implements Initializable{
 	
 	//Verrà construita la classifica dai nomi in DatiGiocatori
 	public void initialize(URL arg0, ResourceBundle arg1) {
-	
 	}
 	
-	//Carica i dati dei giocatori sia nella memoria che nella classifica stessa
-	//Questi dati vengono caricati in 2 istanze,quando si visualizza la partita e quando si va al menu principale
-	public static void Preparazione() {
+	//Carica in memoria dal file i nomi dei giocatori
+	public static void CaricaNomi() {
 		try {
-			if(DatiGiocatori.exists()) {
-				Scanner scan = new Scanner(DatiGiocatori);
-					while(scan.hasNextLine()) {
-						{
-						Giocatori.add(new Giocatori(scan.nextLine()));
-						}
-					}
+			Scanner scan = new Scanner(DatiGiocatori);
+			while(scan.hasNextLine()) {
+				LSGiocatori.add(new Giocatori(scan.nextLine()));
 			}
-			
-		} catch (FileNotFoundException e) {
+		}
+		catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	//Per mostrare la classifica PROVVISORIO
+	//Resetta la lista dei giocatori
+	public static void elimina() {
+		LSGiocatori = new ArrayList<Giocatori>();
+	}
+	
+	//Temporaneo mostra la classifica
 	public void Mostraclassifia() {
 		System.out.println("NOME/VITTORIE");
-		for(int i = 0;i<Giocatori.size();i++) {		
-			System.out.println(Giocatori.get(i).toString());
+		for(int i = 0;i<LSGiocatori.size();i++) {		
+			System.out.println(LSGiocatori.get(i).toString());
 		}
 	}
 	
 	//Prende i nomi dal controller pre partita e li scrive nella lista ed esclude i doppioni
-	protected void getNomi(String IG1,String IG2) {
-		try {
-			String G1 = IG1;
-			String G2 = IG2;
-			FileWriter FW = new FileWriter(DatiGiocatori,true);
-			BufferedWriter BW = new BufferedWriter(FW);
-			PrintWriter Writer = new PrintWriter(BW);
-			for(int i = 0;i<Giocatori.size();i++) {
-					if(Giocatori.get(i).Nome == G1)
-						G1 = null;
-					else if(Giocatori.get(i).Nome == G2)
-						G2 = null;
+	protected void getNomi(String IG1,String IG2) throws IOException {
+		for(int i = 0;i < LSGiocatori.size();i++) {
+			if(LSGiocatori.get(i).getNome() == IG1) {
+				IG1 = null;
 			}
-			if(G1 != null)
-			Writer.println(G1);
-			if(G2 != null)
-			Writer.println(G2);
-			Writer.close();
+			else if(LSGiocatori.get(i).getNome() == IG2)
+				IG2 = null;
 		}
-		catch(IOException e) {
-			e.printStackTrace();
-		}
+		FileWriter FW = new FileWriter(DatiGiocatori,true);
+		BufferedWriter BW = new BufferedWriter(FW);
+		PrintWriter Writer = new PrintWriter(BW);
+			if(IG1 != null) {
+				LSGiocatori.add(new Giocatori(IG1));
+				Writer.println(IG1);
+			}
+			if(IG2 != null) {
+				LSGiocatori.add(new Giocatori(IG2));
+				Writer.println(IG2);
+			}
 	}
 	
 	//per tornare alla schermata del menu

@@ -55,6 +55,7 @@ public class MenuController {
 			main.showClassificaScene();
 		} catch (Exception e) {
 			System.out.println("errore nel caricamento scene classifica");
+			e.printStackTrace();
 		}
 	}
 		
@@ -69,14 +70,14 @@ public class MenuController {
 					f.delete();
 				}
 			}
-			//Resetta il file che contiene le informazioni dei giocatori
-			if(ClassificaController.DatiGiocatori.exists()) {
-				FileWriter writer = new FileWriter(ClassificaController.DatiGiocatori);
-				writer.write("");
-				writer.close();
-				//Per ricaricare i dati ora vuoti
-				ClassificaController.Preparazione();
-			}
+		//Resetta il file che contiene le informazioni dei giocatori
+		if(ClassificaController.DatiGiocatori.exists()) {
+			FileWriter writer = new FileWriter(ClassificaController.DatiGiocatori);
+			writer.write("");
+			writer.close();
+			//Per ricaricare i dati ora vuoti
+			ClassificaController.elimina();
 		}
+	}
 		
 }
