@@ -41,12 +41,7 @@ public class GameController implements Serializable{
     private Carta cartaSelezionata; //selezionata da utente serve per lo spostamento
     private transient ImageView cartaCliccata;
     private Mazzo mazzoProvenienzaCartaSelezionata;
-    protected int punteggioG1Tavolo1;
-    protected int punteggioG1Tavolo2;
-    protected int punteggioG1Tavolo3;
-    protected int punteggioG2Tavolo1;
-    protected int punteggioG2Tavolo2;
-    protected int punteggioG2Tavolo3;
+    protected int punteggioG1Tavolo1, punteggioG1Tavolo2, punteggioG1Tavolo3, punteggioG2Tavolo1, punteggioG2Tavolo2, punteggioG2Tavolo3;
     private static int vittoriaSuTavoloG1;
     private static int vittoriaSuTavoloG2;
     private String nomeImprevisto1;
@@ -54,7 +49,6 @@ public class GameController implements Serializable{
     
     private boolean tuttiTavoliPieni=false;
    // private boolean partitaFinita= false; 
-    
     
     @FXML
     private transient AnchorPane backgroundPane;
@@ -74,11 +68,11 @@ public class GameController implements Serializable{
     @FXML
     protected ImageView Carta1G1, Carta2G1, Carta3G1, Carta4G1;
     @FXML
-    private transient ImageView Carta1G2, Carta2G2, Carta3G2, Carta4G2;
+    protected ImageView Carta1G2, Carta2G2, Carta3G2, Carta4G2;
 
     
     @FXML
-    private transient List<ImageView> imageViewsGiocatore1, imageViewsGiocatore2, imageViewsTavolo1, imageViewsTavolo2, imageViewsTavolo3;
+    private List<ImageView> imageViewsGiocatore1, imageViewsGiocatore2, imageViewsTavolo1, imageViewsTavolo2, imageViewsTavolo3;
 
     @FXML
     private transient Button PescaGiocatore1, PescaGiocatore2, BottoneUscita;
@@ -235,15 +229,11 @@ public class GameController implements Serializable{
     		Carta cartaCasuale = mazzoCompleto.pescaCartaCasuale();
 	    	if (cartaCasuale != null) {
 	             mazzoGiocatore1.aggiungiCarta(cartaCasuale);
-	         }
-    	}
-    	for(int i=0;i<3;i++) {
-    		Carta cartaCasuale = mazzoCompleto.pescaCartaCasuale();
-	    	if (cartaCasuale != null) {
 	             mazzoGiocatore2.aggiungiCarta(cartaCasuale);
 	         }
     	}
     }
+    
     private String getPercorsoFileCasuale(String percorsoCartella) {
         File cartella = new File(percorsoCartella);
         File[] files = cartella.listFiles();

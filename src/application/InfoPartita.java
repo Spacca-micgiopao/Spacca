@@ -15,7 +15,7 @@ public class InfoPartita {
 	protected String G1;
 	protected String G2;
 	private String IDpartita;
-	static int NumeroPartita = 0;
+	private int Numeropartita;
 	protected static String[] Partite;
 	//Caricare il file con i dati delle partite
 	
@@ -35,12 +35,15 @@ public class InfoPartita {
 		G2 = IG2;
 		Random rand = new Random();
 		char c = (char)(rand.nextInt(26)+'a');
-		IDpartita = NumeroPartita+""+rand.nextInt(10)+""+c;
+		IDpartita = rand.nextInt(10)+""+c;
 	}
 	
 	//Metodo per scrivere i dati sul file
 	public void ScriviDati() {
-		String Nome = IDpartita+","+G1+","+G2;
+		File dir = new File("src/Salvataggi/");
+		for(int i = 0;i<dir.list().length;i++)
+			Numeropartita++;
+		String Nome = Numeropartita+""+IDpartita+","+G1+","+G2;
 		Salvataggi.setFile(Nome);
 	}
 }

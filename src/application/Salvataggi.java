@@ -1,11 +1,13 @@
 package application;
 
 import java.io.*;
+import java.util.List;
+
 import javafx.embed.swing.SwingFXUtils;
-import javafx.scene.image.ImageView;
-import javax.imageio.ImageIO;
 import javafx.scene.image.Image;
-import javafx.scene.layout.StackPane;
+import javafx.scene.image.ImageView;
+
+import javax.imageio.ImageIO;
 
 import javafx.scene.control.ListView;
 
@@ -44,7 +46,6 @@ public class Salvataggi implements Serializable{
 	        //Mazzi
 	        out.writeObject(gamecontroller.mazzoGiocatore1);
 	        out.writeObject(gamecontroller.mazzoGiocatore2);
-	        //Carte
 	        out.close();
 	    } catch (IOException e) {
 	        e.printStackTrace();
@@ -66,7 +67,10 @@ public class Salvataggi implements Serializable{
 			gc.player2Name = (String) in.readObject();
 			gc.listaCarteGiocatore1 = (ListView<Carta>) in.readObject();
 			gc.listaCarteGiocatore2 = (ListView<Carta>) in.readObject();
-			//gc.mazzoGiocatore1 = (Mazzo) in.readObject();
+			gc.mazzoGiocatore1 = (Mazzo) in.readObject();
+			gc.mazzoGiocatore2 = (Mazzo) in.readObject();
+			//List<ImageView
+			gc.aggiornaInterfaccia();
 			in.close();
 			filein.close();
 		} catch (IOException  | ClassNotFoundException e) {
