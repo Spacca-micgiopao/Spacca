@@ -157,13 +157,27 @@ public class GameController  implements Serializable{
     		}
         }	
     
-    //INIZIALIZZAZIONE
+    //INIZIALIZZAZIONE se il flag = 1 la partita è stata caricata e inizierà in modo diverso da una partita iniziata da 0
     public void initialize() {
+    	insertSfondo();	
+    	//insertMusic();
+    	
+    	if(flag == 0) {
     	getTorneo();
     	getPartite();
-    	insertMusic();
     	setPlayersNames();
-    	insertSfondo();
+    	}
+    	
+    	if(flag == 1) {
+    		salvataggio.caricaPartita(this);
+    		//Come per i nomi vanno aggiornati i punteggi nel caso siano stati caricati
+    		LabelPunteggioG1T1.setText(this.punteggioG1Tavolo1+"");
+    		LabelPunteggioG1T2.setText(this.punteggioG1Tavolo2+"");
+    		LabelPunteggioG1T3.setText(this.punteggioG1Tavolo3+"");
+    		LabelPunteggioG2T1.setText(this.punteggioG2Tavolo1+"");
+    		LabelPunteggioG2T2.setText(this.punteggioG2Tavolo2+"");
+    		LabelPunteggioG2T3.setText(this.punteggioG2Tavolo3+"");
+    	}
     	
     	//inizializzazione Label
     	LabelIconaNomeG1.setText(this.player1Name);
@@ -180,14 +194,17 @@ public class GameController  implements Serializable{
     	//PREPARAZIONE GIOCO
     	 imprevisti = new Imprevisti();
     	 visualizzaImprevisti();
+    	 
     	//mazzo con tutte le carte disponibili
     	mazzoCompleto = new Mazzo();
     	mazzoCompleto.CreaMazzoCompleto();
        // System.out.println("numero carte nel mazzo iniziale completo"+mazzoCompleto.getNumeroCarte());
+    	
+    	if(flag == 0) {
     	mazzoGiocatore1 = new Mazzo();
     	mazzoGiocatore2 = new Mazzo();
         caricaCarteIniziali();
-        
+    	}
         //per le ImageView: creazione di una lista contenente tutte le ImageView per facilitare 
         //l'aggiunta delle immagini in aggiorna interfaccia
         //giocatore1
