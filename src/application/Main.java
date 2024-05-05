@@ -1,30 +1,25 @@
 package application;
 	
-import java.io.Serializable;
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileInputStream;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.GridPane;
 
-public class Main extends Application implements Serializable {
+public class Main extends Application {
 
-	 private transient Stage primaryStage;
-	 
+	 private Stage primaryStage;
+
 	    @Override
-	    //Oltre a settare lo stage crea il file di salvataggio dei giocatori in caso non sia presente
 	    public void start(Stage primaryStage) throws Exception {
-	    	File DatiGiocatori = new File("src/Data/DatiGiocatori.ser");
-	    	if(DatiGiocatori.exists() && DatiGiocatori.canRead())
-	    		ClassificaController.CaricaNomi();
-	    	else
-	    		DatiGiocatori.createNewFile();
-	    	ClassificaController.CaricaNomi();
 	        this.primaryStage = primaryStage;
-	        primaryStage.setTitle("SPACCA");
+	        InfoPartita infopartita = new InfoPartita();
+	        infopartita.Preparazione(); // Chiamata a Preparazione appena si crea InfoPartita
 	        showLoginScene();
 	    }
 
@@ -35,6 +30,7 @@ public class Main extends Application implements Serializable {
 	        LoginController.setMain(this);
 	        Scene scene = new Scene(root);
 	        primaryStage.setScene(scene);
+	        
 	        primaryStage.show();
 	    }
 	    public void showMainMenuScene() throws Exception {
@@ -45,22 +41,54 @@ public class Main extends Application implements Serializable {
 	        controller.setStage(primaryStage);
 	        Scene scene = new Scene(root);
 	        primaryStage.setScene(scene);
+	        primaryStage.setHeight(400);
+	        primaryStage.setWidth(600);
 	        primaryStage.show();
 	    }
 
 
 	    public void showPrePartitaScene() throws Exception {
-	    	InfoPartita.Preparazione();
-	        FXMLLoader loader = new FXMLLoader(getClass().getResource("Prepartita.fxml"));
+	        FXMLLoader loader = new FXMLLoader(getClass().getResource("PrePartita.fxml"));
 	        Parent root = loader.load();
 	        ControllerPrePartita controller = loader.getController();
 	        controller.setMain(this);
 	        controller.setStage(primaryStage);
 	        Scene scene = new Scene(root);
+	        primaryStage.setHeight(400);
+	        primaryStage.setWidth(600);
 	        primaryStage.setScene(scene);
 	        primaryStage.show();
 	    }
-
+	    public void showPreTorneoScene() throws Exception{
+	    	FXMLLoader loader = new FXMLLoader(getClass().getResource("PreparazioneTorneo.fxml"));
+		    Parent root = loader.load();
+	        PreTorneoController controller = loader.getController();
+	        controller.setMain(this);
+	        controller.setStage(primaryStage);
+	        Scene scene = new Scene(root);
+	        primaryStage.setHeight(800);
+	        primaryStage.setWidth(1280);
+	        primaryStage.setScene(scene);
+	        primaryStage.setFullScreen(true);
+	        primaryStage.show();
+    	
+	    	
+	    }
+	    public void showPreTorneo4Scene() throws Exception{
+	    	FXMLLoader loader = new FXMLLoader(getClass().getResource("PreTorneo4.fxml"));
+		    Parent root = loader.load();
+	        PreTorneo4Controller controller = loader.getController();
+	        controller.setMain(this);
+	        controller.setStage(primaryStage);
+	        Scene scene = new Scene(root);
+	        primaryStage.setHeight(800);
+	        primaryStage.setWidth(1280);
+	        primaryStage.setScene(scene);
+	        primaryStage.setFullScreen(true);
+	        primaryStage.show();
+    	
+	    	
+	    }
 	    public void showScenaGiocoScene() throws Exception {
 	        FXMLLoader loader = new FXMLLoader(getClass().getResource("ScenaGioco.fxml"));
 	        Parent root = loader.load();
@@ -70,9 +98,9 @@ public class Main extends Application implements Serializable {
 	        Scene scene = new Scene(root);
 	        
 	        primaryStage.setScene(scene);
-	        primaryStage.setHeight(720);
+	        primaryStage.setHeight(800);
 	        primaryStage.setWidth(1280);
-	        //primaryStage.setFullScreen(true);
+	        primaryStage.setFullScreen(true);
 	        primaryStage.show();
 	    }
 	    public void showFilmatoFinale() throws Exception{
@@ -82,10 +110,40 @@ public class Main extends Application implements Serializable {
 	        controller.setMain(this);
 	        controller.setStage(primaryStage);
 	        Scene scene = new Scene(root);
-	        primaryStage.setHeight(720);
+	        primaryStage.setHeight(800);
 	        primaryStage.setWidth(1280);
 	        primaryStage.setScene(scene);
-	       // primaryStage.setFullScreen(true);
+	        primaryStage.setFullScreen(true);
+	        primaryStage.show();
+    	
+	    	
+	    }
+	    public void showWinningScene() throws Exception{
+	    	FXMLLoader loader = new FXMLLoader(getClass().getResource("winning.fxml"));
+		    Parent root = loader.load();
+	        WinningController controller = loader.getController();
+	        controller.setMain(this);
+	        controller.setStage(primaryStage);
+	        Scene scene = new Scene(root);
+	        primaryStage.setHeight(800);
+	        primaryStage.setWidth(1280);
+	        primaryStage.setScene(scene);
+	        primaryStage.setFullScreen(true);
+	        primaryStage.show();
+    	
+	    	
+	    }
+	    public void showGameOverTorneoScene() throws Exception{
+	    	FXMLLoader loader = new FXMLLoader(getClass().getResource("GameOverTorneo.fxml"));
+		    Parent root = loader.load();
+	        GameOverTorneoController controller = loader.getController();
+	        controller.setMain(this);
+	        controller.setStage(primaryStage);
+	        Scene scene = new Scene(root);
+	        primaryStage.setHeight(800);
+	        primaryStage.setWidth(1280);
+	        primaryStage.setScene(scene);
+	        primaryStage.setFullScreen(true);
 	        primaryStage.show();
     	
 	    	
@@ -100,8 +158,7 @@ public class Main extends Application implements Serializable {
 	        primaryStage.setScene(scene);
 	        primaryStage.show();
 	    }
-
-	 
+	    
 }
 	
 
