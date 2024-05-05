@@ -3,6 +3,7 @@ package application;
 
 import javafx.event.ActionEvent;
 
+
 import javafx.scene.Scene;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -19,24 +20,29 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import javafx.scene.media.*;
 import javafx.scene.layout.*;
-public class GameController {
+public class GameController  implements Serializable{
 	
 	private Main main;
 	private Stage stage;
 	
+	//Per gestire il caricamento delle partite
+	public static int flag = 0;
+	private Salvataggi salvataggio = new Salvataggi(this);
+	
 	public String player1Name,player2Name;
-	private Mazzo mazzoGiocatore1,mazzoGiocatore2,mazzoCompleto,mazzoProvenienzaCartaSelezionata;
+	protected Mazzo mazzoGiocatore1,mazzoGiocatore2,mazzoCompleto,mazzoProvenienzaCartaSelezionata;
     private Imprevisti imprevisti;
     private Carta cartaSelezionata; //selezionata da utente serve per lo spostamento
     private ImageView cartaCliccata;
-    private int punteggioG1Tavolo1,punteggioG1Tavolo2,punteggioG1Tavolo3;
-    private int punteggioG2Tavolo1,punteggioG2Tavolo2,punteggioG2Tavolo3;
+    protected int punteggioG1Tavolo1,punteggioG1Tavolo2,punteggioG1Tavolo3;
+    protected int punteggioG2Tavolo1,punteggioG2Tavolo2,punteggioG2Tavolo3;
     private static int vittoriaSuTavoloG1,vittoriaSuTavoloG2;
 	private boolean turnoGiocatore1= true;  //Prima turno giocatore1: pesca poi gioca una carta poi turno giocatore2...
     private boolean tuttiTavoliPieni=false;
@@ -49,23 +55,11 @@ public class GameController {
 	@FXML
     private AnchorPane backgroundPane;
 	@FXML
-    private Label LabelNomePunteggioG1T1,LabelNomePunteggioG2T1;
+	private Label LabelNomePunteggioG1T1, LabelPunteggioG1T1, LabelNomePunteggioG1T2, LabelPunteggioG1T2, LabelNomePunteggioG1T3, 
+	LabelPunteggioG1T3, LabelNomePunteggioG2T1, LabelPunteggioG2T1, LabelNomePunteggioG2T2, LabelPunteggioG2T2, LabelNomePunteggioG2T3, 
+	LabelPunteggioG2T3, LabelIconaNomeG1, LabelIconaNomeG2, turnoLabel;
     @FXML
-    private Label LabelPunteggioG1T1,LabelPunteggioG2T1;
-    @FXML
-     private Label LabelNomePunteggioG1T2,LabelNomePunteggioG2T2;
-    @FXML
-    private Label LabelPunteggioG1T2,LabelPunteggioG2T2;
-    @FXML
-    private Label LabelNomePunteggioG1T3,LabelNomePunteggioG2T3;
-   @FXML
-    private Label LabelPunteggioG1T3,LabelPunteggioG2T3;
-    @FXML
-    private Label LabelIconaNomeG1,LabelIconaNomeG2;
-    @FXML
-    private Label turnoLabel;
-    @FXML
-    private ListView<Carta> listaCarteGiocatore1,listaCarteGiocatore2;
+    protected ListView<Carta> listaCarteGiocatore1,listaCarteGiocatore2;
     @FXML
     private ImageView Carta1G1,Carta2G1,Carta3G1,Carta4G1; //carte giocatore1
     @FXML
@@ -76,19 +70,18 @@ public class GameController {
     private List<ImageView> imageViewsTavolo1,imageViewsTavolo2,imageViewsTavolo3;
     @FXML
     private Button PescaGiocatore1,PescaGiocatore2,BottoneUscita;
- 
-  //tavoli da gioco
-    //tavolo1
+    //tavoli da gioco
+    //tavolo1---------------------------------------------------
     @FXML 
     private GridPane Tavolo1;
     @FXML
     private ImageView CartaT1p00,CartaT1p10,CartaT1p01,CartaT1p11; //carte tavolo1 
-    //tavolo2
+    //tavolo2-------------------------------------------------------
     @FXML 
     private GridPane Tavolo2;
     @FXML
     private ImageView CartaT2p00,CartaT2p10,CartaT2p01,CartaT2p11;
-    //tavolo3
+    //tavolo3-----------------------------------------------------
     @FXML
     private GridPane Tavolo3;
     @FXML
@@ -209,7 +202,6 @@ public class GameController {
         imageViewsGiocatore2.add(Carta2G2);
         imageViewsGiocatore2.add(Carta3G2);
         imageViewsGiocatore2.add(Carta4G2);
-        aggiornaInterfaccia();
         //tavolo1
         imageViewsTavolo1 = new ArrayList<>();
         imageViewsTavolo1.add(CartaT1p00); //Carta nel tavolo1 in posizione 0,0
@@ -228,7 +220,8 @@ public class GameController {
         imageViewsTavolo3.add(CartaT3p10);
         imageViewsTavolo3.add(CartaT3p01);
         imageViewsTavolo3.add(CartaT3p11);
-    
+        //Aggiorna Interfaccia
+        aggiornaInterfaccia();
     }
  // Metodo per visualizzare un'imprevisto
     public void visualizzaImprevisti() {
@@ -383,9 +376,15 @@ public class GameController {
     }
     //Bottone uscita dalla finestra
     public void handleBottoneUscita(ActionEvent event) {
-    	stage.close();
+    	salvataggio.salvaPartita();
+    	flag = 0;
+    	try {
+			main.showPrePartitaScene();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
-    
    //AGGIORNA INTERFACCIA
     public void aggiornaInterfaccia() {
         // Aggiorna le immagini del mazzo del giocatore 1

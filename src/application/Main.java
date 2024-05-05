@@ -17,9 +17,15 @@ public class Main extends Application {
 
 	    @Override
 	    public void start(Stage primaryStage) throws Exception {
+	    	File DatiGiocatori = new File("src/Data/DatiGiocatori.ser");
 	        this.primaryStage = primaryStage;
-	        InfoPartita infopartita = new InfoPartita();
-	        infopartita.Preparazione(); // Chiamata a Preparazione appena si crea InfoPartita
+	        if(DatiGiocatori.exists() && DatiGiocatori.canRead())
+	    		ClassificaController.CaricaNomi();
+	    	else
+	    		DatiGiocatori.createNewFile();
+	    	ClassificaController.CaricaNomi();
+	        this.primaryStage = primaryStage;
+	        primaryStage.setTitle("SPACCA");
 	        showLoginScene();
 	    }
 
@@ -30,7 +36,9 @@ public class Main extends Application {
 	        LoginController.setMain(this);
 	        Scene scene = new Scene(root);
 	        primaryStage.setScene(scene);
-	        
+	        primaryStage.setHeight(720);
+	        primaryStage.setWidth(1280);
+	        primaryStage.setResizable(false);
 	        primaryStage.show();
 	    }
 	    public void showMainMenuScene() throws Exception {

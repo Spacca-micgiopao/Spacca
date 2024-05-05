@@ -77,6 +77,7 @@ public class ControllerPrePartita implements Initializable{
 			}
 		}	
 	}
+	
 	//per tornare alla schermata del menu
 	public void BackToMenu(ActionEvent event) throws IOException {
 		try {

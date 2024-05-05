@@ -51,27 +51,11 @@ public class LoginController {
 				InfoPartita.Preparazione();
 			} catch (Exception e) {
 				System.out.println("errore nel caricamento MainMenu");
+				e.printStackTrace();
 			}
 			
 		}else
 			errori.setText("USERNAME O PASSWORD ERRATI");
 	}
-	
-	
-
-	//Tasto temporaneo per saltare direttamente al tabellone senza dover fare login
-	//ovviamente in questo modo nomi giocatori risultano null
-	public void switchtoTabellone(ActionEvent event) throws IOException {
-		try {
-			main.showScenaGiocoScene();
-		} catch (Exception e) {
-			System.out.println("errore nel caricamento scenaGioco");
-		}
-		
-
-	}
-	
-	
-
 }
 	
