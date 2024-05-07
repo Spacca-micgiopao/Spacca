@@ -10,16 +10,15 @@ public class botLogic {
         int index = random.nextInt(mazzo.getCarte().size());
         Carta cartaSelezionata = mazzo.getCarta(index);
 
-        // Controlla se il tavolo ha spazio prima di giocare la carta
+        // Controlla se il tavolo ha spazio prima di giocare 
         for (ImageView imageView : tavolo) {
             if (imageView.getImage() == null) {
-                // Se trova uno slot libero nel tavolo, gioca la carta e restituisce true
                 imageView.setImage(cartaSelezionata.getImmagine());
                 mazzo.rimuoviCarta(cartaSelezionata);
                 
                 return true;
             }
-        // Se il tavolo è pieno, non giocare la carta e restituisci false
+        
       
     } 
       return false;

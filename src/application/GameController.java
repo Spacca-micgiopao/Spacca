@@ -33,7 +33,7 @@ public class GameController {
 	public String player1Name;
 	public String player2Name;
 	
-	private boolean botLogic;
+	private boolean botgioco = true;
 	
 	private Mazzo mazzoGiocatore1;
     private Mazzo mazzoGiocatore2;
@@ -279,7 +279,6 @@ public class GameController {
 
                 // Salva i nomi dei file immagine
                 nomeImprevisto1 = new File(percorsoImprevisto1).getName();
-                System.out.println(nomeImprevisto1);
 
                 if ("raddoppia_verdi.jpg".equalsIgnoreCase(nomeImprevisto1)) {
                     tipoImprevisto1 = "raddoppia_verdi";
@@ -306,7 +305,6 @@ public class GameController {
                 } else {
                     tipoImprevisto1 = null; // null se non corrisponde a nessun'imprevisto riconosciuto
                 }
-                System.out.println(tipoImprevisto1 + " aaa ");
             } catch (IOException e) {
                 e.printStackTrace();
                
@@ -437,6 +435,18 @@ public class GameController {
     	
     	return true;
     }
+    //controlla se tavolo è pieno
+    public boolean tavoloIsFull(ArrayList<ImageView> tavolo) {
+        for (ImageView imageView : tavolo) {
+            if (imageView.getImage() == null) {
+                // Se almeno un'immagine nel tavolo è vuota, il tavolo non è pieno
+                return false;
+            }
+        }
+        // Se tutte le immagini nel tavolo sono piene, il tavolo è pieno
+        return true;
+    }
+
     //BOTTONI PESCA 
     //pesca una carta per il giocatore 1 
     public void handlePescaGiocatore1Action(ActionEvent event) {
@@ -553,13 +563,14 @@ public class GameController {
 	                return;
 	            }
 	        }
-	        passaTurno();
+	       passaTurno();
     	}
     	
 	        
     }
+    // giocatore 2 più bot
     public void handleClickCartaGiocatore2(MouseEvent event) {
-    	if(!turnoGiocatore1&& !botLogic) {
+    	if(!turnoGiocatore1&& !botgioco) {
 	        cartaCliccata = (ImageView) event.getSource();
 	        // Trova l'indice dell'ImageView cliccata
 	        int index = imageViewsGiocatore2.indexOf(cartaCliccata);
@@ -577,9 +588,45 @@ public class GameController {
 	            }
 	        }
 	        passaTurno();
+	      //modifiche bot
     	}else {
+    		botLogic bot = new botLogic();
+    		if(!tavoloIsFull((ArrayList<ImageView>) imageViewsTavolo1)){
+    			bot.giocaCarta(mazzoGiocatore2, (ArrayList<ImageView>) imageViewsTavolo1);
+    			aggiornaInterfaccia();
+    			passaTurno();
+    			aggiornaTurnoLabel();
+    			Carta cartaCasuale = mazzoCompleto.pescaCartaCasuale();
+    	    	if(cartaCasuale != null && mazzoGiocatore2.getNumeroCarte()<4 ) {
+    	    		mazzoGiocatore2.aggiungiCarta(cartaCasuale);
+    	    		aggiornaInterfaccia();
+    	    	}
+	    	    cartaSelezionata= cartaCasuale;
+    		}else if(!(tavoloIsFull((ArrayList<ImageView>) imageViewsTavolo2))){
+    			bot.giocaCarta(mazzoGiocatore2, (ArrayList<ImageView>) imageViewsTavolo2);
+    			aggiornaInterfaccia();	
+    			passaTurno();
+    			aggiornaTurnoLabel();
+    			Carta cartaCasuale2 = mazzoCompleto.pescaCartaCasuale();
+    	    	if(cartaCasuale2 != null && mazzoGiocatore2.getNumeroCarte()<4 ) {
+    	    		mazzoGiocatore2.aggiungiCarta(cartaCasuale2);
+    	    		aggiornaInterfaccia();
+    	    	}
+    	    	cartaSelezionata= cartaCasuale2;    
+    	    	}else {
+    			bot.giocaCarta(mazzoGiocatore2, (ArrayList<ImageView>) imageViewsTavolo3);
+    			aggiornaInterfaccia();
+    			passaTurno();
+    			aggiornaTurnoLabel();
+    			Carta cartaCasuale3 = mazzoCompleto.pescaCartaCasuale();
     		
-    		
+    	    	if(cartaCasuale3 != null && mazzoGiocatore2.getNumeroCarte()<4 ) {
+    	    		mazzoGiocatore2.aggiungiCarta(cartaCasuale3);
+    	    		aggiornaInterfaccia();
+    	    	}
+    	    	cartaSelezionata= cartaCasuale3;
+    	    	System.out.println("cara di bot ");
+    		}
     	}
         
     }
@@ -698,6 +745,11 @@ public class GameController {
         	annullatore=false;
         }
         aggiornaInterfaccia();
+      //modifiche bot
+        if(botgioco){
+        	handleClickCartaGiocatore2(event);
+        }
+       
         verificaFinePartita();
     }
     //CLICK SUL SECONDO TAVOLO
@@ -772,6 +824,10 @@ public class GameController {
         	annullatore=false;
         }
         aggiornaInterfaccia();
+      //modifiche bot
+        if(botgioco){
+        	handleClickCartaGiocatore2(event);
+        }
         verificaFinePartita();
     }
     //CLICK SUL TERZO TAVOLO
@@ -789,7 +845,6 @@ public class GameController {
             	int randomnum = rand.nextInt();       
                 int valore = (randomnum == 0) ? 0 : 8;
                 cartaSelezionata.setValore(valore);
-                System.out.println("Il valore di random è  " + cartaSelezionata.getValore());
             }
             if (index == -1) {
                 // ImageView non trovata, esci dalla funzione
@@ -845,6 +900,10 @@ public class GameController {
         	annullatore=false;
         }
         aggiornaInterfaccia();
+        //modifiche bot
+        if(botgioco){
+        	handleClickCartaGiocatore2(event);
+        }
         verificaFinePartita();
     }
    
