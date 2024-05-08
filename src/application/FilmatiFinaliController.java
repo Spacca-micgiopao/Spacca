@@ -23,6 +23,8 @@ public class FilmatiFinaliController {
 	private String player1Name;
 	private String player2Name;
 	private String vincitore;
+	public static int flag=0;
+	
 	@FXML
 	MediaView MediaViewFinale;
 	@FXML
@@ -43,13 +45,15 @@ public class FilmatiFinaliController {
 	
 	public void getPlayerName() {
 	    	
-	        this.player1Name = ControllerPrePartita.getPlayer1(); 
-	        this.player2Name = ControllerPrePartita.getPlayer2();
+	       	this.player1Name = GameController.player1Name;
+	        this.player2Name = GameController.player2Name;
 	}
 	    	
 	public void initialize() {
+		
 		getVittoriaSuTavolo(); 
 		getPlayerName();
+		
 		//se pareggio
 		 if(vittoriaSuTavoloG1 ==  vittoriaSuTavoloG2) {
 		        String videoPathPareggio = "src/AnimazioniVincita/AnimazionePareggio.mp4";

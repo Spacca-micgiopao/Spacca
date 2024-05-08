@@ -104,7 +104,15 @@ public class Mazzo implements Serializable{
     public void mescolaMazzo() {
         Collections.shuffle(carte);
     }
-    
+    public void caricaCarteIniziali(int numeroCarte, Mazzo mazzoCompleto) {
+    	for(int i=0;i<3;i++) {
+    		Carta cartaCasuale = mazzoCompleto.pescaCartaCasuale();
+	    	if (cartaCasuale != null) {
+	             aggiungiCarta(cartaCasuale);
+	         }
+    	}
+    	
+    }
     public int getNumeroCarte() {
         return carte.size();
     }

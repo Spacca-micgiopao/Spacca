@@ -36,8 +36,10 @@ public class GameController  implements Serializable{
 	public static int flag = 0;
 	private Salvataggi salvataggio = new Salvataggi(this);
 	
-	public String player1Name,player2Name;
+	public static String player1Name;
+	public static String player2Name;
 	protected Mazzo mazzoGiocatore1,mazzoGiocatore2,mazzoCompleto,mazzoProvenienzaCartaSelezionata;
+	protected String[] carteTavolo1,carteTavolo2,carteTavolo3; //servono per tenere traccia delle carte nei tavoli (nel formato "colore_valore")
     private Imprevisti imprevisti;
     private Carta cartaSelezionata; //selezionata da utente serve per lo spostamento
     private ImageView cartaCliccata;
@@ -100,15 +102,15 @@ public class GameController  implements Serializable{
 	  //nomi dei giocatori
     public void setPlayersNames() {
     	if(Torneo == false) {
-	        this.player1Name = ControllerPrePartita.getPlayer1(); 
-	        this.player2Name = ControllerPrePartita.getPlayer2();
+	        player1Name = ControllerPrePartita.getPlayer1(); 
+	        player2Name = ControllerPrePartita.getPlayer2();
     	}
     	if(Torneo==true) {
     		String partita = partite.get(numeroPartita);
     		String[] giocatori = partita.split(" vs ");
 
-    		this.player1Name = giocatori[0];
-    		this.player2Name= giocatori[1];
+    		player1Name = giocatori[0];
+    		player2Name= giocatori[1];
     	}
       
     }
@@ -127,7 +129,7 @@ public class GameController  implements Serializable{
     public static  int getVittoriaSuTavoloG2() {
     	return vittoriaSuTavoloG2;
     }
-    
+  
     //SFONDO E MUSICA
     public void insertSfondo() {
     	try {
@@ -160,55 +162,8 @@ public class GameController  implements Serializable{
     //INIZIALIZZAZIONE se il flag = 1 la partita è stata caricata e inizierà in modo diverso da una partita iniziata da 0
     public void initialize() {
     	insertSfondo();	
-    	//insertMusic();
-    	
-    	if(flag == 0) {
-    	getTorneo();
-    	getPartite();
-    	setPlayersNames();
-    	}
-    	
-    	if(flag == 1) {
-    		salvataggio.caricaPartita(this);
-    		//Come per i nomi vanno aggiornati i punteggi nel caso siano stati caricati
-    		LabelPunteggioG1T1.setText(this.punteggioG1Tavolo1+"");
-    		LabelPunteggioG1T2.setText(this.punteggioG1Tavolo2+"");
-    		LabelPunteggioG1T3.setText(this.punteggioG1Tavolo3+"");
-    		LabelPunteggioG2T1.setText(this.punteggioG2Tavolo1+"");
-    		LabelPunteggioG2T2.setText(this.punteggioG2Tavolo2+"");
-    		LabelPunteggioG2T3.setText(this.punteggioG2Tavolo3+"");
-    		Salvataggi.associazioneImmaginiAMazzo(this.mazzoGiocatore1);
-    		Salvataggi.associazioneImmaginiAMazzo(this.mazzoGiocatore2);
-    		
-    	}
-    	
-    	//inizializzazione Label
-    	LabelIconaNomeG1.setText(this.player1Name);
-    	LabelIconaNomeG2.setText(this.player2Name);
-    	turnoLabel.setText("Turno di "+ " "+ this.player1Name+"!");
-    	turnoLabel.setStyle("-fx-text-fill: black;");
-    	LabelNomePunteggioG1T1.setText(this.player1Name);
-    	LabelNomePunteggioG2T1.setText(this.player2Name);
-    	LabelNomePunteggioG1T2.setText(this.player1Name);
-    	LabelNomePunteggioG2T2.setText(this.player2Name);
-    	LabelNomePunteggioG1T3.setText(this.player1Name);
-    	LabelNomePunteggioG2T3.setText(this.player2Name);
-    	
-    	//PREPARAZIONE GIOCO
-    	 imprevisti = new Imprevisti();
-    	 visualizzaImprevisti();
-    	 
-    	//mazzo con tutte le carte disponibili
-    	mazzoCompleto = new Mazzo();
-    	mazzoCompleto.CreaMazzoCompleto();
-       // System.out.println("numero carte nel mazzo iniziale completo"+mazzoCompleto.getNumeroCarte());
-    	
-    	if(flag == 0) {
-    	mazzoGiocatore1 = new Mazzo();
-    	mazzoGiocatore2 = new Mazzo();
-        caricaCarteIniziali();
-    	}
-        //per le ImageView: creazione di una lista contenente tutte le ImageView per facilitare 
+    	insertMusic();
+    	//per le ImageView: creazione di una lista contenente tutte le ImageView per facilitare 
         //l'aggiunta delle immagini in aggiorna interfaccia
         //giocatore1
         imageViewsGiocatore1 = new ArrayList<>();
@@ -240,7 +195,57 @@ public class GameController  implements Serializable{
         imageViewsTavolo3.add(CartaT3p10);
         imageViewsTavolo3.add(CartaT3p01);
         imageViewsTavolo3.add(CartaT3p11);
-        //Aggiorna Interfaccia
+    	if(flag == 0) {
+	    	getTorneo();
+	    	getPartite();
+	    	setPlayersNames();
+    	}
+    	
+    	if(flag == 1) {
+    		salvataggio.caricaPartita(this);
+    		//Come per i nomi vanno aggiornati i punteggi nel caso siano stati caricati
+    		LabelPunteggioG1T1.setText(this.punteggioG1Tavolo1+"");
+    		LabelPunteggioG1T2.setText(this.punteggioG1Tavolo2+"");
+    		LabelPunteggioG1T3.setText(this.punteggioG1Tavolo3+"");
+    		LabelPunteggioG2T1.setText(this.punteggioG2Tavolo1+"");
+    		LabelPunteggioG2T2.setText(this.punteggioG2Tavolo2+"");
+    		LabelPunteggioG2T3.setText(this.punteggioG2Tavolo3+"");
+    		//caricamento anche delle immagini
+    		Salvataggi.associazioneImmaginiAMazzo(this.mazzoGiocatore1);
+    		Salvataggi.associazioneImmaginiAMazzo(this.mazzoGiocatore2);
+    		Salvataggi.associazioneImmaginiATavolo(this.carteTavolo1,this.imageViewsTavolo1);
+    		Salvataggi.associazioneImmaginiATavolo(this.carteTavolo2,this.imageViewsTavolo2);
+    		Salvataggi.associazioneImmaginiATavolo(this.carteTavolo3,this.imageViewsTavolo3);
+    	}
+    	
+    	//inizializzazione Label
+    	LabelIconaNomeG1.setText(player1Name);
+    	LabelIconaNomeG2.setText(player2Name);
+    	turnoLabel.setText("Turno di "+ " "+ player1Name+"!");
+    	turnoLabel.setStyle("-fx-text-fill: black;");
+    	LabelNomePunteggioG1T1.setText(player1Name);
+    	LabelNomePunteggioG2T1.setText(player2Name);
+    	LabelNomePunteggioG1T2.setText(player1Name);
+    	LabelNomePunteggioG2T2.setText(player2Name);
+    	LabelNomePunteggioG1T3.setText(player1Name);
+    	LabelNomePunteggioG2T3.setText(player2Name);
+    	
+    	//PREPARAZIONE GIOCO
+    	 imprevisti = new Imprevisti();
+    	 visualizzaImprevisti();
+    	 
+    	//mazzo con tutte le carte disponibili
+    	mazzoCompleto = new Mazzo();
+    	mazzoCompleto.CreaMazzoCompleto();
+       
+    	if(flag == 0) {
+    	mazzoGiocatore1 = new Mazzo();
+    	mazzoGiocatore2 = new Mazzo();
+    	carteTavolo1 = new String[4]; carteTavolo2 = new String[4]; carteTavolo3= new String[4];
+        mazzoGiocatore1.caricaCarteIniziali(3,mazzoCompleto); //carica tre carte iniziali
+        mazzoGiocatore2.caricaCarteIniziali(3, mazzoCompleto);
+    	}
+        
         aggiornaInterfaccia();
     }
  // Metodo per visualizzare un'imprevisto
@@ -253,30 +258,13 @@ public class GameController  implements Serializable{
             System.err.println("Errore durante il caricamento dell'immagine dell'imprevisto: " + e.getMessage());
         }
     }
-
-    public void caricaCarteIniziali() {
-    	//carica 3 carte nel mazzo di ogni giocatore
-    	for(int i=0;i<3;i++) {
-    		Carta cartaCasuale = mazzoCompleto.pescaCartaCasuale();
-	    	if (cartaCasuale != null) {
-	             mazzoGiocatore1.aggiungiCarta(cartaCasuale);
-	         }
-    	}
-    	for(int i=0;i<3;i++) {
-    		Carta cartaCasuale = mazzoCompleto.pescaCartaCasuale();
-	    	if (cartaCasuale != null) {
-	             mazzoGiocatore2.aggiungiCarta(cartaCasuale);
-	         }
-    	}
-    }
-   
     private void aggiornaTurnoLabel() {
  
         if (turnoGiocatore1) {
-            turnoLabel.setText("TURNO DI "+ " "+ this.player1Name);
+            turnoLabel.setText("TURNO DI "+ " "+ player1Name);
             turnoLabel.setStyle("-fx-text-fill: black;");
         } else {
-            turnoLabel.setText("TURNO DI "+ " "+ this.player2Name);
+            turnoLabel.setText("TURNO DI "+ " "+ player2Name);
             turnoLabel.setStyle("-fx-text-fill: blue;");
         }
     }
@@ -396,6 +384,7 @@ public class GameController  implements Serializable{
     }
     //Bottone uscita dalla finestra
     public void handleBottoneUscita(ActionEvent event) {
+    	player.stop();
     	salvataggio.salvaPartita();
     	flag = 0;
     	try {
@@ -508,12 +497,17 @@ public class GameController  implements Serializable{
         if (cartaSelezionata != null) {
             // Verifica che l'indice dell'ImageView sia valido
             int index = -1;
-            if (tavoloNumero == 1) {
+            int valoreCartaSelezionata = cartaSelezionata.getValore();
+            String colore = cartaSelezionata.getColore();
+             if (tavoloNumero == 1) {
                 index = imageViewsTavolo1.indexOf(posizioneTavolo);
+                carteTavolo1[index]= colore+"_"+valoreCartaSelezionata;
             } else if (tavoloNumero == 2) {
                 index = imageViewsTavolo2.indexOf(posizioneTavolo);
+                carteTavolo2[index]= colore+"_"+valoreCartaSelezionata;
             } else if (tavoloNumero == 3) {
                 index = imageViewsTavolo3.indexOf(posizioneTavolo);
+                carteTavolo3[index]= colore+"_"+valoreCartaSelezionata;
             }
             if (index == -1) {
                 // ImageView non trovata
@@ -524,7 +518,7 @@ public class GameController  implements Serializable{
                 // La posizione è già occupata
                 return;
             }
-            int valoreCartaSelezionata = cartaSelezionata.getValore();
+            
             // Applica l'effetto dell'imprevisto sulla carta selezionata
             cartaSelezionata.setValore(valoreCartaSelezionata);
             imprevisti.applicaEffettoCarta(cartaSelezionata);

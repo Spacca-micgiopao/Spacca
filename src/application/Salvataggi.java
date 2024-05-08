@@ -1,6 +1,7 @@
 package application;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 import javafx.embed.swing.SwingFXUtils;
@@ -47,6 +48,11 @@ public class Salvataggi implements Serializable{
 			//Mazzi
 			out.writeObject(gamecontroller.mazzoGiocatore1);
 			out.writeObject(gamecontroller.mazzoGiocatore2); 
+			//Carte nei tavoli (salvate nel formato "colore_valore")
+			out.writeObject(gamecontroller.carteTavolo1);
+			out.writeObject(gamecontroller.carteTavolo2);
+			out.writeObject(gamecontroller.carteTavolo3);
+			
 			out.close(); 
 			
 
@@ -72,6 +78,9 @@ public class Salvataggi implements Serializable{
 			gc.listaCarteGiocatore2 = (ListView<Carta>) in.readObject();
 			gc.mazzoGiocatore1 = (Mazzo) in.readObject();
 			gc.mazzoGiocatore2 = (Mazzo) in.readObject();
+			gc.carteTavolo1 =(String[]) in.readObject();
+			gc.carteTavolo2 =(String[]) in.readObject();
+			gc.carteTavolo3 =(String[]) in.readObject();
 			in.close();
 			filein.close();
 		} catch (IOException  | ClassNotFoundException e) {
@@ -93,6 +102,16 @@ public class Salvataggi implements Serializable{
 			}
 		}
 	}
+	public static void associazioneImmaginiATavolo(String[] carteTavolo1,List<ImageView> imageViewsTavolo1) {
+		for(int i=0;i<carteTavolo1.length;i++) {
+			if(carteTavolo1[i]!=null) {
+				String percorsoImmagine = "src\\immagini\\"+carteTavolo1[i]+".jpg";
+				Image image = new Image("file:" + percorsoImmagine);
+				imageViewsTavolo1.get(i).setImage(image);
+			}
+		}
+	}
+		
 	//Elimina il file
 	public void Elimina() {
 		file.delete();
