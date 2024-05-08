@@ -177,6 +177,31 @@ public class GameController  implements Serializable{
     		LabelPunteggioG2T1.setText(this.punteggioG2Tavolo1+"");
     		LabelPunteggioG2T2.setText(this.punteggioG2Tavolo2+"");
     		LabelPunteggioG2T3.setText(this.punteggioG2Tavolo3+"");
+    		for(int i=0;i<mazzoGiocatore1.getNumeroCarte();i++) {
+    			if(this.mazzoGiocatore1!=null && this.mazzoGiocatore1.getCarta(i)!= null) {
+					Carta CG1 = this.mazzoGiocatore1.getCarta(i);
+					if(CG1 != null) {
+						String colore = CG1.getColore();
+						int valore = CG1.getValore();
+						String percorsoImmagine=  "src\\immagini\\" + colore + "_" + valore + ".jpg";
+						Image image = new Image("file:" + percorsoImmagine);
+						CG1.setImage(image);
+					}
+						
+				}
+    		}
+    		for(int i=0;i<mazzoGiocatore2.getNumeroCarte();i++) {
+				if(this.mazzoGiocatore2 != null && this.mazzoGiocatore2.getCarta(i)!=null) {
+					Carta CG2 = this.mazzoGiocatore2.getCarta(i);
+					if(CG2 != null) {
+						String colore2 = CG2.getColore();
+						int valore2 = CG2.getValore();
+						String percorsoImmagine2=  "src\\immagini\\" + colore2 + "_" + valore2 + ".jpg";
+						Image image2 = new Image("file:" + percorsoImmagine2);
+						CG2.setImage(image2);
+					}
+				}
+    		}
     	}
     	
     	//inizializzazione Label

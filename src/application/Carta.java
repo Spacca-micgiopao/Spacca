@@ -52,5 +52,10 @@ public class Carta implements Serializable{
         return "Valore: " + valore + ", Colore: " + colore;
     }
 
+	public void setImage(Image image) {
+		this.immagine = image;
+		
+	}
+
 }
 
