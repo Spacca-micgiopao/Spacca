@@ -48,6 +48,8 @@ public class Salvataggi implements Serializable{
 			out.writeObject(gamecontroller.mazzoGiocatore1);
 			out.writeObject(gamecontroller.mazzoGiocatore2); 
 			out.close(); 
+			
+
 		} catch
 		(IOException e) { e.printStackTrace(); } 
 	}
@@ -76,7 +78,21 @@ public class Salvataggi implements Serializable{
 			e.printStackTrace();
 		}
 	}
-	
+	public static void associazioneImmaginiAMazzo(Mazzo mazzo) {
+		for(int i=0;i<mazzo.getNumeroCarte();i++) {
+			if(mazzo !=null && mazzo.getCarta(i)!= null) {
+				Carta CG1 = mazzo.getCarta(i);
+				if(CG1 != null) {
+					String colore = CG1.getColore();
+					int valore = CG1.getValore();
+					String percorsoImmagine=  "src\\immagini\\" + colore + "_" + valore + ".jpg";
+					Image image = new Image("file:" + percorsoImmagine);
+					CG1.setImage(image);
+				}
+					
+			}
+		}
+	}
 	//Elimina il file
 	public void Elimina() {
 		file.delete();
