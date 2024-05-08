@@ -3,10 +3,7 @@ package application;
 
 import javafx.event.ActionEvent;
 
-
-import javafx.scene.Scene;
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -23,12 +20,11 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-
 import javafx.scene.media.*;
-import javafx.scene.layout.*;
+
 public class GameController  implements Serializable{
-	
+
+	private static final long serialVersionUID = -1677358737387671355L;
 	private Main main;
 	private Stage stage;
 	
@@ -46,7 +42,7 @@ public class GameController  implements Serializable{
     private static int vittoriaSuTavoloG1,vittoriaSuTavoloG2;
 	private boolean turnoGiocatore1= true;  //Prima turno giocatore1: pesca poi gioca una carta poi turno giocatore2...
     private boolean tuttiTavoliPieni=false;
-    private MediaPlayer player;
+    //private MediaPlayer player;
     //PER IL TORNEO
 	private boolean Torneo;
 	private static int numeroPartita;
@@ -148,10 +144,10 @@ public class GameController  implements Serializable{
     public void insertMusic() {
         	try {
     			 Media sound = new Media(new File("src/Musica/MusicaSottofondoGioco1.mp3").toURI().toString());
-    			   player = new MediaPlayer(sound);
+    			   //player = new MediaPlayer(sound);
     			   //continua sempre a suonare
-    			   player.setCycleCount(MediaPlayer.INDEFINITE);
-    			   player.play();
+    			   //player.setCycleCount(MediaPlayer.INDEFINITE);
+    			   //player.play();
     		}catch(Exception e ) {
     			System.out.println("errore riproduzione");
     		}
@@ -315,14 +311,17 @@ public class GameController  implements Serializable{
     			}
     			
     		}
-    		player.stop();
+    		//player.stop();
     		numeroPartita++; //per il torneo
     		if(Torneo==false) {
 	    		//Calcolo punteggio finale
 	    		try {
-	    			main.showFilmatoFinale();
+	    			if(Salvataggi.file.exists())
+	    				salvataggio.Elimina();
+	    			main.showWinningScene();
 	    		}catch(Exception e) {
 	    			System.out.println("errore caricamento filmato finale");
+	    			e.printStackTrace();
 	    		}
     		//se siamo dentro  torneo
 	    	}else {
@@ -339,6 +338,7 @@ public class GameController  implements Serializable{
 		    			}
 		    			catch(Exception e ) {
 		    				System.out.println("errore nel caricamento winningscene");
+		    				e.printStackTrace();
 		    			}
 	    		
 		    		}

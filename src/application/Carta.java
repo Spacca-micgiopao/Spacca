@@ -6,18 +6,26 @@ import java.util.Objects;
 import javafx.scene.image.Image;
 
 public class Carta implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -57753982040760439L;
 	private int valore;
     private String colore;
     private transient Image immagine;
+    private String imagePath;  // Percorso dell'immagine serializzabile
 
     public Carta(int valore, String colore,Image immagine) {
         this.valore = valore;
         this.colore = colore;
         this.immagine = immagine;
-       
     }
     
     public Image getImmagine() {
+        if (immagine == null && imagePath != null) {
+            immagine = new Image(imagePath);
+        }
         return immagine;
     }
     

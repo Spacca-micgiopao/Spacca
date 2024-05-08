@@ -12,6 +12,8 @@ import java.io.Serializable;
 
 
 public class Mazzo implements Serializable{
+
+	private static final long serialVersionUID = -7386623470253187863L;
 	protected List<Carta> carte;
 
 	public Mazzo() {
@@ -69,7 +71,8 @@ public class Mazzo implements Serializable{
                                 aggiungiCarta(new Carta(valore, colore, immagine));
                             }
                         }
-                    } catch (Exception e) {
+                    }
+                    catch (Exception e) {
                         System.out.println("errore");
                     }
                 }

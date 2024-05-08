@@ -13,7 +13,7 @@ public class Giocatori implements Serializable{
 	}
 	
 	public String toString() {
-		return Nome;
+		return Nome+"/"+Vittorie;
 	}
 	
 	public String getNome() {

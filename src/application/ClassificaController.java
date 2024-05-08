@@ -21,7 +21,6 @@ public class ClassificaController implements Initializable,Serializable{
 	private Main main;	
 	protected ArrayList<String> Classifica = new ArrayList<String>();
 	public static ArrayList<Giocatori> LSGiocatori = new ArrayList<Giocatori>();
-	protected ArrayList<String> id = new ArrayList<String>();
 	protected static File DatiGiocatori = new File("src/Data/DatiGiocatori.ser");
 	
 	public void setMain(Main main) {
