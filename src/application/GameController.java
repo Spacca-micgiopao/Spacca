@@ -41,6 +41,7 @@ public class GameController {
     
     private Carta cartaSelezionata; //selezionata da utente serve per lo spostamento
     private ImageView cartaCliccata;
+    private Score score;
     private Mazzo mazzoProvenienzaCartaSelezionata;
     private int punteggioG1Tavolo1;
     private int punteggioG1Tavolo2;
@@ -544,6 +545,7 @@ public class GameController {
     
     //GESTORE DEI CLICK SULLE CARTE DEI MAZZI DEI DUE GIOCATORI
     public void handleClickCartaGiocatore1(MouseEvent event) {
+    	
     	if(turnoGiocatore1) {
 	        cartaCliccata = (ImageView) event.getSource();
 	        
@@ -600,8 +602,11 @@ public class GameController {
     	    	if(cartaCasuale != null && mazzoGiocatore2.getNumeroCarte()<4 ) {
     	    		mazzoGiocatore2.aggiungiCarta(cartaCasuale);
     	    		aggiornaInterfaccia();
+    	    		cartaSelezionata= cartaCasuale;
+    	    		punteggioG2Tavolo1 += cartaSelezionata.getValore();
     	    	}
-	    	    cartaSelezionata= cartaCasuale;
+    	    	
+	    	   
     		}else if(!(tavoloIsFull((ArrayList<ImageView>) imageViewsTavolo2))){
     			bot.giocaCarta(mazzoGiocatore2, (ArrayList<ImageView>) imageViewsTavolo2);
     			aggiornaInterfaccia();	
@@ -611,9 +616,12 @@ public class GameController {
     	    	if(cartaCasuale2 != null && mazzoGiocatore2.getNumeroCarte()<4 ) {
     	    		mazzoGiocatore2.aggiungiCarta(cartaCasuale2);
     	    		aggiornaInterfaccia();
+    	    		cartaSelezionata= cartaCasuale2;
+    	    		punteggioG2Tavolo2 += cartaSelezionata.getValore();
     	    	}
-    	    	cartaSelezionata= cartaCasuale2;    
-    	    	}else {
+    	    	
+
+    		}else {
     			bot.giocaCarta(mazzoGiocatore2, (ArrayList<ImageView>) imageViewsTavolo3);
     			aggiornaInterfaccia();
     			passaTurno();
@@ -623,11 +631,12 @@ public class GameController {
     	    	if(cartaCasuale3 != null && mazzoGiocatore2.getNumeroCarte()<4 ) {
     	    		mazzoGiocatore2.aggiungiCarta(cartaCasuale3);
     	    		aggiornaInterfaccia();
+    	    		cartaSelezionata= cartaCasuale3;
+    	    		punteggioG2Tavolo3 += cartaSelezionata.getValore();
     	    	}
-    	    	cartaSelezionata= cartaCasuale3;
-    	    	System.out.println("cara di bot ");
+	    		
     		}
-    	}
+    		}
         
     }
     private int gestisciEffetto(String tipoImprevisto, Carta cartaSelezionata) {
@@ -749,7 +758,8 @@ public class GameController {
         if(botgioco){
         	handleClickCartaGiocatore2(event);
         }
-       
+        
+        aggiornaInterfaccia();
         verificaFinePartita();
     }
     //CLICK SUL SECONDO TAVOLO
@@ -828,6 +838,8 @@ public class GameController {
         if(botgioco){
         	handleClickCartaGiocatore2(event);
         }
+        
+        aggiornaInterfaccia();
         verificaFinePartita();
     }
     //CLICK SUL TERZO TAVOLO
@@ -890,6 +902,7 @@ public class GameController {
             		break;
             	}
             }
+           
             // Resetta la carta selezionata
             cartaSelezionata = null;
            
@@ -904,6 +917,8 @@ public class GameController {
         if(botgioco){
         	handleClickCartaGiocatore2(event);
         }
+        
+        aggiornaInterfaccia();
         verificaFinePartita();
     }
    
