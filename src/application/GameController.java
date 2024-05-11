@@ -603,6 +603,9 @@ public class GameController {
     	    		mazzoGiocatore2.aggiungiCarta(cartaCasuale);
     	    		aggiornaInterfaccia();
     	    		cartaSelezionata= cartaCasuale;
+    	    		int valoreCartaSelezionata = cartaSelezionata.getValore();
+    	            valoreCartaSelezionata= gestisciEffetto(tipoImprevisto1, cartaSelezionata);
+    	            cartaSelezionata.setValore(valoreCartaSelezionata);
     	    		punteggioG2Tavolo1 += cartaSelezionata.getValore();
     	    	}
     	    	
@@ -617,6 +620,9 @@ public class GameController {
     	    		mazzoGiocatore2.aggiungiCarta(cartaCasuale2);
     	    		aggiornaInterfaccia();
     	    		cartaSelezionata= cartaCasuale2;
+    	    		int valoreCartaSelezionata = cartaSelezionata.getValore();
+    	            valoreCartaSelezionata= gestisciEffetto(tipoImprevisto1, cartaSelezionata);
+    	            cartaSelezionata.setValore(valoreCartaSelezionata);
     	    		punteggioG2Tavolo2 += cartaSelezionata.getValore();
     	    	}
     	    	
@@ -632,6 +638,9 @@ public class GameController {
     	    		mazzoGiocatore2.aggiungiCarta(cartaCasuale3);
     	    		aggiornaInterfaccia();
     	    		cartaSelezionata= cartaCasuale3;
+    	    		int valoreCartaSelezionata = cartaSelezionata.getValore();
+    	            valoreCartaSelezionata= gestisciEffetto(tipoImprevisto1, cartaSelezionata);
+    	            cartaSelezionata.setValore(valoreCartaSelezionata);
     	    		punteggioG2Tavolo3 += cartaSelezionata.getValore();
     	    	}
 	    		
