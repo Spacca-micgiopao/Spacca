@@ -40,7 +40,7 @@ public class GameController  implements Serializable{
 	public static String player2Name;
 	protected Mazzo mazzoGiocatore1,mazzoGiocatore2,mazzoCompleto,mazzoProvenienzaCartaSelezionata;
 	protected String[] carteTavolo1,carteTavolo2,carteTavolo3; //servono per tenere traccia delle carte nei tavoli (nel formato "colore_valore")
-    private Imprevisti imprevisti;
+    public Imprevisti imprevisti = new Imprevisti(this);
     private Carta cartaSelezionata; //selezionata da utente serve per lo spostamento
     private ImageView cartaCliccata;
     protected int punteggioG1Tavolo1,punteggioG1Tavolo2,punteggioG1Tavolo3;
@@ -58,7 +58,7 @@ public class GameController  implements Serializable{
     private AnchorPane backgroundPane;
 	@FXML
 	private Label LabelPunteggioG1T1, LabelPunteggioG1T2,LabelPunteggioG1T3,LabelPunteggioG2T1,LabelPunteggioG2T2,
-	LabelPunteggioG2T3, LabelIconaNomeG1, LabelIconaNomeG2, turnoLabel;
+	LabelPunteggioG2T3, LabelIconaNomeG1, LabelIconaNomeG2, turnoLabel,imprevistiLabel;
     @FXML
     protected ListView<Carta> listaCarteGiocatore1,listaCarteGiocatore2;
     @FXML
@@ -87,9 +87,6 @@ public class GameController  implements Serializable{
     private GridPane Tavolo3;
     @FXML
     private ImageView CartaT3p00,CartaT3p10,CartaT3p01,CartaT3p11;
-    @FXML
-    private ImageView imprevisto1;
-    
     @FXML
     private Pane CampoBasso,CampoAlto;
     
@@ -210,9 +207,6 @@ public class GameController  implements Serializable{
     	//inizializzazione Label
     	turnoLabel.setText("Turno di "+ " "+ player1Name+"!");
     	turnoLabel.setStyle("-fx-text-fill: black;");
-    	
-    	//PREPARAZIONE GIOCO
-    	 imprevisti = new Imprevisti();
     	 visualizzaImprevisti();
     	 
     	//mazzo con tutte le carte disponibili
@@ -230,14 +224,10 @@ public class GameController  implements Serializable{
     }
  // Metodo per visualizzare un'imprevisto
     public void visualizzaImprevisti() {
-        try {
-            imprevisti.caricaImprevistoCasuale();
-            Image immagineImprevisto = imprevisti.caricaImmagineImprevisto();
-            imprevisto1.setImage(immagineImprevisto);
-        } catch (IOException e) {
-            System.err.println("Errore durante il caricamento dell'immagine dell'imprevisto: " + e.getMessage());
-        }
+    	imprevisti.caricaImprevistoCasuale();
+        imprevistiLabel.setText(imprevisti.scelto());
     }
+    
     private void aggiornaTurnoLabel() {
  
         if (turnoGiocatore1) {
@@ -250,8 +240,8 @@ public class GameController  implements Serializable{
     }
     public void passaTurno() {
     	turnoGiocatore1= !turnoGiocatore1;
-    	
     }
+    
     //FINE PARTITA con conteggio punti
     public void verificaFinePartita(){
     	tuttiTavoliPieni = verificaTuttiTavoliSonoPieni();
@@ -346,6 +336,7 @@ public class GameController  implements Serializable{
 	    	if(cartaCasuale != null &&  mazzoGiocatore1.getNumeroCarte()<4) {
 	    		mazzoGiocatore1.aggiungiCarta(cartaCasuale);
 	    		aggiornaInterfaccia();
+	    		visualizzaImprevisti();
 	    	}
     	}
 	
@@ -357,6 +348,7 @@ public class GameController  implements Serializable{
 	    	if(cartaCasuale != null && mazzoGiocatore2.getNumeroCarte()<4 ) {
 	    		mazzoGiocatore2.aggiungiCarta(cartaCasuale);
 	    		aggiornaInterfaccia();
+	    		visualizzaImprevisti();
 	    	}
 	    		
     	}
@@ -486,7 +478,7 @@ public class GameController  implements Serializable{
     }
  // giocatore 2 più bot
     public void handleClickCartaGiocatore2(MouseEvent event) {
-    	if(!turnoGiocatore1&& !botgioco) {
+    	if(!turnoGiocatore1) {
 	        cartaCliccata = (ImageView) event.getSource();
 	        // Trova l'indice dell'ImageView cliccata
 	        int index = imageViewsGiocatore2.indexOf(cartaCliccata);
@@ -503,59 +495,10 @@ public class GameController  implements Serializable{
 	                return;
 	            }
 	        }
+    	}
 	        passaTurno();
-	      //modifiche bot
-    	}else {
-    		botLogic bot = new botLogic();
-    		if(!tavoloIsFull((ArrayList<ImageView>) imageViewsTavolo1)){
-    			bot.giocaCarta(mazzoGiocatore2, (ArrayList<ImageView>) imageViewsTavolo1);
-    			aggiornaInterfaccia();
-    			passaTurno();
-    			aggiornaTurnoLabel();
-    			Carta cartaCasuale = mazzoCompleto.pescaCartaCasuale();
-    	    	if(cartaCasuale != null && mazzoGiocatore2.getNumeroCarte()<4 ) {
-    	    		mazzoGiocatore2.aggiungiCarta(cartaCasuale);
-    	    		aggiornaInterfaccia();
-    	    		cartaSelezionata= cartaCasuale;
-    	            imprevisti.applicaEffettoCarta(cartaSelezionata);
-    	    		punteggioG2Tavolo1 += cartaSelezionata.getValore();
-    	    	}
-    	    	
-	    	   
-    		}else if(!(tavoloIsFull((ArrayList<ImageView>) imageViewsTavolo2))){
-    			bot.giocaCarta(mazzoGiocatore2, (ArrayList<ImageView>) imageViewsTavolo2);
-    			aggiornaInterfaccia();	
-    			passaTurno();
-    			aggiornaTurnoLabel();
-    			Carta cartaCasuale2 = mazzoCompleto.pescaCartaCasuale();
-    	    	if(cartaCasuale2 != null && mazzoGiocatore2.getNumeroCarte()<4 ) {
-    	    		mazzoGiocatore2.aggiungiCarta(cartaCasuale2);
-    	    		aggiornaInterfaccia();
-    	    		cartaSelezionata= cartaCasuale2;
-    	    		imprevisti.applicaEffettoCarta(cartaSelezionata);
-    	    		punteggioG2Tavolo2 += cartaSelezionata.getValore();
-    	    	}
-    	    	
-
-    		}else {
-    			bot.giocaCarta(mazzoGiocatore2, (ArrayList<ImageView>) imageViewsTavolo3);
-    			aggiornaInterfaccia();
-    			passaTurno();
-    			aggiornaTurnoLabel();
-    			Carta cartaCasuale3 = mazzoCompleto.pescaCartaCasuale();
-    		
-    	    	if(cartaCasuale3 != null && mazzoGiocatore2.getNumeroCarte()<4 ) {
-    	    		mazzoGiocatore2.aggiungiCarta(cartaCasuale3);
-    	    		aggiornaInterfaccia();
-    	    		cartaSelezionata= cartaCasuale3;
-    	    		imprevisti.applicaEffettoCarta(cartaSelezionata);
-    	    		punteggioG2Tavolo3 += cartaSelezionata.getValore();
-    	    	}
-	    		
-    		}
-    		}
+    	}
         
-    }
    
     //GESTORE DEI CLICK SU UNA POSIZIONE DEI TAVOLI
     private void handleClickPosizioneTavolo(MouseEvent event, ImageView posizioneTavolo, int tavoloNumero) {
