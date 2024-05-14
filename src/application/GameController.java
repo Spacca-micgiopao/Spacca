@@ -40,6 +40,7 @@ public class GameController  implements Serializable{
 	public static String player2Name;
 	protected Mazzo mazzoGiocatore1,mazzoGiocatore2,mazzoCompleto,mazzoProvenienzaCartaSelezionata;
 	protected String[] carteTavolo1,carteTavolo2,carteTavolo3; //servono per tenere traccia delle carte nei tavoli (nel formato "colore_valore")
+	//Imprevisti alfa e beta sono 2 oggetti della classe imprevisti che li gestiscono
     public Imprevisti imprevistiAlfa = new Imprevisti(this);
     public Imprevisti imprevistiBeta = new Imprevisti(this);
     private Carta cartaSelezionata; //selezionata da utente serve per lo spostamento
@@ -59,7 +60,7 @@ public class GameController  implements Serializable{
     private AnchorPane backgroundPane;
 	@FXML
 	protected Label LabelPunteggioG1T1, LabelPunteggioG1T2,LabelPunteggioG1T3,LabelPunteggioG2T1,LabelPunteggioG2T2,
-	LabelPunteggioG2T3, LabelIconaNomeG1, LabelIconaNomeG2, turnoLabel,imprevistiLabel;
+	LabelPunteggioG2T3, LabelIconaNomeG1, LabelIconaNomeG2, turnoLabel,imprevistiAlfaLabel ,imprevistiBetaLabel;
     @FXML
     protected ListView<Carta> listaCarteGiocatore1,listaCarteGiocatore2;
     @FXML
@@ -227,7 +228,16 @@ public class GameController  implements Serializable{
  // Metodo per visualizzare un'imprevisto
     public void visualizzaImprevisti() {
     	imprevistiAlfa.caricaImprevistoCasuale();
-        imprevistiLabel.setText(imprevistiAlfa.scelto());
+    	imprevistiBeta.caricaImprevistoCasuale();
+    	//Di base non c'è davvero un motivo per cui 2 imprevisti uguali non dovrebbero essere usati insieme
+    	//Detto questo vorrei che le probabilità siano davvero basse quindi deve succedere 2 volte di fila per
+    	//Funzionare davvero il che è quasi impossibile
+    	if(imprevistiAlfa.scelto() == imprevistiBeta.scelto()) {
+    		imprevistiAlfa.caricaImprevistoCasuale();
+    		imprevistiBeta.caricaImprevistoCasuale();
+    	}
+        imprevistiAlfaLabel.setText(imprevistiAlfa.scelto());
+        imprevistiBetaLabel.setText(imprevistiBeta.scelto());
     }
     
     private void aggiornaTurnoLabel() {
@@ -508,6 +518,7 @@ public class GameController  implements Serializable{
             // Applica l'effetto dell'imprevisto sulla carta selezionata
             cartaSelezionata.setValore(valoreCartaSelezionata);
             imprevistiAlfa.applicaEffettoCarta(cartaSelezionata);
+            imprevistiBeta.applicaEffettoCarta(cartaSelezionata);
 
             // Aggiornamento punteggio
             if (tavoloNumero == 1) {

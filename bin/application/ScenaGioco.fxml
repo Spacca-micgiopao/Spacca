@@ -15,7 +15,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1420.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GameController">
    <children>
-      <Pane layoutY="3.0" prefHeight="800.0" prefWidth="270.0" style="-fx-background-color: yellow;">
+      <Pane prefHeight="800.0" prefWidth="270.0" style="-fx-background-color: yellow;">
          <children>
             <Button fx:id="BottoneUscita" layoutX="72.0" layoutY="31.0" mnemonicParsing="false" onAction="#handleBottoneUscita" prefHeight="33.0" prefWidth="124.0" text="SALVA ED ESCI" textFill="#ef2323">
                <font>
@@ -32,9 +32,19 @@
                   <Font name="Pixelated Regular" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="imprevistiLabel" alignment="CENTER" layoutX="45.0" layoutY="182.0" prefHeight="396.0" prefWidth="211.0" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+            <Label fx:id="imprevistiAlfaLabel" alignment="CENTER" layoutX="45.0" layoutY="172.0" prefHeight="213.0" prefWidth="211.0" style="-fx-border-color: black;" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
                <font>
                   <Font size="40.0" />
+               </font>
+            </Label>
+            <Label fx:id="imprevistiBetaLabel" alignment="CENTER" layoutX="45.0" layoutY="400.0" prefHeight="213.0" prefWidth="211.0" style="-fx-border-color: black;" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="55.0" prefHeight="660.0" prefWidth="30.0" text="IMPREVISTI" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Pixelated Regular" size="36.0" />
                </font>
             </Label>
          </children>
@@ -96,11 +106,6 @@
             <InnerShadow height="90.0" radius="52.0" width="120.0" />
          </effect>
       </GridPane>
-      <Label layoutX="14.0" layoutY="51.0" prefHeight="660.0" prefWidth="30.0" text="IMPREVISTO" textAlignment="CENTER" wrapText="true">
-         <font>
-            <Font name="Pixelated Regular" size="36.0" />
-         </font>
-      </Label>
       <ImageView fx:id="Carta1G2" fitHeight="160.0" fitWidth="150.0" layoutX="284.0" layoutY="597.0" onMouseClicked="#handleClickCartaGiocatore2" pickOnBounds="true" preserveRatio="true">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
