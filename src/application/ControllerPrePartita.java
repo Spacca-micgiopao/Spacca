@@ -49,6 +49,7 @@ public class ControllerPrePartita implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		ScegliPartita.getItems().clear();
 		ScegliPartita.getItems().removeAll();
+		if(InfoPartita.Partite != null)
 		ScegliPartita.getItems().addAll(infopartita.Partite);
 	}
 	

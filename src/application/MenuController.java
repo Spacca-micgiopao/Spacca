@@ -32,6 +32,7 @@ public class MenuController{
 			main.showPrePartitaScene();
 		} catch (Exception e) {
 			System.out.println("errore nel caricamento scena prePartita");
+			e.printStackTrace();
 		}
 	}
 	
