@@ -40,7 +40,8 @@ public class GameController  implements Serializable{
 	public static String player2Name;
 	protected Mazzo mazzoGiocatore1,mazzoGiocatore2,mazzoCompleto,mazzoProvenienzaCartaSelezionata;
 	protected String[] carteTavolo1,carteTavolo2,carteTavolo3; //servono per tenere traccia delle carte nei tavoli (nel formato "colore_valore")
-    public Imprevisti imprevisti = new Imprevisti(this);
+    public Imprevisti imprevistiAlfa = new Imprevisti(this);
+    public Imprevisti imprevistiBeta = new Imprevisti(this);
     private Carta cartaSelezionata; //selezionata da utente serve per lo spostamento
     private ImageView cartaCliccata;
     protected int punteggioG1Tavolo1,punteggioG1Tavolo2,punteggioG1Tavolo3;
@@ -57,7 +58,7 @@ public class GameController  implements Serializable{
 	@FXML
     private AnchorPane backgroundPane;
 	@FXML
-	private Label LabelPunteggioG1T1, LabelPunteggioG1T2,LabelPunteggioG1T3,LabelPunteggioG2T1,LabelPunteggioG2T2,
+	protected Label LabelPunteggioG1T1, LabelPunteggioG1T2,LabelPunteggioG1T3,LabelPunteggioG2T1,LabelPunteggioG2T2,
 	LabelPunteggioG2T3, LabelIconaNomeG1, LabelIconaNomeG2, turnoLabel,imprevistiLabel;
     @FXML
     protected ListView<Carta> listaCarteGiocatore1,listaCarteGiocatore2;
@@ -138,6 +139,7 @@ public class GameController  implements Serializable{
     			   //continua sempre a suonare
     			   player.setCycleCount(MediaPlayer.INDEFINITE);
     			   player.play();
+    			   player.setVolume(0.02);
     		}catch(Exception e ) {
     			System.out.println("errore riproduzione");
     		}
@@ -224,8 +226,8 @@ public class GameController  implements Serializable{
     }
  // Metodo per visualizzare un'imprevisto
     public void visualizzaImprevisti() {
-    	imprevisti.caricaImprevistoCasuale();
-        imprevistiLabel.setText(imprevisti.scelto());
+    	imprevistiAlfa.caricaImprevistoCasuale();
+        imprevistiLabel.setText(imprevistiAlfa.scelto());
     }
     
     private void aggiornaTurnoLabel() {
@@ -441,30 +443,6 @@ public class GameController  implements Serializable{
     	
 	        
     }
-    /*
-    public void handleClickCartaGiocatore2(MouseEvent event) {
-    	if(!turnoGiocatore1) {
-	        cartaCliccata = (ImageView) event.getSource();
-	        // Trova l'indice dell'ImageView cliccata
-	        int index = imageViewsGiocatore2.indexOf(cartaCliccata);
-	        if (index == -1) {
-	            return;
-	        }
-	        mazzoProvenienzaCartaSelezionata = mazzoGiocatore2;
-	        // Ottiene la carta associata all'immagine cliccata
-	        if (index != -1) {
-	           if (index < mazzoGiocatore2.getCarte().size()) {
-	        		cartaSelezionata = mazzoGiocatore2.getCarta(index);
-	        		cartaCliccata.setEffect(new DropShadow());
-	            } else {
-	                return;
-	            }
-	        }
-	        passaTurno();
-    	}
-        
-    }
-    */
   //controlla se tavolo è pieno
     public boolean tavoloIsFull(ArrayList<ImageView> tavolo) {
         for (ImageView imageView : tavolo) {
@@ -529,7 +507,7 @@ public class GameController  implements Serializable{
             
             // Applica l'effetto dell'imprevisto sulla carta selezionata
             cartaSelezionata.setValore(valoreCartaSelezionata);
-            imprevisti.applicaEffettoCarta(cartaSelezionata);
+            imprevistiAlfa.applicaEffettoCarta(cartaSelezionata);
 
             // Aggiornamento punteggio
             if (tavoloNumero == 1) {
