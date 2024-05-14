@@ -15,8 +15,8 @@ public class Imprevisti {
              "Raddoppia punti carte rosa", 
              "Raddoppia punti carte rosse",
              "Raddoppia punti carte Verdi",
-             "Scambia Punti",
-             "Tira i dadi!",
+             //"Scambia Punti",
+             //"Tira i dadi!",
        };
 	private String Imprevistoscelto;
 	private GameController gc;
