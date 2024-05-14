@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="Backtomenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-border-color: black; -fx-border-width: 30;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AdminPanelController">
    <children>
-      <Button layoutX="262.0" layoutY="344.0" mnemonicParsing="false" text="Mani Menu" />
+      <Button layoutX="602.0" layoutY="595.0" mnemonicParsing="false" onAction="#Backtomenu" text="Main Menu" />
+      <Label alignment="CENTER" layoutX="55.0" layoutY="43.0" prefHeight="133.0" prefWidth="388.0" text="RESETTA ALLE IMPOSTAZIONI DI FABBRICA,CANCELLA TUTTI I DATI SALVATI" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="156.0" layoutY="176.0" mnemonicParsing="false" onAction="#Pulisci" prefHeight="66.0" prefWidth="187.0" style="-fx-background-color: red;" text="RESET">
+         <effect>
+            <InnerShadow />
+         </effect>
+         <font>
+            <Font name="Impact" size="24.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

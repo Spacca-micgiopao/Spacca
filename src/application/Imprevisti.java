@@ -15,7 +15,7 @@ public class Imprevisti {
              "Raddoppia punti carte rosa", 
              "Raddoppia punti carte rosse",
              "Raddoppia punti carte Verdi",
-             //"Scambia Punti",
+             "Scambia Punti",
              //"Tira i dadi!",
        };
 	private String Imprevistoscelto;
@@ -23,6 +23,7 @@ public class Imprevisti {
 	
 	public Imprevisti(GameController gc) {
        this.Imprevistoscelto = Imprevistoscelto;
+       this.gc = gc;
 	}
 	
 	public String scelto() {
@@ -87,8 +88,10 @@ public class Imprevisti {
                 if (coloreCarta.equals("giallo")) {
                     valoreCarta /= 2;
                 }
+                break;
             case "Scambia Punti":
-            	//TODO
+            	gc.punteggioG1Tavolo1 = 99;
+            	break;
             default:
                 // Nessun effetto
                 break;

@@ -1,6 +1,7 @@
 package application;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Random;
 
 public class InfoPartita {
@@ -34,10 +35,12 @@ public class InfoPartita {
 	}
 	
 	//Metodo per scrivere i dati sul file
-	public void ScriviDati() {
+	public void ScriviDati() throws IOException {
 		File dir = new File("src/Salvataggi/");
-		for(int i = 0;i<dir.list().length;i++)
+		if(dir.list() != null) {
+			for(int i = 0;i<dir.list().length;i++)
 			Numeropartita++;
+		}
 		String Nome = Numeropartita+""+IDpartita+","+G1+","+G2;
 		Salvataggi.setFile(Nome);
 	}

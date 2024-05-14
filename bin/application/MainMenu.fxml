@@ -84,8 +84,7 @@
             <Image url="@../Immagini/Menu/41361625cc44df07f81a620eac766468.png" />
          </image>
       </ImageView>
-      <Button layoutX="570.0" layoutY="623.0" mnemonicParsing="false" onAction="#Pulisci" text="Cancella i dati salvati !!!" />
-      <Button layoutX="877.0" layoutY="602.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="342.0" text="Pannello di controllo" />
+      <Button layoutX="877.0" layoutY="602.0" mnemonicParsing="false" onAction="#VaiAdminPanel" prefHeight="43.0" prefWidth="342.0" text="Pannello di controllo" />
       <ImageView fitHeight="56.0" fitWidth="64.0" layoutX="121.0" layoutY="223.0">
          <image>
             <Image url="@../Immagini/Menu/eevee.gif" />

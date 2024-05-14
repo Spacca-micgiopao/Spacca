@@ -117,32 +117,32 @@
       <ImageView fx:id="Carta2G1" fitHeight="178.0" fitWidth="153.0" layoutX="492.0" layoutY="57.0" onMouseClicked="#handleClickCartaGiocatore1" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="Carta3G1" fitHeight="160.0" fitWidth="153.0" layoutX="710.0" layoutY="57.0" onMouseClicked="#handleClickCartaGiocatore1" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="Carta4G1" fitHeight="178.0" fitWidth="153.0" layoutX="923.0" layoutY="57.0" onMouseClicked="#handleClickCartaGiocatore1" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="LabelPunteggioG1T1" alignment="CENTER" layoutX="361.0" layoutY="235.0" prefHeight="17.0" prefWidth="37.0" style="-fx-background-color: black;" text="0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Label fx:id="LabelPunteggioG1T1" alignment="CENTER" layoutX="350.0" layoutY="235.0" prefHeight="17.0" prefWidth="60.0" style="-fx-background-color: black;" text="0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="Cooper Black" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="LabelPunteggioG2T1" alignment="CENTER" layoutX="361.0" layoutY="537.0" prefHeight="17.0" prefWidth="37.0" style="-fx-background-color: Black;" text="0" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" wrapText="true">
+      <Label fx:id="LabelPunteggioG2T1" alignment="CENTER" layoutX="350.0" layoutY="537.0" prefHeight="17.0" prefWidth="60.0" style="-fx-background-color: Black;" text="0" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" wrapText="true">
          <font>
             <Font name="Cooper Black" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="LabelPunteggioG1T2" alignment="CENTER" layoutX="645.0" layoutY="235.0" prefHeight="17.0" prefWidth="37.0" style="-fx-background-color: black;" text="0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Label fx:id="LabelPunteggioG1T2" alignment="CENTER" layoutX="634.0" layoutY="235.0" prefHeight="17.0" prefWidth="60.0" style="-fx-background-color: black;" text="0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="Cooper Black" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="LabelPunteggioG2T2" alignment="CENTER" layoutX="645.0" layoutY="537.0" prefHeight="17.0" prefWidth="37.0" style="-fx-background-color: black;" text="0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Label fx:id="LabelPunteggioG2T2" alignment="CENTER" layoutX="634.0" layoutY="537.0" prefHeight="17.0" prefWidth="60.0" style="-fx-background-color: black;" text="0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="Cooper Black" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="LabelPunteggioG1T3" alignment="CENTER" layoutX="929.0" layoutY="235.0" prefHeight="17.0" prefWidth="37.0" style="-fx-background-color: black;" text="0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Label fx:id="LabelPunteggioG1T3" alignment="CENTER" layoutX="918.0" layoutY="235.0" prefHeight="17.0" prefWidth="60.0" style="-fx-background-color: black;" text="0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="Cooper Black" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="LabelPunteggioG2T3" alignment="CENTER" contentDisplay="CENTER" layoutX="929.0" layoutY="537.0" prefHeight="17.0" prefWidth="37.0" style="-fx-background-color: black;" text="0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Label fx:id="LabelPunteggioG2T3" alignment="CENTER" contentDisplay="CENTER" layoutX="918.0" layoutY="537.0" prefHeight="17.0" prefWidth="60.0" style="-fx-background-color: black;" text="0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="Cooper Black" size="25.0" />
          </font>

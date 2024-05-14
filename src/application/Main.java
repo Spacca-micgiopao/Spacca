@@ -40,6 +40,7 @@ public class Main extends Application {
 	        primaryStage.setResizable(false);
 	        primaryStage.show();
 	    }
+	    
 	    public void showMainMenuScene() throws Exception {
 	        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
 	        Parent root = loader.load();
@@ -158,6 +159,19 @@ public class Main extends Application {
 	        FXMLLoader loader = new FXMLLoader(getClass().getResource("Classifica.fxml"));
 	        Parent root = loader.load();
 	        ClassificaController controller = loader.getController();
+	        controller.setMain(this);
+	        controller.setStage(primaryStage);
+	        Scene scene = new Scene(root);
+	        primaryStage.setScene(scene);
+	        primaryStage.sizeToScene();
+	        primaryStage.setResizable(false);
+	        primaryStage.show();
+	    }
+	    
+	    public void showAdminPanel() throws Exception {
+	        FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminPanel.fxml"));
+	        Parent root = loader.load();
+	        AdminPanelController controller = loader.getController();
 	        controller.setMain(this);
 	        controller.setStage(primaryStage);
 	        Scene scene = new Scene(root);

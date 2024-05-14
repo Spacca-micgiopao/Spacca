@@ -66,22 +66,18 @@ public class MenuController{
 		}
 	}
 	
+	//Per andare nel pannello di controllo dal manu principale
+	public void VaiAdminPanel(ActionEvent event) throws IOException {
+		try {
+			main.showAdminPanel();;
+		} catch (Exception e) {
+			System.out.println("errore");
+			e.printStackTrace();
+		}
+	}
+	
+	
 	public static boolean getTorneo() {
 		return Torneo;
 	}
-		
-	//Per eliminare tutti i dati salvati
-	public void Pulisci(ActionEvent event) throws IOException {
-		File dir = new File("src/Salvataggi/");
-		String[] n = dir.list();
-			if(dir.isDirectory() && dir.exists()) {
-				for(int i = 0;i<n.length;i++) {
-					File f = new File("src/Salvataggi/"+n[i]);
-					f.delete();
-				}
-			}
-		//Resetta il file che contiene le informazioni dei giocatori
-		ClassificaController.elimina();
-	}
-	
 }
