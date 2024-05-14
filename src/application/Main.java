@@ -7,7 +7,6 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.text.Font;
 
 public class Main extends Application {
 
@@ -15,6 +14,9 @@ public class Main extends Application {
 
 	    @Override
 	    public void start(Stage primaryStage) throws Exception {
+	    	File Dir = new File("src/Data/");
+	    	if(!Dir.exists())
+	    		Dir.mkdir();
 	    	File DatiGiocatori = new File("src/Data/DatiGiocatori.ser");
 	        this.primaryStage = primaryStage;
 	        if(DatiGiocatori.exists() && DatiGiocatori.canRead())

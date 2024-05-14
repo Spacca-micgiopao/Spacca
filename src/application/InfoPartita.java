@@ -37,10 +37,11 @@ public class InfoPartita {
 	//Metodo per scrivere i dati sul file
 	public void ScriviDati() throws IOException {
 		File dir = new File("src/Salvataggi/");
-		if(dir.list() != null) {
+		if(!dir.exists())
+			dir.mkdir();
+		if(dir.list() != null) 
 			for(int i = 0;i<dir.list().length;i++)
 			Numeropartita++;
-		}
 		String Nome = Numeropartita+""+IDpartita+","+G1+","+G2;
 		Salvataggi.setFile(Nome);
 	}
