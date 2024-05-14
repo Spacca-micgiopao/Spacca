@@ -103,12 +103,10 @@ public class Main extends Application {
 	        GameController controller = loader.getController();
 	        controller.setMain(this);
 	        controller.setStage(primaryStage);
-	        Scene scene = new Scene(root);
-	        
+	        Scene scene = new Scene(root);  
 	        primaryStage.setScene(scene);
 	        primaryStage.setHeight(800);
-	        primaryStage.setWidth(1280);
-	        primaryStage.setFullScreen(true);
+	        primaryStage.setWidth(1420);
 	        primaryStage.show();
 	    }
 	    public void showFilmatoFinale() throws Exception{

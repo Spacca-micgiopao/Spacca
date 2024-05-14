@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.InnerShadow?>
@@ -11,170 +12,28 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GameController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1420.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GameController">
    <children>
-   	  <AnchorPane fx:id="backgroundPane" layoutY="-3.0" prefHeight="800.0" prefWidth="1286.0">
+      <GridPane fx:id="Tavolo1" gridLinesVisible="true" layoutX="284.0" layoutY="263.0" prefHeight="274.0" prefWidth="191.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="99.6666768391927" minWidth="10.0" prefWidth="94.99998982747395" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.66668701171875" minWidth="10.0" prefWidth="91.6666768391927" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
          <children>
-            <ImageView fx:id="Carta1G2" fitHeight="178.0" fitWidth="153.0" layoutX="273.0" layoutY="528.0" onMouseClicked="#handleClickCartaGiocatore2" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="Carta2G2" fitHeight="178.0" fitWidth="153.0" layoutX="475.0" layoutY="528.0" onMouseClicked="#handleClickCartaGiocatore2" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="Carta3G2" fitHeight="178.0" fitWidth="153.0" layoutX="675.0" layoutY="528.0" onMouseClicked="#handleClickCartaGiocatore2" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="Carta4G2" fitHeight="178.0" fitWidth="153.0" layoutX="875.0" layoutY="528.0" onMouseClicked="#handleClickCartaGiocatore2" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="turnoLabel" alignment="CENTER" layoutX="170.0" layoutY="-5.0" prefHeight="47.0" prefWidth="866.0" text="INIZIO TURNO GIOCATORE 1">
-               <font>
-                  <Font name="Cooper Black" size="29.0" />
-               </font>
-            </Label>
-            <ImageView fx:id="Carta1G1" fitHeight="178.0" fitWidth="153.0" layoutX="273.0" layoutY="33.0" onMouseClicked="#handleClickCartaGiocatore1" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="Carta2G1" fitHeight="178.0" fitWidth="153.0" layoutX="475.0" layoutY="33.0" onMouseClicked="#handleClickCartaGiocatore1" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="Carta4G1" fitHeight="178.0" fitWidth="153.0" layoutX="875.0" layoutY="33.0" onMouseClicked="#handleClickCartaGiocatore1" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="Carta3G1" fitHeight="178.0" fitWidth="153.0" layoutX="675.0" layoutY="33.0" onMouseClicked="#handleClickCartaGiocatore1" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="LabelVincitaT1" alignment="CENTER" layoutX="330.0" layoutY="217.0" prefHeight="17.0" prefWidth="191.0" text="TAVOLO 1" textFill="#a8a4a4">
-               <font>
-                  <Font name="Cooper Black" size="13.0" />
-               </font>
-            </Label>
-            <GridPane fx:id="Tavolo1" gridLinesVisible="true" layoutX="330.0" layoutY="235.0" prefHeight="274.0" prefWidth="191.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="99.6666768391927" minWidth="10.0" prefWidth="94.99998982747395" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.66668701171875" minWidth="10.0" prefWidth="91.6666768391927" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <ImageView fx:id="CartaT1p00" fitHeight="140.0" fitWidth="100.0" onMouseClicked="#handleClickPosizioneTavolo1" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="CartaT1p10" fitHeight="139.0" fitWidth="93.0" layoutX="10.0" layoutY="11.0" onMouseClicked="#handleClickPosizioneTavolo1" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
-                  <ImageView fx:id="CartaT1p11" fitHeight="133.0" fitWidth="95.0" layoutX="114.0" layoutY="11.0" onMouseClicked="#handleClickPosizioneTavolo1" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <ImageView fx:id="CartaT1p01" fitHeight="133.0" fitWidth="98.0" layoutX="114.0" layoutY="149.0" onMouseClicked="#handleClickPosizioneTavolo1" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
-               </children>
-               <effect>
-                  <InnerShadow height="105.0" radius="55.75" width="120.0" />
-               </effect>
-            </GridPane>
-            <Label fx:id="LabelVincitaT2" alignment="CENTER" layoutX="574.0" layoutY="217.0" prefHeight="17.0" prefWidth="191.0" text="TAVOLO 2" textFill="#a8a4a4">
-               <font>
-                  <Font name="Cooper Black" size="13.0" />
-               </font>
-            </Label>
-            <Label fx:id="LabelVincitaT3" alignment="CENTER" layoutX="824.0" layoutY="217.0" prefHeight="17.0" prefWidth="191.0" text="TAVOLO 3" textFill="#a8a4a4">
-               <font>
-                  <Font name="Cooper Black" size="13.0" />
-               </font>
-            </Label>
-            <Button fx:id="BottoneUscita" layoutX="1213.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleBottoneUscita" text="CLOSE" textFill="#ef2323">
-               <font>
-                  <Font name="Cooper Black" size="12.0" />
-               </font>
-            </Button>
-            <AnchorPane layoutX="52.0" layoutY="272.0" prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <ImageView id="imprevisto1" fx:id="imprevisto1" fitHeight="150.0" fitWidth="200.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" />
-               </children>
-            </AnchorPane>
-            <Label layoutX="86.0" layoutY="262.0" prefHeight="17.0" prefWidth="131.0" text="       IMPREVISTI" textFill="#76c72f">
-               <font>
-                  <Font name="System Bold Italic" size="13.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="150.0" fitWidth="95.0" layoutX="1119.0" layoutY="13.0" rotate="-90.0">
-               <image>
-                  <Image url="@../Sfondo/RetroPokemon.jpg" />
-               </image>
-            </ImageView>
-         	
-            <Button layoutX="1130.0" layoutY="71.0" mnemonicParsing="false" onAction="#handlePescaGiocatore1Action" prefHeight="33.0" prefWidth="73.0" text="PESCA ">
-               <font>
-                  <Font name="Cooper Black" size="12.0" />
-               </font>
-            </Button>
-            <ImageView fitHeight="150.0" fitWidth="95.0" layoutX="1119.0" layoutY="569.0" rotate="-90.0">
-               <image>
-                  <Image url="@../Sfondo/RetroPokemon.jpg" />
-               </image>
-            </ImageView>
-            <Button layoutX="1130.0" layoutY="627.0" mnemonicParsing="false" onAction="#handlePescaGiocatore2Action" prefHeight="33.0" prefWidth="73.0" text="PESCA">
-               <font>
-                  <Font name="Cooper Black" size="12.0" />
-               </font>
-            </Button>
-            <Label fx:id="LabelIconaNomeG1" layoutX="55.0" layoutY="181.0" prefHeight="16.0" prefWidth="134.0">
-               <font>
-                  <Font name="Cooper Black" size="15.0" />
-               </font>
-            </Label>
-            <Label fx:id="LabelIconaNomeG2" layoutX="80.0" layoutY="642.0" prefHeight="17.0" prefWidth="136.0">
-               <font>
-                  <Font name="Cooper Black" size="15.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="303.0" fitWidth="233.0" layoutX="1041.0" layoutY="223.0">
-               <image>
-                  <Image url="@../Sfondo/PunteggiTavoli.jpeg" />
-               </image>
-            </ImageView>
-            <Label fx:id="LabelPunteggioG1T1" layoutX="1075.0" layoutY="257.0" prefHeight="17.0" prefWidth="37.0" textFill="#297887">
-               <font>
-                  <Font name="Cooper Black" size="25.0" />
-               </font>
-            </Label>
-            <Label fx:id="LabelPunteggioG2T1" layoutX="1192.0" layoutY="257.0" prefHeight="17.0" prefWidth="37.0" textFill="#297887">
-               <font>
-                  <Font name="Cooper Black" size="25.0" />
-               </font>
-            </Label>
-            <Label fx:id="LabelPunteggioG1T2" layoutX="1074.0" layoutY="347.0" prefHeight="17.0" prefWidth="37.0" textFill="#297887">
-               <font>
-                  <Font name="Cooper Black" size="25.0" />
-               </font>
-            </Label>
-            <Label fx:id="LabelPunteggioG2T2" layoutX="1193.0" layoutY="346.0" prefHeight="17.0" prefWidth="37.0" textFill="#297887">
-               <font>
-                  <Font name="Cooper Black" size="25.0" />
-               </font>
-            </Label>
-            <Label fx:id="LabelPunteggioG1T3" layoutX="1081.0" layoutY="437.0" prefHeight="17.0" prefWidth="37.0" textFill="#297887">
-               <font>
-                  <Font name="Cooper Black" size="25.0" />
-               </font>
-            </Label>
-            <Label fx:id="LabelPunteggioG2T3" layoutX="1192.0" layoutY="436.0" prefHeight="17.0" prefWidth="37.0" textFill="#297887">
-               <font>
-                  <Font name="Cooper Black" size="25.0" />
-               </font>
-            </Label>
-            <Label fx:id="LabelNomePunteggioG1T2" layoutX="1058.0" layoutY="394.0" prefHeight="14.0" prefWidth="101.0">
-               <font>
-                  <Font name="Cooper Black" size="12.0" />
-               </font>
-            </Label>
-            <Label fx:id="LabelNomePunteggioG2T1" layoutX="1171.0" layoutY="302.0" prefHeight="14.0" prefWidth="101.0">
-               <font>
-                  <Font name="Cooper Black" size="12.0" />
-               </font>
-            </Label>
-            <Label fx:id="LabelNomePunteggioG1T1" layoutX="1058.0" layoutY="302.0" prefHeight="14.0" prefWidth="101.0">
-               <font>
-                  <Font name="Cooper Black" size="12.0" />
-               </font>
-            </Label>
-            <Label fx:id="LabelNomePunteggioG2T2" layoutX="1171.0" layoutY="393.0" prefHeight="14.0" prefWidth="101.0">
-               <font>
-                  <Font name="Cooper Black" size="12.0" />
-               </font>
-            </Label>
-            <Label fx:id="LabelNomePunteggioG1T3" layoutX="1058.0" layoutY="487.0" prefHeight="14.0" prefWidth="101.0">
-               <font>
-                  <Font name="Cooper Black" size="12.0" />
-               </font>
-            </Label>
-            <Label fx:id="LabelNomePunteggioG2T3" layoutX="1171.0" layoutY="487.0" prefHeight="14.0" prefWidth="101.0">
-               <font>
-                  <Font name="Cooper Black" size="12.0" />
-               </font>
-            </Label>
-         </children></AnchorPane>
-      <GridPane fx:id="Tavolo2" gridLinesVisible="true" layoutX="580.0" layoutY="235.0" prefHeight="274.0" prefWidth="191.0">
+            <ImageView fx:id="CartaT1p00" fitHeight="140.0" fitWidth="100.0" onMouseClicked="#handleClickPosizioneTavolo1" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="CartaT1p10" fitHeight="139.0" fitWidth="93.0" layoutX="10.0" layoutY="11.0" onMouseClicked="#handleClickPosizioneTavolo1" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
+            <ImageView fx:id="CartaT1p11" fitHeight="133.0" fitWidth="95.0" layoutX="114.0" layoutY="11.0" onMouseClicked="#handleClickPosizioneTavolo1" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ImageView fx:id="CartaT1p01" fitHeight="133.0" fitWidth="98.0" layoutX="114.0" layoutY="149.0" onMouseClicked="#handleClickPosizioneTavolo1" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
+         </children>
+         <effect>
+            <InnerShadow height="105.0" radius="55.75" width="120.0" />
+         </effect>
+      </GridPane>
+      <GridPane fx:id="Tavolo2" gridLinesVisible="true" layoutX="568.0" layoutY="263.0" prefHeight="274.0" prefWidth="191.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="99.6666768391927" minWidth="10.0" prefWidth="94.99998982747395" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.66668701171875" minWidth="10.0" prefWidth="91.6666768391927" />
@@ -193,7 +52,7 @@
             <InnerShadow height="90.0" radius="52.0" width="120.0" />
          </effect>
       </GridPane>
-      <GridPane fx:id="Tavolo3" gridLinesVisible="true" layoutX="830.0" layoutY="235.0" prefHeight="274.0" prefWidth="191.0">
+      <GridPane fx:id="Tavolo3" gridLinesVisible="true" layoutX="852.0" layoutY="263.0" prefHeight="274.0" prefWidth="191.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="99.6666768391927" minWidth="10.0" prefWidth="94.99998982747395" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.66668701171875" minWidth="10.0" prefWidth="91.6666768391927" />
@@ -212,5 +71,98 @@
             <InnerShadow height="90.0" radius="52.0" width="120.0" />
          </effect>
       </GridPane>
+      <Label layoutX="14.0" layoutY="51.0" prefHeight="660.0" prefWidth="30.0" text="IMPREVISTO" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Pixelated Regular" size="36.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="Carta1G2" fitHeight="160.0" fitWidth="150.0" layoutX="284.0" layoutY="597.0" onMouseClicked="#handleClickCartaGiocatore2" pickOnBounds="true" preserveRatio="true">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="Carta2G2" fitHeight="160.0" fitWidth="150.0" layoutX="492.0" layoutY="597.0" onMouseClicked="#handleClickCartaGiocatore2" pickOnBounds="true" preserveRatio="true">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="Carta3G2" fitHeight="160.0" fitWidth="150.0" layoutX="710.0" layoutY="597.0" onMouseClicked="#handleClickCartaGiocatore2" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta4G2" fitHeight="160.0" fitWidth="150.0" layoutX="923.0" layoutY="597.0" onMouseClicked="#handleClickCartaGiocatore2" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta1G1" fitHeight="160.0" fitWidth="150.0" layoutX="284.0" layoutY="57.0" onMouseClicked="#handleClickCartaGiocatore1" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta2G1" fitHeight="178.0" fitWidth="153.0" layoutX="492.0" layoutY="57.0" onMouseClicked="#handleClickCartaGiocatore1" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta3G1" fitHeight="160.0" fitWidth="153.0" layoutX="710.0" layoutY="57.0" onMouseClicked="#handleClickCartaGiocatore1" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta4G1" fitHeight="178.0" fitWidth="153.0" layoutX="923.0" layoutY="57.0" onMouseClicked="#handleClickCartaGiocatore1" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="BottoneUscita" layoutX="1337.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleBottoneUscita" text="CLOSE" textFill="#ef2323">
+         <font>
+            <Font name="Cooper Black" size="12.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="150.0" fitWidth="95.0" layoutX="1119.0" layoutY="10.0" rotate="-90.0">
+         <image>
+            <Image url="@../Sfondo/RetroPokemon.jpg" />
+         </image>
+      </ImageView>
+   	
+            <Button layoutX="1130.0" layoutY="68.0" mnemonicParsing="false" onAction="#handlePescaGiocatore1Action" prefHeight="33.0" prefWidth="73.0" text="PESCA ">
+         <font>
+            <Font name="Cooper Black" size="12.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="187.0" fitWidth="116.0" layoutX="1194.0" layoutY="557.0" rotate="-90.0">
+         <image>
+            <Image url="@../Sfondo/RetroPokemon.jpg" />
+         </image>
+      </ImageView>
+      <Button layoutX="1216.0" layoutY="632.0" mnemonicParsing="false" onAction="#handlePescaGiocatore2Action" prefHeight="33.0" prefWidth="73.0" text="PESCA">
+         <font>
+            <Font name="Cooper Black" size="12.0" />
+         </font>
+      </Button>
+      <Label fx:id="LabelIconaNomeG1" layoutX="87.0" layoutY="92.0" prefHeight="16.0" prefWidth="134.0" text="G1">
+         <font>
+            <Font name="Cooper Black" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="LabelIconaNomeG2" layoutX="54.0" layoutY="668.0" prefHeight="17.0" prefWidth="136.0" text="G2">
+         <font>
+            <Font name="Cooper Black" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="LabelPunteggioG1T1" layoutX="361.0" layoutY="231.0" prefHeight="17.0" prefWidth="37.0" style="-fx-background-color: black;" textFill="#297887">
+         <font>
+            <Font name="Cooper Black" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="LabelPunteggioG2T1" layoutX="361.0" layoutY="534.0" prefHeight="17.0" prefWidth="37.0" style="-fx-background-color: Black;" textFill="WHITE">
+         <font>
+            <Font name="Cooper Black" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="LabelPunteggioG1T2" layoutX="645.0" layoutY="231.0" prefHeight="17.0" prefWidth="37.0" style="-fx-background-color: black;" textFill="#297887">
+         <font>
+            <Font name="Cooper Black" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="LabelPunteggioG2T2" layoutX="645.0" layoutY="537.0" prefHeight="17.0" prefWidth="37.0" style="-fx-background-color: black;" textFill="#297887">
+         <font>
+            <Font name="Cooper Black" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="LabelPunteggioG1T3" layoutX="929.0" layoutY="231.0" prefHeight="17.0" prefWidth="37.0" style="-fx-background-color: black;" textFill="#297887">
+         <font>
+            <Font name="Cooper Black" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="LabelPunteggioG2T3" layoutX="929.0" layoutY="537.0" prefHeight="17.0" prefWidth="37.0" style="-fx-background-color: black;" textFill="#297887">
+         <font>
+            <Font name="Cooper Black" size="25.0" />
+         </font>
+      </Label>
+      <ImageView id="imprevisto1" fx:id="imprevisto1" fitHeight="403.0" fitWidth="200.0" layoutX="54.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="turnoLabel" layoutX="1139.0" layoutY="260.0" prefHeight="311.0" prefWidth="269.0" text="TURNO" wrapText="true">
+         <font>
+            <Font name="Pixelated Regular" size="57.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -57,8 +57,7 @@ public class GameController  implements Serializable{
 	@FXML
     private AnchorPane backgroundPane;
 	@FXML
-	private Label LabelNomePunteggioG1T1, LabelPunteggioG1T1, LabelNomePunteggioG1T2, LabelPunteggioG1T2, LabelNomePunteggioG1T3, 
-	LabelPunteggioG1T3, LabelNomePunteggioG2T1, LabelPunteggioG2T1, LabelNomePunteggioG2T2, LabelPunteggioG2T2, LabelNomePunteggioG2T3, 
+	private Label LabelPunteggioG1T1, LabelPunteggioG1T2,LabelPunteggioG1T3,LabelPunteggioG2T1,LabelPunteggioG2T2,
 	LabelPunteggioG2T3, LabelIconaNomeG1, LabelIconaNomeG2, turnoLabel;
     @FXML
     protected ListView<Carta> listaCarteGiocatore1,listaCarteGiocatore2;
@@ -90,6 +89,9 @@ public class GameController  implements Serializable{
     private ImageView CartaT3p00,CartaT3p10,CartaT3p01,CartaT3p11;
     @FXML
     private ImageView imprevisto1;
+    
+    @FXML
+    private Pane CampoBasso,CampoAlto;
     
     //METODI SET E GETTER
     //serve per il cambio scena
@@ -131,22 +133,7 @@ public class GameController  implements Serializable{
     }
   
     //SFONDO E MUSICA
-    public void insertSfondo() {
-    	try {
-            // Percorso del file immagine
-           String filePath = "src/Sfondo/Background_gioco_prova2.jpeg";
-
-            // Creazione di un oggetto File con il percorso del file
-            File file = new File(filePath);
-
-            // Creazione di un oggetto FileInputStream per leggere il file
-            FileInputStream inputStream = new FileInputStream(file);
-            backgroundPane.setStyle("-fx-background-image: url('" + file.toURI().toString() + "')");
-            inputStream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    
     public void insertMusic() {
         	try {
     			 Media sound = new Media(new File("src/Musica/MusicaSottofondoGioco1.mp3").toURI().toString());
@@ -161,7 +148,6 @@ public class GameController  implements Serializable{
     
     //INIZIALIZZAZIONE se il flag = 1 la partita è stata caricata e inizierà in modo diverso da una partita iniziata da 0
     public void initialize() {
-    	insertSfondo();	
     	insertMusic();
     	//per le ImageView: creazione di una lista contenente tutte le ImageView per facilitare 
         //l'aggiunta delle immagini in aggiorna interfaccia
@@ -200,7 +186,8 @@ public class GameController  implements Serializable{
 	    	getPartite();
 	    	setPlayersNames();
     	}
-    	
+    	LabelIconaNomeG1.setText(player1Name);
+    	LabelIconaNomeG2.setText(player2Name);
     	if(flag == 1) {
     		salvataggio.caricaPartita(this);
     		//Come per i nomi vanno aggiornati i punteggi nel caso siano stati caricati
@@ -219,16 +206,8 @@ public class GameController  implements Serializable{
     	}
     	
     	//inizializzazione Label
-    	LabelIconaNomeG1.setText(player1Name);
-    	LabelIconaNomeG2.setText(player2Name);
     	turnoLabel.setText("Turno di "+ " "+ player1Name+"!");
     	turnoLabel.setStyle("-fx-text-fill: black;");
-    	LabelNomePunteggioG1T1.setText(player1Name);
-    	LabelNomePunteggioG2T1.setText(player2Name);
-    	LabelNomePunteggioG1T2.setText(player1Name);
-    	LabelNomePunteggioG2T2.setText(player2Name);
-    	LabelNomePunteggioG1T3.setText(player1Name);
-    	LabelNomePunteggioG2T3.setText(player2Name);
     	
     	//PREPARAZIONE GIOCO
     	 imprevisti = new Imprevisti();
@@ -245,7 +224,6 @@ public class GameController  implements Serializable{
         mazzoGiocatore1.caricaCarteIniziali(3,mazzoCompleto); //carica tre carte iniziali
         mazzoGiocatore2.caricaCarteIniziali(3, mazzoCompleto);
     	}
-        
         aggiornaInterfaccia();
     }
  // Metodo per visualizzare un'imprevisto
@@ -269,7 +247,7 @@ public class GameController  implements Serializable{
         }
     }
     public void passaTurno() {
-    	turnoGiocatore1= !turnoGiocatore1; 
+    	turnoGiocatore1= !turnoGiocatore1;
     	
     }
     //FINE PARTITA con conteggio punti
