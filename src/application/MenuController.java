@@ -51,6 +51,7 @@ public class MenuController{
 			main.showClassificaScene();
 		} catch (Exception e) {
 			System.out.println("errore nel caricamento scene classifica");
+			e.printStackTrace();
 		}
 	}
 	

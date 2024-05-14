@@ -1,19 +1,15 @@
 package application;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
+
 //GESTISCE ANNUNCIO VITTORIA DELLE SINGOLE PARTITE
 public class FilmatiFinaliController {
 	private Main main;
@@ -94,7 +90,6 @@ public class FilmatiFinaliController {
 	        	vincitore = this.player2Name;
 	        }
 	        LabelGiocatore.setText(vincitore+" VINCE !");
-	        System.out.println("vincitore--"+vincitore);
 	        //Aggiunge una vittoria nella classifica
 	        for(int i = 0;i<ClassificaController.LSGiocatori.size();i++) {
 	        	if(ClassificaController.LSGiocatori.get(i).getNome().equals(vincitore)) {

@@ -13,7 +13,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import java.util.Comparator;
 
@@ -23,8 +25,9 @@ public class ClassificaController implements Initializable,Serializable{
 	//Questa classe gestisce tutto cio che riguarda le classifiche
 	private Stage stage;
 	private Main main;	
+	@FXML
+	private ListView<Giocatori> Classifica;
 	public static ArrayList<Giocatori> LSGiocatori = new ArrayList<Giocatori>();
-	protected ArrayList<String> id = new ArrayList<String>();
 	protected static File DatiGiocatori = new File("src/Data/DatiGiocatori.ser");
 	
 	public void setMain(Main main) {
@@ -43,6 +46,9 @@ public class ClassificaController implements Initializable,Serializable{
 		//reverse per avere chi ha più vittorie in cima alla lista
 		Collections.sort(LSGiocatori ,Comparator.comparingInt(Giocatori::getVittorie).reversed());
 		salva();
+		Classifica.getItems().clear();
+		if(LSGiocatori.isEmpty() != true)
+			Classifica.getItems().addAll(LSGiocatori);
      }
 
 	//Carica in memoria dal file i nomi dei giocatori
@@ -76,14 +82,6 @@ public class ClassificaController implements Initializable,Serializable{
 		catch (IOException i) {
 		         i.printStackTrace();
 		}	
-	}
-	
-	//Temporaneo mostra la classifica
-	public void Mostraclassifia() {
-		System.out.println("NOME/VITTORIE");
-		for(int i = 0;i<LSGiocatori.size();i++) {		
-			System.out.println(LSGiocatori.get(i).toString());
-		}
 	}
 	
 	//Prende i nomi dal controller pre partita e li scrive nella lista ed esclude i doppioni

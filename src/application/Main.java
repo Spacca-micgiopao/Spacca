@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 
 public class Main extends Application {
 
@@ -22,6 +23,8 @@ public class Main extends Application {
 	    	ClassificaController.CaricaNomi();
 	        this.primaryStage = primaryStage;
 	        primaryStage.setTitle("SPACCA");
+	        Image icon = new Image("Icona.png");
+	        primaryStage.getIcons().add(icon);
 	        showLoginScene();
 	    }
 
