@@ -96,11 +96,25 @@ public class Imprevisti {
 
         carta.setValore(valoreCarta);
     }
+    public void carteimprevisto(Carta cartaSelezionata, boolean annullatore){
+    	if(cartaSelezionata.getColore().equals("annulla")) {
+        	annullatore = true;
+        } else {
+        	annullatore = false;
+        }
+        if(cartaSelezionata.getColore().equals("random")) {
+        	Random rand = new Random();
+        	int randomnum = rand.nextInt();       
+            int valore = (randomnum == 0) ? 0 : 8;
+            cartaSelezionata.setValore(valore);
+        }
+    	
+    }
 
     public Image caricaImmagineImprevisto() throws IOException {
         String percorsoImprevisto = "src/Imprevisti/" + nomeImprevisto;
         File fileImprevisto = new File(percorsoImprevisto);
         return new Image(new FileInputStream(fileImprevisto));
     }
-}
 
+}

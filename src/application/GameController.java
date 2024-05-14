@@ -35,7 +35,7 @@ public class GameController  implements Serializable{
 	//Per gestire il caricamento delle partite
 	public static int flag = 0;
 	private Salvataggi salvataggio = new Salvataggi(this);
-	
+	private boolean botgioco = true;
 	public static String player1Name;
 	public static String player2Name;
 	protected Mazzo mazzoGiocatore1,mazzoGiocatore2,mazzoCompleto,mazzoProvenienzaCartaSelezionata;
@@ -469,6 +469,7 @@ public class GameController  implements Serializable{
     	
 	        
     }
+    /*
     public void handleClickCartaGiocatore2(MouseEvent event) {
     	if(!turnoGiocatore1) {
 	        cartaCliccata = (ImageView) event.getSource();
@@ -489,6 +490,90 @@ public class GameController  implements Serializable{
 	        }
 	        passaTurno();
     	}
+        
+    }
+    */
+  //controlla se tavolo è pieno
+    public boolean tavoloIsFull(ArrayList<ImageView> tavolo) {
+        for (ImageView imageView : tavolo) {
+            if (imageView.getImage() == null) {
+                // Se almeno un'immagine nel tavolo è vuota, il tavolo non è pieno
+                return false;
+            }
+        }
+        // Se tutte le immagini nel tavolo sono piene, il tavolo è pieno
+        return true;
+    }
+ // giocatore 2 più bot
+    public void handleClickCartaGiocatore2(MouseEvent event) {
+    	if(!turnoGiocatore1&& !botgioco) {
+	        cartaCliccata = (ImageView) event.getSource();
+	        // Trova l'indice dell'ImageView cliccata
+	        int index = imageViewsGiocatore2.indexOf(cartaCliccata);
+	        if (index == -1) {
+	            return;
+	        }
+	        mazzoProvenienzaCartaSelezionata = mazzoGiocatore2;
+	        // Ottiene la carta associata all'immagine cliccata
+	        if (index != -1) {
+	           if (index < mazzoGiocatore2.getCarte().size()) {
+	        		cartaSelezionata = mazzoGiocatore2.getCarta(index);
+	        		cartaCliccata.setEffect(new DropShadow());
+	            } else {
+	                return;
+	            }
+	        }
+	        passaTurno();
+	      //modifiche bot
+    	}else {
+    		botLogic bot = new botLogic();
+    		if(!tavoloIsFull((ArrayList<ImageView>) imageViewsTavolo1)){
+    			bot.giocaCarta(mazzoGiocatore2, (ArrayList<ImageView>) imageViewsTavolo1);
+    			aggiornaInterfaccia();
+    			passaTurno();
+    			aggiornaTurnoLabel();
+    			Carta cartaCasuale = mazzoCompleto.pescaCartaCasuale();
+    	    	if(cartaCasuale != null && mazzoGiocatore2.getNumeroCarte()<4 ) {
+    	    		mazzoGiocatore2.aggiungiCarta(cartaCasuale);
+    	    		aggiornaInterfaccia();
+    	    		cartaSelezionata= cartaCasuale;
+    	            imprevisti.applicaEffettoCarta(cartaSelezionata);
+    	    		punteggioG2Tavolo1 += cartaSelezionata.getValore();
+    	    	}
+    	    	
+	    	   
+    		}else if(!(tavoloIsFull((ArrayList<ImageView>) imageViewsTavolo2))){
+    			bot.giocaCarta(mazzoGiocatore2, (ArrayList<ImageView>) imageViewsTavolo2);
+    			aggiornaInterfaccia();	
+    			passaTurno();
+    			aggiornaTurnoLabel();
+    			Carta cartaCasuale2 = mazzoCompleto.pescaCartaCasuale();
+    	    	if(cartaCasuale2 != null && mazzoGiocatore2.getNumeroCarte()<4 ) {
+    	    		mazzoGiocatore2.aggiungiCarta(cartaCasuale2);
+    	    		aggiornaInterfaccia();
+    	    		cartaSelezionata= cartaCasuale2;
+    	    		imprevisti.applicaEffettoCarta(cartaSelezionata);
+    	    		punteggioG2Tavolo2 += cartaSelezionata.getValore();
+    	    	}
+    	    	
+
+    		}else {
+    			bot.giocaCarta(mazzoGiocatore2, (ArrayList<ImageView>) imageViewsTavolo3);
+    			aggiornaInterfaccia();
+    			passaTurno();
+    			aggiornaTurnoLabel();
+    			Carta cartaCasuale3 = mazzoCompleto.pescaCartaCasuale();
+    		
+    	    	if(cartaCasuale3 != null && mazzoGiocatore2.getNumeroCarte()<4 ) {
+    	    		mazzoGiocatore2.aggiungiCarta(cartaCasuale3);
+    	    		aggiornaInterfaccia();
+    	    		cartaSelezionata= cartaCasuale3;
+    	    		imprevisti.applicaEffettoCarta(cartaSelezionata);
+    	    		punteggioG2Tavolo3 += cartaSelezionata.getValore();
+    	    	}
+	    		
+    		}
+    		}
         
     }
    
@@ -583,7 +668,14 @@ public class GameController  implements Serializable{
 
             // Aggiorna interfaccia e verifica fine partita
             aggiornaInterfaccia();
+            //modifiche bot
+            if(botgioco){
+            	handleClickCartaGiocatore2(event);
+            }
+            
+            aggiornaInterfaccia();
             verificaFinePartita();
+            
         }
     }
 
