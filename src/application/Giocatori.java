@@ -7,11 +7,19 @@ public class Giocatori implements Serializable{
 	//Per serializzazione
 	private static final long serialVersionUID = -4168603108386424350L;
 	protected String Nome;
-	protected int Vittorie;
+	protected int Vittorie = 0;
 	
 	
 	public Giocatori(String Nome) {
 		this.Nome= Nome;
+	}
+	
+	public void setVittorie() {
+		this.Vittorie += 1;
+	}
+	
+	public int getVittorie() {
+		return this.Vittorie;
 	}
 	
 	public String toString() {

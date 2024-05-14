@@ -94,6 +94,14 @@ public class FilmatiFinaliController {
 	        	vincitore = this.player2Name;
 	        }
 	        LabelGiocatore.setText(vincitore+" VINCE !");
+	        System.out.println("vincitore--"+vincitore);
+	        //Aggiunge una vittoria nella classifica
+	        for(int i = 0;i<ClassificaController.LSGiocatori.size();i++) {
+	        	if(ClassificaController.LSGiocatori.get(i).getNome().equals(vincitore)) {
+	        		ClassificaController.LSGiocatori.get(i).setVittorie();
+	        	}
+	        }
+	        ClassificaController.salva();
 	        mediaPlayer.play();
         }
 	

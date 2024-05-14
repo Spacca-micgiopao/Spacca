@@ -10,10 +10,12 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
+import java.util.Comparator;
 
 public class ClassificaController implements Initializable,Serializable{
 	
@@ -21,7 +23,6 @@ public class ClassificaController implements Initializable,Serializable{
 	//Questa classe gestisce tutto cio che riguarda le classifiche
 	private Stage stage;
 	private Main main;	
-	protected ArrayList<String> Classifica = new ArrayList<String>();
 	public static ArrayList<Giocatori> LSGiocatori = new ArrayList<Giocatori>();
 	protected ArrayList<String> id = new ArrayList<String>();
 	protected static File DatiGiocatori = new File("src/Data/DatiGiocatori.ser");
@@ -35,7 +36,14 @@ public class ClassificaController implements Initializable,Serializable{
 	
 	//Verrà construita la classifica dai nomi in DatiGiocatori
 	public void initialize(URL arg0, ResourceBundle arg1) {
-	}
+		//ordina i giocatori nella lista in base alle vittorie creando la vera classifica
+		//Come funziona : Collections.sort prende in input una lista da ordinare in questo caso LSGiocaotori
+		//e un oggetto comparator,in questo caso il comparator è impostato per controllare i metodi getVittorie
+		//nei giocatori della lista e di conseguenza ordinarli,il default è in ordine crescente quindi ho messo
+		//reverse per avere chi ha più vittorie in cima alla lista
+		Collections.sort(LSGiocatori ,Comparator.comparingInt(Giocatori::getVittorie).reversed());
+		salva();
+     }
 
 	//Carica in memoria dal file i nomi dei giocatori
 	public static void CaricaNomi() throws ClassNotFoundException, EOFException {
@@ -54,6 +62,20 @@ public class ClassificaController implements Initializable,Serializable{
 	public static void elimina() {
 		LSGiocatori = new ArrayList<Giocatori>();
 		DatiGiocatori.delete();
+	}
+	
+	//Salva la classifica,da usare se viene chiuso il programma
+	public static void salva() {
+		try {
+			FileOutputStream fileOut = new FileOutputStream(DatiGiocatori);
+		    ObjectOutputStream out = new ObjectOutputStream(fileOut);
+		    out.writeObject(LSGiocatori);
+		    out.close();
+		    fileOut.close();
+		    } 
+		catch (IOException i) {
+		         i.printStackTrace();
+		}	
 	}
 	
 	//Temporaneo mostra la classifica
