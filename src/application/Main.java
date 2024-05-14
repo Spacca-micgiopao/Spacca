@@ -35,8 +35,7 @@ public class Main extends Application {
 	        LoginController.setMain(this);
 	        Scene scene = new Scene(root);
 	        primaryStage.setScene(scene);
-	        primaryStage.setHeight(720);
-	        primaryStage.setWidth(1280);
+	        primaryStage.sizeToScene();
 	        primaryStage.setResizable(false);
 	        primaryStage.show();
 	    }
@@ -48,8 +47,8 @@ public class Main extends Application {
 	        controller.setStage(primaryStage);
 	        Scene scene = new Scene(root);
 	        primaryStage.setScene(scene);
-	        primaryStage.setHeight(720);
-	        primaryStage.setWidth(1280);
+	        primaryStage.sizeToScene();
+	        primaryStage.setResizable(false);
 	        primaryStage.show();
 	    }
 
@@ -62,9 +61,9 @@ public class Main extends Application {
 	        controller.setMain(this);
 	        controller.setStage(primaryStage);
 	        Scene scene = new Scene(root);
-	        primaryStage.setHeight(720);
-	        primaryStage.setWidth(1280);
 	        primaryStage.setScene(scene);
+	        primaryStage.sizeToScene();
+	        primaryStage.setResizable(false);
 	        primaryStage.show();
 	    }
 	    public void showPreTorneoScene() throws Exception{
@@ -105,10 +104,10 @@ public class Main extends Application {
 	        controller.setStage(primaryStage);
 	        Scene scene = new Scene(root);  
 	        primaryStage.setScene(scene);
-	        primaryStage.setHeight(800);
-	        primaryStage.setWidth(1420);
+	        primaryStage.sizeToScene();
 	        primaryStage.show();
 	    }
+	    
 	    public void showFilmatoFinale() throws Exception{
 	    	FXMLLoader loader = new FXMLLoader(getClass().getResource("FilmatiFinali.fxml"));
 		    Parent root = loader.load();
@@ -162,6 +161,8 @@ public class Main extends Application {
 	        controller.setStage(primaryStage);
 	        Scene scene = new Scene(root);
 	        primaryStage.setScene(scene);
+	        primaryStage.sizeToScene();
+	        primaryStage.setResizable(false);
 	        primaryStage.show();
 	    }
 	    

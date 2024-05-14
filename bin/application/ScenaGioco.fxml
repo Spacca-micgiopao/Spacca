@@ -14,6 +14,11 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1420.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GameController">
    <children>
+      <ImageView fitHeight="250.0" fitWidth="200.0" layoutX="1130.0" layoutY="30.0">
+         <image>
+            <Image url="@../Sfondo/RetroPokemon.png" />
+         </image>
+      </ImageView>
       <GridPane fx:id="Tavolo1" gridLinesVisible="true" layoutX="284.0" layoutY="263.0" prefHeight="274.0" prefWidth="191.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="99.6666768391927" minWidth="10.0" prefWidth="94.99998982747395" />
@@ -92,32 +97,16 @@
       <ImageView fx:id="Carta2G1" fitHeight="178.0" fitWidth="153.0" layoutX="492.0" layoutY="57.0" onMouseClicked="#handleClickCartaGiocatore1" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="Carta3G1" fitHeight="160.0" fitWidth="153.0" layoutX="710.0" layoutY="57.0" onMouseClicked="#handleClickCartaGiocatore1" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="Carta4G1" fitHeight="178.0" fitWidth="153.0" layoutX="923.0" layoutY="57.0" onMouseClicked="#handleClickCartaGiocatore1" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="BottoneUscita" layoutX="1337.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleBottoneUscita" text="CLOSE" textFill="#ef2323">
+      <Button fx:id="BottoneUscita" layoutX="25.0" layoutY="24.0" mnemonicParsing="false" onAction="#handleBottoneUscita" prefHeight="33.0" prefWidth="124.0" text="SALVA ED ESCI" textFill="#ef2323">
          <font>
-            <Font name="Cooper Black" size="12.0" />
+            <Font name="Pixelated Regular" size="17.0" />
          </font>
       </Button>
-      <ImageView fitHeight="150.0" fitWidth="95.0" layoutX="1119.0" layoutY="10.0" rotate="-90.0">
+      <ImageView fitHeight="250.0" fitWidth="200.0" layoutX="1140.0" layoutY="525.0">
          <image>
-            <Image url="@../Sfondo/RetroPokemon.jpg" />
+            <Image url="@../Sfondo/RetroPokemon.png" />
          </image>
       </ImageView>
-   	
-            <Button layoutX="1130.0" layoutY="68.0" mnemonicParsing="false" onAction="#handlePescaGiocatore1Action" prefHeight="33.0" prefWidth="73.0" text="PESCA ">
-         <font>
-            <Font name="Cooper Black" size="12.0" />
-         </font>
-      </Button>
-      <ImageView fitHeight="187.0" fitWidth="116.0" layoutX="1194.0" layoutY="557.0" rotate="-90.0">
-         <image>
-            <Image url="@../Sfondo/RetroPokemon.jpg" />
-         </image>
-      </ImageView>
-      <Button layoutX="1216.0" layoutY="632.0" mnemonicParsing="false" onAction="#handlePescaGiocatore2Action" prefHeight="33.0" prefWidth="73.0" text="PESCA">
-         <font>
-            <Font name="Cooper Black" size="12.0" />
-         </font>
-      </Button>
       <Label fx:id="LabelIconaNomeG1" layoutX="87.0" layoutY="92.0" prefHeight="16.0" prefWidth="134.0" text="G1">
          <font>
             <Font name="Cooper Black" size="15.0" />
@@ -128,38 +117,49 @@
             <Font name="Cooper Black" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="LabelPunteggioG1T1" layoutX="361.0" layoutY="231.0" prefHeight="17.0" prefWidth="37.0" style="-fx-background-color: black;" textFill="#297887">
+      <Label fx:id="LabelPunteggioG1T1" alignment="CENTER" layoutX="361.0" layoutY="235.0" prefHeight="17.0" prefWidth="37.0" style="-fx-background-color: black;" text="0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="Cooper Black" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="LabelPunteggioG2T1" layoutX="361.0" layoutY="534.0" prefHeight="17.0" prefWidth="37.0" style="-fx-background-color: Black;" textFill="WHITE">
+      <Label fx:id="LabelPunteggioG2T1" alignment="CENTER" layoutX="361.0" layoutY="537.0" prefHeight="17.0" prefWidth="37.0" style="-fx-background-color: Black;" text="0" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" wrapText="true">
          <font>
             <Font name="Cooper Black" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="LabelPunteggioG1T2" layoutX="645.0" layoutY="231.0" prefHeight="17.0" prefWidth="37.0" style="-fx-background-color: black;" textFill="#297887">
+      <Label fx:id="LabelPunteggioG1T2" alignment="CENTER" layoutX="645.0" layoutY="235.0" prefHeight="17.0" prefWidth="37.0" style="-fx-background-color: black;" text="0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="Cooper Black" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="LabelPunteggioG2T2" layoutX="645.0" layoutY="537.0" prefHeight="17.0" prefWidth="37.0" style="-fx-background-color: black;" textFill="#297887">
+      <Label fx:id="LabelPunteggioG2T2" alignment="CENTER" layoutX="645.0" layoutY="537.0" prefHeight="17.0" prefWidth="37.0" style="-fx-background-color: black;" text="0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="Cooper Black" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="LabelPunteggioG1T3" layoutX="929.0" layoutY="231.0" prefHeight="17.0" prefWidth="37.0" style="-fx-background-color: black;" textFill="#297887">
+      <Label fx:id="LabelPunteggioG1T3" alignment="CENTER" layoutX="929.0" layoutY="235.0" prefHeight="17.0" prefWidth="37.0" style="-fx-background-color: black;" text="0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="Cooper Black" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="LabelPunteggioG2T3" layoutX="929.0" layoutY="537.0" prefHeight="17.0" prefWidth="37.0" style="-fx-background-color: black;" textFill="#297887">
+      <Label fx:id="LabelPunteggioG2T3" alignment="CENTER" contentDisplay="CENTER" layoutX="929.0" layoutY="537.0" prefHeight="17.0" prefWidth="37.0" style="-fx-background-color: black;" text="0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="Cooper Black" size="25.0" />
          </font>
       </Label>
+   	
+            <Button layoutX="1194.0" layoutY="139.0" mnemonicParsing="false" onAction="#handlePescaGiocatore1Action" prefHeight="33.0" prefWidth="73.0" text="PESCA ">
+         <font>
+            <Font name="Cooper Black" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="1203.0" layoutY="633.0" mnemonicParsing="false" onAction="#handlePescaGiocatore2Action" prefHeight="33.0" prefWidth="73.0" text="PESCA">
+         <font>
+            <Font name="Cooper Black" size="12.0" />
+         </font>
+      </Button>
       <ImageView id="imprevisto1" fx:id="imprevisto1" fitHeight="403.0" fitWidth="200.0" layoutX="54.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="turnoLabel" layoutX="1139.0" layoutY="260.0" prefHeight="311.0" prefWidth="269.0" text="TURNO" wrapText="true">
+      <Label fx:id="turnoLabel" layoutX="1095.0" layoutY="280.0" prefHeight="250.0" prefWidth="270.0" text="TURNO" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="Pixelated Regular" size="57.0" />
          </font>

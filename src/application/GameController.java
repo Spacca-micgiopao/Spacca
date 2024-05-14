@@ -181,11 +181,13 @@ public class GameController  implements Serializable{
         imageViewsTavolo3.add(CartaT3p10);
         imageViewsTavolo3.add(CartaT3p01);
         imageViewsTavolo3.add(CartaT3p11);
+        
     	if(flag == 0) {
 	    	getTorneo();
 	    	getPartite();
 	    	setPlayersNames();
     	}
+    	
     	LabelIconaNomeG1.setText(player1Name);
     	LabelIconaNomeG2.setText(player2Name);
     	if(flag == 1) {
