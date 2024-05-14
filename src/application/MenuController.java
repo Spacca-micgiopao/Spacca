@@ -2,17 +2,17 @@ package application;
 
 import java.io.File;
 import java.io.IOException;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class MenuController {
+public class MenuController{
 	
 	private Stage stage;
 	private static boolean Torneo;
 	private Main main;
+	
 	@FXML
 	private Button VediClassifica, CreaPartita, CreaTorneo, Logout;
 	

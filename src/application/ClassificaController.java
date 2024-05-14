@@ -16,6 +16,8 @@ import javafx.fxml.Initializable;
 import javafx.stage.Stage;
 
 public class ClassificaController implements Initializable,Serializable{
+	
+	private static final long serialVersionUID = -5669860547296300942L;
 	//Questa classe gestisce tutto cio che riguarda le classifiche
 	private Stage stage;
 	private Main main;	

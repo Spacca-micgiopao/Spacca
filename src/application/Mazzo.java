@@ -12,6 +12,9 @@ import java.io.Serializable;
 
 
 public class Mazzo implements Serializable{
+	
+	//Per serializzazione
+	private static final long serialVersionUID = -9134815485944977385L;
 	protected List<Carta> carte;
 
 	public Mazzo() {

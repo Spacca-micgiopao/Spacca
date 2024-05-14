@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class Giocatori implements Serializable{
 	
+	//Per serializzazione
+	private static final long serialVersionUID = -4168603108386424350L;
 	protected String Nome;
 	protected int Vittorie;
 	
@@ -13,7 +15,7 @@ public class Giocatori implements Serializable{
 	}
 	
 	public String toString() {
-		return Nome;
+		return Nome+"/"+Vittorie;
 	}
 	
 	public String getNome() {

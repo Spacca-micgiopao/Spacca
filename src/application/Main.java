@@ -1,15 +1,11 @@
 package application;
 	
 import java.io.File;
-import java.io.FileInputStream;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.GridPane;
 
 public class Main extends Application {
 
@@ -49,8 +45,8 @@ public class Main extends Application {
 	        controller.setStage(primaryStage);
 	        Scene scene = new Scene(root);
 	        primaryStage.setScene(scene);
-	        primaryStage.setHeight(400);
-	        primaryStage.setWidth(600);
+	        primaryStage.setHeight(720);
+	        primaryStage.setWidth(1280);
 	        primaryStage.show();
 	    }
 
@@ -63,8 +59,8 @@ public class Main extends Application {
 	        controller.setMain(this);
 	        controller.setStage(primaryStage);
 	        Scene scene = new Scene(root);
-	        primaryStage.setHeight(400);
-	        primaryStage.setWidth(600);
+	        primaryStage.setHeight(720);
+	        primaryStage.setWidth(1280);
 	        primaryStage.setScene(scene);
 	        primaryStage.show();
 	    }

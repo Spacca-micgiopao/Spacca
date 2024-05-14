@@ -1,19 +1,17 @@
 package application;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 
-import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
-import javax.imageio.ImageIO;
 
 import javafx.scene.control.ListView;
 
 public class Salvataggi implements Serializable{
 	
+	//Per serializzazione
+	private static final long serialVersionUID = 8861363815419378160L;
 	protected GameController gamecontroller;
 	protected static File file = new File("");
 
