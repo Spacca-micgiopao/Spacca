@@ -3,6 +3,7 @@ package application;
 import java.io.File;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,14 +12,20 @@ import javafx.scene.image.Image;
 public class Main extends Application {
 
 	 private Stage primaryStage;
-
+	 //File e cartelle dove vengono salvati i dati creati all'avvio in caso non presenti
+	 private File Dir = new File("src/Data/");
+	 private File DatiGiocatori = new File("src/Data/DatiGiocatori.ser");
+	 private File DatiAccesso = new File("src/Data/DatiAccesso.txt");
+	 private File Salvataggi = new File("src/Salvataggi/");
+	 
 	    @Override
 	    public void start(Stage primaryStage) throws Exception {
-	    	LoginController.accesso.put("1", "");
-	    	File Dir = new File("src/Data/");
 	    	if(!Dir.exists())
 	    		Dir.mkdir();
-	    	File DatiGiocatori = new File("src/Data/DatiGiocatori.ser");
+	    	if(!DatiGiocatori.exists())
+	    		DatiGiocatori.createNewFile();
+	    	if(!Salvataggi.exists())
+	    		Salvataggi.mkdir();
 	        this.primaryStage = primaryStage;
 	        if(DatiGiocatori.exists() && DatiGiocatori.canRead())
 	    		ClassificaController.CaricaNomi();
@@ -30,8 +37,14 @@ public class Main extends Application {
 	        Image icon = new Image("Icona.png");
 	        primaryStage.getIcons().add(icon);
 	        showLoginScene();
+	        if(!DatiAccesso.exists())
+	        	LoginController.accesso.put("admin", "");
+	        if(LoginController.accesso.containsValue("") && LoginController.accesso.containsKey("admin"))
+	        	showAlert();
+	        if(DatiAccesso.exists())
+	        	LoginController.caricaAccesso(DatiAccesso);
 	    }
-
+	    
 	    public void showLoginScene() throws Exception {
 	        FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
 	        Parent root = loader.load();
@@ -184,6 +197,19 @@ public class Main extends Application {
 	        primaryStage.show();
 	    }
 	    
+	    public void showAlert() {
+	        try {
+	            FXMLLoader loader = new FXMLLoader(getClass().getResource("Loginalert.fxml"));
+	            Parent root = loader.load();
+	            Stage alertStage = new Stage();
+	            alertStage.initModality(Modality.WINDOW_MODAL);
+	            alertStage.initOwner(primaryStage);
+	            alertStage.setScene(new Scene(root));
+	            alertStage.showAndWait();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
 }
 	
 

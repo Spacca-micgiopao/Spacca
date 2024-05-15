@@ -1,24 +1,21 @@
 package application;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.Serializable;
-import java.net.URL;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import java.util.HashMap;
-import java.util.ResourceBundle;
 
-public class LoginController implements Initializable,Serializable{
+import java.util.HashMap;
+import java.util.NoSuchElementException;
+import java.util.Scanner;
+
+public class LoginController {
 //Classe per controllare la pagina di Login
-	
-	//Per serilizzazione dei dati di accesso
-	private static final long serialVersionUID = 5620015872095426512L;
 	
 	private Main main;
 	//Crea le istanze per prendere in input Nome e Password
@@ -45,7 +42,6 @@ public class LoginController implements Initializable,Serializable{
 	//Per confermare le credenziali e passare al menu principale
 
 	public void conferma(ActionEvent event) throws IOException, InterruptedException {
-		//Modificare qui per decidere nome utente e password dell'admin
 		Nome = inputnome.getText();
 		Password = inputpassword.getText();
 		if(accesso.containsValue(Password) && accesso.containsKey(Nome)) {
@@ -60,9 +56,19 @@ public class LoginController implements Initializable,Serializable{
 		}else
 			errori.setText("USERNAME O PASSWORD ERRATI");
 	}
-
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
+	
+	public static void caricaAccesso(File f){
+		try {
+			Scanner scan = new Scanner(f);
+			accesso.put(scan.nextLine(), scan.nextLine());
+			scan.close();
+		} 
+		catch (FileNotFoundException e) {
+			accesso.put("admin", "");
+		}
+		catch (NoSuchElementException e) {
+			accesso.put("admin", "");
+		}
 	}
 }
 	
