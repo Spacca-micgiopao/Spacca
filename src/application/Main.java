@@ -84,6 +84,7 @@ public class Main extends Application {
 	        primaryStage.setResizable(false);
 	        primaryStage.show();
 	    }
+	    
 	    public void showPreTorneoScene() throws Exception{
 	    	FXMLLoader loader = new FXMLLoader(getClass().getResource("PreparazioneTorneo.fxml"));
 		    Parent root = loader.load();
@@ -91,14 +92,13 @@ public class Main extends Application {
 	        controller.setMain(this);
 	        controller.setStage(primaryStage);
 	        Scene scene = new Scene(root);
-	        primaryStage.setHeight(800);
+	        primaryStage.setHeight(720);
 	        primaryStage.setWidth(1280);
+	        primaryStage.sizeToScene();
 	        primaryStage.setScene(scene);
-	        primaryStage.setFullScreen(true);
 	        primaryStage.show();
-    	
-	    	
 	    }
+	    
 	    public void showPreTorneo4Scene() throws Exception{
 	    	FXMLLoader loader = new FXMLLoader(getClass().getResource("PreTorneo4.fxml"));
 		    Parent root = loader.load();
@@ -106,10 +106,10 @@ public class Main extends Application {
 	        controller.setMain(this);
 	        controller.setStage(primaryStage);
 	        Scene scene = new Scene(root);
-	        primaryStage.setHeight(800);
+	        primaryStage.setHeight(720);
 	        primaryStage.setWidth(1280);
+	        primaryStage.sizeToScene();
 	        primaryStage.setScene(scene);
-	        primaryStage.setFullScreen(true);
 	        primaryStage.show();
     	
 	    	

@@ -1,7 +1,6 @@
 package application;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
