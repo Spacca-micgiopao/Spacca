@@ -1,6 +1,5 @@
 package application;
 
-import java.io.File;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,7 +45,7 @@ public class MenuController{
 		}
 	}
 	
-	//per fare il logout e tornare alla pagina di login infopartita serve per creare la lista dei giocatori la prima volta
+	//Entra nella classifica
 	public void VaiaClassifica(ActionEvent event) throws IOException {
 		try {
 			main.showClassificaScene();

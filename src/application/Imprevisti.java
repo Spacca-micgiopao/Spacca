@@ -22,7 +22,6 @@ public class Imprevisti {
 	private GameController gc;
 	
 	public Imprevisti(GameController gc) {
-       this.Imprevistoscelto = Imprevistoscelto;
        this.gc = gc;
 	}
 	

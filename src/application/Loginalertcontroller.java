@@ -23,11 +23,7 @@ public class Loginalertcontroller {
 		LoginController.accesso.clear();
 		String User = username.getText();
 		String PW = password.getText();
-		LoginController.accesso.put(User, PW);
-		FileWriter fw = new FileWriter(DatiAccesso);
-		fw.append(User+"\n");
-		fw.append(PW);
-		fw.close();
+		LoginController.SalvaAccesso(DatiAccesso, User, PW);
 		stage = (Stage) conferma.getScene().getWindow();
 		stage.close();
 	}

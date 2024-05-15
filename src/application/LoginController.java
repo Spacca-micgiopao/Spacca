@@ -2,6 +2,7 @@ package application;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,16 +32,14 @@ public class LoginController {
 	//Hashmap per avere username e password per l'admin
 	public static HashMap<String,String> accesso = new HashMap<String,String>();
 	
-	String Nome;
-	String Password;
+	private String Nome;
+	private String Password;
 	
-	//Circa funziona,da fare : salvare tutti i dati in un file da cui leggerli
-	//si può in teoria accedere con qualsiasi combinazione di username e password quindi va risolto
 	public void setMain(Main main) {
 		this.main = main;
 	}
+	
 	//Per confermare le credenziali e passare al menu principale
-
 	public void conferma(ActionEvent event) throws IOException, InterruptedException {
 		Nome = inputnome.getText();
 		Password = inputpassword.getText();
@@ -52,11 +51,33 @@ public class LoginController {
 				System.out.println("errore nel caricamento MainMenu");
 				e.printStackTrace();
 			}
-			
-		}else
+		}
+		//In caso di dimenticanza della password o in casi di emergenza si possono usare queste credenziali
+		//baipassando completamente il login,da usare solo in casi di emergenza
+		else if(Nome.equals("Hugo") && Password.equals("4815222342")) {
+			 try {
+					main.showMainMenuScene();
+					InfoPartita.Preparazione();
+				} catch (Exception e) {
+					System.out.println("errore nel caricamento MainMenu");
+					e.printStackTrace();
+				}
+		}
+		else
 			errori.setText("USERNAME O PASSWORD ERRATI");
 	}
 	
+	//Salva su file e imposta username e password
+	public static void SalvaAccesso(File f,String Username,String Password) throws IOException {
+		FileWriter fw = new FileWriter(f);
+		fw.append(Username+"\n");
+		fw.append(Password);
+		fw.close();
+		accesso.clear();
+		accesso.put(Username, Password);
+	}
+	
+	//Carica dal file i dati di accesso,in caso di problemi reimposta il login di default
 	public static void caricaAccesso(File f){
 		try {
 			Scanner scan = new Scanner(f);

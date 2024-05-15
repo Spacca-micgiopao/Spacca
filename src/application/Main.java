@@ -39,10 +39,10 @@ public class Main extends Application {
 	        showLoginScene();
 	        if(!DatiAccesso.exists())
 	        	LoginController.accesso.put("admin", "");
-	        if(LoginController.accesso.containsValue("") && LoginController.accesso.containsKey("admin"))
-	        	showAlert();
 	        if(DatiAccesso.exists())
 	        	LoginController.caricaAccesso(DatiAccesso);
+	        if(LoginController.accesso.containsValue("") && LoginController.accesso.containsKey("admin"))
+	        	showAlert();
 	    }
 	    
 	    public void showLoginScene() throws Exception {

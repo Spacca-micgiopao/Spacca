@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -19,8 +20,12 @@ public class AdminPanelController implements Initializable{
 	@FXML
 	private Label LabelStatistiche;
 	@FXML
-	private TextField Usernamechange,Passwordchange;
+	private TextField Usernamechange;
+	@FXML
+	private TextField Passwordchange;
+
 	
+	private File DatiAccesso = new File("src/Data/DatiAccesso.txt");
 	public void setMain(Main main) {
     	this.main= main;
     }
@@ -43,8 +48,17 @@ public class AdminPanelController implements Initializable{
 			}
 		//Resetta il file che contiene le informazioni dei giocatori
 		ClassificaController.elimina();
+		DatiAccesso.delete();
+		LoginController.accesso.put("admin", "");
 		Npartite = 0;
 		Scrivistats();
+		try {
+			main.showLoginScene();
+			main.showAlert();
+		}
+		catch(Exception e) {
+			System.out.println("errore nel caricamento scena Login");
+		}
 	}
 	
 	//Per scrivere le statistiche e al caso aggiornarle
@@ -53,15 +67,21 @@ public class AdminPanelController implements Initializable{
 				 "Numero di partite salvate: "+Npartite+"\n");
 	}
 	
-	public void CambioAccesso(ActionEvent event) {
-		String Newusername, Newpassword;
-		Newusername = Usernamechange.getText();
-		Newpassword = Passwordchange.getText();
-			LoginController.accesso.clear();
-			LoginController.accesso.put("1", "2");
+	//Modifica username,password o entrambe e fa il logout
+	public void CambioAccesso(ActionEvent event) throws IOException {
+		String username = Usernamechange.getText();
+		String password = Passwordchange.getText();
+		if(!username.equals("") && !password.equals("")) {
+				LoginController.SalvaAccesso(DatiAccesso, username+"", password+"");
+				try {
+					main.showLoginScene();
+				}
+				catch(Exception e) {
+					System.out.println("errore nel caricamento scena Login");
+				}
 		}
+	}
 		
-	
 	//Per tornare al menuprincipale
 	public void Backtomenu(ActionEvent event) throws IOException {
 		try {
