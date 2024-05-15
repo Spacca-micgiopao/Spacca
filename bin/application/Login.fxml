@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -23,7 +24,6 @@
          <font>
             <Font name="Pixelated Regular" size="32.0" />
          </font></Button>
-      <TextField fx:id="inputpassword" layoutX="451.0" layoutY="352.0" prefHeight="36.0" prefWidth="325.0" />
       <TextField fx:id="inputnome" layoutX="451.0" layoutY="252.0" prefHeight="36.0" prefWidth="325.0" />
       <Label layoutX="14.0" layoutY="230.0" prefHeight="80.0" prefWidth="454.0" text="NOME UTENTE" textFill="WHITE">
          <font>
@@ -50,5 +50,6 @@
             <Font name="Pixelated Regular" size="48.0" />
          </font>
       </Label>
+      <PasswordField fx:id="inputpassword" layoutX="451.0" layoutY="360.0" prefHeight="36.0" prefWidth="325.0" />
    </children>
 </AnchorPane>
