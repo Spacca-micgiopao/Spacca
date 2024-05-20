@@ -91,6 +91,8 @@ public class GameController  implements Serializable{
     private ImageView CartaT3p00,CartaT3p10,CartaT3p01,CartaT3p11;
     @FXML
     private Pane CampoBasso,CampoAlto;
+    @FXML
+    private Rectangle rettangolo1;
     
     //METODI SET E GETTER
     //serve per il cambio scena
@@ -211,6 +213,12 @@ public class GameController  implements Serializable{
     	turnoLabel.setText("Turno di "+ " "+ player1Name+"!");
     	turnoLabel.setStyle("-fx-text-fill: black;");
     	 visualizzaImprevisti();
+	 // rettanoglo bot
+   	if (botgioco) {
+   	    	rettangolo1.setVisible(true); 	
+   	    } else {
+   	    	rettangolo1.setVisible(false);
+   	    }
     	 
     	//mazzo con tutte le carte disponibili
     	mazzoCompleto = new Mazzo();
