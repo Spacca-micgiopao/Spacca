@@ -35,7 +35,11 @@ public class GameController  implements Serializable{
 	//Per gestire il caricamento delle partite
 	public static int flag = 0;
 	private Salvataggi salvataggio = new Salvataggi(this);
+	//per gestione bot
 	private boolean botgioco = true;
+	
+
+	
 	public static String player1Name;
 	public static String player2Name;
 	protected Mazzo mazzoGiocatore1,mazzoGiocatore2,mazzoCompleto,mazzoProvenienzaCartaSelezionata;
@@ -72,6 +76,10 @@ public class GameController  implements Serializable{
     private List<ImageView> imageViewsTavolo1,imageViewsTavolo2,imageViewsTavolo3;
     @FXML
     private Button PescaGiocatore1,PescaGiocatore2,BottoneUscita;
+
+	//per bot
+    @FXML
+    private Rectangle rettangolo1;
     //tavoli da gioco
     //tavolo1---------------------------------------------------
     @FXML 
@@ -233,6 +241,12 @@ public class GameController  implements Serializable{
     	//PREPARAZIONE GIOCO
     	 imprevisti = new Imprevisti();
     	 visualizzaImprevisti();
+	// gestione bot
+	if (botgioco) {
+   	    	rettangolo1.setVisible(true);   	
+   	    } else {
+   	    	rettangolo1.setVisible(false);
+   	    }
     	 
     	//mazzo con tutte le carte disponibili
     	mazzoCompleto = new Mazzo();
