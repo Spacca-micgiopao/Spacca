@@ -110,6 +110,19 @@ public class Imprevisti {
         }
     	
     }
+	 
+    public void carteimprevisto(Carta cartaSelezionata ){
+    	 if (cartaSelezionata.getColore().equals("random")) {
+    	        Random rand = new Random();
+    	        int valore = rand.nextBoolean() ? 0 : 8;
+    	        cartaSelezionata.setValore(valore);
+    	        System.out.println(valore);
+    	    }
+    
+ 	
+    	
+    }
+
 
     public Image caricaImmagineImprevisto() throws IOException {
         String percorsoImprevisto = "src/Imprevisti/" + nomeImprevisto;
