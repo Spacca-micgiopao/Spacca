@@ -621,6 +621,7 @@ public class GameController  implements Serializable{
             // Applica l'effetto dell'imprevisto sulla carta selezionata
             cartaSelezionata.setValore(valoreCartaSelezionata);
             imprevisti.applicaEffettoCarta(cartaSelezionata);
+	    imprevisti.carteimprevisto(cartaSelezionata);
 
             // Aggiornamento punteggio
             if (tavoloNumero == 1) {
