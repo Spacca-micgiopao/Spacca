@@ -92,8 +92,7 @@ public class GameController  implements Serializable{
     private ImageView CartaT3p00,CartaT3p10,CartaT3p01,CartaT3p11;
     @FXML
     private Pane CampoBasso,CampoAlto;
-    @FXML
-    private Rectangle rettangolo1;
+
     
     //METODI SET E GETTER
     //serve per il cambio scena
