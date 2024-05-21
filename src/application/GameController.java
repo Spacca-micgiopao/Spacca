@@ -244,8 +244,8 @@ public class GameController  implements Serializable{
     		Salvataggi.associazioneImmaginiATavolo(this.carteTavolo3,this.imageViewsTavolo3);
     	}
     	//inizializzazione Label
-    	turnoLabel.setText("Turno di "+ " "+ player1Name+"!");
-    	turnoLabel.setStyle("-fx-text-fill: black;");
+    	turnoLabel.setText(player1Name.toUpperCase());
+    	//turnoLabel.setStyle("-fx-text-fill: black;");
     	 visualizzaImprevisti();
 	 // rettanoglo bot
    	if (botgioco) {
@@ -286,11 +286,11 @@ public class GameController  implements Serializable{
     private void aggiornaTurnoLabel() {
  
         if (turnoGiocatore1) {
-            turnoLabel.setText("TURNO DI "+ " "+ player1Name);
-            turnoLabel.setStyle("-fx-text-fill: black;");
+            turnoLabel.setText(player1Name.toUpperCase());
+            //turnoLabel.setStyle("-fx-text-fill: black;");
         } else {
-            turnoLabel.setText("TURNO DI "+ " "+ player2Name);
-            turnoLabel.setStyle("-fx-text-fill: blue;");
+            turnoLabel.setText(player2Name.toUpperCase());
+           // turnoLabel.setStyle("-fx-text-fill: blue;");
         }
     }
     public void passaTurno() {

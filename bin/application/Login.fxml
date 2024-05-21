@@ -51,6 +51,5 @@
          </font>
       </Label>
       <PasswordField fx:id="inputpassword" layoutX="451.0" layoutY="360.0" prefHeight="36.0" prefWidth="325.0" />
-      <Button layoutX="56.0" layoutY="730.0" mnemonicParsing="false" onAction="#bottoneUscita" text="CLOSE" textFill="RED" />
    </children>
 </AnchorPane>

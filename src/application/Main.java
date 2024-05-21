@@ -55,7 +55,7 @@ public class Main extends Application {
 	        primaryStage.setScene(scene);
 	        primaryStage.sizeToScene();
 	        primaryStage.setResizable(false);
-	        primaryStage.setHeight(720);
+	        primaryStage.setHeight(800);
 	        primaryStage.setWidth(1280);
 	        primaryStage.setFullScreen(true);
 	        primaryStage.show();
@@ -69,8 +69,11 @@ public class Main extends Application {
 	        controller.setStage(primaryStage);
 	        Scene scene = new Scene(root);
 	        primaryStage.setScene(scene);
+	        primaryStage.setHeight(800);
+	        primaryStage.setWidth(1280);
 	        primaryStage.sizeToScene();
 	        primaryStage.setResizable(false);
+	        primaryStage.setFullScreen(true);
 	        primaryStage.show();
 	    }
 
@@ -84,6 +87,9 @@ public class Main extends Application {
 	        controller.setStage(primaryStage);
 	        Scene scene = new Scene(root);
 	        primaryStage.setScene(scene);
+	        primaryStage.setHeight(800);
+	        primaryStage.setWidth(1280);
+	        primaryStage.setFullScreen(true);
 	        primaryStage.sizeToScene();
 	        primaryStage.setResizable(false);
 	        primaryStage.show();
@@ -96,7 +102,7 @@ public class Main extends Application {
 	        controller.setMain(this);
 	        controller.setStage(primaryStage);
 	        Scene scene = new Scene(root);
-	        primaryStage.setHeight(720);
+	        primaryStage.setHeight(800);
 	        primaryStage.setWidth(1280);
 	        primaryStage.sizeToScene();
 	        primaryStage.setScene(scene);
@@ -120,7 +126,7 @@ public class Main extends Application {
 	    	
 	    }
 	    public void showScenaGiocoScene() throws Exception {
-	        FXMLLoader loader = new FXMLLoader(getClass().getResource("ScenaGioco.fxml"));
+	        FXMLLoader loader = new FXMLLoader(getClass().getResource("ScenaGioco1.fxml"));
 	        Parent root = loader.load();
 	        GameController controller = loader.getController();
 	        controller.setMain(this);
@@ -128,6 +134,9 @@ public class Main extends Application {
 	        Scene scene = new Scene(root);  
 	        primaryStage.setScene(scene);
 	        primaryStage.sizeToScene();
+	        primaryStage.setHeight(800);
+	        primaryStage.setWidth(1280);
+	        primaryStage.setFullScreen(true);
 	        primaryStage.show();
 	    }
 	    

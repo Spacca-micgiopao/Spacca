@@ -15,9 +15,9 @@ public class Imprevisti {
              "Raddoppia punti carte rosa", 
              "Raddoppia punti carte rosse",
              "Raddoppia punti carte Verdi",
-             "Scambia Punti tavolo 1",
-             "Scambia Punti tavolo 2",
-             "Scambia Punti tavolo 3",
+             "Scambia punti tavolo 1",
+             "Scambia punti tavolo 2",
+             "Scambia punti tavolo 3",
        };
 	private String Imprevistoscelto;
 	private GameController gc;

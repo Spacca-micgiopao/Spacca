@@ -69,62 +69,62 @@
             <Font name="Cooper Black" size="12.0" />
          </font>
       </Button>
-      <Label fx:id="G1P1" layoutX="702.0" layoutY="149.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
+      <Label fx:id="G1P1" layoutX="702.0" layoutY="125.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
          <font>
             <Font name="Cooper Black" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="G1P2" layoutX="702.0" layoutY="220.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
+      <Label fx:id="G1P2" layoutX="702.0" layoutY="193.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
          <font>
             <Font name="Cooper Black" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="G1P3" layoutX="702.0" layoutY="289.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
+      <Label fx:id="G1P3" layoutX="702.0" layoutY="253.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
          <font>
             <Font name="Cooper Black" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="G1P4" layoutX="702.0" layoutY="366.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
+      <Label fx:id="G1P4" layoutX="702.0" layoutY="320.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
          <font>
             <Font name="Cooper Black" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="G1P5" layoutX="702.0" layoutY="431.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
+      <Label fx:id="G1P5" layoutX="702.0" layoutY="382.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
          <font>
             <Font name="Cooper Black" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="G1P6" layoutX="702.0" layoutY="509.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
+      <Label fx:id="G1P6" layoutX="702.0" layoutY="442.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
          <font>
             <Font name="Cooper Black" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="G2P1" layoutX="940.0" layoutY="149.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
+      <Label fx:id="G2P1" layoutX="939.0" layoutY="125.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
          <font>
             <Font name="Cooper Black" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="G2P2" layoutX="940.0" layoutY="220.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
+      <Label fx:id="G2P2" layoutX="939.0" layoutY="193.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
          <font>
             <Font name="Cooper Black" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="G2P3" layoutX="940.0" layoutY="289.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
+      <Label fx:id="G2P3" layoutX="940.0" layoutY="253.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
          <font>
             <Font name="Cooper Black" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="G2P4" layoutX="940.0" layoutY="366.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
+      <Label fx:id="G2P4" layoutX="940.0" layoutY="311.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
          <font>
             <Font name="Cooper Black" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="G2P5" layoutX="940.0" layoutY="431.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
+      <Label fx:id="G2P5" layoutX="940.0" layoutY="382.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
          <font>
             <Font name="Cooper Black" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="G2P6" layoutX="940.0" layoutY="509.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
+      <Label fx:id="G2P6" layoutX="939.0" layoutY="442.0" prefHeight="67.0" prefWidth="177.0" textFill="#164a2d">
          <font>
             <Font name="Cooper Black" size="17.0" />
          </font>
