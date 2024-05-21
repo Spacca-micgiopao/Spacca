@@ -20,12 +20,12 @@
          <children>
             <Button fx:id="BottoneUscita" layoutX="72.0" layoutY="31.0" mnemonicParsing="false" onAction="#handleBottoneUscita" prefHeight="33.0" prefWidth="124.0" text="SALVA ED ESCI" textFill="#ef2323">
                <font>
-                  <Font name="Pixelated Regular" size="17.0" />
+                  <Font name="Public Pixel" size="8.0" />
                </font>
             </Button>
             <Label fx:id="LabelIconaNomeG1" alignment="CENTER" layoutX="39.0" layoutY="94.0" prefHeight="21.0" prefWidth="191.0" text="G1">
                <font>
-                  <Font name="Pixelated Regular" size="24.0" />
+                  <Font name="Public Pixel" size="24.0" />
                </font>
             </Label>
             <Label fx:id="LabelIconaNomeG2" alignment="CENTER" layoutX="67.0" layoutY="721.0" prefHeight="17.0" prefWidth="136.0" text="G2">
@@ -40,12 +40,12 @@
             </Label>
             <Label fx:id="imprevistiBetaLabel" alignment="CENTER" layoutX="45.0" layoutY="400.0" prefHeight="213.0" prefWidth="211.0" style="-fx-border-color: black;" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
                <font>
-                  <Font size="40.0" />
+                  <Font name="Public Pixel" size="40.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="55.0" prefHeight="660.0" prefWidth="30.0" text="IMPREVISTI" textAlignment="CENTER" wrapText="true">
+            <Label layoutX="14.0" layoutY="55.0" prefHeight="660.0" prefWidth="30.0" text="IMPREVISTI" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
                <font>
-                  <Font name="Pixelated Regular" size="36.0" />
+                  <Font name="Public Pixel" size="26.0" />
                </font>
             </Label>
          </children>
@@ -120,9 +120,9 @@
       <ImageView fx:id="Carta3G2" fitHeight="160.0" fitWidth="150.0" layoutX="710.0" layoutY="597.0" onMouseClicked="#handleClickCartaGiocatore2" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="Carta4G2" fitHeight="160.0" fitWidth="150.0" layoutX="923.0" layoutY="597.0" onMouseClicked="#handleClickCartaGiocatore2" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="Carta1G1" fitHeight="160.0" fitWidth="150.0" layoutX="284.0" layoutY="57.0" onMouseClicked="#handleClickCartaGiocatore1" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="Carta2G1" fitHeight="178.0" fitWidth="153.0" layoutX="492.0" layoutY="57.0" onMouseClicked="#handleClickCartaGiocatore1" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="Carta3G1" fitHeight="160.0" fitWidth="153.0" layoutX="710.0" layoutY="57.0" onMouseClicked="#handleClickCartaGiocatore1" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="Carta4G1" fitHeight="178.0" fitWidth="153.0" layoutX="923.0" layoutY="57.0" onMouseClicked="#handleClickCartaGiocatore1" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta2G1" fitHeight="160.0" fitWidth="150.0" layoutX="492.0" layoutY="57.0" onMouseClicked="#handleClickCartaGiocatore1" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta3G1" fitHeight="160.0" fitWidth="150.0" layoutX="710.0" layoutY="57.0" onMouseClicked="#handleClickCartaGiocatore1" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta4G1" fitHeight="160.0" fitWidth="150.0" layoutX="923.0" layoutY="57.0" onMouseClicked="#handleClickCartaGiocatore1" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="LabelPunteggioG1T1" alignment="CENTER" layoutX="350.0" layoutY="235.0" prefHeight="17.0" prefWidth="60.0" style="-fx-background-color: black;" text="0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="Cooper Black" size="25.0" />

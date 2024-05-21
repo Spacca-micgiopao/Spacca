@@ -16,7 +16,8 @@ public class Imprevisti {
              "Raddoppia punti carte rosse",
              "Raddoppia punti carte Verdi",
              "Scambia Punti tavolo 1",
-             //"Tira i dadi!",
+             "Scambia Punti tavolo 2",
+             "Scambia Punti tavolo 3",
        };
 	private String Imprevistoscelto;
 	private GameController gc;
@@ -94,6 +95,20 @@ public class Imprevisti {
             	gc.punteggioG2Tavolo1 = s;
             	gc.LabelPunteggioG1T1.setText(gc.punteggioG1Tavolo1+"");
             	gc.LabelPunteggioG2T1.setText(gc.punteggioG2Tavolo1+"");
+            	break;
+            case "Scambia Punti tavolo 2":
+            	int c = gc.punteggioG1Tavolo2;
+            	gc.punteggioG1Tavolo2 = gc.punteggioG2Tavolo2;
+            	gc.punteggioG2Tavolo2 = c;
+            	gc.LabelPunteggioG1T2.setText(gc.punteggioG1Tavolo2+"");
+            	gc.LabelPunteggioG2T2.setText(gc.punteggioG2Tavolo2+"");
+            	break;
+            case "Scambia Punti tavolo 3":
+            	int k = gc.punteggioG1Tavolo3;
+            	gc.punteggioG1Tavolo3 = gc.punteggioG2Tavolo3;
+            	gc.punteggioG2Tavolo3 = k;
+            	gc.LabelPunteggioG1T3.setText(gc.punteggioG1Tavolo3+"");
+            	gc.LabelPunteggioG2T3.setText(gc.punteggioG2Tavolo3+"");
             	break;
             default:
                 // Nessun effetto
