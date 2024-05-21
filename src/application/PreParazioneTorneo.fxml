@@ -24,7 +24,7 @@
             <Font name="Cooper Black" size="12.0" />
          </font>
       </Button>
-      <ChoiceBox layoutX="604.0" layoutY="298.0" prefHeight="37.0" prefWidth="197.0" />
+      <ChoiceBox fx:id="CaricaTorneo" layoutX="604.0" layoutY="298.0" prefHeight="37.0" prefWidth="197.0" />
       <ChoiceBox fx:id="ScegliTipoTorneo" layoutX="629.0" layoutY="477.0" prefHeight="37.0" prefWidth="197.0" />
       <Button layoutX="656.0" layoutY="347.0" mnemonicParsing="false" text="CONFERMA">
          <font>

@@ -23,8 +23,6 @@ public class InfoPartita {
 		}
 	}
 	
-	
-	
 	//Passo i valori dei nomi dei giocatori e crea un codice partita
 	protected void getG(String IG1,String IG2) {
 		G1 = IG1;

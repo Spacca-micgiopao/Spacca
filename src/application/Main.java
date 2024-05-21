@@ -31,6 +31,7 @@ public class Main extends Application {
 	    		ClassificaController.CaricaNomi();
 	    	else
 	    		DatiGiocatori.createNewFile();
+	        SalvaTorneo.Preparazione();
 	    	ClassificaController.CaricaNomi();
 	        this.primaryStage = primaryStage;
 	        primaryStage.setTitle("SPACCA");

@@ -36,14 +36,14 @@ public class GameController  implements Serializable{
 	//Per gestire il caricamento delle partite
 	public static int flag = 0;
 	private Salvataggi salvataggio = new Salvataggi(this);
+	
 	private boolean botgioco = false;
+	//Mostrare le informazioni
 	public static String player1Name;
 	public static String player2Name;
 	protected Mazzo mazzoGiocatore1,mazzoGiocatore2,mazzoCompleto,mazzoProvenienzaCartaSelezionata;
 	protected String[] carteTavolo1,carteTavolo2,carteTavolo3; //servono per tenere traccia delle carte nei tavoli (nel formato "colore_valore")
 	//Imprevisti alfa e beta sono 2 oggetti della classe imprevisti che li gestiscono
-    public Imprevisti imprevistiAlfa = new Imprevisti(this);
-    public Imprevisti imprevistiBeta = new Imprevisti(this);
     private Carta cartaSelezionata; //selezionata da utente serve per lo spostamento
     private ImageView cartaCliccata;
     protected int punteggioG1Tavolo1,punteggioG1Tavolo2,punteggioG1Tavolo3;
@@ -53,15 +53,16 @@ public class GameController  implements Serializable{
     private boolean tuttiTavoliPieni=false;
     private MediaPlayer player;
     //PER IL TORNEO
-	private boolean Torneo;
+	private boolean Torneo = false;
 	private static int numeroPartita;
 	private List<String> partite = new ArrayList<>();
-	//FXML
+	//FXML----------------------------------------------------------------------
 	@FXML
     private AnchorPane backgroundPane;
 	@FXML
-	protected Label LabelPunteggioG1T1, LabelPunteggioG1T2,LabelPunteggioG1T3,LabelPunteggioG2T1,LabelPunteggioG2T2,
-	LabelPunteggioG2T3, LabelIconaNomeG1, LabelIconaNomeG2, turnoLabel,imprevistiAlfaLabel ,imprevistiBetaLabel;
+	protected Label LabelPunteggioG1T1, LabelPunteggioG1T2,LabelPunteggioG1T3,
+	LabelPunteggioG2T1,LabelPunteggioG2T2,LabelPunteggioG2T3, LabelIconaNomeG1,
+	LabelIconaNomeG2, turnoLabel,imprevistiAlfaLabel ,imprevistiBetaLabel;
     @FXML
     protected ListView<Carta> listaCarteGiocatore1,listaCarteGiocatore2;
     @FXML
@@ -79,7 +80,7 @@ public class GameController  implements Serializable{
     @FXML 
     private GridPane Tavolo1;
     @FXML
-    private ImageView CartaT1p00,CartaT1p10,CartaT1p01,CartaT1p11; //carte tavolo1 
+    private ImageView CartaT1p00,CartaT1p10,CartaT1p01,CartaT1p11;
     //tavolo2-------------------------------------------------------
     @FXML 
     private GridPane Tavolo2;
@@ -90,12 +91,16 @@ public class GameController  implements Serializable{
     private GridPane Tavolo3;
     @FXML
     private ImageView CartaT3p00,CartaT3p10,CartaT3p01,CartaT3p11;
+    //Imprevisti--------------------------------------------------
     @FXML
     private Pane CampoBasso,CampoAlto;
+    public Imprevisti imprevistiAlfa = new Imprevisti(this);
+    public Imprevisti imprevistiBeta = new Imprevisti(this);
+    //-------------------------------------------------------------
     @FXML
     private Rectangle rettangolo1;
     
-    //METODI SET E GETTER
+    //Metodi set e get---------------------------------------------
     //serve per il cambio scena
     public void setMain(Main main) {
     	this.main= main;
@@ -103,7 +108,8 @@ public class GameController  implements Serializable{
     public void setStage(Stage stage) {
 	        this.stage = stage;
     }
-	  //nomi dei giocatori
+    
+	//nomi dei giocatori
     public void setPlayersNames() {
     	if(Torneo == false) {
 	        player1Name = ControllerPrePartita.getPlayer1(); 
@@ -116,38 +122,41 @@ public class GameController  implements Serializable{
     		player1Name = giocatori[0];
     		player2Name= giocatori[1];
     	}
-      
     }
+    
     public void getTorneo() {
     	this.Torneo = MenuController.getTorneo();
     }
+    
     public void getPartite() {
     	this.partite = PreTorneo4Controller.getPartite();
     }
+    
     public static int getNumeroPartita() {
     	return numeroPartita;
     }
+    
     public static  int getVittoriaSuTavoloG1() {
     	return vittoriaSuTavoloG1;
     }
+    
     public static  int getVittoriaSuTavoloG2() {
     	return vittoriaSuTavoloG2;
     }
-  
-    //SFONDO E MUSICA
+    //------------------------------------------------------------
     
+    //Sfondo e musica
     public void insertMusic() {
-        	try {
-    			 Media sound = new Media(new File("src/Musica/MusicaSottofondoGioco1.mp3").toURI().toString());
-    			   player = new MediaPlayer(sound);
-    			   //continua sempre a suonare
-    			   player.setCycleCount(MediaPlayer.INDEFINITE);
-    			   player.play();
-    			   player.setVolume(0.02);
-    		}catch(Exception e ) {
-    			System.out.println("errore riproduzione");
-    		}
-        }	
+    	try {
+    		Media sound = new Media(new File("src/Musica/MusicaSottofondoGioco1.mp3").toURI().toString());
+    		player = new MediaPlayer(sound);
+    		player.setCycleCount(MediaPlayer.INDEFINITE);
+    		player.play();
+    		player.setVolume(0.02);
+    			}catch(Exception e ) {
+    				System.out.println("errore riproduzione");
+    			}
+    }	
     
     //INIZIALIZZAZIONE se il flag = 1 la partita è stata caricata e inizierà in modo diverso da una partita iniziata da 0
     public void initialize() {
@@ -184,13 +193,12 @@ public class GameController  implements Serializable{
         imageViewsTavolo3.add(CartaT3p10);
         imageViewsTavolo3.add(CartaT3p01);
         imageViewsTavolo3.add(CartaT3p11);
-        
     	if(flag == 0) {
 	    	getTorneo();
 	    	getPartite();
 	    	setPlayersNames();
     	}
-    	
+    	//Impostare le label dei nomi
     	LabelIconaNomeG1.setText(player1Name);
     	LabelIconaNomeG2.setText(player2Name);
     	if(flag == 1) {
@@ -209,7 +217,6 @@ public class GameController  implements Serializable{
     		Salvataggi.associazioneImmaginiATavolo(this.carteTavolo2,this.imageViewsTavolo2);
     		Salvataggi.associazioneImmaginiATavolo(this.carteTavolo3,this.imageViewsTavolo3);
     	}
-    	
     	//inizializzazione Label
     	turnoLabel.setText("Turno di "+ " "+ player1Name+"!");
     	turnoLabel.setStyle("-fx-text-fill: black;");
@@ -234,7 +241,8 @@ public class GameController  implements Serializable{
     	}
         aggiornaInterfaccia();
     }
- // Metodo per visualizzare un'imprevisto
+    
+    // Metodo per caricare i nuovi imprevisti
     public void visualizzaImprevisti() {
     	imprevistiAlfa.caricaImprevistoCasuale();
     	imprevistiBeta.caricaImprevistoCasuale();
@@ -349,7 +357,8 @@ public class GameController  implements Serializable{
     	
     	return true;
     }
-    //BOTTONI PESCA 
+    
+    //BOTTONI PESCA------------------------------------------------------------
     //pesca una carta per il giocatore 1 
     public void handlePescaGiocatore1Action(ActionEvent event) {
     	if(turnoGiocatore1) {
@@ -360,9 +369,9 @@ public class GameController  implements Serializable{
 	    		visualizzaImprevisti();
 	    	}
     	}
-	
     }
-    //pesca una carta per il giocatore2
+    
+    //Pesca una carta per il giocatore2
     public void handlePescaGiocatore2Action(ActionEvent event) {
     	if(!turnoGiocatore1) {
 	    	Carta cartaCasuale = mazzoCompleto.pescaCartaCasuale();
@@ -370,23 +379,36 @@ public class GameController  implements Serializable{
 	    		mazzoGiocatore2.aggiungiCarta(cartaCasuale);
 	    		aggiornaInterfaccia();
 	    		visualizzaImprevisti();
-	    	}
-	    		
+	    	}		
     	}
-    	
     }
-    //Bottone uscita dalla finestra
+    //--------------------------------------------------------------------------
+    
+    //Bottone uscita dalla partita 
     public void handleBottoneUscita(ActionEvent event) {
     	player.stop();
     	salvataggio.salvaPartita();
     	flag = 0;
-    	try {
-			main.showPrePartitaScene();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    	//Se siamo in un torneo all'uscita torno al pre torneo
+    	if(Torneo == true) {
+    		try {
+    			main.showPreTorneo4Scene();
+    			PreTorneo4Controller.flag = true;
+    		} catch (Exception e) {
+    			e.printStackTrace();
+    		}
+    	}
+    	//Non siamo in un torneo posso tornare al prepartita
+    	else if(Torneo == false)  { 		
+    		try {
+    			main.showPrePartitaScene();
+    		} 
+    		catch (Exception e) {
+    			e.printStackTrace();
+    		}
+    	}
     }
+    	
    //AGGIORNA INTERFACCIA
     public void aggiornaInterfaccia() {
         // Aggiorna le immagini del mazzo del giocatore 1
@@ -678,4 +700,3 @@ public class GameController  implements Serializable{
         handleClickPosizioneTavolo(event, posizioneTavoloCliccata, 3);
     }
 }
-  

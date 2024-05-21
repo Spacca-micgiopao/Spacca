@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class MenuController{
 	
 	private Stage stage;
-	private static boolean Torneo;
+	private static boolean Torneo = false;
 	private Main main;
 	
 	@FXML
@@ -58,7 +58,6 @@ public class MenuController{
 		Torneo=true;
 		try {
 			main.showPreTorneoScene();
-			SalvaTorneo.Preparazione();
 		}
 		catch(Exception e) {
 			System.out.println("errore nel caricamento scena PreTorneo");

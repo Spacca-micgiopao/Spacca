@@ -18,9 +18,11 @@ public class PreTorneoController implements Initializable {
 	private Stage stage;
 	private String[] tipiTorneo= {"Torneo con 4 giocatori","Torneo con robot"};
 	private int numeroGiocatori;
-	MediaPlayer player;
+	private MediaPlayer player;
 	@FXML
 	private ChoiceBox<String> ScegliTipoTorneo;
+	@FXML
+	private ChoiceBox<String> CaricaTorneo;
 	
 	public void setStage(Stage stage) {
         this.stage = stage;
@@ -46,6 +48,10 @@ public class PreTorneoController implements Initializable {
 		insertMusic();
 		ScegliTipoTorneo.getItems().addAll(tipiTorneo);
 		ScegliTipoTorneo.setOnAction(this::getTipoTorneo);
+		CaricaTorneo.getItems().clear();
+		CaricaTorneo.getItems().removeAll();
+		if(SalvaTorneo.Tornei != null)
+			CaricaTorneo.getItems().addAll(SalvaTorneo.Tornei);
 	}
 	
 	public void getTipoTorneo(ActionEvent event) {

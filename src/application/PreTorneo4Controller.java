@@ -100,6 +100,7 @@ public class PreTorneo4Controller {
     	player.stop();
     	try {
     		main.showScenaGiocoScene();
+    		salvatorneo.Salvataggio(this);
     	}catch(Exception e) {
     		System.out.println("Errore nel caricamento scenaGioco");
     	}
@@ -107,8 +108,8 @@ public class PreTorneo4Controller {
 	
 	public void handleBottoneUscita(ActionEvent event) {
     	stage.close();
-    	
     }
+	
 	//Per tornare al main menu
 	public void handleBottoneMenu(ActionEvent event) {
 		player.stop();

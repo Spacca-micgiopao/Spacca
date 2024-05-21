@@ -14,19 +14,19 @@ import java.util.List;
 
 public class SalvaTorneo implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 7423889382853862983L;
 	static File dir = new File("src/SalvataggiTorneo");
 	static File file = new File("src/SalvataggiTorneo/Torneo1.ser");
+	protected static String[] Tornei;
 	
-	//Crea la cartella
+	//Crea cartelle e carica la lista dei tornei,da usare allo start
 	public static void Preparazione() throws IOException {
 		if(!dir.exists())
 			dir.mkdir();
 		if(!file.exists())
 			file.createNewFile();
+		if(dir.list() != null)
+		Tornei = dir.list();
 	}
 	
 	//Per salvare il torneo quando si esce
@@ -44,6 +44,7 @@ public class SalvaTorneo implements Serializable {
 		}
 	}
 	
+	//Per caricare un nuovo torneo
 	protected static void CaricaTorneo(PreTorneo4Controller PTC) throws FileNotFoundException {
 		try {
 			FileInputStream filein = new FileInputStream(file);
@@ -53,6 +54,5 @@ public class SalvaTorneo implements Serializable {
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		
 	}
 }
