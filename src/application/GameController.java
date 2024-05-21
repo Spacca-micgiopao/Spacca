@@ -447,6 +447,10 @@ public class GameController  implements Serializable{
     	 if (carta != null) {
     	        // Imposta l'immagine della carta sulla posizione del tavolo
     	        posizioneTavolo.setImage(carta.getImmagine());
+    	        if(turnoGiocatore1 == true) 
+    	        	posizioneTavolo.setStyle("-fx-effect: innershadow(two-pass-box, rgba(255,0,0,0.75), 10, 0.5, 0, 0)");
+    	        else
+    	        	posizioneTavolo.setStyle("-fx-effect: innershadow(two-pass-box, rgba(0,0,255,0.75), 10, 0.5, 0, 0)");
     	        cartaCliccata.setEffect(null);
     	        aggiornaTurnoLabel();
     	    } 

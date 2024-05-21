@@ -97,6 +97,7 @@ public class FilmatiFinaliController {
 	        		ClassificaController.LSGiocatori.get(i).setVittorie();
 	        	}
 	        }
+	        Salvataggi.file.delete();
 	        ClassificaController.salva();
 	        mediaPlayer.play();
         }
