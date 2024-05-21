@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Random;
 
 import javafx.scene.media.*;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.layout.*;
 public class GameController  implements Serializable{
 	
@@ -35,7 +36,7 @@ public class GameController  implements Serializable{
 	//Per gestire il caricamento delle partite
 	public static int flag = 0;
 	private Salvataggi salvataggio = new Salvataggi(this);
-	private boolean botgioco = false;
+	private boolean botgioco = true;
 	public static String player1Name;
 	public static String player2Name;
 	protected Mazzo mazzoGiocatore1,mazzoGiocatore2,mazzoCompleto,mazzoProvenienzaCartaSelezionata;
