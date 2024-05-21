@@ -67,11 +67,11 @@ public class AdminPanelController implements Initializable{
 				 "Numero di partite salvate: "+Npartite+"\n");
 	}
 	
-	//Modifica username,password o entrambe e fa il logout
+	//Modifica username e password e fa il logout
 	public void CambioAccesso(ActionEvent event) throws IOException {
 		String username = Usernamechange.getText();
 		String password = Passwordchange.getText();
-		if(!username.equals("") && !password.equals("")) {
+		if(!username.isBlank() && !password.isBlank()) {
 				LoginController.SalvaAccesso(DatiAccesso, username+"", password+"");
 				try {
 					main.showLoginScene();

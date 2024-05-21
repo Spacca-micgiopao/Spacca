@@ -22,8 +22,10 @@ public class Loginalertcontroller {
 		LoginController.accesso.clear();
 		String User = username.getText();
 		String PW = password.getText();
-		LoginController.SalvaAccesso(DatiAccesso, User, PW);
-		stage = (Stage) conferma.getScene().getWindow();
-		stage.close();
+		if(!User.isBlank() && !PW.isBlank()) {
+			LoginController.SalvaAccesso(DatiAccesso, User, PW);
+			stage = (Stage) conferma.getScene().getWindow();
+			stage.close();
+		}
 	}
 }
