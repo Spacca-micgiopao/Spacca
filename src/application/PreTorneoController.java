@@ -6,10 +6,7 @@ import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -42,14 +39,15 @@ public class PreTorneoController implements Initializable {
     		}catch(Exception e ) {
     			System.out.println("errore riproduzione");
     		}
-      }
+     }
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		insertMusic();
-		// TODO Auto-generated method stub
 		ScegliTipoTorneo.getItems().addAll(tipiTorneo);
 		ScegliTipoTorneo.setOnAction(this::getTipoTorneo);
 	}
+	
 	public void getTipoTorneo(ActionEvent event) {
 		String tipoTorneo = ScegliTipoTorneo.getValue();
 		if(tipoTorneo=="Torneo con 4 giocatori") {
@@ -73,6 +71,15 @@ public class PreTorneoController implements Initializable {
 	public void handleBottoneUscita(ActionEvent event) {
 		try {
 			main.showMainMenuScene();
+		} catch (Exception e) {
+			System.out.println("errore nel caricamento scene Main Menu");
+		}
+    }
+	
+	public void Caricatorneo(ActionEvent event) {
+		try {
+			PreTorneo4Controller.flag = true;
+			main.showPreTorneo4Scene();
 		} catch (Exception e) {
 			System.out.println("errore nel caricamento scene Main Menu");
 		}
