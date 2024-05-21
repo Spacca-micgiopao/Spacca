@@ -22,7 +22,7 @@ public class WinningController {
 	private int numeroPartita;
 	private List<String> partite = new ArrayList<>();//giocatorex vs giocatorey
 	private String[] G;//tutti giocatori del  torneo
-	private String[] giocatori; //giocatori singole partite
+	private String[]  giocatori; //giocatori singole partite
 	private static List<String> vincitori = new ArrayList<>(); //vincitori delle singole partite
 	private static int[] numeroVittorieG= {0,0,0,0};//punteggio di  ogni giocatore
 	private MediaPlayer player;

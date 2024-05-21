@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.util.HashMap;
 import java.util.NoSuchElementException;
@@ -17,7 +18,7 @@ import java.util.Scanner;
 
 public class LoginController {
 //Classe per controllare la pagina di Login
-	
+	private Stage stage;
 	private Main main;
 	//Crea le istanze per prendere in input Nome e Password
 	@FXML
@@ -38,7 +39,9 @@ public class LoginController {
 	public void setMain(Main main) {
 		this.main = main;
 	}
-	
+	public void setStage(Stage stage) {
+        this.stage = stage;
+	}
 	//Per confermare le credenziali e passare al menu principale
 	public void conferma(ActionEvent event) throws IOException, InterruptedException {
 		Nome = inputnome.getText();
@@ -91,5 +94,9 @@ public class LoginController {
 			accesso.put("admin", "");
 		}
 	}
+	public void bottoneUscita(ActionEvent event) {
+		stage.close();
+	}
+	
 }
 	

@@ -91,6 +91,9 @@ public class AdminPanelController implements Initializable{
 			e.printStackTrace();
 		}
 	}
+	public void bottoneUscita(ActionEvent event) {
+		stage.close();
+	}
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

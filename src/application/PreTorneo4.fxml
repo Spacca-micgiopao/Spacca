@@ -15,7 +15,7 @@
             <Image url="@../Sfondo/PreTorneo4Sfondo.png" />
          </image>
       </ImageView>
-      <Label layoutX="817.0" layoutY="113.0" text="ELENCO PARTITE" textFill="WHITE">
+      <Label layoutX="831.0" layoutY="100.0" text="ELENCO PARTITE" textFill="WHITE">
          <font>
             <Font name="Cooper Black" size="21.0" />
          </font>
@@ -59,7 +59,7 @@
             <Font name="Cooper Black" size="11.0" />
          </font>
       </Button>
-      <Button layoutX="770.0" layoutY="619.0" mnemonicParsing="false" onAction="#handleBottoneIniziaAGiocare" text="INIZIA A GIOCARE" textFill="#ff2fd5">
+      <Button layoutX="770.0" layoutY="543.0" mnemonicParsing="false" onAction="#handleBottoneIniziaAGiocare" text="INIZIA A GIOCARE" textFill="#ff2fd5">
          <font>
             <Font name="Cooper Black" size="23.0" />
          </font>

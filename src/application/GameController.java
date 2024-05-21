@@ -47,10 +47,15 @@ public class GameController  implements Serializable{
 	private boolean turnoGiocatore1= true;  //Prima turno giocatore1: pesca poi gioca una carta poi turno giocatore2...
     private boolean tuttiTavoliPieni=false;
     private MediaPlayer player;
+    
     //PER IL TORNEO
 	private boolean Torneo = false;
-	private static int numeroPartita;
+	private static int numeroPartita=0;
 	private List<String> partite = new ArrayList<>();
+	private String[] G;
+	private static List<String> vincitori;
+	private static int[] numeroVittorieG;
+	
 	//FXML----------------------------------------------------------------------
 	@FXML
     private AnchorPane backgroundPane;
@@ -121,6 +126,12 @@ public class GameController  implements Serializable{
     
     public void getTorneo() {
     	this.Torneo = MenuController.getTorneo();
+    	if(Torneo==true) {
+    		getPartite();
+    		setG();
+    		setVincitori();
+    		setNumeroVittorieG();
+    	}
     }
     
     public void getPartite() {
@@ -130,7 +141,27 @@ public class GameController  implements Serializable{
     public static int getNumeroPartita() {
     	return numeroPartita;
     }
-    
+    public void setG() {
+    	G = PreTorneo4Controller.getG();
+    }
+    public void setVincitori() {
+    	if(numeroPartita == 0) {
+    		vincitori = new ArrayList<>();
+    	}else {
+    		vincitori = WinningController.ritornaVincitori();
+    	}
+    }
+    public void setNumeroVittorieG() {
+    	if(numeroPartita==0) {
+    		numeroVittorieG = new int[4];
+    		for(int i=0;i<numeroVittorieG.length;i++) {
+    			numeroVittorieG[i]= 0;
+    		}
+    	}
+    	else {
+    		numeroVittorieG = WinningController.getNumeroVittorieG();
+    	}
+    }
     public static  int getVittoriaSuTavoloG1() {
     	return vittoriaSuTavoloG1;
     }
