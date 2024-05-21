@@ -36,7 +36,7 @@ public class GameController  implements Serializable{
 	//Per gestire il caricamento delle partite
 	public static int flag = 0;
 	private Salvataggi salvataggio = new Salvataggi(this);
-	private boolean botgioco = true;
+	private boolean botgioco = false;
 	public static String player1Name;
 	public static String player2Name;
 	protected Mazzo mazzoGiocatore1,mazzoGiocatore2,mazzoCompleto,mazzoProvenienzaCartaSelezionata;
@@ -475,6 +475,26 @@ public class GameController  implements Serializable{
         if (turnoGiocatore1 && botgioco) {
             return;
         }
+        if(!turnoGiocatore1&&!botgioco) {
+	        cartaCliccata = (ImageView) event.getSource();
+	        // Trova l'indice dell'ImageView cliccata
+	        int index = imageViewsGiocatore2.indexOf(cartaCliccata);
+	        if (index == -1) {
+	            return;
+	        }
+	        mazzoProvenienzaCartaSelezionata = mazzoGiocatore2;
+	        // Ottiene la carta associata all'immagine cliccata
+	        if (index != -1) {
+	           if (index < mazzoGiocatore2.getCarte().size()) {
+	        		cartaSelezionata = mazzoGiocatore2.getCarta(index);
+	        		cartaCliccata.setEffect(new DropShadow());
+	            } else {
+	                return;
+	            }
+	        }
+	        passaTurno();
+    	}
+        
         
         // Se botgioco è attivo, il bot gioca la carta
         if (botgioco) {
@@ -656,4 +676,5 @@ public class GameController  implements Serializable{
         handleClickPosizioneTavolo(event, posizioneTavoloCliccata, 3);
     }
 }
+  
   
