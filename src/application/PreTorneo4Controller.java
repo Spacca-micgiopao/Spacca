@@ -16,9 +16,10 @@ import java.util.List;
 public class PreTorneo4Controller {
 	private Main main;
 	private Stage stage;
-	
-	private static String[] G;  //contenente tutti i giocatori del Torneo
-	private static List<String> partite = new ArrayList<>(); //contenente tutte partite torneo in formato "giocatore1 vs giocatore2"
+	private SalvaTorneo salvatorneo;
+	protected int c;
+	protected static String[] G;  //contenente tutti i giocatori del Torneo
+	protected static List<String> partite = new ArrayList<>(); //contenente tutte partite torneo in formato "giocatore1 vs giocatore2"
 	MediaPlayer player;
 	@FXML
 	private TextField InputG1;

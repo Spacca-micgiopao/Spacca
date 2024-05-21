@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Random;
 
 import javafx.scene.media.*;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.layout.*;
 public class GameController  implements Serializable{
 	

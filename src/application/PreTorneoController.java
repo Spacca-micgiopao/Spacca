@@ -16,7 +16,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 public class PreTorneoController implements Initializable {
-
+	
 	private Main main;
 	private Stage stage;
 	private String[] tipiTorneo= {"Torneo con 4 giocatori","Torneo con robot"};
@@ -38,7 +38,7 @@ public class PreTorneoController implements Initializable {
     			   player = new MediaPlayer(sound);
     			   //continua sempre a suonare
     			   player.setCycleCount(MediaPlayer.INDEFINITE);
-    			   player.play();
+    			   //player.play();
     		}catch(Exception e ) {
     			System.out.println("errore riproduzione");
     		}
@@ -71,7 +71,11 @@ public class PreTorneoController implements Initializable {
     	}
     }
 	public void handleBottoneUscita(ActionEvent event) {
-    	stage.close();
+		try {
+			main.showMainMenuScene();
+		} catch (Exception e) {
+			System.out.println("errore nel caricamento scene Main Menu");
+		}
     }
 	
 	public void handleBottoneMenu(ActionEvent event) {
