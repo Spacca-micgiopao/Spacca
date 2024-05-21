@@ -41,5 +41,6 @@
             <Image url="@../Sfondo/RegoleTorneo.jpeg" />
          </image>
       </ImageView>
+      <Button layoutX="983.0" layoutY="539.0" mnemonicParsing="false" onAction="#Caricatorneo" text="Carica" />
    </children>
 </AnchorPane>

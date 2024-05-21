@@ -14,9 +14,7 @@ public class MenuController{
 	
 	@FXML
 	private Button VediClassifica, CreaPartita, CreaTorneo, Logout;
-	
-	InfoPartita infopartita = new InfoPartita();
-	
+
 	public void setMain(Main main) {
     	this.main= main;
     }
@@ -55,10 +53,12 @@ public class MenuController{
 		}
 	}
 	
+	//Vai alla creazione del torneo
 	public void VaiaTorneo(ActionEvent event) throws IOException {
 		Torneo=true;
 		try {
 			main.showPreTorneoScene();
+			SalvaTorneo.Preparazione();
 		}
 		catch(Exception e) {
 			System.out.println("errore nel caricamento scena PreTorneo");

@@ -9,6 +9,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,45 +17,19 @@ import java.util.List;
 public class PreTorneo4Controller {
 	private Main main;
 	private Stage stage;
-	
-	private static String[] G;  //contenente tutti i giocatori del Torneo
-	private static List<String> partite = new ArrayList<>(); //contenente tutte partite torneo in formato "giocatore1 vs giocatore2"
+	private SalvaTorneo salvatorneo;
+	public static boolean flag = false;
+	protected int c;
+	protected static String[] G;  //contenente tutti i giocatori del Torneo
+	protected static List<String> partite = new ArrayList<>(); //contenente tutte partite torneo in formato "giocatore1 vs giocatore2"
 	MediaPlayer player;
 	@FXML
-	private TextField InputG1;
+	protected TextField InputG1,InputG2,InputG3,InputG4;
 	@FXML
-	private TextField InputG2;
-	@FXML
-	private TextField InputG3;
-	@FXML
-	private TextField InputG4;
-	
-	 @FXML
 	private TextField[] InsiemeTextField;
-	@FXML 
-	private Label G1P1;
-	@FXML 
-	private Label G2P1;
-	@FXML 
-	private Label G1P2;
-	@FXML 
-	private Label G2P2;
-	@FXML 
-	private Label G1P3;
-	@FXML 
-	private Label G2P3;
-	@FXML 
-	private Label G1P4;
-	@FXML 
-	private Label G2P4;
-	@FXML 
-	private Label G1P5;
-	@FXML 
-	private Label G2P5;
-	@FXML 
-	private Label G1P6;
-	@FXML 
-	private Label G2P6;
+	@FXML
+	private Label G1P1, G2P1, G1P2, G2P2, G1P3, G2P3, G1P4, G2P4, G1P5, G2P5, G1P6, G2P6;
+
 	@FXML
 	private Label[] labelGiocatori;
 	//METODI SET E GET
@@ -78,13 +53,17 @@ public class PreTorneo4Controller {
     			   player = new MediaPlayer(sound);
     			   //continua sempre a suonare
     			   player.setCycleCount(MediaPlayer.INDEFINITE);
-    			   player.play();
+    			   //player.play();
     		}catch(Exception e ) {
     			System.out.println("errore riproduzione");
     		}
      }
 	//Inizializzazione
-	public void initialize() {
+	public void initialize() throws FileNotFoundException {
+		if(flag == true) {
+			salvatorneo.CaricaTorneo(this);
+			flag = false;
+		}
 		insertMusic();
 		 InsiemeTextField = new TextField[]{InputG1,InputG2,InputG3,InputG4};
 		 G = new String[InsiemeTextField.length];
@@ -116,6 +95,7 @@ public class PreTorneo4Controller {
             partitaIndex+=2;
 	      }
 	}
+	
 	public void handleBottoneIniziaAGiocare(ActionEvent event) {
     	player.stop();
     	try {
@@ -124,21 +104,21 @@ public class PreTorneo4Controller {
     		System.out.println("Errore nel caricamento scenaGioco");
     	}
     }
+	
 	public void handleBottoneUscita(ActionEvent event) {
     	stage.close();
+    	
     }
+	//Per tornare al main menu
 	public void handleBottoneMenu(ActionEvent event) {
 		player.stop();
+		salvatorneo.Salvataggio(this);
     	try {
     		main.showMainMenuScene();
     	}catch(Exception e) {
     		System.out.println("errore nel caricamento main menu");
     	}
     }
-
-
-
-
 }
 
 

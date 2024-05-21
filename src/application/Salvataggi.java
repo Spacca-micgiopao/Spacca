@@ -24,11 +24,11 @@ public class Salvataggi implements Serializable{
 	}
 	
 	//Salva in un file serializzato i dati importanti di una partita,in questo caso salva
-	//lo stato di alcune parti del gamecontroller
-	
+	//lo stato di alcune parti del gamecontroller	
 	public void salvaPartita() { 
-		try (FileOutputStream fileout = new FileOutputStream(file);
-			ObjectOutputStream out = new ObjectOutputStream(fileout)) {
+		try { 
+			FileOutputStream fileout = new FileOutputStream(file);
+			ObjectOutputStream out = new ObjectOutputStream(fileout);
 			out.reset(); 
 			//Punteggi dei tavoli
 			out.writeInt(gamecontroller.punteggioG1Tavolo1);
@@ -50,12 +50,13 @@ public class Salvataggi implements Serializable{
 			out.writeObject(gamecontroller.carteTavolo1);
 			out.writeObject(gamecontroller.carteTavolo2);
 			out.writeObject(gamecontroller.carteTavolo3);
-			
+			//
+			fileout.close();
 			out.close(); 
-			
-
-		} catch
-		(IOException e) { e.printStackTrace(); } 
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 
@@ -64,27 +65,34 @@ public class Salvataggi implements Serializable{
 		try {
 			FileInputStream filein = new FileInputStream(file);
 			ObjectInputStream in = new ObjectInputStream(filein);
+			//Punteggi dei tavoli
 			gc.punteggioG1Tavolo1 = in.readInt();
 			gc.punteggioG1Tavolo2 = in.readInt();
 			gc.punteggioG1Tavolo3 = in.readInt();
 			gc.punteggioG2Tavolo1 = in.readInt();
 			gc.punteggioG2Tavolo2 = in.readInt();
 			gc.punteggioG2Tavolo3 = in.readInt();
+			//Nomi dei partecipanti
 			gc.player1Name = (String) in.readObject();
 			gc.player2Name = (String) in.readObject();
+			//Carte di ogni giocatore
 			gc.listaCarteGiocatore1 = (ListView<Carta>) in.readObject();
 			gc.listaCarteGiocatore2 = (ListView<Carta>) in.readObject();
+			//Mazzi
 			gc.mazzoGiocatore1 = (Mazzo) in.readObject();
 			gc.mazzoGiocatore2 = (Mazzo) in.readObject();
+			//Carte nei tavoli
 			gc.carteTavolo1 =(String[]) in.readObject();
 			gc.carteTavolo2 =(String[]) in.readObject();
 			gc.carteTavolo3 =(String[]) in.readObject();
+			//
 			in.close();
 			filein.close();
 		} catch (IOException  | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
+	
 	public static void associazioneImmaginiAMazzo(Mazzo mazzo) {
 		for(int i=0;i<mazzo.getNumeroCarte();i++) {
 			if(mazzo !=null && mazzo.getCarta(i)!= null) {
