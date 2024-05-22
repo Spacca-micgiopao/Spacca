@@ -14,7 +14,7 @@ public class SalvaTorneo implements Serializable {
 
 	private static final long serialVersionUID = 7423889382853862983L;
 	static File dir = new File("src/SalvataggiTorneo");
-	static File file = new File("src/SalvataggiTorneo/Torneo1.ser");
+	static File file;
 	protected static String[] Tornei;
 	
 	//Crea cartelle e carica la lista dei tornei,da usare allo start
@@ -25,6 +25,13 @@ public class SalvaTorneo implements Serializable {
 		Tornei = dir.list();
 		else
 			Tornei = new String[0];
+		for(int i = 0;i<Tornei.length;i++) 
+			Tornei[i] = Tornei[i].replace(".ser", "");
+	}
+	
+	public static void setFile(String s) throws IOException {
+		System.out.println(s);
+		file = new File("src/SalvataggiTorneo/"+s+".ser");
 	}
 	
 	//Per salvare il torneo quando si esce
@@ -32,7 +39,6 @@ public class SalvaTorneo implements Serializable {
 		try {
 			if(!file.exists())
 				file.createNewFile();
-			//file = new File("src/SalvataggioTorneo"+PTC.c+".ser");
 			FileOutputStream fileout = new FileOutputStream(file);
 			ObjectOutputStream out = new ObjectOutputStream(fileout);
 			out.reset();
@@ -42,8 +48,8 @@ public class SalvaTorneo implements Serializable {
 			out.writeObject(gc.G);
 			out.writeObject(gc.vincitori);
 			out.writeObject(gc.numeroVittorieG);
-			out.close();
 			fileout.close();
+			out.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -61,14 +67,21 @@ public class SalvaTorneo implements Serializable {
 			gc.G = (String[]) in.readObject();
 			gc.vincitori = (List<String>) in.readObject();
 			gc.numeroVittorieG = (int[]) in.readObject();
-			in.close();
 			filein.close();
+			in.close();
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
 	
+	//Elimina tutti i tornei
 	protected static void Cancella() {
-		file.delete();
+		String[] n = dir.list();
+			if(dir.isDirectory() && dir.exists()) {
+				for(int i = 0;i<n.length;i++) {
+					File f = new File("src/SalvataggiTorneo/"+n[i]);
+					f.delete();
+				}
+			}
 	}
 }

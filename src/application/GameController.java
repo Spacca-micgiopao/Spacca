@@ -26,6 +26,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.layout.*;
 public class GameController  implements Serializable{
 	
+	private static final long serialVersionUID = 1204017110513799141L;
 	private Main main;
 	private Stage stage;
 	
@@ -215,7 +216,6 @@ public class GameController  implements Serializable{
     
     //INIZIALIZZAZIONE se il flag = 1 la partita è stata caricata e inizierà in modo diverso da una partita iniziata da 0
     public void initialize() throws FileNotFoundException {
-	 
     	insertMusic();
     	//per le ImageView: creazione di una lista contenente tutte le ImageView per facilitare 
         //l'aggiunta delle immagini in aggiorna interfaccia
@@ -249,10 +249,6 @@ public class GameController  implements Serializable{
         imageViewsTavolo3.add(CartaT3p10);
         imageViewsTavolo3.add(CartaT3p01);
         imageViewsTavolo3.add(CartaT3p11);
-        if(flag == 2) {
-        	SalvaTorneo.CaricaTorneo(this);
-        	flag = 0;
-        }
         	
     	if(flag == 0) {
 	    	getTorneo();
@@ -447,6 +443,10 @@ public class GameController  implements Serializable{
     	//Se siamo in un torneo all'uscita torno al pre torneo
     	if(Torneo == true) {
     		try {
+    			String s = "";
+    			for(int i = 0;i< G.length;i++)
+    				s = s+G[i].charAt(0);
+    			SalvaTorneo.setFile(s);
     			SalvaTorneo.Salvataggio(this);
     			main.showPreTorneoScene();
     			PreTorneo4Controller.flag = true;

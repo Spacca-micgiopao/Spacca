@@ -85,12 +85,18 @@ public class PreTorneoController implements Initializable {
 		}
     }
 	
+	//Per caricare un torneo
 	public void Caricatorneo(ActionEvent event) {
-		try {
-			PreTorneo4Controller.flag = true;
-			main.showScenaGiocoScene();
-		} catch (Exception e) {
-			System.out.println("errore nel caricamento scene Main Menu");
+		if(CaricaTorneo.getValue() != null) {
+			try {
+				PreTorneo4Controller.flag = true;
+				GameController.flag = 2;
+				SalvaTorneo.setFile(CaricaTorneo.getValue());
+				main.showScenaGiocoScene();
+			} 
+			catch (Exception e) {
+				System.out.println("errore nel caricamento scene Main Menu");
+			}
 		}
     }
 	
