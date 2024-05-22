@@ -36,7 +36,7 @@ public class GameController  implements Serializable{
 	//Per gestire il caricamento delle partite
 	public static int flag = 0;
 	private Salvataggi salvataggio = new Salvataggi(this);
-	private boolean botgioco = false;
+	private boolean botgioco = true;
 	public static String player1Name;
 	public static String player2Name;
 	protected Mazzo mazzoGiocatore1,mazzoGiocatore2,mazzoCompleto,mazzoProvenienzaCartaSelezionata;
@@ -92,9 +92,9 @@ public class GameController  implements Serializable{
     private ImageView CartaT3p00,CartaT3p10,CartaT3p01,CartaT3p11;
     @FXML
     private Pane CampoBasso,CampoAlto;
-
     
-    //METODI SET E GETTER
+    
+    //METODI SET E GETER
     //serve per il cambio scena
     public void setMain(Main main) {
     	this.main= main;
@@ -254,8 +254,10 @@ public class GameController  implements Serializable{
         }
     }
     public void passaTurno() {
-    	turnoGiocatore1= !turnoGiocatore1;
+        turnoGiocatore1 = !turnoGiocatore1;
+        System.out.println("Turno passato. Turno del giocatore " + (turnoGiocatore1 ? "1" : "2"));
     }
+
     
     //FINE PARTITA con conteggio punti
     public void verificaFinePartita(){
@@ -359,11 +361,15 @@ public class GameController  implements Serializable{
     //pesca una carta per il giocatore2
     public void handlePescaGiocatore2Action(ActionEvent event) {
     	if(!turnoGiocatore1) {
+            System.out.println("Giocatore 2 sta pescando una carta...");
 	    	Carta cartaCasuale = mazzoCompleto.pescaCartaCasuale();
+	        System.out.println("Carta pescata: " + (cartaCasuale != null));
 	    	if(cartaCasuale != null && mazzoGiocatore2.getNumeroCarte()<4 ) {
 	    		mazzoGiocatore2.aggiungiCarta(cartaCasuale);
+	            System.out.println("Carta aggiunta al mazzo del giocatore 2. Numero di carte: " + mazzoGiocatore2.getNumeroCarte());
 	    		aggiornaInterfaccia();
 	    		visualizzaImprevisti();
+	    		
 	    	}
 	    		
     	}
@@ -424,10 +430,7 @@ public class GameController  implements Serializable{
             System.out.println("Errore: carta selezionata è nulla");
             return;
 	}
-        if (botgioco && mazzoGiocatore2.contieneCarta(carta)) {
-            System.out.println("Errore: non è possibile spostare una carta dal mazzo del giocatore 2 quando botgioco è attivo.");
-            return;
-        }
+        
         posizioneTavolo.setImage(carta.getImmagine());
         cartaCliccata.setEffect(null);
         aggiornaTurnoLabel();
@@ -468,192 +471,243 @@ public class GameController  implements Serializable{
         // Se tutte le immagini nel tavolo sono piene, il tavolo è pieno
         return true;
     }
-  // giocatore 2 più bot
     public void handleClickCartaGiocatore2(MouseEvent event) {
         // Se è il turno del giocatore 1 e il bot è attivo, esci dal metodo senza fare nulla
         if (turnoGiocatore1 && botgioco) {
             return;
         }
-        if(!turnoGiocatore1&&!botgioco) {
-	        cartaCliccata = (ImageView) event.getSource();
-	        // Trova l'indice dell'ImageView cliccata
-	        int index = imageViewsGiocatore2.indexOf(cartaCliccata);
-	        if (index == -1) {
-	            return;
-	        }
-	        mazzoProvenienzaCartaSelezionata = mazzoGiocatore2;
-	        // Ottiene la carta associata all'immagine cliccata
-	        if (index != -1) {
-	           if (index < mazzoGiocatore2.getCarte().size()) {
-	        		cartaSelezionata = mazzoGiocatore2.getCarta(index);
-	        		cartaCliccata.setEffect(new DropShadow());
-	            } else {
-	                return;
-	            }
-	        }
-	        passaTurno();
-    	}
         
+        if (!turnoGiocatore1 && !botgioco) {
+            cartaCliccata = (ImageView) event.getSource();
+            // Trova l'indice dell'ImageView cliccata
+            int index = imageViewsGiocatore2.indexOf(cartaCliccata);
+            if (index == -1) {
+                return;
+            }
+            mazzoProvenienzaCartaSelezionata = mazzoGiocatore2;
+            // Ottiene la carta associata all'immagine cliccata
+            if (index != -1) {
+               if (index < mazzoGiocatore2.getCarte().size()) {
+                    cartaSelezionata = mazzoGiocatore2.getCarta(index);
+                    cartaCliccata.setEffect(new DropShadow());
+                } else {
+                    return;
+                }
+            }
+            passaTurno();
+        }
         
         // Se botgioco è attivo, il bot gioca la carta
         if (botgioco) {
-            botLogic bot = new botLogic();
-            
-            if (!tavoloIsFull((ArrayList<ImageView>) imageViewsTavolo1)) {
-                bot.giocaCarta(mazzoGiocatore2, (ArrayList<ImageView>) imageViewsTavolo1);
+            handleBotMove();
+        }
+    }
+
+    // Aggiungi una carta casuale al mazzo e aggiorna l'interfaccia
+    private void aggiungiCartaCasualeAlMazzo(Mazzo mazzoGiocatore) {
+        Carta cartaCasuale = mazzoCompleto.pescaCartaCasuale();
+        if (cartaCasuale != null && mazzoGiocatore.getNumeroCarte() < 4) {
+            mazzoGiocatore.aggiungiCarta(cartaCasuale);
+            aggiornaInterfaccia();
+        }
+    }
+
+    // Aggiungi una carta casuale al mazzo e aggiorna il punteggio
+  
+
+    private void handleBotMove() {
+        botLogic bot = new botLogic();
+        
+        if (!tavoloIsFull((ArrayList<ImageView>) imageViewsTavolo1)) {
+        		Carta cartagiocata =bot.giocaCarta(mazzoGiocatore2, (ArrayList<ImageView>) imageViewsTavolo1);
+                System.out.println("Bot ha giocato una carta sul Tavolo 1");
                 aggiornaInterfaccia();
                 passaTurno();
                 aggiornaTurnoLabel();
                 Carta cartaCasuale = mazzoCompleto.pescaCartaCasuale();
                 if (cartaCasuale != null && mazzoGiocatore2.getNumeroCarte() < 4) {
                     mazzoGiocatore2.aggiungiCarta(cartaCasuale);
+                    System.out.println("Bot ha pescato una carta: " + cartaCasuale.getColore()+ cartaCasuale.getValore());
                     aggiornaInterfaccia();
-                    cartaSelezionata = cartaCasuale;
+                    cartaSelezionata = cartagiocata;
+                    imprevistiAlfa.applicaEffettoCarta(cartaSelezionata);
+                    imprevistiBeta.applicaEffettoCarta(cartaSelezionata);
                     int valoreCartaSelezionata = cartaSelezionata.getValore();
-                    cartaSelezionata.setValore(valoreCartaSelezionata);
-                    punteggioG2Tavolo1 += cartaSelezionata.getValore();
+                    punteggioG2Tavolo1 += valoreCartaSelezionata;
+                    LabelPunteggioG2T1.setText(String.valueOf(punteggioG2Tavolo1));
+                    System.out.println("Punteggio G2 Tavolo 1: " + punteggioG2Tavolo1);
                 }
-            } else if (!tavoloIsFull((ArrayList<ImageView>) imageViewsTavolo2)) {
-                bot.giocaCarta(mazzoGiocatore2, (ArrayList<ImageView>) imageViewsTavolo2);
+            
+        } else if (!tavoloIsFull((ArrayList<ImageView>) imageViewsTavolo2)) {
+        		Carta cartagiocata =bot.giocaCarta(mazzoGiocatore2, (ArrayList<ImageView>) imageViewsTavolo2); 
+                System.out.println("Bot ha giocato una carta sul Tavolo 2");
                 aggiornaInterfaccia();
                 passaTurno();
                 aggiornaTurnoLabel();
                 Carta cartaCasuale2 = mazzoCompleto.pescaCartaCasuale();
                 if (cartaCasuale2 != null && mazzoGiocatore2.getNumeroCarte() < 4) {
                     mazzoGiocatore2.aggiungiCarta(cartaCasuale2);
+                    System.out.println("Bot ha pescato una carta: " + cartaCasuale2.getColore()+ cartaCasuale2.getValore());
                     aggiornaInterfaccia();
-                    cartaSelezionata = cartaCasuale2;
+                    cartaSelezionata = cartagiocata;
+                    imprevistiAlfa.applicaEffettoCarta(cartaSelezionata);
+                    imprevistiBeta.applicaEffettoCarta(cartaSelezionata);
                     int valoreCartaSelezionata = cartaSelezionata.getValore();
-                    cartaSelezionata.setValore(valoreCartaSelezionata);
-                    punteggioG2Tavolo2 += cartaSelezionata.getValore();
+                    punteggioG2Tavolo2 += valoreCartaSelezionata;
+                    LabelPunteggioG2T2.setText(String.valueOf(punteggioG2Tavolo2));
+                    System.out.println("Punteggio G2 Tavolo 2: " + punteggioG2Tavolo2);
+                   
                 }
-            } else {
-                bot.giocaCarta(mazzoGiocatore2, (ArrayList<ImageView>) imageViewsTavolo3);
+            
+        } else {
+            	Carta cartagiocata = bot.giocaCarta(mazzoGiocatore2, (ArrayList<ImageView>) imageViewsTavolo3); 
+                System.out.println("Bot ha giocato una carta sul Tavolo 3");
                 aggiornaInterfaccia();
                 passaTurno();
                 aggiornaTurnoLabel();
                 Carta cartaCasuale3 = mazzoCompleto.pescaCartaCasuale();
                 if (cartaCasuale3 != null && mazzoGiocatore2.getNumeroCarte() < 4) {
                     mazzoGiocatore2.aggiungiCarta(cartaCasuale3);
+                    System.out.println("Bot ha pescato una carta: " + cartaCasuale3.getColore()+ cartaCasuale3.getValore());
                     aggiornaInterfaccia();
-                    cartaSelezionata = cartaCasuale3;
+                    cartaSelezionata = cartagiocata;
+                    imprevistiAlfa.applicaEffettoCarta(cartaSelezionata);
+                    imprevistiBeta.applicaEffettoCarta(cartaSelezionata);
                     int valoreCartaSelezionata = cartaSelezionata.getValore();
-                    cartaSelezionata.setValore(valoreCartaSelezionata);
-                    punteggioG2Tavolo3 += cartaSelezionata.getValore();
+                    punteggioG2Tavolo3 += valoreCartaSelezionata;
+                    LabelPunteggioG2T3.setText(String.valueOf(punteggioG2Tavolo3));
+                    System.out.println("Punteggio G2 Tavolo 3: " + punteggioG2Tavolo3);
+                    
                 }
             }
-            
-            return; // Esci dal metodo se il bot sta giocando
         }
-        
-        
+    
+    // Metodo che trova a quale tavolo appartiene la posizione
+    private int trovaTavoloNumero(ImageView posizioneTavolo) {
+        if (imageViewsTavolo1.contains(posizioneTavolo)) {
+            return 1;
+        } else if (imageViewsTavolo2.contains(posizioneTavolo)) {
+            return 2;
+        } else if (imageViewsTavolo3.contains(posizioneTavolo)) {
+            return 3;
+        }
+        return -1; // Tavolo non trovato
     }
+    private ImageView trovaPosizioneLiberaTavolo() {
+        for (ImageView imageView : imageViewsTavolo1) {
+            if (imageView.getImage() == null) {
+                return imageView;
+            }
+        }
+        for (ImageView imageView : imageViewsTavolo2) {
+            if (imageView.getImage() == null) {
+                return imageView;
+            }
+        }
+        for (ImageView imageView : imageViewsTavolo3) {
+            if (imageView.getImage() == null) {
+                return imageView;
+            }
+        }
+        return null; // Nessuna posizione libera trovata
+    }
+    private void posizionaCartaSuTavolo(ImageView posizioneTavolo, int tavoloNumero, Carta cartaSelezionata, Mazzo mazzoProvenienza) {
+        int index = -1;
+        int valoreCartaSelezionata = cartaSelezionata.getValore();
+        String colore = cartaSelezionata.getColore();
+
+        if (tavoloNumero == 1) {
+            index = imageViewsTavolo1.indexOf(posizioneTavolo);
+            carteTavolo1[index] = colore + "_" + valoreCartaSelezionata;
+        } else if (tavoloNumero == 2) {
+            index = imageViewsTavolo2.indexOf(posizioneTavolo);
+            carteTavolo2[index] = colore + "_" + valoreCartaSelezionata;
+        } else if (tavoloNumero == 3) {
+            index = imageViewsTavolo3.indexOf(posizioneTavolo);
+            carteTavolo3[index] = colore + "_" + valoreCartaSelezionata;
+        }
+
+        if (index == -1 || posizioneTavolo.getImage() != null) {
+            // ImageView non trovata o posizione già occupata
+            return;
+        }
+
+        // Applica l'effetto dell'imprevisto sulla carta selezionata
+        cartaSelezionata.setValore(valoreCartaSelezionata);
+        imprevistiAlfa.applicaEffettoCarta(cartaSelezionata);
+        imprevistiBeta.applicaEffettoCarta(cartaSelezionata);
+
+        // Aggiornamento punteggio
+        if (tavoloNumero == 1) {
+            if (mazzoProvenienza == mazzoGiocatore1) {
+                punteggioG1Tavolo1 += cartaSelezionata.getValore();
+                LabelPunteggioG1T1.setText(String.valueOf(punteggioG1Tavolo1));
+            } else {
+                punteggioG2Tavolo1 += cartaSelezionata.getValore();
+                LabelPunteggioG2T1.setText(String.valueOf(punteggioG2Tavolo1));
+            }
+        } else if (tavoloNumero == 2) {
+            if (mazzoProvenienza == mazzoGiocatore1) {
+                punteggioG1Tavolo2 += cartaSelezionata.getValore();
+                LabelPunteggioG1T2.setText(String.valueOf(punteggioG1Tavolo2));
+            } else {
+                punteggioG2Tavolo2 += cartaSelezionata.getValore();
+                LabelPunteggioG2T2.setText(String.valueOf(punteggioG2Tavolo2));
+            }
+        } else if (tavoloNumero == 3) {
+            if (mazzoProvenienza == mazzoGiocatore1) {
+                punteggioG1Tavolo3 += cartaSelezionata.getValore();
+                LabelPunteggioG1T3.setText(String.valueOf(punteggioG1Tavolo3));
+            } else {
+                punteggioG2Tavolo3 += cartaSelezionata.getValore();
+                LabelPunteggioG2T3.setText(String.valueOf(punteggioG2Tavolo3));
+            }
+        }
+
+        // Sposta la carta selezionata nella posizione del tavolo cliccata
+        spostaCartaSuTavolo(cartaSelezionata, posizioneTavolo);
+
+        // Rimuovi la carta dal mazzo del giocatore
+        if (mazzoProvenienza != null && mazzoProvenienza.contieneCarta(cartaSelezionata)) {
+            mazzoProvenienza.rimuoviCarta(cartaSelezionata);
+        }
+
+        // Svuota imageView dal mazzoGiocatore1
+        for (int i = 0; i < imageViewsGiocatore1.size(); i++) {
+            ImageView imageView = imageViewsGiocatore1.get(i);
+            if (imageView.getImage() == cartaSelezionata.getImmagine()) {
+                imageView.setImage(null);
+                break;
+            }
+        }
+        // Svuota imageView dal mazzoGiocatore2
+        for (int i = 0; i < imageViewsGiocatore2.size(); i++) {
+            ImageView imageView = imageViewsGiocatore2.get(i);
+            if (imageView.getImage() == cartaSelezionata.getImmagine()) {
+                imageView.setImage(null);
+                break;
+            }
+        }
+
+        // Resetta la carta selezionata
+        cartaSelezionata = null;
+
+        // Aggiorna interfaccia e verifica fine partita
+        aggiornaInterfaccia();
+        verificaFinePartita();
+    }
+
         
    
     //GESTORE DEI CLICK SU UNA POSIZIONE DEI TAVOLI
     private void handleClickPosizioneTavolo(MouseEvent event, ImageView posizioneTavolo, int tavoloNumero) {
         if (cartaSelezionata != null) {
-            // Verifica che l'indice dell'ImageView sia valido
-            int index = -1;
-            int valoreCartaSelezionata = cartaSelezionata.getValore();
-            String colore = cartaSelezionata.getColore();
-             if (tavoloNumero == 1) {
-                index = imageViewsTavolo1.indexOf(posizioneTavolo);
-                carteTavolo1[index]= colore+"_"+valoreCartaSelezionata;
-            } else if (tavoloNumero == 2) {
-                index = imageViewsTavolo2.indexOf(posizioneTavolo);
-                carteTavolo2[index]= colore+"_"+valoreCartaSelezionata;
-            } else if (tavoloNumero == 3) {
-                index = imageViewsTavolo3.indexOf(posizioneTavolo);
-                carteTavolo3[index]= colore+"_"+valoreCartaSelezionata;
-            }
-            if (index == -1) {
-                // ImageView non trovata
-                return;
-            }
-            // Controllo se la posizione del tavolo è già stata occupata
-            if (posizioneTavolo.getImage() != null) {
-                // La posizione è già occupata
-                return;
-            }
-            
-            // Applica l'effetto dell'imprevisto sulla carta selezionata
-            cartaSelezionata.setValore(valoreCartaSelezionata);
-            imprevistiAlfa.applicaEffettoCarta(cartaSelezionata);
-            imprevistiBeta.applicaEffettoCarta(cartaSelezionata);
+            posizionaCartaSuTavolo(posizioneTavolo, tavoloNumero, cartaSelezionata, mazzoProvenienzaCartaSelezionata);
 
-            // Aggiornamento punteggio
-            if (tavoloNumero == 1) {
-            	if(mazzoProvenienzaCartaSelezionata ==mazzoGiocatore1) {
-	            	punteggioG1Tavolo1 += cartaSelezionata.getValore();
-	                LabelPunteggioG1T1.setText(String.valueOf(punteggioG1Tavolo1));	
-            	}else {
-            		punteggioG2Tavolo1 += cartaSelezionata.getValore();
-	                LabelPunteggioG2T1.setText(String.valueOf(punteggioG2Tavolo1));
-            	}
-                
-            } else if (tavoloNumero == 2) {
-            	if(mazzoProvenienzaCartaSelezionata ==mazzoGiocatore1) {
-	            	punteggioG1Tavolo2 += cartaSelezionata.getValore();
-	                LabelPunteggioG1T2.setText(String.valueOf(punteggioG1Tavolo2));	
-            	}else {
-            		punteggioG2Tavolo2 += cartaSelezionata.getValore();
-	                LabelPunteggioG2T2.setText(String.valueOf(punteggioG2Tavolo2));
-            	}
-            } else if (tavoloNumero == 3) {
-            	if(mazzoProvenienzaCartaSelezionata ==mazzoGiocatore1) {
-	            	punteggioG1Tavolo3 += cartaSelezionata.getValore();
-	                LabelPunteggioG1T3.setText(String.valueOf(punteggioG1Tavolo3));	
-            	}else {
-            		punteggioG2Tavolo3 += cartaSelezionata.getValore();
-	                LabelPunteggioG2T3.setText(String.valueOf(punteggioG2Tavolo3));
-            	}
+            // Logica del bot
+            if (botgioco) {
+                handleBotMove();
             }
-
-            // Sposta la carta selezionata nella posizione del tavolo cliccata
-            spostaCartaSuTavolo(cartaSelezionata, posizioneTavolo);
-
-            // Rimuovi la carta dal mazzo del giocatore
-           if (mazzoProvenienzaCartaSelezionata != null) {
-            	if(turnoGiocatore1&& mazzoProvenienzaCartaSelezionata!=mazzoGiocatore2) {
-            		return;
-            		}
-            	if (mazzoProvenienzaCartaSelezionata.contieneCarta(cartaSelezionata)) {
-            		mazzoProvenienzaCartaSelezionata.rimuoviCarta(cartaSelezionata);
-            	
-            	}
-            }
-
-            // Svuota imageView dal mazzoGiocatore1
-            for (int i = 0; i < imageViewsGiocatore1.size(); i++) {
-                ImageView imageView = imageViewsGiocatore1.get(i);
-                if (imageView.getImage() == cartaSelezionata.getImmagine()) {
-                    imageView.setImage(null);
-                    break;
-                }
-            }
-            // Svuota imageView dal mazzoGiocatore2
-            for (int i = 0; i < imageViewsGiocatore2.size(); i++) {
-                ImageView imageView = imageViewsGiocatore2.get(i);
-                if (imageView.getImage() == cartaSelezionata.getImmagine()) {
-                    imageView.setImage(null);
-                    break;
-                }
-            }
-
-            // Resetta la carta selezionata
-            cartaSelezionata = null;
-
-            // Aggiorna interfaccia e verifica fine partita
-            aggiornaInterfaccia();
-            //modifiche bot
-            if(botgioco){
-            	handleClickCartaGiocatore2(event);
-            }
-            
-            aggiornaInterfaccia();
-            verificaFinePartita();
-            
         }
     }
 
@@ -674,6 +728,8 @@ public class GameController  implements Serializable{
         ImageView posizioneTavoloCliccata = (ImageView) event.getSource();
         handleClickPosizioneTavolo(event, posizioneTavoloCliccata, 3);
     }
-}
   
+
+
+}
   
