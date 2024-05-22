@@ -21,15 +21,17 @@ public class SalvaTorneo implements Serializable {
 	public static void Preparazione() throws IOException {
 		if(!dir.exists())
 			dir.mkdir();
-		if(!file.exists())
-			file.createNewFile();
 		if(dir.list() != null)
 		Tornei = dir.list();
+		else
+			Tornei = new String[0];
 	}
 	
 	//Per salvare il torneo quando si esce
 	protected static void Salvataggio(GameController gc) {
 		try {
+			if(!file.exists())
+				file.createNewFile();
 			//file = new File("src/SalvataggioTorneo"+PTC.c+".ser");
 			FileOutputStream fileout = new FileOutputStream(file);
 			ObjectOutputStream out = new ObjectOutputStream(fileout);
@@ -64,5 +66,9 @@ public class SalvaTorneo implements Serializable {
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	protected static void Cancella() {
+		file.delete();
 	}
 }

@@ -416,8 +416,8 @@ public class GameController  implements Serializable{
     	//Se siamo in un torneo all'uscita torno al pre torneo
     	if(Torneo == true) {
     		try {
-    			main.showPreTorneoScene();
     			SalvaTorneo.Salvataggio(this);
+    			main.showPreTorneoScene();
     			PreTorneo4Controller.flag = true;
     		} catch (Exception e) {
     			e.printStackTrace();
