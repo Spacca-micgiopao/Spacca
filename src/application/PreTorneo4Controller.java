@@ -23,6 +23,7 @@ public class PreTorneo4Controller {
 	protected static String[] G;  //contenente tutti i giocatori del Torneo
 	protected static List<String> partite = new ArrayList<>(); //contenente tutte partite torneo in formato "giocatore1 vs giocatore2"
 	MediaPlayer player;
+	private boolean SecondoGiocatoreBot;
 	@FXML
 	protected TextField InputG1,InputG2,InputG3,InputG4;
 	@FXML
@@ -45,6 +46,9 @@ public class PreTorneo4Controller {
 	public static List<String> getPartite(){
 		return  partite;
 	}
+	public void setSecondogiocatoreBot() {
+		this.SecondoGiocatoreBot = PreTorneoController.getSecondoGiocatoreBot();
+	}
 	
 	public void insertMusic() {
     	//MUSICA
@@ -60,14 +64,22 @@ public class PreTorneo4Controller {
      }
 	//Inizializzazione
 	public void initialize() throws FileNotFoundException {
+		setSecondogiocatoreBot();
+		
 		if(flag == true) {
 			salvatorneo.CaricaTorneo(this);
 			flag = false;
 		}
+		
 		insertMusic();
 		 InsiemeTextField = new TextField[]{InputG1,InputG2,InputG3,InputG4};
 		 G = new String[InsiemeTextField.length];
 		 labelGiocatori = new Label[] {G1P1, G2P1,G1P2,G2P2,G1P3,G2P3,G1P4,G2P4,G1P5,G2P5,G1P6,G2P6}; //per  visualizzare i giocatori nell'elenco  partite
+		
+		 if(SecondoGiocatoreBot==true) {
+			InputG2.setText("Bot");
+			InputG2.setEditable(false);
+		}
 	}
 	public void HandleConfermaGiocatori(ActionEvent event) throws IOException {
 		for(int i=0;i<4;i++) {
@@ -80,10 +92,10 @@ public class PreTorneo4Controller {
 	public void inserimentoPartite() {
 		 partite.add(G[0] + " vs " + G[1]);
 		 partite.add(G[2] + " vs " + G[3]);
-		 partite.add(G[1] + " vs " + G[2]);
+		 partite.add(G[2] + " vs " + G[1]);
 		 partite.add(G[3] + " vs " + G[0]);
 		 partite.add(G[0] + " vs " + G[2]);
-		 partite.add(G[1] + " vs " + G[3]);
+		 partite.add(G[3] + " vs " + G[1]);
 		 int partitaIndex =0;
 	     for(int i=0;i<6;i++) {
 	    	String partita= partite.get(i);

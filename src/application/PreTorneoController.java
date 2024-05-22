@@ -19,6 +19,7 @@ public class PreTorneoController implements Initializable {
 	private String[] tipiTorneo= {"Torneo con 4 giocatori","Torneo con robot"};
 	private int numeroGiocatori;
 	private MediaPlayer player;
+	private static boolean SecondoGiocatoreBot= false;
 	@FXML
 	private ChoiceBox<String> ScegliTipoTorneo;
 	@FXML
@@ -61,18 +62,19 @@ public class PreTorneoController implements Initializable {
 		}
 		
 		if(tipoTorneo=="Torneo con robot") {
-			//TorneoConRobot=true;
+			SecondoGiocatoreBot=true;
 		}
 	}
+	public static boolean getSecondoGiocatoreBot(){
+		return SecondoGiocatoreBot;
+	}
 	public void handleConfermaTipoTorneo(ActionEvent event) {
-    	if(numeroGiocatori==4) {
-    		player.stop();
-    		try {
-				main.showPreTorneo4Scene();
-			}catch(Exception e) {
-				System.out.println("errore caricamento preTorneo4");
-			}
-    	}
+    	player.stop();
+		try {
+			main.showPreTorneo4Scene();
+		}catch(Exception e) {
+			System.out.println("errore caricamento preTorneo4");
+		}
     }
 	public void handleBottoneUscita(ActionEvent event) {
 		try {

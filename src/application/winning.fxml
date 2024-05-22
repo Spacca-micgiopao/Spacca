@@ -24,7 +24,7 @@
             <Font name="Cooper Black" size="43.0" />
          </font>
       </Label>
-      <Button layoutX="878.0" layoutY="632.0" mnemonicParsing="false" onAction="#VaiAPartitaSuccessiva" prefHeight="45.0" prefWidth="377.0" text="PASSA A PARTITA SUCCESSIVA" textFill="#ba2fff">
+      <Button layoutX="877.0" layoutY="564.0" mnemonicParsing="false" onAction="#VaiAPartitaSuccessiva" prefHeight="45.0" prefWidth="377.0" text="PASSA A PARTITA SUCCESSIVA" textFill="#ba2fff">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>

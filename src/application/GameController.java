@@ -55,7 +55,7 @@ public class GameController  implements Serializable{
 	private String[] G;
 	private static List<String> vincitori;
 	private static int[] numeroVittorieG;
-	
+	private boolean SecondoGiocatoreBot;
 	//FXML----------------------------------------------------------------------
 	@FXML
     private AnchorPane backgroundPane;
@@ -121,10 +121,27 @@ public class GameController  implements Serializable{
 
     		player1Name = giocatori[0];
     		player2Name= giocatori[1];
+    		
     	}
     }
+    public void setSecondoGiocatoreBot() {
+    	SecondoGiocatoreBot=PreTorneoController.getSecondoGiocatoreBot();
+    }
     public void setBotGioco() {
-    	this.botgioco = ControllerPrePartita.getBotGioco();
+    	if(Torneo==false) {
+    		this.botgioco = ControllerPrePartita.getBotGioco();
+    		if(botgioco==true) {
+    			player2Name="Bot";
+    		}
+    	}else {
+    		if(SecondoGiocatoreBot==true) {
+    			if(player2Name.equalsIgnoreCase("Bot") ) { //se nella partita corrente sta giocando il secondo giocatore allora si attiva il bot
+    				this.botgioco=true;
+    			}else {
+    				this.botgioco=false;
+    			}
+    		}
+    	}
     }
     public void getTorneo() {
     	this.Torneo = MenuController.getTorneo();
@@ -133,7 +150,9 @@ public class GameController  implements Serializable{
     		setG();
     		setVincitori();
     		setNumeroVittorieG();
+    		setSecondoGiocatoreBot();
     	}
+    		
     }
     
     public void getPartite() {
@@ -195,7 +214,7 @@ public class GameController  implements Serializable{
     
     //INIZIALIZZAZIONE se il flag = 1 la partita è stata caricata e inizierà in modo diverso da una partita iniziata da 0
     public void initialize() {
-	mostraRettangoloSeBotAttivo();
+	 
     	insertMusic();
     	//per le ImageView: creazione di una lista contenente tutte le ImageView per facilitare 
         //l'aggiunta delle immagini in aggiorna interfaccia
@@ -232,9 +251,10 @@ public class GameController  implements Serializable{
     	if(flag == 0) {
 	    	getTorneo();
 	    	getPartite();
-	    	setBotGioco();
 	    	setPlayersNames();
-    	}
+	    	setBotGioco();
+	    }
+    	mostraRettangoloSeBotAttivo();
     	//Impostare le label dei nomi
     	LabelIconaNomeG1.setText(player1Name);
     	LabelIconaNomeG2.setText(player2Name);
