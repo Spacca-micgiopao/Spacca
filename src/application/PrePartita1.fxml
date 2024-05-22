@@ -16,47 +16,50 @@
             <Image url="@../Sfondo/pREPARAZIONE%20PARTITA.png" />
          </image>
       </ImageView>
-      <Label layoutX="776.0" layoutY="343.0" text="Scegli una partita tra quelle salvate" textFill="#ff25cc">
+      <Label layoutX="797.0" layoutY="312.0" text="Scegli una partita tra quelle salvate" textFill="#ff25cc">
          <font>
-            <Font name="Cooper Black" size="25.0" />
+            <Font name="Cooper Black" size="24.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="ScegliPartita" layoutX="925.0" layoutY="387.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="ScegliPartita" layoutX="923.0" layoutY="371.0" prefWidth="150.0" />
       <Button layoutX="974.0" layoutY="433.0" mnemonicParsing="false" onAction="#CaricaPartita" text="Carica" />
-      <Label layoutX="79.0" layoutY="227.0" text="Crea una nuova partita" textFill="#ff25cc">
+      <Label layoutX="90.0" layoutY="223.0" text="Crea una nuova partita" textFill="#ff25cc">
          <font>
-            <Font name="Cooper Black" size="26.0" />
+            <Font name="Cooper Black" size="38.0" />
          </font>
       </Label>
-      <Label layoutX="61.0" layoutY="276.0" text="Giocatore 1 vs Giocatore 2">
+      <Label layoutX="28.0" layoutY="276.0" text="Giocatore 1 vs Giocatore 2">
          <font>
-            <Font name="Cooper Black" size="16.0" />
+            <Font name="Cooper Black" size="23.0" />
          </font>
       </Label>
-      <Label layoutX="386.0" layoutY="301.0" text="Giocatore 1 vs Bot" textFill="#4dd983">
+      <Label layoutX="433.0" layoutY="302.0" text="Giocatore vs Bot">
          <font>
-            <Font name="Cooper Black" size="16.0" />
+            <Font name="Cooper Black" size="23.0" />
          </font>
       </Label>
       <Label layoutX="94.0" layoutY="297.0" text="Inserire nomi dei giocatori" textFill="WHITE">
          <font>
-            <Font name="Cooper Black" size="11.0" />
+            <Font name="Cooper Black" size="15.0" />
          </font>
       </Label>
       <Label layoutX="48.0" layoutY="331.0" text="Giocatore 1" textFill="WHITE" />
       <Label layoutX="48.0" layoutY="368.0" text="Giocatore 2" textFill="WHITE" />
       <TextField fx:id="InputG1" layoutX="124.0" layoutY="327.0" />
       <TextField fx:id="InputG2" layoutX="124.0" layoutY="364.0" />
-      <Button fx:id="Startthegame" layoutX="104.0" layoutY="429.0" mnemonicParsing="false" onAction="#IniziaPartita" text="Conferma" />
-      <Label layoutX="314.0" layoutY="297.0" text="Oppure" textFill="#293c69" />
-      <Label layoutX="379.0" layoutY="324.0" text="Inserire nome del giocatore 1" textFill="WHITE">
+      <Button fx:id="Startthegame" layoutX="140.0" layoutY="433.0" mnemonicParsing="false" onAction="#IniziaPartita" text="Conferma" />
+      <Label layoutX="305.0" layoutY="349.0" text="Oppure">
          <font>
-            <Font name="Cooper Black" size="11.0" />
+            <Font size="16.0" />
+         </font></Label>
+      <Label layoutX="423.0" layoutY="330.0" text="Inserire nome del giocatore " textFill="WHITE">
+         <font>
+            <Font name="Cooper Black" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="371.0" layoutY="354.0" text="Giocatore 1" textFill="WHITE" />
-      <TextField fx:id="InputG1ConBot" layoutX="445.0" layoutY="350.0" />
-      <Button fx:id="Startthegame1" layoutX="421.0" layoutY="423.0" mnemonicParsing="false" onAction="#IniziaPartitaBot" text="Conferma" />
+      <Label layoutX="392.0" layoutY="363.0" text="Giocatore 1" textFill="WHITE" />
+      <TextField fx:id="InputG1ConBot" layoutX="463.0" layoutY="359.0" />
+      <Button fx:id="Startthegame1" layoutX="515.0" layoutY="420.0" mnemonicParsing="false" onAction="#IniziaPartitaBot" text="Conferma" />
       <Button layoutX="68.0" layoutY="40.0" mnemonicParsing="false" onAction="#bottoneUscita" text="CLOSE" textFill="RED" />
       <Button fx:id="Back" layoutX="644.0" layoutY="579.0" mnemonicParsing="false" onAction="#BackToMenu" text="Torna al menu" />
    </children>
