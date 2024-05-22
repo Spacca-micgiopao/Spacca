@@ -219,6 +219,11 @@ public class GameController  implements Serializable{
     //INIZIALIZZAZIONE se il flag = 1 la partita è stata caricata e inizierà in modo diverso da una partita iniziata da 0
     public void initialize() throws FileNotFoundException {
     	insertMusic();
+    	if(flag == 2) {
+    		SalvaTorneo.CaricaTorneo(this);
+    		flag = 0;
+    		Torneo = true;
+    	}
     	//per le ImageView: creazione di una lista contenente tutte le ImageView per facilitare 
         //l'aggiunta delle immagini in aggiorna interfaccia
         //giocatore1
@@ -453,6 +458,7 @@ public class GameController  implements Serializable{
     			SalvaTorneo.Salvataggio(this);
     			main.showPreTorneoScene();
     			PreTorneo4Controller.flag = true;
+    			Torneo = false;
     		} catch (Exception e) {
     			e.printStackTrace();
     		}

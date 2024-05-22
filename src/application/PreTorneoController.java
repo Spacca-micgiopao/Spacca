@@ -89,7 +89,6 @@ public class PreTorneoController implements Initializable {
 	public void Caricatorneo(ActionEvent event) {
 		if(CaricaTorneo.getValue() != null) {
 			try {
-				PreTorneo4Controller.flag = true;
 				GameController.flag = 2;
 				SalvaTorneo.setFile(CaricaTorneo.getValue());
 				main.showScenaGiocoScene();
