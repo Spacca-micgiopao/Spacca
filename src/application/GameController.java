@@ -36,7 +36,7 @@ public class GameController  implements Serializable{
 	//Per gestire il caricamento delle partite
 	public static int flag = 0;
 	private Salvataggi salvataggio = new Salvataggi(this);
-	private boolean botgioco = true;
+	private boolean botgioco = false;
 	public static String player1Name;
 	public static String player2Name;
 	protected Mazzo mazzoGiocatore1,mazzoGiocatore2,mazzoCompleto,mazzoProvenienzaCartaSelezionata;
@@ -429,12 +429,16 @@ public class GameController  implements Serializable{
         if (carta == null) {
             System.out.println("Errore: carta selezionata è nulla");
             return;
-	}
-        
+ 	}
+        if (botgioco && mazzoGiocatore2.contieneCarta(carta)) {
+            System.out.println("Errore: non è possibile spostare una carta dal mazzo del giocatore 2 quando botgioco è attivo.");
+            return;
+        }
         posizioneTavolo.setImage(carta.getImmagine());
         cartaCliccata.setEffect(null);
         aggiornaTurnoLabel();
     }
+
     //GESTORI CLICK
     // GESTORE DEI CLICK SULLE CARTE DEL GIOCATORE 1
     public void handleClickCartaGiocatore1(MouseEvent event) {
@@ -521,9 +525,7 @@ public class GameController  implements Serializable{
         if (!tavoloIsFull((ArrayList<ImageView>) imageViewsTavolo1)) {
         		Carta cartagiocata =bot.giocaCarta(mazzoGiocatore2, (ArrayList<ImageView>) imageViewsTavolo1);
                 System.out.println("Bot ha giocato una carta sul Tavolo 1");
-                aggiornaInterfaccia();
-                passaTurno();
-                aggiornaTurnoLabel();
+               
                 Carta cartaCasuale = mazzoCompleto.pescaCartaCasuale();
                 if (cartaCasuale != null && mazzoGiocatore2.getNumeroCarte() < 4) {
                     mazzoGiocatore2.aggiungiCarta(cartaCasuale);
@@ -536,13 +538,15 @@ public class GameController  implements Serializable{
                     punteggioG2Tavolo1 += valoreCartaSelezionata;
                     LabelPunteggioG2T1.setText(String.valueOf(punteggioG2Tavolo1));
                     System.out.println("Punteggio G2 Tavolo 1: " + punteggioG2Tavolo1);
+                    passaTurno();
+                    aggiornaInterfaccia();
+                    aggiornaTurnoLabel();
                 }
             
         } else if (!tavoloIsFull((ArrayList<ImageView>) imageViewsTavolo2)) {
         		Carta cartagiocata =bot.giocaCarta(mazzoGiocatore2, (ArrayList<ImageView>) imageViewsTavolo2); 
                 System.out.println("Bot ha giocato una carta sul Tavolo 2");
-                aggiornaInterfaccia();
-                passaTurno();
+               
                 aggiornaTurnoLabel();
                 Carta cartaCasuale2 = mazzoCompleto.pescaCartaCasuale();
                 if (cartaCasuale2 != null && mazzoGiocatore2.getNumeroCarte() < 4) {
@@ -556,15 +560,15 @@ public class GameController  implements Serializable{
                     punteggioG2Tavolo2 += valoreCartaSelezionata;
                     LabelPunteggioG2T2.setText(String.valueOf(punteggioG2Tavolo2));
                     System.out.println("Punteggio G2 Tavolo 2: " + punteggioG2Tavolo2);
-                   
+                    passaTurno();
+                    aggiornaInterfaccia();
+                    aggiornaTurnoLabel();
                 }
             
         } else {
             	Carta cartagiocata = bot.giocaCarta(mazzoGiocatore2, (ArrayList<ImageView>) imageViewsTavolo3); 
                 System.out.println("Bot ha giocato una carta sul Tavolo 3");
-                aggiornaInterfaccia();
-                passaTurno();
-                aggiornaTurnoLabel();
+                
                 Carta cartaCasuale3 = mazzoCompleto.pescaCartaCasuale();
                 if (cartaCasuale3 != null && mazzoGiocatore2.getNumeroCarte() < 4) {
                     mazzoGiocatore2.aggiungiCarta(cartaCasuale3);
@@ -577,7 +581,9 @@ public class GameController  implements Serializable{
                     punteggioG2Tavolo3 += valoreCartaSelezionata;
                     LabelPunteggioG2T3.setText(String.valueOf(punteggioG2Tavolo3));
                     System.out.println("Punteggio G2 Tavolo 3: " + punteggioG2Tavolo3);
-                    
+                    passaTurno();
+                    aggiornaInterfaccia();
+                    aggiornaTurnoLabel();
                 }
             }
         }
