@@ -36,7 +36,6 @@ public class ClassificaController implements Initializable,Serializable{
 	public void setStage(Stage stage) {
 		this.stage= stage;
 	}
-	
 	//Verrà construita la classifica dai nomi in DatiGiocatori
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		//ordina i giocatori nella lista in base alle vittorie creando la vera classifica
