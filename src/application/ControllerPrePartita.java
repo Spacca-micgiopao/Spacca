@@ -18,7 +18,7 @@ public class ControllerPrePartita implements Initializable{
 	private Main main;
 	private Stage stage;
 	public static String G1,G2;
-	
+	private static boolean botGioco=false;
 	//FILE per salvare le informazioni
 		//istanza di infoPartita per caricare e scrivere i risultati
 		InfoPartita infopartita = new InfoPartita();
@@ -26,6 +26,8 @@ public class ControllerPrePartita implements Initializable{
 		//TUTTO FXML
 		@FXML
 		private TextField InputG1,InputG2;
+		@FXML
+		private TextField InputG1ConBot;
 		@FXML
 		private Label Errori;
 		@FXML
@@ -78,7 +80,29 @@ public class ControllerPrePartita implements Initializable{
 			}
 		}	
 	}
-	
+	//costruzione nuova partita con bot
+	public void IniziaPartitaBot(ActionEvent event) throws IOException {
+		//Ottiene in nomi dei 2 giocatori se sono vuoti la partita non puo iniziare
+		G1 = InputG1ConBot.getText().replaceAll("\\s+","");
+		G2 = "Bot";
+		if(G1.isBlank() )
+			Errori.setText("Il nome non è stato inserito");
+		else if(G1.length() > 20 ) {
+			Errori.setText("Nome inserito  è troppo lungo!");
+		}
+		//Se i nomi sono consoni agli standard del gioco posso creare la partita
+		else {
+			botGioco=true;
+			infopartita.getG(G1,G2);
+			infopartita.ScriviDati();
+			classficacontroller.getNomi(G1, G2);
+			try {
+				main.showScenaGiocoScene();
+			} catch (Exception e) {
+				e.printStackTrace();;
+			}
+		}	
+	}
 	//per tornare alla schermata del menu
 	public void BackToMenu(ActionEvent event) throws IOException {
 		try {
@@ -86,6 +110,9 @@ public class ControllerPrePartita implements Initializable{
 		} catch (Exception e) {
 			System.out.println("errore nel caricamento scene Main Menu");
 		}
+	}
+	public void bottoneUscita(ActionEvent event) throws IOException{
+		stage.close();
 	}
 	//Legge dalla ChoiceBox quale partita caricare con la stringa di ricerca
 	//Dato che ogni partita ha un id diverso anche se i giocatori sono gli stessi
@@ -105,7 +132,9 @@ public class ControllerPrePartita implements Initializable{
 			e.printStackTrace();
 		}
 	}
-	
+	public static boolean getBotGioco() {
+		return botGioco;
+	}
 	public static String getPlayer1(){
 		return G1;
 	}

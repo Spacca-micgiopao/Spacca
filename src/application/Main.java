@@ -80,7 +80,7 @@ public class Main extends Application {
 
 	    public void showPrePartitaScene() throws Exception {
 	    	InfoPartita.Preparazione();
-	        FXMLLoader loader = new FXMLLoader(getClass().getResource("PrePartita.fxml"));
+	        FXMLLoader loader = new FXMLLoader(getClass().getResource("PrePartita1.fxml"));
 	        Parent root = loader.load();
 	        ControllerPrePartita controller = loader.getController();
 	        controller.setMain(this);
