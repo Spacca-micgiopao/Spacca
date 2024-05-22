@@ -641,7 +641,7 @@ public class GameController  implements Serializable{
             }
         }
     
-    }
+    
     private void posizionaCartaSuTavolo(ImageView posizioneTavolo, int tavoloNumero, Carta cartaSelezionata, Mazzo mazzoProvenienza) {
         int index = -1;
         int valoreCartaSelezionata = cartaSelezionata.getValore();

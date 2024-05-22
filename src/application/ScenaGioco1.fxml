@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GameController">
@@ -172,5 +173,6 @@
             <Font name="Berlin Sans FB" size="26.0" />
          </font>
       </Label>
+      <Rectangle fx:id="rettangolo1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" layoutX="304.0" layoutY="514.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="834.0" />
    </children>
 </AnchorPane>

@@ -24,14 +24,14 @@
             <Font name="Cooper Black" size="12.0" />
          </font>
       </Button>
-      <ChoiceBox fx:id="CaricaTorneo" layoutX="606.0" layoutY="296.0" prefHeight="37.0" prefWidth="197.0" />
-      <ChoiceBox fx:id="ScegliTipoTorneo" layoutX="625.0" layoutY="468.0" prefHeight="37.0" prefWidth="197.0" />
-      <Button layoutX="656.0" layoutY="352.0" mnemonicParsing="false" text="CONFERMA">
+      <ChoiceBox fx:id="CaricaTorneo" layoutX="606.0" layoutY="266.0" prefHeight="37.0" prefWidth="197.0" />
+      <ChoiceBox fx:id="ScegliTipoTorneo" layoutX="625.0" layoutY="421.0" prefHeight="37.0" prefWidth="197.0" />
+      <Button layoutX="656.0" layoutY="315.0" mnemonicParsing="false" text="CONFERMA">
          <font>
             <Font name="Cooper Black" size="13.0" />
          </font>
       </Button>
-      <Button layoutX="675.0" layoutY="515.0" mnemonicParsing="false" onAction="#handleConfermaTipoTorneo" text="CONFERMA">
+      <Button layoutX="675.0" layoutY="486.0" mnemonicParsing="false" onAction="#handleConfermaTipoTorneo" text="CONFERMA">
          <font>
             <Font name="Cooper Black" size="13.0" />
          </font>
