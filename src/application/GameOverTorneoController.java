@@ -151,7 +151,7 @@ public class GameOverTorneoController {
 		setNumeroVittorieG();
 		calcoloPunteggioUltimaPartita();
 		VincitoriPari = new ArrayList<>();
-		
+		SalvaTorneo.Cancella();
 		boolean pareggio=false;
 		int max= numeroVittorieG[0];
 		

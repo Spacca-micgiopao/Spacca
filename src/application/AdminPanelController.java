@@ -52,6 +52,7 @@ public class AdminPanelController implements Initializable{
 		LoginController.accesso.put("admin", "");
 		Npartite = 0;
 		Scrivistats();
+		SalvaTorneo.Cancella();
 		try {
 			main.showLoginScene();
 			main.showAlert();

@@ -1,6 +1,7 @@
 package application;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -87,7 +88,7 @@ public class PreTorneoController implements Initializable {
 	public void Caricatorneo(ActionEvent event) {
 		try {
 			PreTorneo4Controller.flag = true;
-			main.showPreTorneo4Scene();
+			main.showScenaGiocoScene();
 		} catch (Exception e) {
 			System.out.println("errore nel caricamento scene Main Menu");
 		}

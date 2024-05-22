@@ -93,6 +93,7 @@ public class Main extends Application {
 	    }
 	    
 	    public void showPreTorneoScene() throws Exception{
+	    	SalvaTorneo.Preparazione();
 	    	FXMLLoader loader = new FXMLLoader(getClass().getResource("PreparazioneTorneo.fxml"));
 		    Parent root = loader.load();
 	        PreTorneoController controller = loader.getController();

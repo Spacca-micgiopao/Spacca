@@ -86,7 +86,6 @@ public class WinningController {
 		setNumeroPartita();
 		setG();
 		setPartite();
-		
 		setPlayersNames();
 		
 		

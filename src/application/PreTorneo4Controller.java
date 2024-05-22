@@ -17,7 +17,6 @@ import java.util.List;
 public class PreTorneo4Controller {
 	private Main main;
 	private Stage stage;
-	private SalvaTorneo salvatorneo;
 	public static boolean flag = false;
 	protected int c;
 	protected static String[] G;  //contenente tutti i giocatori del Torneo
@@ -30,7 +29,6 @@ public class PreTorneo4Controller {
 	private TextField[] InsiemeTextField;
 	@FXML
 	private Label G1P1, G2P1, G1P2, G2P2, G1P3, G2P3, G1P4, G2P4, G1P5, G2P5, G1P6, G2P6;
-
 	@FXML
 	private Label[] labelGiocatori;
 	//METODI SET E GET
@@ -62,12 +60,12 @@ public class PreTorneo4Controller {
     			System.out.println("errore riproduzione");
     		}
      }
+	
 	//Inizializzazione
 	public void initialize() throws FileNotFoundException {
 		setSecondogiocatoreBot();
 		
 		if(flag == true) {
-			salvatorneo.CaricaTorneo(this);
 			flag = false;
 		}
 		
@@ -81,6 +79,7 @@ public class PreTorneo4Controller {
 			InputG2.setEditable(false);
 		}
 	}
+	
 	public void HandleConfermaGiocatori(ActionEvent event) throws IOException {
 		for(int i=0;i<4;i++) {
 			G[i]= InsiemeTextField[i].getText().replaceAll("\\s+", "");
@@ -89,6 +88,7 @@ public class PreTorneo4Controller {
 		inserimentoPartite();
 		//quando si confermano i nomi giocatori viene visualizzato elenco di tutte le partite
 	}
+	
 	public void inserimentoPartite() {
 		 partite.add(G[0] + " vs " + G[1]);
 		 partite.add(G[2] + " vs " + G[3]);
@@ -108,16 +108,17 @@ public class PreTorneo4Controller {
 	      }
 	}
 	
+	//Inizia partita
 	public void handleBottoneIniziaAGiocare(ActionEvent event) {
     	player.stop();
     	try {
     		main.showScenaGiocoScene();
-    		salvatorneo.Salvataggio(this);
     	}catch(Exception e) {
     		System.out.println("Errore nel caricamento scenaGioco");
     	}
     }
 	
+	//Chiudere completamente il gico
 	public void handleBottoneUscita(ActionEvent event) {
     	stage.close();
     }
@@ -125,7 +126,6 @@ public class PreTorneo4Controller {
 	//Per tornare al main menu
 	public void handleBottoneMenu(ActionEvent event) {
 		player.stop();
-		salvatorneo.Salvataggio(this);
     	try {
     		main.showMainMenuScene();
     	}catch(Exception e) {
