@@ -26,6 +26,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.layout.*;
 public class GameController  implements Serializable{
 	
+
+	private static final long serialVersionUID = 1204017110513799141L;
 	private Main main;
 	private Stage stage;
 	
@@ -261,9 +263,7 @@ public class GameController  implements Serializable{
 	    	setBotGioco();
 	    }
     	mostraRettangoloSeBotAttivo();
-    	//Impostare le label dei nomi
-    	LabelIconaNomeG1.setText(player1Name);
-    	LabelIconaNomeG2.setText(player2Name);
+
     	if(flag == 1) {
     		salvataggio.caricaPartita(this);
     		//Come per i nomi vanno aggiornati i punteggi nel caso siano stati caricati
@@ -280,6 +280,9 @@ public class GameController  implements Serializable{
     		Salvataggi.associazioneImmaginiATavolo(this.carteTavolo2,this.imageViewsTavolo2);
     		Salvataggi.associazioneImmaginiATavolo(this.carteTavolo3,this.imageViewsTavolo3);
     	}
+    	//Impostare le label dei nomi
+    	LabelIconaNomeG1.setText(player1Name);
+    	LabelIconaNomeG2.setText(player2Name);
     	//inizializzazione Label
     	turnoLabel.setText(player1Name.toUpperCase());
     	//turnoLabel.setStyle("-fx-text-fill: black;");
@@ -447,6 +450,10 @@ public class GameController  implements Serializable{
     	//Se siamo in un torneo all'uscita torno al pre torneo
     	if(Torneo == true) {
     		try {
+    			String s = "";
+    				for(int  i = 0;i<G.length;i++)
+    					s = s+G[i].charAt(0);
+    			SalvaTorneo.setFile(s);
     			SalvaTorneo.Salvataggio(this);
     			main.showPreTorneoScene();
     			PreTorneo4Controller.flag = true;

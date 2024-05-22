@@ -25,6 +25,14 @@ public class SalvaTorneo implements Serializable {
 		Tornei = dir.list();
 		else
 			Tornei = new String[0];
+		for(int i = 0;i<Tornei.length;i++) 
+			Tornei[i] = Tornei[i].replace(".ser", "");
+	}
+	
+	protected static void setFile(String s) throws IOException {
+		file = new File("src/SalvataggiTorneo/"+s+".ser");
+		if(!file.exists())
+			file.createNewFile();
 	}
 	
 	//Per salvare il torneo quando si esce
@@ -32,7 +40,6 @@ public class SalvaTorneo implements Serializable {
 		try {
 			if(!file.exists())
 				file.createNewFile();
-			//file = new File("src/SalvataggioTorneo"+PTC.c+".ser");
 			FileOutputStream fileout = new FileOutputStream(file);
 			ObjectOutputStream out = new ObjectOutputStream(fileout);
 			out.reset();
@@ -69,6 +76,12 @@ public class SalvaTorneo implements Serializable {
 	}
 	
 	protected static void Cancella() {
-		file.delete();
+		String[] n = dir.list();
+			if(dir.isDirectory() && dir.exists()) {
+				for(int i = 0;i<n.length;i++) {
+					File f = new File("src/SalvataggiTorneo/"+n[i]);
+					f.delete();
+				}
+			}
 	}
 }
