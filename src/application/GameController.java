@@ -16,6 +16,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,11 +51,11 @@ public class GameController  implements Serializable{
     
     //PER IL TORNEO
 	private boolean Torneo = false;
-	private static int numeroPartita=0;
-	private List<String> partite = new ArrayList<>();
-	private String[] G;
-	private static List<String> vincitori;
-	private static int[] numeroVittorieG;
+	protected static int numeroPartita=0;
+	protected List<String> partite = new ArrayList<>();
+	protected String[] G;
+	protected static List<String> vincitori;
+	protected static int[] numeroVittorieG;
 	private boolean SecondoGiocatoreBot;
 	//FXML----------------------------------------------------------------------
 	@FXML
@@ -213,7 +214,7 @@ public class GameController  implements Serializable{
     }	
     
     //INIZIALIZZAZIONE se il flag = 1 la partita è stata caricata e inizierà in modo diverso da una partita iniziata da 0
-    public void initialize() {
+    public void initialize() throws FileNotFoundException {
 	 
     	insertMusic();
     	//per le ImageView: creazione di una lista contenente tutte le ImageView per facilitare 
@@ -248,6 +249,11 @@ public class GameController  implements Serializable{
         imageViewsTavolo3.add(CartaT3p10);
         imageViewsTavolo3.add(CartaT3p01);
         imageViewsTavolo3.add(CartaT3p11);
+        if(flag == 2) {
+        	SalvaTorneo.CaricaTorneo(this);
+        	flag = 0;
+        }
+        	
     	if(flag == 0) {
 	    	getTorneo();
 	    	getPartite();
@@ -437,12 +443,12 @@ public class GameController  implements Serializable{
     //Bottone uscita dalla partita 
     public void handleBottoneUscita(ActionEvent event) {
     	player.stop();
-    	salvataggio.salvaPartita();
     	flag = 0;
     	//Se siamo in un torneo all'uscita torno al pre torneo
     	if(Torneo == true) {
     		try {
-    			main.showPreTorneo4Scene();
+    			SalvaTorneo.Salvataggio(this);
+    			main.showPreTorneoScene();
     			PreTorneo4Controller.flag = true;
     		} catch (Exception e) {
     			e.printStackTrace();
@@ -451,6 +457,7 @@ public class GameController  implements Serializable{
     	//Non siamo in un torneo posso tornare al prepartita
     	else if(Torneo == false)  { 		
     		try {
+    			salvataggio.salvaPartita();
     			main.showPrePartitaScene();
     		} 
     		catch (Exception e) {
