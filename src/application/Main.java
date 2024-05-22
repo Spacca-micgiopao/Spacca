@@ -55,9 +55,8 @@ public class Main extends Application {
 	        primaryStage.setScene(scene);
 	        primaryStage.sizeToScene();
 	        primaryStage.setResizable(false);
-	        primaryStage.setHeight(800);
+	        primaryStage.setHeight(720);
 	        primaryStage.setWidth(1280);
-	        primaryStage.setFullScreen(true);
 	        primaryStage.show();
 	    }
 	    
@@ -69,11 +68,10 @@ public class Main extends Application {
 	        controller.setStage(primaryStage);
 	        Scene scene = new Scene(root);
 	        primaryStage.setScene(scene);
-	        primaryStage.setHeight(800);
+	        primaryStage.setHeight(720);
 	        primaryStage.setWidth(1280);
 	        primaryStage.sizeToScene();
 	        primaryStage.setResizable(false);
-	        primaryStage.setFullScreen(true);
 	        primaryStage.show();
 	    }
 
@@ -87,9 +85,8 @@ public class Main extends Application {
 	        controller.setStage(primaryStage);
 	        Scene scene = new Scene(root);
 	        primaryStage.setScene(scene);
-	        primaryStage.setHeight(800);
+	        primaryStage.setHeight(720);
 	        primaryStage.setWidth(1280);
-	        primaryStage.setFullScreen(true);
 	        primaryStage.sizeToScene();
 	        primaryStage.setResizable(false);
 	        primaryStage.show();
@@ -102,7 +99,7 @@ public class Main extends Application {
 	        controller.setMain(this);
 	        controller.setStage(primaryStage);
 	        Scene scene = new Scene(root);
-	        primaryStage.setHeight(800);
+	        primaryStage.setHeight(720);
 	        primaryStage.setWidth(1280);
 	        primaryStage.sizeToScene();
 	        primaryStage.setScene(scene);
@@ -134,7 +131,7 @@ public class Main extends Application {
 	        Scene scene = new Scene(root);  
 	        primaryStage.setScene(scene);
 	        primaryStage.sizeToScene();
-	        primaryStage.setHeight(800);
+	        primaryStage.setHeight(720);
 	        primaryStage.setWidth(1280);
 	        primaryStage.setFullScreen(true);
 	        primaryStage.show();
@@ -147,7 +144,7 @@ public class Main extends Application {
 	        controller.setMain(this);
 	        controller.setStage(primaryStage);
 	        Scene scene = new Scene(root);
-	        primaryStage.setHeight(800);
+	        primaryStage.setHeight(720);
 	        primaryStage.setWidth(1280);
 	        primaryStage.setScene(scene);
 	        primaryStage.setFullScreen(true);
@@ -162,10 +159,10 @@ public class Main extends Application {
 	        controller.setMain(this);
 	        controller.setStage(primaryStage);
 	        Scene scene = new Scene(root);
-	        primaryStage.setHeight(800);
+	        primaryStage.setHeight(720);
 	        primaryStage.setWidth(1280);
 	        primaryStage.setScene(scene);
-	        primaryStage.setFullScreen(true);
+	        primaryStage.setResizable(false);
 	        primaryStage.show();
     	
 	    	
@@ -177,10 +174,10 @@ public class Main extends Application {
 	        controller.setMain(this);
 	        controller.setStage(primaryStage);
 	        Scene scene = new Scene(root);
-	        primaryStage.setHeight(800);
+	        primaryStage.setHeight(720);
 	        primaryStage.setWidth(1280);
 	        primaryStage.setScene(scene);
-	        primaryStage.setFullScreen(true);
+	        primaryStage.setResizable(false);
 	        primaryStage.show();
     	
 	    	
@@ -193,6 +190,8 @@ public class Main extends Application {
 	        controller.setStage(primaryStage);
 	        Scene scene = new Scene(root);
 	        primaryStage.setScene(scene);
+	        primaryStage.setHeight(720);
+	        primaryStage.setWidth(1280);
 	        primaryStage.sizeToScene();
 	        primaryStage.setResizable(false);
 	        primaryStage.show();
@@ -205,12 +204,11 @@ public class Main extends Application {
 	        controller.setMain(this);
 	        controller.setStage(primaryStage);
 	        Scene scene = new Scene(root);
-	        primaryStage.setHeight(800);
+	        primaryStage.setHeight(720);
 	        primaryStage.setWidth(1280);
 	        primaryStage.setScene(scene);
 	        primaryStage.sizeToScene();
 	        primaryStage.setResizable(false);
-	        primaryStage.setFullScreen(true);
 	        primaryStage.show();
 	    }
 	    

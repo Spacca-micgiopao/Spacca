@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerPrePartita">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerPrePartita">
    <children>
-      <ImageView fitHeight="813.0" fitWidth="1377.0" layoutX="-96.0" layoutY="-10.0">
+      <ImageView fitHeight="720.0" fitWidth="1280.0">
          <image>
             <Image url="@../Sfondo/pREPARAZIONE%20PARTITA.png" />
          </image>
