@@ -1,7 +1,5 @@
 package application;
 
-import static application.PreTorneo4Controller.G;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -30,27 +28,39 @@ public class SalvaTorneo implements Serializable {
 	}
 	
 	//Per salvare il torneo quando si esce
-	protected void Salvataggio(PreTorneo4Controller PTC) {
+	protected static void Salvataggio(GameController gc) {
 		try {
 			//file = new File("src/SalvataggioTorneo"+PTC.c+".ser");
 			FileOutputStream fileout = new FileOutputStream(file);
 			ObjectOutputStream out = new ObjectOutputStream(fileout);
 			out.reset();
 			//Parametri da salvare
-			out.writeObject(PTC.partite);
-			out.writeObject(G);
+			out.writeInt(gc.numeroPartita);
+			out.writeObject(gc.partite);
+			out.writeObject(gc.G);
+			out.writeObject(gc.vincitori);
+			out.writeObject(gc.numeroVittorieG);
+			out.close();
+			fileout.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
 	//Per caricare un nuovo torneo
-	protected static void CaricaTorneo(PreTorneo4Controller PTC) throws FileNotFoundException {
+	protected static void CaricaTorneo(GameController gc) throws FileNotFoundException {
 		try {
+			GameController.flag = 2;
 			FileInputStream filein = new FileInputStream(file);
 			ObjectInputStream in = new ObjectInputStream(filein);
-			PTC.partite = (List<String>) in.readObject();
-			PTC.G = (String[])in.readObject();
+			//Parametri da caricare
+			gc.numeroPartita = in.readInt();
+			gc.partite = (List<String>) in.readObject();
+			gc.G = (String[]) in.readObject();
+			gc.vincitori = (List<String>) in.readObject();
+			gc.numeroVittorieG = (int[]) in.readObject();
+			in.close();
+			filein.close();
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
