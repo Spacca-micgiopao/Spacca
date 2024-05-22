@@ -34,6 +34,8 @@ public class GameController  implements Serializable{
 	private Salvataggi salvataggio = new Salvataggi(this);
 	
 	private boolean botgioco;
+	private boolean annullatore = false;
+	private Imprevisti cartespeciali = new Imprevisti(this);
 	//Mostrare le informazioni
 	public static String player1Name;
 	public static String player2Name;
@@ -611,6 +613,7 @@ public class GameController  implements Serializable{
                     cartaSelezionata = cartagiocata;
                     imprevistiAlfa.applicaEffettoCarta(cartaSelezionata);
                     imprevistiBeta.applicaEffettoCarta(cartaSelezionata);
+		    cartespeciali.carteimprevisto(cartaSelezionata);
                     int valoreCartaSelezionata = cartaSelezionata.getValore();
                     punteggioG2Tavolo1 += valoreCartaSelezionata;
                     LabelPunteggioG2T1.setText(String.valueOf(punteggioG2Tavolo1));
@@ -634,6 +637,7 @@ public class GameController  implements Serializable{
                     cartaSelezionata = cartagiocata;
                     imprevistiAlfa.applicaEffettoCarta(cartaSelezionata);
                     imprevistiBeta.applicaEffettoCarta(cartaSelezionata);
+		    cartespeciali.carteimprevisto(cartaSelezionata);
                     int valoreCartaSelezionata = cartaSelezionata.getValore();
                     punteggioG2Tavolo2 += valoreCartaSelezionata;
                     LabelPunteggioG2T2.setText(String.valueOf(punteggioG2Tavolo2));
@@ -656,6 +660,7 @@ public class GameController  implements Serializable{
                     cartaSelezionata = cartagiocata;
                     imprevistiAlfa.applicaEffettoCarta(cartaSelezionata);
                     imprevistiBeta.applicaEffettoCarta(cartaSelezionata);
+		    cartespeciali.carteimprevisto(cartaSelezionata);
                     int valoreCartaSelezionata = cartaSelezionata.getValore();
                     punteggioG2Tavolo3 += valoreCartaSelezionata;
                     LabelPunteggioG2T3.setText(String.valueOf(punteggioG2Tavolo3));
@@ -669,7 +674,7 @@ public class GameController  implements Serializable{
         }
     
     
-    private void posizionaCartaSuTavolo(ImageView posizioneTavolo, int tavoloNumero, Carta cartaSelezionata, Mazzo mazzoProvenienza) {
+  private void posizionaCartaSuTavolo(ImageView posizioneTavolo, int tavoloNumero, Carta cartaSelezionata, Mazzo mazzoProvenienza) {
         int index = -1;
         int valoreCartaSelezionata = cartaSelezionata.getValore();
         String colore = cartaSelezionata.getColore();
@@ -694,8 +699,14 @@ public class GameController  implements Serializable{
         cartaSelezionata.setValore(valoreCartaSelezionata);
         imprevistiAlfa.applicaEffettoCarta(cartaSelezionata);
         imprevistiBeta.applicaEffettoCarta(cartaSelezionata);
+        cartespeciali.carteimprevisto(cartaSelezionata);
 
-        // Aggiornamento punteggio
+        // Verifica e applica l'effetto annullatore
+        if (colore.equalsIgnoreCase("annulla")) {
+            annullatore = true;
+        }
+
+        // Aggiornamento punteggio e applicazione dell'effetto annullatore
         if (tavoloNumero == 1) {
             if (mazzoProvenienza == mazzoGiocatore1) {
                 punteggioG1Tavolo1 += cartaSelezionata.getValore();
@@ -703,6 +714,13 @@ public class GameController  implements Serializable{
             } else {
                 punteggioG2Tavolo1 += cartaSelezionata.getValore();
                 LabelPunteggioG2T1.setText(String.valueOf(punteggioG2Tavolo1));
+            }
+            if (annullatore) {
+                punteggioG1Tavolo1 = 0;
+                punteggioG2Tavolo1 = 0;
+                LabelPunteggioG1T1.setText(String.valueOf(punteggioG1Tavolo1));
+                LabelPunteggioG2T1.setText(String.valueOf(punteggioG2Tavolo1));
+                annullatore = false;
             }
         } else if (tavoloNumero == 2) {
             if (mazzoProvenienza == mazzoGiocatore1) {
@@ -712,6 +730,13 @@ public class GameController  implements Serializable{
                 punteggioG2Tavolo2 += cartaSelezionata.getValore();
                 LabelPunteggioG2T2.setText(String.valueOf(punteggioG2Tavolo2));
             }
+            if (annullatore) {
+                punteggioG1Tavolo2 = 0;
+                punteggioG2Tavolo2 = 0;
+                LabelPunteggioG1T2.setText(String.valueOf(punteggioG1Tavolo2));
+                LabelPunteggioG2T2.setText(String.valueOf(punteggioG2Tavolo2));
+                annullatore = false;
+            }
         } else if (tavoloNumero == 3) {
             if (mazzoProvenienza == mazzoGiocatore1) {
                 punteggioG1Tavolo3 += cartaSelezionata.getValore();
@@ -720,40 +745,14 @@ public class GameController  implements Serializable{
                 punteggioG2Tavolo3 += cartaSelezionata.getValore();
                 LabelPunteggioG2T3.setText(String.valueOf(punteggioG2Tavolo3));
             }
-        }
-
-        // Sposta la carta selezionata nella posizione del tavolo cliccata
-        spostaCartaSuTavolo(cartaSelezionata, posizioneTavolo);
-
-        // Rimuovi la carta dal mazzo del giocatore
-        if (mazzoProvenienza != null && mazzoProvenienza.contieneCarta(cartaSelezionata)) {
-            mazzoProvenienza.rimuoviCarta(cartaSelezionata);
-        }
-
-        // Svuota imageView dal mazzoGiocatore1
-        for (int i = 0; i < imageViewsGiocatore1.size(); i++) {
-            ImageView imageView = imageViewsGiocatore1.get(i);
-            if (imageView.getImage() == cartaSelezionata.getImmagine()) {
-                imageView.setImage(null);
-                break;
+            if (annullatore) {
+                punteggioG1Tavolo3 = 0;
+                punteggioG2Tavolo3 = 0;
+                LabelPunteggioG1T3.setText(String.valueOf(punteggioG1Tavolo3));
+                LabelPunteggioG2T3.setText(String.valueOf(punteggioG2Tavolo3));
+                annullatore = false;
             }
         }
-        // Svuota imageView dal mazzoGiocatore2
-        for (int i = 0; i < imageViewsGiocatore2.size(); i++) {
-            ImageView imageView = imageViewsGiocatore2.get(i);
-            if (imageView.getImage() == cartaSelezionata.getImmagine()) {
-                imageView.setImage(null);
-                break;
-            }
-        }
-
-        // Resetta la carta selezionata
-        cartaSelezionata = null;
-
-        // Aggiorna interfaccia e verifica fine partita
-        aggiornaInterfaccia();
-        verificaFinePartita();
-    }
     //GESTORE DEI CLICK SU UNA POSIZIONE DEI TAVOLI
     private void handleClickPosizioneTavolo(MouseEvent event, ImageView posizioneTavolo, int tavoloNumero) {
         if (cartaSelezionata != null) {
