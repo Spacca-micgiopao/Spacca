@@ -117,7 +117,6 @@ public class Main extends Application {
 	        primaryStage.setWidth(1280);
 	        primaryStage.sizeToScene();
 	        primaryStage.setScene(scene);
-	        primaryStage.setFullScreen(true);
 	        primaryStage.show();
     	
 	    	
@@ -130,10 +129,9 @@ public class Main extends Application {
 	        controller.setStage(primaryStage);
 	        Scene scene = new Scene(root);  
 	        primaryStage.setScene(scene);
-	        primaryStage.sizeToScene();
 	        primaryStage.setHeight(720);
 	        primaryStage.setWidth(1280);
-	        primaryStage.setFullScreen(true);
+	        primaryStage.sizeToScene();
 	        primaryStage.show();
 	    }
 	    
