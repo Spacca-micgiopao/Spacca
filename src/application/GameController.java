@@ -96,6 +96,8 @@ public class GameController  implements Serializable{
     private Pane CampoBasso,CampoAlto;
     public Imprevisti imprevistiAlfa = new Imprevisti(this);
     public Imprevisti imprevistiBeta = new Imprevisti(this);
+    @FXML
+    private Rectangle rettangolo1;
     //-------------------------------------------------------------
     
     //Metodi set e get---------------------------------------------
@@ -169,6 +171,13 @@ public class GameController  implements Serializable{
     public static  int getVittoriaSuTavoloG2() {
     	return vittoriaSuTavoloG2;
     }
+    public void mostraRettangoloSeBotAttivo() {
+        if (botgioco) {
+            rettangolo1.setVisible(true); // Rendi il rettangolo visibile se botLogic è true
+        }else {
+        	rettangolo1.setVisible(false);
+        }
+    }
     //------------------------------------------------------------
     
     //Sfondo e musica
@@ -186,6 +195,7 @@ public class GameController  implements Serializable{
     
     //INIZIALIZZAZIONE se il flag = 1 la partita è stata caricata e inizierà in modo diverso da una partita iniziata da 0
     public void initialize() {
+	mostraRettangoloSeBotAttivo();
     	insertMusic();
     	//per le ImageView: creazione di una lista contenente tutte le ImageView per facilitare 
         //l'aggiunta delle immagini in aggiorna interfaccia
@@ -581,6 +591,7 @@ public class GameController  implements Serializable{
                     passaTurno();
                     aggiornaInterfaccia();
                     aggiornaTurnoLabel();
+		    verificaFinePartita();
                 }
             
         } else if (!tavoloIsFull((ArrayList<ImageView>) imageViewsTavolo2)) {
@@ -603,6 +614,7 @@ public class GameController  implements Serializable{
                     passaTurno();
                     aggiornaInterfaccia();
                     aggiornaTurnoLabel();
+		    verificaFinePartita();
                 }
             
         } else {
@@ -624,38 +636,11 @@ public class GameController  implements Serializable{
                     passaTurno();
                     aggiornaInterfaccia();
                     aggiornaTurnoLabel();
+		    verificaFinePartita();
                 }
             }
         }
     
-    // Metodo che trova a quale tavolo appartiene la posizione
-    private int trovaTavoloNumero(ImageView posizioneTavolo) {
-        if (imageViewsTavolo1.contains(posizioneTavolo)) {
-            return 1;
-        } else if (imageViewsTavolo2.contains(posizioneTavolo)) {
-            return 2;
-        } else if (imageViewsTavolo3.contains(posizioneTavolo)) {
-            return 3;
-        }
-        return -1; // Tavolo non trovato
-    }
-    private ImageView trovaPosizioneLiberaTavolo() {
-        for (ImageView imageView : imageViewsTavolo1) {
-            if (imageView.getImage() == null) {
-                return imageView;
-            }
-        }
-        for (ImageView imageView : imageViewsTavolo2) {
-            if (imageView.getImage() == null) {
-                return imageView;
-            }
-        }
-        for (ImageView imageView : imageViewsTavolo3) {
-            if (imageView.getImage() == null) {
-                return imageView;
-            }
-        }
-        return null; // Nessuna posizione libera trovata
     }
     private void posizionaCartaSuTavolo(ImageView posizioneTavolo, int tavoloNumero, Carta cartaSelezionata, Mazzo mazzoProvenienza) {
         int index = -1;
