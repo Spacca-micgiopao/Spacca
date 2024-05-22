@@ -259,9 +259,7 @@ public class GameController  implements Serializable{
 	    	setBotGioco();
 	    }
     	mostraRettangoloSeBotAttivo();
-    	//Impostare le label dei nomi
-    	LabelIconaNomeG1.setText(player1Name);
-    	LabelIconaNomeG2.setText(player2Name);
+    	
     	if(flag == 1) {
     		salvataggio.caricaPartita(this);
     		//Come per i nomi vanno aggiornati i punteggi nel caso siano stati caricati
@@ -278,6 +276,9 @@ public class GameController  implements Serializable{
     		Salvataggi.associazioneImmaginiATavolo(this.carteTavolo2,this.imageViewsTavolo2);
     		Salvataggi.associazioneImmaginiATavolo(this.carteTavolo3,this.imageViewsTavolo3);
     	}
+    	//Impostare le label dei nomi
+    	LabelIconaNomeG1.setText(player1Name);
+    	LabelIconaNomeG2.setText(player2Name);
     	//inizializzazione Label
     	turnoLabel.setText(player1Name.toUpperCase());
     	//turnoLabel.setStyle("-fx-text-fill: black;");
@@ -753,6 +754,7 @@ public class GameController  implements Serializable{
                 annullatore = false;
             }
         }
+  }
     //GESTORE DEI CLICK SU UNA POSIZIONE DEI TAVOLI
     private void handleClickPosizioneTavolo(MouseEvent event, ImageView posizioneTavolo, int tavoloNumero) {
         if (cartaSelezionata != null) {
