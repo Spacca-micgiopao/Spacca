@@ -32,7 +32,7 @@ public class GameController  implements Serializable{
 	private Stage stage;
 	
 	//Per gestire il caricamento delle partite
-	public static int flag = 0;
+	public static int flag;
 	private Salvataggi salvataggio = new Salvataggi(this);
 	
 	private boolean botgioco;
@@ -121,7 +121,6 @@ public class GameController  implements Serializable{
     	if(Torneo==true) {
     		String partita = partite.get(numeroPartita);
     		String[] giocatori = partita.split(" vs ");
-
     		player1Name = giocatori[0];
     		player2Name= giocatori[1];
     		
@@ -251,17 +250,27 @@ public class GameController  implements Serializable{
         imageViewsTavolo3.add(CartaT3p10);
         imageViewsTavolo3.add(CartaT3p01);
         imageViewsTavolo3.add(CartaT3p11);
-        if(flag == 2) {
-        	SalvaTorneo.CaricaTorneo(this);
-        	flag = 0;
-        }
+
         	
-    	if(flag == 0) {
+    	if(flag == 0 || flag == 2) {
 	    	getTorneo();
-	    	getPartite();
-	    	setPlayersNames();
 	    	setBotGioco();
 	    }
+    	
+        if(flag == 2) {
+        	partite.clear();
+        	SalvaTorneo.CaricaTorneo(this);
+        	PreTorneo4Controller.partite = this.partite;
+        	PreTorneo4Controller.G = this.G;
+        	System.out.print(numeroPartita+"");
+        	Torneo = true;
+        	flag = 0;
+        }
+        
+        if(flag == 0 || flag == 2)
+        	setPlayersNames();
+        	getPartite();
+        	
     	mostraRettangoloSeBotAttivo();
 
     	if(flag == 1) {
@@ -384,10 +393,12 @@ public class GameController  implements Serializable{
 		    		}
 		    		else {
 		    			try {
+		    				System.out.println(this.partite.toString());
 		    				main.showWinningScene();
 		    			}
 		    			catch(Exception e ) {
 		    				System.out.println("errore nel caricamento winningscene");
+		    				e.printStackTrace();
 		    			}
 	    		
 		    		}
@@ -455,8 +466,7 @@ public class GameController  implements Serializable{
     					s = s+G[i].charAt(0);
     			SalvaTorneo.setFile(s);
     			SalvaTorneo.Salvataggio(this);
-    			main.showPreTorneoScene();
-    			PreTorneo4Controller.flag = true;
+    			main.showMainMenuScene();
     		} catch (Exception e) {
     			e.printStackTrace();
     		}
@@ -521,6 +531,10 @@ public class GameController  implements Serializable{
             return;
         }
         posizioneTavolo.setImage(carta.getImmagine());
+        if(turnoGiocatore1 == true) 
+        	posizioneTavolo.setStyle("-fx-effect: innershadow(two-pass-box, rgba(255,0,0,0.75), 10, 0.5, 0, 0)");
+        else
+        	posizioneTavolo.setStyle("-fx-effect: innershadow(two-pass-box, rgba(0,0,255,0.75), 10, 0.5, 0, 0)");
         cartaCliccata.setEffect(null);
         aggiornaTurnoLabel();
     }

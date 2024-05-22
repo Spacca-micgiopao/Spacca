@@ -17,7 +17,6 @@ import java.util.List;
 public class PreTorneo4Controller {
 	private Main main;
 	private Stage stage;
-	public static boolean flag = false;
 	protected int c;
 	protected static String[] G;  //contenente tutti i giocatori del Torneo
 	protected static List<String> partite = new ArrayList<>(); //contenente tutte partite torneo in formato "giocatore1 vs giocatore2"
@@ -65,15 +64,12 @@ public class PreTorneo4Controller {
 	public void initialize() throws FileNotFoundException {
 		setSecondogiocatoreBot();
 		
-		if(flag == true) {
-			flag = false;
-		}
-		
 		insertMusic();
+		partite.clear();
+
 		 InsiemeTextField = new TextField[]{InputG1,InputG2,InputG3,InputG4};
 		 G = new String[InsiemeTextField.length];
 		 labelGiocatori = new Label[] {G1P1, G2P1,G1P2,G2P2,G1P3,G2P3,G1P4,G2P4,G1P5,G2P5,G1P6,G2P6}; //per  visualizzare i giocatori nell'elenco  partite
-		
 		 if(SecondoGiocatoreBot==true) {
 			InputG2.setText("Bot");
 			InputG2.setEditable(false);

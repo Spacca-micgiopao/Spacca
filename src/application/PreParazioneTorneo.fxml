@@ -26,11 +26,6 @@
       </Button>
       <ChoiceBox fx:id="CaricaTorneo" layoutX="606.0" layoutY="266.0" prefHeight="37.0" prefWidth="197.0" />
       <ChoiceBox fx:id="ScegliTipoTorneo" layoutX="625.0" layoutY="421.0" prefHeight="37.0" prefWidth="197.0" />
-      <Button layoutX="656.0" layoutY="315.0" mnemonicParsing="false" text="CONFERMA">
-         <font>
-            <Font name="Cooper Black" size="13.0" />
-         </font>
-      </Button>
       <Button layoutX="675.0" layoutY="486.0" mnemonicParsing="false" onAction="#handleConfermaTipoTorneo" text="CONFERMA">
          <font>
             <Font name="Cooper Black" size="13.0" />
@@ -41,6 +36,6 @@
             <Image url="@../Sfondo/RegoleTorneo.jpeg" />
          </image>
       </ImageView>
-      <Button layoutX="981.0" layoutY="618.0" mnemonicParsing="false" onAction="#Caricatorneo" text="Carica" />
+      <Button layoutX="680.0" layoutY="315.0" mnemonicParsing="false" onAction="#Caricatorneo" text="Carica" />
    </children>
 </AnchorPane>
