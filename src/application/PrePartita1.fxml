@@ -4,63 +4,200 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerPrePartita">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #e45a5a, #15a3c7); -fx-border-color: #FFFFFF; -fx-border-width: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerPrePartita">
    <children>
-      <ImageView fitHeight="720.0" fitWidth="1280.0">
+      <ChoiceBox fx:id="ScegliPartita" layoutX="944.0" layoutY="227.0" prefHeight="29.0" prefWidth="229.0" />
+      <Label layoutX="349.0" layoutY="38.0" text="PREPARAZIONE PARTITA" textAlignment="CENTER">
+         <font>
+            <Font name="Eras Bold ITC" size="52.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerX="0.511049723756906" centerY="1.0" radius="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.08053691275167785">
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color green="0.11428571492433548" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </textFill>
+         <effect>
+            <InnerShadow />
+         </effect>
+      </Label>
+      <Label layoutX="43.0" layoutY="262.0" text="G2" textFill="WHITE">
+         <font>
+            <Font name="Eras Bold ITC" size="35.0" />
+         </font></Label>
+      <TextField fx:id="InputG1" layoutX="110.0" layoutY="227.0" prefHeight="29.0" prefWidth="229.0" />
+      <TextField fx:id="InputG2" layoutX="110.0" layoutY="269.0" prefHeight="29.0" prefWidth="229.0" />
+      <TextField fx:id="InputG1ConBot" layoutX="559.0" layoutY="227.0" prefHeight="29.0" prefWidth="229.0" />
+      <Button fx:id="Startthegame" layoutX="35.0" layoutY="310.0" mnemonicParsing="false" onAction="#IniziaPartita" prefHeight="79.0" prefWidth="314.0" style="-fx-background-radius: 30;" text="CONFERMA NUOVA PARTITA" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Eras Bold ITC" size="24.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect>
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Button>
+      <Label layoutX="43.0" layoutY="220.0" text="G1" textFill="WHITE">
+         <font>
+            <Font name="Eras Bold ITC" size="35.0" />
+         </font>
+      </Label>
+      <Label layoutX="487.0" layoutY="263.0" text="BOT" textFill="WHITE">
+         <font>
+            <Font name="Eras Bold ITC" size="35.0" />
+         </font>
+      </Label>
+      <Button fx:id="Startthegame1" layoutX="483.0" layoutY="310.0" mnemonicParsing="false" onAction="#IniziaPartitaBot" prefHeight="79.0" prefWidth="314.0" style="-fx-background-radius: 30;" text="CONFERMA NUOVA PARTITA (BOT)" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Eras Bold ITC" size="24.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect>
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Button>
+      <Label layoutX="483.0" layoutY="220.0" text="G1" textFill="WHITE">
+         <font>
+            <Font name="Eras Bold ITC" size="35.0" />
+         </font>
+      </Label>
+      <Button fx:id="Back" layoutX="43.0" layoutY="30.0" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="69.0" prefWidth="255.0" style="-fx-background-radius: 30;" text="TORNA AL MENU" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Eras Bold ITC" size="24.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect>
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Button>
+      <ImageView layoutX="691.0" layoutY="254.0">
          <image>
-            <Image url="@../Sfondo/pREPARAZIONE%20PARTITA.png" />
+            <Image url="@../Immagini/Menu/magneton.gif" />
          </image>
       </ImageView>
-      <Label layoutX="797.0" layoutY="312.0" text="Scegli una partita tra quelle salvate" textFill="#ff25cc">
+      <Button layoutX="895.0" layoutY="310.0" mnemonicParsing="false" onAction="#CaricaPartita" prefHeight="79.0" prefWidth="314.0" style="-fx-background-radius: 30;" text="CARICA UNA PARTITA" textAlignment="CENTER" wrapText="true">
          <font>
-            <Font name="Cooper Black" size="24.0" />
+            <Font name="Eras Bold ITC" size="24.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect>
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Button>
+      <Label layoutX="26.0" layoutY="92.0" prefHeight="128.0" prefWidth="307.0" text="PARTITA  A 2 GIOCATORI" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Eras Bold ITC" size="35.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="ScegliPartita" layoutX="923.0" layoutY="371.0" prefWidth="150.0" />
-      <Button layoutX="974.0" layoutY="433.0" mnemonicParsing="false" onAction="#CaricaPartita" text="Carica" />
-      <Label layoutX="90.0" layoutY="223.0" text="Crea una nuova partita" textFill="#ff25cc">
+      <Label layoutX="487.0" layoutY="92.0" prefHeight="128.0" prefWidth="307.0" text="PARTITA  CONTRO BOT" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
-            <Font name="Cooper Black" size="38.0" />
+            <Font name="Eras Bold ITC" size="35.0" />
          </font>
       </Label>
-      <Label layoutX="28.0" layoutY="276.0" text="Giocatore 1 vs Giocatore 2">
+      <Label layoutX="898.0" layoutY="99.0" prefHeight="128.0" prefWidth="307.0" text="RIPRENDI UNA PARTITA INTERROTTA" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
-            <Font name="Cooper Black" size="23.0" />
+            <Font name="Eras Bold ITC" size="35.0" />
          </font>
       </Label>
-      <Label layoutX="433.0" layoutY="302.0" text="Giocatore vs Bot">
-         <font>
-            <Font name="Cooper Black" size="23.0" />
-         </font>
-      </Label>
-      <Label layoutX="94.0" layoutY="297.0" text="Inserire nomi dei giocatori" textFill="WHITE">
-         <font>
-            <Font name="Cooper Black" size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="48.0" layoutY="331.0" text="Giocatore 1" textFill="WHITE" />
-      <Label layoutX="48.0" layoutY="368.0" text="Giocatore 2" textFill="WHITE" />
-      <TextField fx:id="InputG1" layoutX="124.0" layoutY="327.0" />
-      <TextField fx:id="InputG2" layoutX="124.0" layoutY="364.0" />
-      <Button fx:id="Startthegame" layoutX="140.0" layoutY="433.0" mnemonicParsing="false" onAction="#IniziaPartita" text="Conferma" />
-      <Label layoutX="305.0" layoutY="349.0" text="Oppure">
-         <font>
-            <Font size="16.0" />
-         </font></Label>
-      <Label layoutX="423.0" layoutY="330.0" text="Inserire nome del giocatore " textFill="WHITE">
-         <font>
-            <Font name="Cooper Black" size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="392.0" layoutY="363.0" text="Giocatore 1" textFill="WHITE" />
-      <TextField fx:id="InputG1ConBot" layoutX="463.0" layoutY="359.0" />
-      <Button fx:id="Startthegame1" layoutX="515.0" layoutY="420.0" mnemonicParsing="false" onAction="#IniziaPartitaBot" text="Conferma" />
-      <Button layoutX="68.0" layoutY="40.0" mnemonicParsing="false" onAction="#bottoneUscita" text="CLOSE" textFill="RED" />
-      <Button fx:id="Back" layoutX="644.0" layoutY="579.0" mnemonicParsing="false" onAction="#BackToMenu" text="Torna al menu" />
+      <Pane layoutX="210.0" layoutY="422.0" prefHeight="276.0" prefWidth="836.0" style="-fx-background-color: #FFFFFF; -fx-border-color: linear-gradient(from 25% 25% to 100% 100%, #e45a5a, #15a3c7); -fx-border-width: 10;">
+         <children>
+            <ImageView fx:id="bosco" fitHeight="256.0" fitWidth="740.0" layoutX="48.0" layoutY="10.0">
+               <image>
+                  <Image url="@../Sfondo/bosco.jpg" />
+               </image>
+               <effect>
+                  <InnerShadow />
+               </effect>
+            </ImageView>
+         </children>
+      </Pane>
    </children>
+   <effect>
+      <InnerShadow />
+   </effect>
 </AnchorPane>

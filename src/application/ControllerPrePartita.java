@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.animation.Interpolator;
+import javafx.animation.RotateTransition;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,7 +14,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class ControllerPrePartita implements Initializable{
 	
@@ -24,6 +30,8 @@ public class ControllerPrePartita implements Initializable{
 		InfoPartita infopartita = new InfoPartita();
 		ClassificaController classficacontroller = new ClassificaController();
 		//TUTTO FXML
+		@FXML
+		private ImageView bosco;
 		@FXML
 		private TextField InputG1,InputG2;
 		@FXML
@@ -53,6 +61,7 @@ public class ControllerPrePartita implements Initializable{
 		ScegliPartita.getItems().removeAll();
 		if(InfoPartita.Partite != null)
 		ScegliPartita.getItems().addAll(infopartita.Partite);
+		ruota();
 	}
 	
 	//Costruzione di una nuova partita
@@ -111,9 +120,7 @@ public class ControllerPrePartita implements Initializable{
 			System.out.println("errore nel caricamento scene Main Menu");
 		}
 	}
-	public void bottoneUscita(ActionEvent event) throws IOException{
-		stage.close();
-	}
+	
 	//Legge dalla ChoiceBox quale partita caricare con la stringa di ricerca
 	//Dato che ogni partita ha un id diverso anche se i giocatori sono gli stessi
 	//Sono create partite diverse
@@ -140,5 +147,16 @@ public class ControllerPrePartita implements Initializable{
 	}
 	public static String getPlayer2(){
 		return G2;
+	}
+	
+	private void ruota() {
+		RotateTransition rotate = new RotateTransition();
+		rotate.setNode(bosco);
+		rotate.setDuration(Duration.millis(20000));
+		rotate.setCycleCount(TranslateTransition.INDEFINITE);
+		rotate.setInterpolator(Interpolator.LINEAR);
+		rotate.setByAngle(360);
+		rotate.setAxis(Rotate.Y_AXIS);
+		rotate.play();
 	}
 }
