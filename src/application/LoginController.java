@@ -4,18 +4,28 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URL;
+
+import javafx.animation.Interpolator;
+import javafx.animation.RotateTransition;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
+import javafx.scene.transform.Rotate;
+import javafx.util.Duration;
 
 import java.util.HashMap;
 import java.util.NoSuchElementException;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
-public class LoginController {
+public class LoginController implements Initializable{
 //Classe per controllare la pagina di Login
 	private Main main;
 	//Crea le istanze per prendere in input Nome e Password
@@ -27,6 +37,8 @@ public class LoginController {
 	private Button tastoconferma;
 	@FXML
 	private Label errori;
+	@FXML
+	private Text Titolo;
 	
 	//Hashmap per avere username e password per l'admin
 	public static HashMap<String,String> accesso = new HashMap<String,String>();
@@ -90,6 +102,22 @@ public class LoginController {
 			accesso.put("admin", "");
 		}
 	}
+	
+	//Per far ruotare il titolo
+	private void ruota() {
+		RotateTransition rotate = new RotateTransition();
+		rotate.setNode(Titolo);
+		rotate.setDuration(Duration.millis(20000));
+		rotate.setCycleCount(TranslateTransition.INDEFINITE);
+		rotate.setInterpolator(Interpolator.LINEAR);
+		rotate.setByAngle(360);
+		rotate.setAxis(Rotate.Y_AXIS);
+		rotate.play();
+	}
 
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		ruota();
+	}
 }
 	
