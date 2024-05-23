@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: black; -fx-border-color: #FFFFFF; -fx-border-width: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Loginalertcontroller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #e45a5a, blue); -fx-border-color: #FFFFFF; -fx-border-width: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Loginalertcontroller">
    <children>
       <Label alignment="CENTER" layoutX="30.0" layoutY="30.0" prefHeight="147.0" prefWidth="441.0" text="Sono in uso nome utente e password di deafult ti invitiamo a cambiarle,se si vuole mantenerle chiudere questo messaggio" textAlignment="CENTER" textFill="WHITE" textOverrun="LEADING_ELLIPSIS" wrapText="true">
          <font>
-            <Font size="24.0" />
+            <Font name="Eras Bold ITC" size="24.0" />
          </font>
       </Label>
       <TextField fx:id="username" layoutX="169.0" layoutY="189.0" prefHeight="25.0" prefWidth="212.0" />
