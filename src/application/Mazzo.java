@@ -50,19 +50,19 @@ public class Mazzo implements Serializable{
             // Verificare che l'elenco dei file non sia nullo
             if (files != null) {
                 // Iterare attraverso i file
-            	//File immagine denominati in  questo modo: "colore_valore.jpg"
+            	//File immagine denominati in  questo modo: "colore_valore.png"
                 for (File file : files) {
                     try {
                         // Ottenere il nome del file
                         String nomeFile = file.getName();
 
                         // Verificare se il file è un'immagine jpg
-                        if (nomeFile.toLowerCase().endsWith(".jpg")){
+                        if (nomeFile.toLowerCase().endsWith(".png")){
                             // Ottenere colore e valore dal nome del file
                             String[] partiNome = nomeFile.split("_");
                             if (partiNome.length == 2) {
                                 String colore = partiNome[0];
-                                int valore = Integer.parseInt(partiNome[1].replace(".jpg", ""));
+                                int valore = Integer.parseInt(partiNome[1].replace(".png", ""));
 
                              // Creare l'oggetto Image utilizzando FileInputStream
                                 FileInputStream fileInputStream = new FileInputStream(file);
