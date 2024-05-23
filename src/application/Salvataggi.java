@@ -25,7 +25,7 @@ public class Salvataggi implements Serializable{
 	
 	//Salva in un file serializzato i dati importanti di una partita,in questo caso salva
 	//lo stato di alcune parti del gamecontroller	
-	public void salvaPartita() { 
+	public void salvaPartita() throws EOFException{ 
 		try { 
 			FileOutputStream fileout = new FileOutputStream(file);
 			ObjectOutputStream out = new ObjectOutputStream(fileout);
@@ -63,7 +63,7 @@ public class Salvataggi implements Serializable{
 
 
 	//Carica il dati della pertita scelta
-	public void caricaPartita(GameController gc) {
+	public void caricaPartita(GameController gc) throws EOFException{
 		try {
 			FileInputStream filein = new FileInputStream(file);
 			ObjectInputStream in = new ObjectInputStream(filein);

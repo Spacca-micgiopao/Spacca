@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
@@ -79,7 +80,7 @@
             <Image url="@../Immagini/Menu/flaaffy.gif" />
          </image>
       </ImageView>
-      <Label layoutX="422.0" layoutY="22.0" text="TORNEO" textAlignment="CENTER" textFill="#3c8acf" wrapText="true">
+      <Label layoutX="433.0" layoutY="24.0" text="TORNEO" textAlignment="CENTER" textFill="#3c8acf" wrapText="true">
          <font>
             <Font name="Eras Bold ITC" size="96.0" />
          </font>
@@ -162,6 +163,19 @@
             </LinearGradient>
          </textFill>
       </Label>
+      <ImageView layoutX="848.0" layoutY="89.0">
+         <image>
+            <Image url="@../Immagini/Menu/cyndaquil.gif" />
+         </image>
+      </ImageView>
+      <ImageView layoutX="418.0" layoutY="89.0" rotate="180.0">
+         <image>
+            <Image url="@../Immagini/Menu/cyndaquil.gif" />
+         </image>
+         <rotationAxis>
+            <Point3D y="1.0" />
+         </rotationAxis>
+      </ImageView>
    </children>
    <effect>
       <InnerShadow />

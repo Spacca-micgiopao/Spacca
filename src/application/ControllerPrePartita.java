@@ -31,8 +31,6 @@ public class ControllerPrePartita implements Initializable{
 		ClassificaController classficacontroller = new ClassificaController();
 		//TUTTO FXML
 		@FXML
-		private ImageView bosco;
-		@FXML
 		private TextField InputG1,InputG2;
 		@FXML
 		private TextField InputG1ConBot;
@@ -61,7 +59,6 @@ public class ControllerPrePartita implements Initializable{
 		ScegliPartita.getItems().removeAll();
 		if(InfoPartita.Partite != null)
 		ScegliPartita.getItems().addAll(infopartita.Partite);
-		ruota();
 	}
 	
 	//Costruzione di una nuova partita
@@ -149,14 +146,4 @@ public class ControllerPrePartita implements Initializable{
 		return G2;
 	}
 	
-	private void ruota() {
-		RotateTransition rotate = new RotateTransition();
-		rotate.setNode(bosco);
-		rotate.setDuration(Duration.millis(20000));
-		rotate.setCycleCount(TranslateTransition.INDEFINITE);
-		rotate.setInterpolator(Interpolator.LINEAR);
-		rotate.setByAngle(360);
-		rotate.setAxis(Rotate.Y_AXIS);
-		rotate.play();
-	}
 }

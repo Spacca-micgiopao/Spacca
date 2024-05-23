@@ -115,11 +115,6 @@ public class PreTorneo4Controller {
     	}
     }
 	
-	//Chiudere completamente il gico
-	public void handleBottoneUscita(ActionEvent event) {
-    	stage.close();
-    }
-	
 	//Per tornare al main menu
 	public void handleBottoneMenu(ActionEvent event) {
 		player.stop();
