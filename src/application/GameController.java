@@ -461,7 +461,8 @@ public class GameController  implements Serializable{
     	//Se siamo in un torneo all'uscita torno al pre torneo
     	if(Torneo == true) {
     		try {
-    			SalvaTorneo.Salvataggio(this);
+    			if(SalvaTorneo.Tornei.length < 10)
+    				SalvaTorneo.Salvataggio(this);
     			main.showMainMenuScene();
     		} catch (Exception e) {
     			e.printStackTrace();
@@ -470,7 +471,8 @@ public class GameController  implements Serializable{
     	//Non siamo in un torneo posso tornare al prepartita
     	else if(Torneo == false)  { 		
     		try {
-    			salvataggio.salvaPartita();
+    			if(InfoPartita.Partite.length < 20)
+    				salvataggio.salvaPartita();
     			main.showPrePartitaScene();
     		} 
     		catch (Exception e) {

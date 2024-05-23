@@ -31,11 +31,13 @@ public class SalvaTorneo implements Serializable {
 	}
 	
 	protected static void setFile(String s) throws IOException {
-		file = new File("src/SalvataggiTorneo/"+s+".ser");
-		if(!dir.exists())
-			dir.mkdir();
-		if(!file.exists())
-			file.createNewFile();
+		if(Tornei.length < 10) {
+			file = new File("src/SalvataggiTorneo/"+s+".ser");
+			if(!dir.exists())
+				dir.mkdir();
+			if(!file.exists())
+				file.createNewFile();
+		}
 	}
 	
 	//Per salvare il torneo quando si esce
