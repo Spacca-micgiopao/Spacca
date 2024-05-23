@@ -302,6 +302,30 @@
             </LinearGradient>
          </textFill>
       </Button>
+      <Button layoutX="483.0" layoutY="646.0" mnemonicParsing="false" onAction="#Chiuditutto" prefHeight="36.0" prefWidth="314.0" style="-fx-background-radius: 30;" text="Chiudi Gioco" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Eras Bold ITC" size="24.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect>
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Button>
    </children>
    <effect>
       <InnerShadow />

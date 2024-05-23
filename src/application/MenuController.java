@@ -74,6 +74,11 @@ public class MenuController{
 		}
 	}
 	
+	//Chiudi completamente il gioco
+	public void Chiuditutto(ActionEvent event) throws IOException {
+		stage.close();
+	}
+	
 	
 	public static boolean getTorneo() {
 		return Torneo;

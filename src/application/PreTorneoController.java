@@ -76,13 +76,6 @@ public class PreTorneoController implements Initializable {
 			System.out.println("errore caricamento preTorneo4");
 		}
     }
-	public void handleBottoneUscita(ActionEvent event) {
-		try {
-			main.showMainMenuScene();
-		} catch (Exception e) {
-			System.out.println("errore nel caricamento scene Main Menu");
-		}
-    }
 	
 	public void Caricatorneo(ActionEvent event) {
 		try {
