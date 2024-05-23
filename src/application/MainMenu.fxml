@@ -18,6 +18,9 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #e45a5a, #15a3c7); -fx-border-color: #FFFFFF; -fx-border-width: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MenuController">
    <children>
       <Circle layoutX="229.0" layoutY="277.0" radius="219.0" stroke="BLACK" strokeType="INSIDE">
+         <effect>
+            <InnerShadow />
+         </effect>
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -26,12 +29,12 @@
                         <Color red="0.8941176533699036" green="0.3529411852359772" blue="0.3529411852359772" />
                      </color>
                   </Stop>
-                  <Stop offset="0.5738255033557047">
+                  <Stop offset="0.19463087248322147">
                      <color>
                         <Color red="0.8941176533699036" green="0.3529411852359772" blue="0.3529411852359772" />
                      </color>
                   </Stop>
-                  <Stop offset="0.6610738255033557">
+                  <Stop offset="0.7885906040268457">
                      <color>
                         <Color red="0.08235294371843338" green="0.6392157077789307" blue="0.7803921699523926" />
                      </color>
@@ -60,11 +63,6 @@
                   <Stop offset="0.006711409395973154">
                      <color>
                         <Color red="0.08235294371843338" green="0.6392157077789307" blue="0.7803921699523926" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.7818791946308725">
-                     <color>
-                        <Color red="0.8941176533699036" green="0.3529411852359772" blue="0.3529411852359772" />
                      </color>
                   </Stop>
                   <Stop offset="1.0">
@@ -105,27 +103,30 @@
                <stops>
                   <Stop>
                      <color>
-                        <Color red="0.8941176533699036" green="0.3529411852359772" blue="0.3529411852359772" />
+                        <Color red="0.08235294371843338" green="0.6392157077789307" blue="0.7803921699523926" />
                      </color>
                   </Stop>
-                  <Stop offset="0.3523489932885906">
-                     <color>
-                        <Color red="0.8941176533699036" green="0.3529411852359772" blue="0.3529411852359772" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.44966442953020136">
+                  <Stop offset="0.20469798657718116">
                      <color>
                         <Color red="0.08235294371843338" green="0.6392157077789307" blue="0.7803921699523926" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.825503355704698">
+                     <color>
+                        <Color red="0.8941176533699036" green="0.3529411852359772" blue="0.3529411852359772" />
                      </color>
                   </Stop>
                   <Stop offset="1.0">
                      <color>
-                        <Color red="0.08235294371843338" green="0.6392157077789307" blue="0.7803921699523926" />
+                        <Color red="0.8941176533699036" green="0.3529411852359772" blue="0.3529411852359772" />
                      </color>
                   </Stop>
                </stops>
             </LinearGradient>
          </fill>
+         <effect>
+            <InnerShadow />
+         </effect>
       </Circle>
       <ImageView fitHeight="241.0" fitWidth="274.0" layoutX="109.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
          <image>
