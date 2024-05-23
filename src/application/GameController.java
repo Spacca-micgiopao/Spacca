@@ -40,8 +40,6 @@ public class GameController  implements Serializable{
 	public static String player1Name;
 	public static String player2Name;
 	protected Mazzo mazzoGiocatore1,mazzoGiocatore2,mazzoCompleto,mazzoProvenienzaCartaSelezionata;
-	private Imprevisti cartespeciali= new Imprevisti(this);
-	private boolean annullatore = false;
 	protected String[] carteTavolo1,carteTavolo2,carteTavolo3; //servono per tenere traccia delle carte nei tavoli (nel formato "colore_valore")
 	//Imprevisti alfa e beta sono 2 oggetti della classe imprevisti che li gestiscono
     private Carta cartaSelezionata; //selezionata da utente serve per lo spostamento
@@ -627,7 +625,6 @@ public class GameController  implements Serializable{
                     cartaSelezionata = cartagiocata;
                     imprevistiAlfa.applicaEffettoCarta(cartaSelezionata);
                     imprevistiBeta.applicaEffettoCarta(cartaSelezionata);
-                    cartespeciali.carteimprevisto(cartaSelezionata);
                     int valoreCartaSelezionata = cartaSelezionata.getValore();
                     punteggioG2Tavolo1 += valoreCartaSelezionata;
                     LabelPunteggioG2T1.setText(String.valueOf(punteggioG2Tavolo1));
@@ -656,8 +653,6 @@ public class GameController  implements Serializable{
                     cartaSelezionata = cartagiocata;
                     imprevistiAlfa.applicaEffettoCarta(cartaSelezionata);
                     imprevistiBeta.applicaEffettoCarta(cartaSelezionata);
-                    cartespeciali.carteimprevisto(cartaSelezionata);
-
                     int valoreCartaSelezionata = cartaSelezionata.getValore();
                     punteggioG2Tavolo2 += valoreCartaSelezionata;
                     LabelPunteggioG2T2.setText(String.valueOf(punteggioG2Tavolo2));
@@ -686,8 +681,6 @@ public class GameController  implements Serializable{
                     cartaSelezionata = cartagiocata;
                     imprevistiAlfa.applicaEffettoCarta(cartaSelezionata);
                     imprevistiBeta.applicaEffettoCarta(cartaSelezionata);
-                    cartespeciali.carteimprevisto(cartaSelezionata);
-
                     int valoreCartaSelezionata = cartaSelezionata.getValore();
                     punteggioG2Tavolo3 += valoreCartaSelezionata;
                     LabelPunteggioG2T3.setText(String.valueOf(punteggioG2Tavolo3));
@@ -727,12 +720,6 @@ public class GameController  implements Serializable{
         cartaSelezionata.setValore(valoreCartaSelezionata);
         imprevistiAlfa.applicaEffettoCarta(cartaSelezionata);
         imprevistiBeta.applicaEffettoCarta(cartaSelezionata);
-        cartespeciali.carteimprevisto(cartaSelezionata);
-        // Verifica e applica l'effetto annullatore
-        if (colore.equalsIgnoreCase("annulla")) {
-            annullatore = true;
-        }
-
 
         // Aggiornamento punteggio
         if (tavoloNumero == 1) {
@@ -743,13 +730,6 @@ public class GameController  implements Serializable{
                 punteggioG2Tavolo1 += cartaSelezionata.getValore();
                 LabelPunteggioG2T1.setText(String.valueOf(punteggioG2Tavolo1));
             }
-            if (annullatore) {
-                punteggioG1Tavolo1 = 0;
-                punteggioG2Tavolo1 = 0;
-                LabelPunteggioG1T1.setText(String.valueOf(punteggioG1Tavolo1));
-                LabelPunteggioG2T1.setText(String.valueOf(punteggioG2Tavolo1));
-                annullatore = false;
-            }
         } else if (tavoloNumero == 2) {
             if (mazzoProvenienza == mazzoGiocatore1) {
                 punteggioG1Tavolo2 += cartaSelezionata.getValore();
@@ -758,14 +738,6 @@ public class GameController  implements Serializable{
                 punteggioG2Tavolo2 += cartaSelezionata.getValore();
                 LabelPunteggioG2T2.setText(String.valueOf(punteggioG2Tavolo2));
             }
-  
-            if (annullatore) {
-                punteggioG1Tavolo2 = 0;
-                punteggioG2Tavolo2 = 0;
-                LabelPunteggioG1T2.setText(String.valueOf(punteggioG1Tavolo2));
-                LabelPunteggioG2T2.setText(String.valueOf(punteggioG2Tavolo2));
-                annullatore = false;
-            }
         } else if (tavoloNumero == 3) {
             if (mazzoProvenienza == mazzoGiocatore1) {
                 punteggioG1Tavolo3 += cartaSelezionata.getValore();
@@ -773,14 +745,6 @@ public class GameController  implements Serializable{
             } else {
                 punteggioG2Tavolo3 += cartaSelezionata.getValore();
                 LabelPunteggioG2T3.setText(String.valueOf(punteggioG2Tavolo3));
-            }
-          
-            if (annullatore) {
-                punteggioG1Tavolo3 = 0;
-                punteggioG2Tavolo3 = 0;
-                LabelPunteggioG1T3.setText(String.valueOf(punteggioG1Tavolo3));
-                LabelPunteggioG2T3.setText(String.valueOf(punteggioG2Tavolo3));
-                annullatore = false;
             }
         }
 
@@ -849,4 +813,3 @@ public class GameController  implements Serializable{
         handleClickPosizioneTavolo(event, posizioneTavoloCliccata, 3);
     }
 }
- 
