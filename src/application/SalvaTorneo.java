@@ -45,6 +45,8 @@ public class SalvaTorneo implements Serializable {
 			ObjectOutputStream out = new ObjectOutputStream(fileout);
 			out.reset();
 			//Parametri da salvare
+			out.writeObject(gc.player1Name);
+			out.writeObject(gc.player2Name); 
 			out.writeInt(gc.numeroPartita);
 			out.writeObject(gc.partite);
 			out.writeObject(gc.G);
@@ -65,6 +67,8 @@ public class SalvaTorneo implements Serializable {
 			FileInputStream filein = new FileInputStream(file);
 			ObjectInputStream in = new ObjectInputStream(filein);
 			//Parametri da caricare
+			gc.player1Name = (String) in.readObject();
+			gc.player2Name = (String) in.readObject();
 			gc.numeroPartita = in.readInt();
 			gc.partite = (List<String>) in.readObject();
 			gc.G = (String[]) in.readObject();

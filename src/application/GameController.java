@@ -119,7 +119,7 @@ public class GameController  implements Serializable{
 	        player1Name = ControllerPrePartita.getPlayer1(); 
 	        player2Name = ControllerPrePartita.getPlayer2();
         }
-    	if(Torneo==true) {
+    	if(Torneo==true && flag != 2) {
     		String partita = partite.get(numeroPartita);
     		String[] giocatori = partita.split(" vs ");
     		player1Name = giocatori[0];
@@ -265,6 +265,7 @@ public class GameController  implements Serializable{
         	SalvaTorneo.CaricaTorneo(this);
         	PreTorneo4Controller.partite = this.partite;
         	PreTorneo4Controller.G = this.G;
+
         	System.out.print(numeroPartita+"");
         	Torneo = true;
         	flag = 0;

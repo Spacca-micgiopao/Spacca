@@ -127,13 +127,71 @@
          </textFill>
       </Button>
       <Pane layoutX="459.0" layoutY="227.0" prefHeight="40.0" prefWidth="804.0" style="-fx-background-color: #FFFFFF;" />
-      <ChoiceBox fx:id="ScegliPartita" layoutX="725.0" layoutY="325.0" prefHeight="28.0" prefWidth="180.0" />
-      <ChoiceBox fx:id="ScegliTorneo" layoutX="964.0" layoutY="325.0" prefHeight="28.0" prefWidth="180.0" />
+      <ChoiceBox fx:id="ScegliPartita" layoutX="725.0" layoutY="352.0" prefHeight="28.0" prefWidth="180.0" />
+      <ChoiceBox fx:id="ScegliTorneo" layoutX="1008.0" layoutY="352.0" prefHeight="28.0" prefWidth="180.0" />
       <Label alignment="CENTER" layoutX="473.0" layoutY="285.0" prefHeight="133.0" prefWidth="206.0" text="Elimina un toreno o una partita specifici" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="Eras Bold ITC" size="27.0" />
          </font>
       </Label>
+      <Label alignment="CENTER" layoutX="725.0" layoutY="273.0" prefHeight="81.0" prefWidth="180.0" text="Parita" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Eras Bold ITC" size="27.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="1021.0" layoutY="273.0" prefHeight="81.0" prefWidth="180.0" text="Torneo" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Eras Bold ITC" size="27.0" />
+         </font>
+      </Label>
+      <Button layoutX="998.0" layoutY="418.0" mnemonicParsing="false" onAction="#Deletetorneo" prefHeight="103.0" prefWidth="226.0" style="-fx-background-radius: 30;" text="Elimina Torneo scelto" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Eras Bold ITC" size="24.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Button>
+      <Button layoutX="709.0" layoutY="418.0" mnemonicParsing="false" onAction="#Deletepartita" prefHeight="103.0" prefWidth="226.0" style="-fx-background-radius: 30;" text="Elimina Partita scelta" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Eras Bold ITC" size="24.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Button>
    </children>
    <effect>
       <InnerShadow />
