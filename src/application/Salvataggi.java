@@ -32,6 +32,7 @@ public class Salvataggi implements Serializable{
 			FileOutputStream fileout = new FileOutputStream(file);
 			ObjectOutputStream out = new ObjectOutputStream(fileout);
 			out.reset(); 
+			out.writeBoolean(gamecontroller.botgioco);
 			//Punteggi dei tavoli
 			out.writeInt(gamecontroller.punteggioG1Tavolo1);
 			out.writeInt(gamecontroller.punteggioG1Tavolo2);
@@ -53,7 +54,6 @@ public class Salvataggi implements Serializable{
 			out.writeObject(gamecontroller.carteTavolo2);
 			out.writeObject(gamecontroller.carteTavolo3);
 			//per capire se siamo in una partita con il bot
-			out.writeBoolean(gamecontroller.botgioco);
 			fileout.close();
 			out.close(); 
 		} 
@@ -69,6 +69,7 @@ public class Salvataggi implements Serializable{
 			FileInputStream filein = new FileInputStream(file);
 			ObjectInputStream in = new ObjectInputStream(filein);
 			//Punteggi dei tavoli
+			gc.botgioco = in.readBoolean();
 			gc.punteggioG1Tavolo1 = in.readInt();
 			gc.punteggioG1Tavolo2 = in.readInt();
 			gc.punteggioG1Tavolo3 = in.readInt();
@@ -88,8 +89,6 @@ public class Salvataggi implements Serializable{
 			gc.carteTavolo1 =(String[]) in.readObject();
 			gc.carteTavolo2 =(String[]) in.readObject();
 			gc.carteTavolo3 =(String[]) in.readObject();
-			//bot gioco
-			gc.botgioco = in.readBoolean();
 			filein.close();
 			in.close();
 		} catch (IOException  | ClassNotFoundException e) {

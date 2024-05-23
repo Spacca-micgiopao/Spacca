@@ -50,7 +50,6 @@ public class PreTorneoController implements Initializable {
 		ScegliTipoTorneo.getItems().addAll(tipiTorneo);
 		ScegliTipoTorneo.setOnAction(this::getTipoTorneo);
 		CaricaTorneo.getItems().clear();
-		CaricaTorneo.getItems().removeAll();
 		if(SalvaTorneo.Tornei != null)
 			CaricaTorneo.getItems().addAll(SalvaTorneo.Tornei);
 	}

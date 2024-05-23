@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -22,7 +23,8 @@ public class AdminPanelController implements Initializable{
 	private TextField Usernamechange;
 	@FXML
 	private TextField Passwordchange;
-
+	@FXML
+	private ChoiceBox<String> ScegliPartita,ScegliTorneo;
 	
 	private File DatiAccesso = new File("src/Data/DatiAccesso.txt");
 	public void setMain(Main main) {
@@ -98,5 +100,11 @@ public class AdminPanelController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		Scrivistats();
+		ScegliPartita.getItems().clear();
+		ScegliTorneo.getItems().clear();
+		if(InfoPartita.Partite != null)
+			ScegliPartita.getItems().addAll(InfoPartita.Partite);
+		if(SalvaTorneo.Tornei != null)
+			ScegliTorneo.getItems().addAll(SalvaTorneo.Tornei);
 	}
 }
