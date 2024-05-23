@@ -393,7 +393,6 @@ public class GameController  implements Serializable{
 		    		}
 		    		else {
 		    			try {
-		    				System.out.println(this.partite.toString());
 		    				main.showWinningScene();
 		    			}
 		    			catch(Exception e ) {

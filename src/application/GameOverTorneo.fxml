@@ -4,186 +4,195 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #e45a5a, #15a3c7); -fx-border-color: #FFFFFF; -fx-border-width: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GameOverTorneoController">
    <children>
-      <Label fx:id="LabelVincitorFinale" layoutX="218.0" layoutY="48.0" prefHeight="49.0" prefWidth="612.0" textFill="#512121">
+      <Label fx:id="LabelVincitorFinale" layoutX="135.0" layoutY="51.0" prefHeight="65.0" prefWidth="786.0" text="VINCE :">
          <font>
-            <Font name="Cooper Black" size="42.0" />
+            <Font name="Eras Bold ITC" size="55.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9024390243902438">
+                     <color>
+                        <Color red="0.09137427061796188" green="0.32407405972480774" blue="0.7894737124443054" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.09137427061796188" green="0.32407405972480774" blue="0.7894737124443054" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label fx:id="Pareggiante1" layoutX="386.0" layoutY="63.0" prefHeight="25.0" prefWidth="189.0" textFill="WHITE">
+         <font>
+            <Font name="Eras Bold ITC" size="36.0" />
          </font>
       </Label>
-      <Label fx:id="Pareggiante1" layoutX="361.0" layoutY="109.0" prefHeight="25.0" prefWidth="189.0" textFill="#30ff41">
+      <Label fx:id="Pareggiante2" layoutX="386.0" layoutY="63.0" prefHeight="25.0" prefWidth="189.0" textFill="WHITE">
          <font>
-            <Font name="Cooper Black" size="22.0" />
+            <Font name="Eras Bold ITC" size="36.0" />
          </font>
       </Label>
-      <Label fx:id="Pareggiante2" layoutX="579.0" layoutY="107.0" prefHeight="25.0" prefWidth="189.0" textFill="#30ff41">
+      <Label fx:id="Pareggiante3" layoutX="386.0" layoutY="63.0" prefHeight="25.0" prefWidth="189.0" textFill="WHITE">
          <font>
-            <Font name="Cooper Black" size="22.0" />
+            <Font name="Eras Bold ITC" size="36.0" />
          </font>
       </Label>
-      <Label fx:id="Pareggiante3" layoutX="786.0" layoutY="121.0" prefHeight="25.0" prefWidth="189.0" textFill="#30ff41">
+      <Label fx:id="Pareggiante4" layoutX="386.0" layoutY="63.0" prefHeight="25.0" prefWidth="189.0" textFill="WHITE">
          <font>
-            <Font name="Cooper Black" size="22.0" />
+            <Font name="Eras Bold ITC" size="36.0" />
          </font>
       </Label>
-      <Label fx:id="Pareggiante4" layoutX="486.0" layoutY="134.0" prefHeight="25.0" prefWidth="189.0" textFill="#30ff41">
+      <Label fx:id="G1P1" layoutX="127.0" layoutY="230.0" prefHeight="60.0" prefWidth="112.0" text="Giocatore1" textFill="WHITE">
          <font>
-            <Font name="Cooper Black" size="22.0" />
+            <Font name="Eras Bold ITC" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="G1P1" layoutX="151.0" layoutY="237.0" prefHeight="60.0" prefWidth="112.0" text="Giocatore1">
+      <Label fx:id="G2P1" layoutX="278.0" layoutY="224.0" prefHeight="60.0" prefWidth="112.0" text="Giocatore1" textFill="WHITE">
          <font>
-            <Font name="Cooper Black" size="12.0" />
+            <Font name="Eras Bold ITC" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="G2P1" layoutX="295.0" layoutY="237.0" prefHeight="60.0" prefWidth="92.0" text="Giocatore1">
+      <Label fx:id="G1P2" layoutX="127.0" layoutY="290.0" prefHeight="60.0" prefWidth="112.0" text="Giocatore1" textFill="WHITE">
          <font>
-            <Font name="Cooper Black" size="12.0" />
+            <Font name="Eras Bold ITC" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="G1P2" layoutX="151.0" layoutY="297.0" prefHeight="60.0" prefWidth="112.0" text="Giocatore1">
+      <Label fx:id="G1P3" layoutX="127.0" layoutY="359.0" prefHeight="60.0" prefWidth="112.0" text="Giocatore1" textFill="WHITE">
          <font>
-            <Font name="Cooper Black" size="12.0" />
+            <Font name="Eras Bold ITC" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="G1P3" layoutX="151.0" layoutY="366.0" prefHeight="60.0" prefWidth="112.0" text="Giocatore1">
+      <Label fx:id="G1P4" layoutX="127.0" layoutY="427.0" prefHeight="60.0" prefWidth="112.0" text="Giocatore1" textFill="WHITE">
          <font>
-            <Font name="Cooper Black" size="12.0" />
+            <Font name="Eras Bold ITC" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="G1P4" layoutX="151.0" layoutY="434.0" prefHeight="60.0" prefWidth="112.0" text="Giocatore1">
+      <Label fx:id="G1P5" layoutX="127.0" layoutY="494.0" prefHeight="60.0" prefWidth="112.0" text="Giocatore1" textFill="WHITE">
          <font>
-            <Font name="Cooper Black" size="12.0" />
+            <Font name="Eras Bold ITC" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="G1P5" layoutX="151.0" layoutY="501.0" prefHeight="60.0" prefWidth="112.0" text="Giocatore1">
+      <Label fx:id="G1P6" layoutX="127.0" layoutY="554.0" prefHeight="60.0" prefWidth="112.0" text="Giocatore1" textFill="WHITE">
          <font>
-            <Font name="Cooper Black" size="12.0" />
+            <Font name="Eras Bold ITC" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="G1P6" layoutX="151.0" layoutY="561.0" prefHeight="60.0" prefWidth="112.0" text="Giocatore1">
+      <Label fx:id="G2P2" layoutX="275.0" layoutY="290.0" prefHeight="60.0" prefWidth="105.0" text="Giocatore1" textFill="WHITE">
          <font>
-            <Font name="Cooper Black" size="12.0" />
+            <Font name="Eras Bold ITC" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="G2P2" layoutX="295.0" layoutY="297.0" prefHeight="60.0" prefWidth="92.0" text="Giocatore1">
+      <Label fx:id="G2P3" layoutX="285.0" layoutY="353.0" prefHeight="60.0" prefWidth="105.0" text="Giocatore1" textFill="WHITE">
          <font>
-            <Font name="Cooper Black" size="12.0" />
+            <Font name="Eras Bold ITC" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="G2P3" layoutX="295.0" layoutY="366.0" prefHeight="60.0" prefWidth="92.0" text="Giocatore1">
+      <Label fx:id="G2P4" layoutX="285.0" layoutY="427.0" prefHeight="60.0" prefWidth="105.0" text="Giocatore1" textFill="WHITE">
          <font>
-            <Font name="Cooper Black" size="12.0" />
+            <Font name="Eras Bold ITC" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="G2P4" layoutX="295.0" layoutY="434.0" prefHeight="60.0" prefWidth="92.0" text="Giocatore1">
+      <Label fx:id="G2P5" layoutX="281.0" layoutY="494.0" prefHeight="60.0" prefWidth="105.0" text="Giocatore1" textFill="WHITE">
          <font>
-            <Font name="Cooper Black" size="12.0" />
+            <Font name="Eras Bold ITC" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="G2P5" layoutX="295.0" layoutY="501.0" prefHeight="60.0" prefWidth="92.0" text="Giocatore1">
+      <Label fx:id="G2P6" layoutX="281.0" layoutY="554.0" prefHeight="60.0" prefWidth="112.0" text="Giocatore1" textFill="WHITE">
          <font>
-            <Font name="Cooper Black" size="12.0" />
+            <Font name="Eras Bold ITC" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="G2P6" layoutX="301.0" layoutY="561.0" prefHeight="60.0" prefWidth="92.0" text="Giocatore1">
+      <Label fx:id="VincitoreP1" layoutX="402.0" layoutY="224.0" prefHeight="60.0" prefWidth="105.0" text="Giocatore1" textFill="WHITE">
          <font>
-            <Font name="Cooper Black" size="12.0" />
+            <Font name="Eras Bold ITC" size="17.0" />
          </font>
       </Label>
-      <Label layoutX="181.0" layoutY="203.0" text="Resoconto partite" textFill="#c30f78">
+      <Label fx:id="VincitoreP2" layoutX="397.0" layoutY="290.0" prefHeight="60.0" prefWidth="105.0" text="Giocatore1" textFill="WHITE">
          <font>
-            <Font name="Cooper Black" size="18.0" />
+            <Font name="Eras Bold ITC" size="17.0" />
          </font>
       </Label>
-      <Label layoutX="397.0" layoutY="203.0" text="Vincitore" textFill="#c30f78">
+      <Label fx:id="VincitoreP3" layoutX="403.0" layoutY="353.0" prefHeight="60.0" prefWidth="105.0" text="Giocatore1" textFill="WHITE">
          <font>
-            <Font name="Cooper Black" size="18.0" />
+            <Font name="Eras Bold ITC" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="VincitoreP1" layoutX="395.0" layoutY="237.0" prefHeight="60.0" prefWidth="92.0" text="Giocatore1">
+      <Label fx:id="VincitoreP4" layoutX="397.0" layoutY="428.0" prefHeight="60.0" prefWidth="105.0" text="Giocatore1" textFill="WHITE">
          <font>
-            <Font name="Cooper Black" size="12.0" />
+            <Font name="Eras Bold ITC" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="VincitoreP2" layoutX="395.0" layoutY="297.0" prefHeight="60.0" prefWidth="92.0" text="Giocatore1">
+      <Label fx:id="VincitoreP5" layoutX="397.0" layoutY="494.0" prefHeight="60.0" prefWidth="105.0" text="Giocatore1" textFill="WHITE">
          <font>
-            <Font name="Cooper Black" size="12.0" />
+            <Font name="Eras Bold ITC" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="VincitoreP3" layoutX="395.0" layoutY="366.0" prefHeight="60.0" prefWidth="92.0" text="Giocatore1">
+      <Label fx:id="VincitoreP6" layoutX="393.0" layoutY="554.0" prefHeight="60.0" prefWidth="112.0" text="Giocatore1" textFill="WHITE">
          <font>
-            <Font name="Cooper Black" size="12.0" />
+            <Font name="Eras Bold ITC" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="VincitoreP4" layoutX="395.0" layoutY="434.0" prefHeight="60.0" prefWidth="92.0" text="Giocatore1">
-         <font>
-            <Font name="Cooper Black" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="VincitoreP5" layoutX="395.0" layoutY="501.0" prefHeight="60.0" prefWidth="92.0" text="Giocatore1">
-         <font>
-            <Font name="Cooper Black" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="VincitoreP6" layoutX="395.0" layoutY="561.0" prefHeight="60.0" prefWidth="92.0" text="Giocatore1">
-         <font>
-            <Font name="Cooper Black" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="G1" layoutX="796.0" layoutY="274.0" prefHeight="60.0" prefWidth="239.0" text="Giocatore1" textFill="#2e16c9">
-         <font>
-            <Font name="Eras Bold ITC" size="22.0" />
-         </font>
-      </Label>
-      <Label layoutX="796.0" layoutY="191.0" text="PUNTEGGI FINALI" textFill="WHITE">
+      <Label layoutX="796.0" layoutY="214.0" text="PUNTEGGI FINALI" textFill="WHITE">
          <font>
             <Font name="Eras Bold ITC" size="39.0" />
          </font>
       </Label>
       <Label fx:id="G2" layoutX="796.0" layoutY="330.0" prefHeight="60.0" prefWidth="239.0" text="Giocatore1" textFill="#2e16c9">
          <font>
-            <Font name="Eras Bold ITC" size="22.0" />
+            <Font name="Eras Bold ITC" size="37.0" />
          </font>
       </Label>
       <Label fx:id="G3" layoutX="796.0" layoutY="392.0" prefHeight="60.0" prefWidth="239.0" text="Giocatore1" textFill="#2e16c9">
          <font>
-            <Font name="Eras Bold ITC" size="22.0" />
+            <Font name="Eras Bold ITC" size="37.0" />
          </font>
       </Label>
       <Label fx:id="G4" layoutX="796.0" layoutY="452.0" prefHeight="60.0" prefWidth="239.0" text="Giocatore1" textFill="#2e16c9">
          <font>
-            <Font name="Eras Bold ITC" size="22.0" />
+            <Font name="Eras Bold ITC" size="37.0" />
          </font>
       </Label>
       <Label fx:id="PunteggioVittoriaG1" layoutX="1054.0" layoutY="272.0" prefHeight="64.0" prefWidth="87.0" text="12" textFill="#e8622e">
          <font>
-            <Font name="Eras Bold ITC" size="22.0" />
+            <Font name="Eras Bold ITC" size="37.0" />
          </font>
       </Label>
       <Label fx:id="PunteggioVittoriaG2" layoutX="1054.0" layoutY="334.0" prefHeight="64.0" prefWidth="87.0" text="12" textFill="#e8622e">
          <font>
-            <Font name="Eras Bold ITC" size="22.0" />
+            <Font name="Eras Bold ITC" size="37.0" />
          </font>
       </Label>
       <Label fx:id="PunteggioVittoriaG3" layoutX="1054.0" layoutY="394.0" prefHeight="64.0" prefWidth="87.0" text="12" textFill="#e8622e">
          <font>
-            <Font name="Eras Bold ITC" size="22.0" />
+            <Font name="Eras Bold ITC" size="37.0" />
          </font>
       </Label>
       <Label fx:id="PunteggioVittoriaG4" layoutX="1054.0" layoutY="450.0" prefHeight="64.0" prefWidth="87.0" text="12" textFill="#e8622e">
          <font>
-            <Font name="Eras Bold ITC" size="22.0" />
+            <Font name="Eras Bold ITC" size="37.0" />
          </font>
       </Label>
-      <Button layoutX="940.0" layoutY="29.0" mnemonicParsing="false" onAction="#handleBottoneUscita" prefHeight="36.0" prefWidth="314.0" style="-fx-background-radius: 30;" text="Chiudi Gioco" textAlignment="CENTER" wrapText="true">
+      <Button layoutX="929.0" layoutY="29.0" mnemonicParsing="false" onAction="#handleBottoneUscita" prefHeight="36.0" prefWidth="314.0" style="-fx-background-radius: 30;" text="Chiudi Gioco" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="Eras Bold ITC" size="24.0" />
          </font>
@@ -212,30 +221,55 @@
             <Blend />
          </effect>
       </Pane>
-      <Pane layoutX="263.0" layoutY="239.0" prefHeight="374.0" prefWidth="9.0" rotate="90.0" style="-fx-background-color: #FFFFFF;">
+      <Pane layoutX="310.0" layoutY="239.0" prefHeight="374.0" prefWidth="9.0" rotate="90.0" style="-fx-background-color: #FFFFFF;">
          <effect>
             <Blend />
          </effect>
       </Pane>
-      <Pane layoutX="263.0" layoutY="314.0" prefHeight="374.0" prefWidth="9.0" rotate="90.0" style="-fx-background-color: #FFFFFF;">
+      <Pane layoutX="305.0" layoutY="312.0" prefHeight="374.0" prefWidth="9.0" rotate="90.0" style="-fx-background-color: #FFFFFF;">
          <effect>
             <Blend />
          </effect>
       </Pane>
-      <Pane layoutX="263.0" layoutY="361.0" prefHeight="374.0" prefWidth="9.0" rotate="90.0" style="-fx-background-color: #FFFFFF;">
+      <Pane layoutX="310.0" layoutY="372.0" prefHeight="374.0" prefWidth="9.0" rotate="90.0" style="-fx-background-color: #FFFFFF;">
          <effect>
             <Blend />
          </effect>
       </Pane>
-      <Pane layoutX="263.0" layoutY="166.0" prefHeight="374.0" prefWidth="9.0" rotate="90.0" style="-fx-background-color: #FFFFFF;">
+      <Pane layoutX="310.0" layoutY="172.0" prefHeight="374.0" prefWidth="9.0" rotate="90.0" style="-fx-background-color: #FFFFFF;">
          <effect>
             <Blend />
          </effect>
       </Pane>
-      <Pane layoutX="263.0" layoutY="101.0" prefHeight="374.0" prefWidth="9.0" rotate="90.0" style="-fx-background-color: #FFFFFF;">
+      <Pane layoutX="305.0" layoutY="108.0" prefHeight="374.0" prefWidth="9.0" rotate="90.0" style="-fx-background-color: #FFFFFF;">
          <effect>
             <Blend />
          </effect>
       </Pane>
+      <ImageView layoutX="1019.0" layoutY="106.0">
+         <image>
+            <Image url="@../Immagini/Menu/flygon.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="125.0" fitWidth="105.0" layoutX="22.0" layoutY="21.0">
+         <image>
+            <Image url="@../Immagini/Menu/8af616a47600215b63d3b2a11ebfbcd5.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="54.0" layoutY="136.0" text="RESOCONTO PARTITE" textFill="WHITE">
+         <font>
+            <Font name="Eras Bold ITC" size="39.0" />
+         </font>
+      </Label>
+      <Label layoutX="409.0" layoutY="182.0" prefHeight="65.0" prefWidth="92.0" text="win" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Eras Bold ITC" size="39.0" />
+         </font>
+      </Label>
+      <Label fx:id="G1" layoutX="796.0" layoutY="274.0" prefHeight="60.0" prefWidth="239.0" text="Giocatore1" textFill="#2e16c9">
+         <font>
+            <Font name="Eras Bold ITC" size="37.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

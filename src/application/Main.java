@@ -146,7 +146,7 @@ public class Main extends Application {
 	        primaryStage.setHeight(720);
 	        primaryStage.setWidth(1280);
 	        primaryStage.setScene(scene);
-	        primaryStage.setFullScreen(true);
+	        primaryStage.sizeToScene();
 	        primaryStage.show();
     	
 	    	
@@ -161,6 +161,7 @@ public class Main extends Application {
 	        primaryStage.setHeight(720);
 	        primaryStage.setWidth(1280);
 	        primaryStage.setScene(scene);
+	        primaryStage.sizeToScene();
 	        primaryStage.setResizable(false);
 	        primaryStage.show();
     	
@@ -176,6 +177,7 @@ public class Main extends Application {
 	        primaryStage.setHeight(720);
 	        primaryStage.setWidth(1280);
 	        primaryStage.setScene(scene);
+	        primaryStage.sizeToScene();
 	        primaryStage.setResizable(false);
 	        primaryStage.show();
     	
