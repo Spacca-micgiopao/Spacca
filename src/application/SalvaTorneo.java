@@ -1,5 +1,6 @@
 package application;
 
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -49,6 +50,7 @@ public class SalvaTorneo implements Serializable {
 			out.writeObject(gc.G);
 			out.writeObject(gc.vincitori);
 			out.writeObject(gc.numeroVittorieG);
+			out.writeObject(gc.SecondoGiocatoreBot);
 			out.close();
 			fileout.close();
 		} catch (Exception e) {
@@ -68,6 +70,11 @@ public class SalvaTorneo implements Serializable {
 			gc.G = (String[]) in.readObject();
 			gc.vincitori = (List<String>) in.readObject();
 			gc.numeroVittorieG = (int[]) in.readObject();
+			try {
+				gc.SecondoGiocatoreBot =in.readBoolean();
+			}catch(EOFException e) {
+				
+			}
 			in.close();
 			filein.close();
 		} catch (IOException | ClassNotFoundException e) {

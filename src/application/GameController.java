@@ -35,7 +35,7 @@ public class GameController  implements Serializable{
 	public static int flag;
 	private Salvataggi salvataggio = new Salvataggi(this);
 	
-	private boolean botgioco;
+	public boolean botgioco;
 	//Mostrare le informazioni
 	public static String player1Name;
 	public static String player2Name;
@@ -58,7 +58,7 @@ public class GameController  implements Serializable{
 	protected String[] G;
 	protected static List<String> vincitori;
 	protected static int[] numeroVittorieG;
-	private boolean SecondoGiocatoreBot;
+	public boolean SecondoGiocatoreBot;
 	//FXML----------------------------------------------------------------------
 	@FXML
     private AnchorPane backgroundPane;
@@ -129,7 +129,7 @@ public class GameController  implements Serializable{
     public void setSecondoGiocatoreBot() {
     	SecondoGiocatoreBot=PreTorneoController.getSecondoGiocatoreBot();
     }
-    public void setBotGioco() {
+    public void setbotgioco() {
     	if(Torneo==false) {
     		this.botgioco = ControllerPrePartita.getBotGioco();
     		if(botgioco==true) {
@@ -254,7 +254,9 @@ public class GameController  implements Serializable{
         	
     	if(flag == 0 || flag == 2) {
 	    	getTorneo();
-	    	setBotGioco();
+	    	setPlayersNames();
+	    	setSecondoGiocatoreBot();
+	    	setbotgioco();
 	    }
     	
         if(flag == 2) {
@@ -266,10 +268,7 @@ public class GameController  implements Serializable{
         	Torneo = true;
         	flag = 0;
         }
-        
-        if(flag == 0 || flag == 2)
-        	setPlayersNames();
-        	getPartite();
+   
         	
     	mostraRettangoloSeBotAttivo();
 
@@ -288,6 +287,8 @@ public class GameController  implements Serializable{
     		Salvataggi.associazioneImmaginiATavolo(this.carteTavolo1,this.imageViewsTavolo1);
     		Salvataggi.associazioneImmaginiATavolo(this.carteTavolo2,this.imageViewsTavolo2);
     		Salvataggi.associazioneImmaginiATavolo(this.carteTavolo3,this.imageViewsTavolo3);
+    		//per il bot
+    		setbotgioco();
     	}
     	//Impostare le label dei nomi
     	LabelIconaNomeG1.setText(player1Name);
@@ -329,10 +330,8 @@ public class GameController  implements Serializable{
  
         if (turnoGiocatore1) {
             turnoLabel.setText(player1Name.toUpperCase());
-            //turnoLabel.setStyle("-fx-text-fill: black;");
         } else {
             turnoLabel.setText(player2Name.toUpperCase());
-           // turnoLabel.setStyle("-fx-text-fill: blue;");
         }
     }
     public void passaTurno() {
@@ -522,21 +521,19 @@ public class GameController  implements Serializable{
 
 
     private void spostaCartaSuTavolo(Carta carta, ImageView posizioneTavolo) {
-        if (carta == null) {
-            System.out.println("Errore: carta selezionata è nulla");
-            return;
- 	}
         if (botgioco && mazzoGiocatore2.contieneCarta(carta)) {
             System.out.println("Errore: non è possibile spostare una carta dal mazzo del giocatore 2 quando botgioco è attivo.");
             return;
         }
-        posizioneTavolo.setImage(carta.getImmagine());
-        if(turnoGiocatore1 == true) 
-        	posizioneTavolo.setStyle("-fx-effect: innershadow(two-pass-box, rgba(255,0,0,0.75), 10, 0.5, 0, 0)");
-        else
-        	posizioneTavolo.setStyle("-fx-effect: innershadow(two-pass-box, rgba(0,0,255,0.75), 10, 0.5, 0, 0)");
-        cartaCliccata.setEffect(null);
-        aggiornaTurnoLabel();
+        if(carta!=null) {
+	        posizioneTavolo.setImage(carta.getImmagine());
+	        if(turnoGiocatore1 == true) 
+	        	posizioneTavolo.setStyle("-fx-effect: innershadow(two-pass-box, rgba(255,0,0,0.75), 10, 0.5, 0, 0)");
+	        else
+	        	posizioneTavolo.setStyle("-fx-effect: innershadow(two-pass-box, rgba(0,0,255,0.75), 10, 0.5, 0, 0)");
+	        cartaCliccata.setEffect(null);
+	        aggiornaTurnoLabel();
+        }
     }
     //GESTORI CLICK
     
@@ -561,7 +558,7 @@ public class GameController  implements Serializable{
 	                return;
 	            }
 	        }
-	        passaTurno();
+	       passaTurno();
     	}
     	
 	        
@@ -580,10 +577,10 @@ public class GameController  implements Serializable{
  // giocatore 2 più bot
     public void handleClickCartaGiocatore2(MouseEvent event) {
         // Se è il turno del giocatore 1 e il bot è attivo, esci dal metodo senza fare nulla
+    	
         if (turnoGiocatore1 && botgioco) {
             return;
         }
-        
         if (!turnoGiocatore1 && !botgioco) {
             cartaCliccata = (ImageView) event.getSource();
             // Trova l'indice dell'ImageView cliccata
@@ -601,29 +598,25 @@ public class GameController  implements Serializable{
                     return;
                 }
             }
-            passaTurno();
+           passaTurno();
         }
         
         // Se botgioco è attivo, il bot gioca la carta
-        if (botgioco) {
+        if (!turnoGiocatore1 && botgioco) {
             handleBotMove();
         }
     }
-    // Aggiungi una carta casuale al mazzo e aggiorna l'interfaccia
-    private void aggiungiCartaCasualeAlMazzo(Mazzo mazzoGiocatore) {
-        Carta cartaCasuale = mazzoCompleto.pescaCartaCasuale();
-        if (cartaCasuale != null && mazzoGiocatore.getNumeroCarte() < 4) {
-            mazzoGiocatore.aggiungiCarta(cartaCasuale);
-            aggiornaInterfaccia();
-        }
-    }
+
     private void handleBotMove() {
         botLogic bot = new botLogic();
         
         if (!tavoloIsFull((ArrayList<ImageView>) imageViewsTavolo1)) {
-        		Carta cartagiocata =bot.giocaCarta(mazzoGiocatore2, (ArrayList<ImageView>) imageViewsTavolo1);
+        		Carta cartagiocata =bot.giocaCarta(mazzoGiocatore2, (ArrayList<ImageView>) imageViewsTavolo1,imageViewsGiocatore2);
+        		//per salvataggio
+                int index = bot.getPosizioneTavolo();
+                carteTavolo1[index] = cartagiocata.getColore() + "_" + cartagiocata.getValore();
+              
                 System.out.println("Bot ha giocato una carta sul Tavolo 1");
-               
                 Carta cartaCasuale = mazzoCompleto.pescaCartaCasuale();
                 if (cartaCasuale != null && mazzoGiocatore2.getNumeroCarte() < 4) {
                     mazzoGiocatore2.aggiungiCarta(cartaCasuale);
@@ -636,6 +629,7 @@ public class GameController  implements Serializable{
                     punteggioG2Tavolo1 += valoreCartaSelezionata;
                     LabelPunteggioG2T1.setText(String.valueOf(punteggioG2Tavolo1));
                     System.out.println("Punteggio G2 Tavolo 1: " + punteggioG2Tavolo1);
+                    cartaSelezionata=null;
                     passaTurno();
                     aggiornaInterfaccia();
                     aggiornaTurnoLabel();
@@ -643,7 +637,11 @@ public class GameController  implements Serializable{
                 }
             
         } else if (!tavoloIsFull((ArrayList<ImageView>) imageViewsTavolo2)) {
-        		Carta cartagiocata =bot.giocaCarta(mazzoGiocatore2, (ArrayList<ImageView>) imageViewsTavolo2); 
+        		Carta cartagiocata =bot.giocaCarta(mazzoGiocatore2, (ArrayList<ImageView>) imageViewsTavolo2,imageViewsGiocatore2); 
+        		//per salvataggio
+                int index = bot.getPosizioneTavolo();
+                carteTavolo2[index] = cartagiocata.getColore() + "_" + cartagiocata.getValore();
+        		
                 System.out.println("Bot ha giocato una carta sul Tavolo 2");
                
                 aggiornaTurnoLabel();
@@ -659,6 +657,8 @@ public class GameController  implements Serializable{
                     punteggioG2Tavolo2 += valoreCartaSelezionata;
                     LabelPunteggioG2T2.setText(String.valueOf(punteggioG2Tavolo2));
                     System.out.println("Punteggio G2 Tavolo 2: " + punteggioG2Tavolo2);
+        
+                    cartaSelezionata=null;
                     passaTurno();
                     aggiornaInterfaccia();
                     aggiornaTurnoLabel();
@@ -666,7 +666,11 @@ public class GameController  implements Serializable{
                 }
             
         } else {
-            	Carta cartagiocata = bot.giocaCarta(mazzoGiocatore2, (ArrayList<ImageView>) imageViewsTavolo3); 
+            	Carta cartagiocata = bot.giocaCarta(mazzoGiocatore2, (ArrayList<ImageView>) imageViewsTavolo3,imageViewsGiocatore2); 
+            	//per salvataggio
+                int index = bot.getPosizioneTavolo();
+                carteTavolo3[index] = cartagiocata.getColore() + "_" + cartagiocata.getValore();
+                
                 System.out.println("Bot ha giocato una carta sul Tavolo 3");
                 
                 Carta cartaCasuale3 = mazzoCompleto.pescaCartaCasuale();
@@ -681,6 +685,7 @@ public class GameController  implements Serializable{
                     punteggioG2Tavolo3 += valoreCartaSelezionata;
                     LabelPunteggioG2T3.setText(String.valueOf(punteggioG2Tavolo3));
                     System.out.println("Punteggio G2 Tavolo 3: " + punteggioG2Tavolo3);
+                    cartaSelezionata=null;
                     passaTurno();
                     aggiornaInterfaccia();
                     aggiornaTurnoLabel();
@@ -747,8 +752,10 @@ public class GameController  implements Serializable{
         spostaCartaSuTavolo(cartaSelezionata, posizioneTavolo);
 
         // Rimuovi la carta dal mazzo del giocatore
-        if (mazzoProvenienza != null && mazzoProvenienza.contieneCarta(cartaSelezionata)) {
-            mazzoProvenienza.rimuoviCarta(cartaSelezionata);
+        if (mazzoProvenienza == mazzoGiocatore1) {
+            mazzoGiocatore1.rimuoviCarta(cartaSelezionata);
+        } else if (mazzoProvenienza == mazzoGiocatore2) {
+            mazzoGiocatore2.rimuoviCarta(cartaSelezionata);
         }
 
         // Svuota imageView dal mazzoGiocatore1
@@ -769,8 +776,10 @@ public class GameController  implements Serializable{
         }
 
         // Resetta la carta selezionata
+        cartaSelezionata.setImage(null);
+        cartaSelezionata.setValore(0);
         cartaSelezionata = null;
-
+        
         // Aggiorna interfaccia e verifica fine partita
         aggiornaInterfaccia();
         verificaFinePartita();

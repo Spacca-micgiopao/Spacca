@@ -50,7 +50,9 @@ public class Salvataggi implements Serializable{
 			out.writeObject(gamecontroller.carteTavolo1);
 			out.writeObject(gamecontroller.carteTavolo2);
 			out.writeObject(gamecontroller.carteTavolo3);
-			//
+			//per capire se siamo in una partita con il bot
+			out.writeObject(gamecontroller.botgioco);
+			
 			fileout.close();
 			out.close(); 
 		} 
@@ -85,7 +87,9 @@ public class Salvataggi implements Serializable{
 			gc.carteTavolo1 =(String[]) in.readObject();
 			gc.carteTavolo2 =(String[]) in.readObject();
 			gc.carteTavolo3 =(String[]) in.readObject();
-			//
+			//bot gioco
+			gc.botgioco = in.readBoolean();
+			
 			in.close();
 			filein.close();
 		} catch (IOException  | ClassNotFoundException e) {

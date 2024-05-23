@@ -111,6 +111,7 @@ public class PreTorneo4Controller {
     		main.showScenaGiocoScene();
     	}catch(Exception e) {
     		System.out.println("Errore nel caricamento scenaGioco");
+    		e.printStackTrace();
     	}
     }
 	

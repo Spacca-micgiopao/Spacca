@@ -39,7 +39,7 @@ public class Imprevisti {
         String coloreCarta = carta.getColore();
 
         switch (Imprevistoscelto) {
-            case "Raddoppia punti carte verdi":
+            case "Raddoppia punti carte Verdi":
                 if (coloreCarta.equals("verde")) {
                     valoreCarta *= 2;
                 }
@@ -79,7 +79,7 @@ public class Imprevisti {
                     valoreCarta /= 2;
                 }
                 break;
-            case "Dimezza punti carte verdi":
+            case "Dimezza punti carte Verdi":
                 if (coloreCarta.equals("verde")) {
                     valoreCarta /= 2;
                 }
@@ -89,21 +89,21 @@ public class Imprevisti {
                     valoreCarta /= 2;
                 }
                 break;
-            case "Scambia Punti tavolo 1":
+            case "Scambia punti tavolo 1":
             	int s = gc.punteggioG1Tavolo1;
             	gc.punteggioG1Tavolo1 = gc.punteggioG2Tavolo1;
             	gc.punteggioG2Tavolo1 = s;
             	gc.LabelPunteggioG1T1.setText(gc.punteggioG1Tavolo1+"");
             	gc.LabelPunteggioG2T1.setText(gc.punteggioG2Tavolo1+"");
             	break;
-            case "Scambia Punti tavolo 2":
+            case "Scambia punti tavolo 2":
             	int c = gc.punteggioG1Tavolo2;
             	gc.punteggioG1Tavolo2 = gc.punteggioG2Tavolo2;
             	gc.punteggioG2Tavolo2 = c;
             	gc.LabelPunteggioG1T2.setText(gc.punteggioG1Tavolo2+"");
             	gc.LabelPunteggioG2T2.setText(gc.punteggioG2Tavolo2+"");
             	break;
-            case "Scambia Punti tavolo 3":
+            case "Scambia punti tavolo 3":
             	int k = gc.punteggioG1Tavolo3;
             	gc.punteggioG1Tavolo3 = gc.punteggioG2Tavolo3;
             	gc.punteggioG2Tavolo3 = k;
