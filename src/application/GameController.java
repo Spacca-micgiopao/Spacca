@@ -15,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.Serializable;
@@ -215,7 +216,7 @@ public class GameController  implements Serializable{
     }	
     
     //INIZIALIZZAZIONE se il flag = 1 la partita è stata caricata e inizierà in modo diverso da una partita iniziata da 0
-    public void initialize() throws FileNotFoundException {
+    public void initialize() throws FileNotFoundException, EOFException {
 	 
     	insertMusic();
     	//per le ImageView: creazione di una lista contenente tutte le ImageView per facilitare 
