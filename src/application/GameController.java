@@ -461,10 +461,6 @@ public class GameController  implements Serializable{
     	//Se siamo in un torneo all'uscita torno al pre torneo
     	if(Torneo == true) {
     		try {
-    			String s = "";
-    				for(int  i = 0;i<G.length;i++)
-    					s = s+G[i].charAt(0);
-    			SalvaTorneo.setFile(s);
     			SalvaTorneo.Salvataggio(this);
     			main.showMainMenuScene();
     		} catch (Exception e) {

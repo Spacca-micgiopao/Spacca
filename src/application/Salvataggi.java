@@ -61,11 +61,46 @@ public class Salvataggi implements Serializable{
 			e.printStackTrace();
 		}
 	}
-
+	
+	public void salvaPartita(GameController gamecontroller) throws EOFException{ 
+		try { 
+			FileOutputStream fileout = new FileOutputStream(file);
+			ObjectOutputStream out = new ObjectOutputStream(fileout);
+			out.reset(); 
+			out.writeBoolean(gamecontroller.botgioco);
+			//Punteggi dei tavoli
+			out.writeInt(gamecontroller.punteggioG1Tavolo1);
+			out.writeInt(gamecontroller.punteggioG1Tavolo2);
+			out.writeInt(gamecontroller.punteggioG1Tavolo3);
+			out.writeInt(gamecontroller.punteggioG2Tavolo1);
+			out.writeInt(gamecontroller.punteggioG2Tavolo2);
+			out.writeInt(gamecontroller.punteggioG2Tavolo3);
+			//Nomi dei partecipanti
+			out.writeObject(gamecontroller.player1Name);
+			out.writeObject(gamecontroller.player2Name); 
+			//Carte di ogni giocatore
+			out.writeObject(gamecontroller.listaCarteGiocatore1);
+			out.writeObject(gamecontroller.listaCarteGiocatore2);
+			//Mazzi
+			out.writeObject(gamecontroller.mazzoGiocatore1);
+			out.writeObject(gamecontroller.mazzoGiocatore2); 
+			//Carte nei tavoli (salvate nel formato "colore_valore")
+			out.writeObject(gamecontroller.carteTavolo1);
+			out.writeObject(gamecontroller.carteTavolo2);
+			out.writeObject(gamecontroller.carteTavolo3);
+			//per capire se siamo in una partita con il bot
+			fileout.close();
+			out.close(); 
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	//Carica il dati della pertita scelta
-	public void caricaPartita(GameController gc) throws EOFException {
+	public void caricaPartita(GameController gc) {
 		try {
+			if(file.exists()) {
 			FileInputStream filein = new FileInputStream(file);
 			ObjectInputStream in = new ObjectInputStream(filein);
 			//Punteggi dei tavoli
@@ -91,6 +126,12 @@ public class Salvataggi implements Serializable{
 			gc.carteTavolo3 =(String[]) in.readObject();
 			filein.close();
 			in.close();
+			}
+			else {
+				file.createNewFile();
+				salvaPartita(gc);
+			}
+				
 		} catch (IOException  | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -103,7 +144,7 @@ public class Salvataggi implements Serializable{
 				if(CG1 != null) {
 					String colore = CG1.getColore();
 					int valore = CG1.getValore();
-					String percorsoImmagine=  "src/immagini/" + colore + "_" + valore + ".png";
+					String percorsoImmagine=  "src/Immagini/" + colore + "_" + valore + ".png";
 					Image image = new Image("file:" + percorsoImmagine);
 					CG1.setImage(image);
 				}
@@ -114,7 +155,7 @@ public class Salvataggi implements Serializable{
 	public static void associazioneImmaginiATavolo(String[] carteTavolo1,List<ImageView> imageViewsTavolo1) {
 		for(int i=0;i<carteTavolo1.length;i++) {
 			if(carteTavolo1[i]!=null) {
-				String percorsoImmagine = "src/immagini/"+carteTavolo1[i]+".png";
+				String percorsoImmagine = "src/Immagini/"+carteTavolo1[i]+".png";
 				Image image = new Image("file:" + percorsoImmagine);
 				imageViewsTavolo1.get(i).setImage(image);
 			}
@@ -122,7 +163,7 @@ public class Salvataggi implements Serializable{
 	}
 		
 	//Elimina il file
-	public void Elimina() {
+	public static void Elimina() {
 		file.delete();
 	}
 }

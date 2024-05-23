@@ -13,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class PreTorneo4Controller {
 	private Main main;
@@ -108,6 +109,13 @@ public class PreTorneo4Controller {
 	public void handleBottoneIniziaAGiocare(ActionEvent event) {
     	player.stop();
     	try {
+    		Random rand = new Random();
+			String s = "";
+			for(int  i = 0;i<G.length;i++) {
+				s = s+G[i].charAt(0);
+			}
+			s = s+"-"+rand.nextInt(10)+""+rand.nextInt(10)+""+rand.nextInt(10);
+			SalvaTorneo.setFile(s);
     		main.showScenaGiocoScene();
     	}catch(Exception e) {
     		System.out.println("Errore nel caricamento scenaGioco");

@@ -83,7 +83,31 @@ public class AdminPanelController implements Initializable{
 				}
 		}
 	}
-		
+	
+	//Cancella un torneo
+	public void Deletetorneo(ActionEvent event) throws IOException {
+		if(ScegliTorneo.getValue() != null) {
+			SalvaTorneo.setFile(ScegliTorneo.getValue());
+			SalvaTorneo.Elimina();
+			ScegliTorneo.getItems().clear();
+			SalvaTorneo.Preparazione();
+			if(SalvaTorneo.Tornei != null)
+				ScegliTorneo.getItems().addAll(SalvaTorneo.Tornei);
+		}
+	}
+	
+	//Cancella una partita
+	public void Deletepartita(ActionEvent event) throws IOException {
+		if(ScegliPartita.getValue() != null) {
+			Salvataggi.setFile(ScegliPartita.getValue());
+			Salvataggi.Elimina();
+			ScegliPartita.getItems().clear();
+			InfoPartita.Preparazione();
+			if(InfoPartita.Partite != null)
+				ScegliPartita.getItems().addAll(InfoPartita.Partite);
+		}
+	}
+	
 	//Per tornare al menuprincipale
 	public void Backtomenu(ActionEvent event) throws IOException {
 		try {

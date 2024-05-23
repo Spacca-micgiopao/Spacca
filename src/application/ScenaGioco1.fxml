@@ -103,10 +103,22 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fx:id="CartaT1p00" fitHeight="127.0" fitWidth="102.0" onMouseClicked="#handleClickPosizioneTavolo1" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="CartaT1p10" fitHeight="127.0" fitWidth="102.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#handleClickPosizioneTavolo1" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
-            <ImageView fx:id="CartaT1p01" fitHeight="127.0" fitWidth="102.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#handleClickPosizioneTavolo1" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
-            <ImageView fx:id="CartaT1p11" fitHeight="127.0" fitWidth="102.0" layoutX="10.0" layoutY="137.0" onMouseClicked="#handleClickPosizioneTavolo1" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ImageView fx:id="CartaT1p00" fitHeight="127.0" fitWidth="95.0" onMouseClicked="#handleClickPosizioneTavolo1" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <InnerShadow />
+               </effect></ImageView>
+            <ImageView fx:id="CartaT1p10" fitHeight="127.0" fitWidth="102.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#handleClickPosizioneTavolo1" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+               <effect>
+                  <InnerShadow />
+               </effect></ImageView>
+            <ImageView fx:id="CartaT1p01" fitHeight="127.0" fitWidth="95.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#handleClickPosizioneTavolo1" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+               <effect>
+                  <InnerShadow />
+               </effect></ImageView>
+            <ImageView fx:id="CartaT1p11" fitHeight="127.0" fitWidth="102.0" layoutX="10.0" layoutY="137.0" onMouseClicked="#handleClickPosizioneTavolo1" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <effect>
+                  <InnerShadow />
+               </effect></ImageView>
          </children>
       </GridPane>
       <ImageView fx:id="Carta1G2" fitHeight="169.0" fitWidth="141.0" layoutX="349.0" layoutY="530.0" onMouseClicked="#handleClickCartaGiocatore2" pickOnBounds="true" preserveRatio="true" />
@@ -143,10 +155,22 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <ImageView fx:id="CartaT2p00" fitHeight="127.0" fitWidth="102.0" onMouseClicked="#handleClickPosizioneTavolo2" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="CartaT2p10" fitHeight="127.0" fitWidth="102.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#handleClickPosizioneTavolo2" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
-            <ImageView fx:id="CartaT2p01" fitHeight="127.0" fitWidth="102.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#handleClickPosizioneTavolo2" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
-            <ImageView fx:id="CartaT2p11" fitHeight="127.0" fitWidth="102.0" layoutX="10.0" layoutY="137.0" onMouseClicked="#handleClickPosizioneTavolo2" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ImageView fx:id="CartaT2p00" fitHeight="127.0" fitWidth="95.0" onMouseClicked="#handleClickPosizioneTavolo2" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <InnerShadow />
+               </effect></ImageView>
+            <ImageView fx:id="CartaT2p10" fitHeight="127.0" fitWidth="102.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#handleClickPosizioneTavolo2" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+               <effect>
+                  <InnerShadow />
+               </effect></ImageView>
+            <ImageView fx:id="CartaT2p01" fitHeight="127.0" fitWidth="96.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#handleClickPosizioneTavolo2" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+               <effect>
+                  <InnerShadow />
+               </effect></ImageView>
+            <ImageView fx:id="CartaT2p11" fitHeight="127.0" fitWidth="102.0" layoutX="10.0" layoutY="137.0" onMouseClicked="#handleClickPosizioneTavolo2" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <effect>
+                  <InnerShadow />
+               </effect></ImageView>
          </children>
       </GridPane>
       <GridPane fx:id="Tavolo3" gridLinesVisible="true" layoutX="864.0" layoutY="234.0" prefHeight="254.0" prefWidth="190.0">
@@ -159,10 +183,22 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <ImageView fx:id="CartaT3p00" fitHeight="127.0" fitWidth="102.0" onMouseClicked="#handleClickPosizioneTavolo3" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="CartaT3p10" fitHeight="127.0" fitWidth="102.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#handleClickPosizioneTavolo3" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
-            <ImageView fx:id="CartaT3p01" fitHeight="127.0" fitWidth="102.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#handleClickPosizioneTavolo3" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
-            <ImageView fx:id="CartaT3p11" fitHeight="127.0" fitWidth="102.0" layoutX="10.0" layoutY="137.0" onMouseClicked="#handleClickPosizioneTavolo3" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ImageView fx:id="CartaT3p00" fitHeight="127.0" fitWidth="95.0" onMouseClicked="#handleClickPosizioneTavolo3" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <InnerShadow />
+               </effect></ImageView>
+            <ImageView fx:id="CartaT3p10" fitHeight="127.0" fitWidth="102.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#handleClickPosizioneTavolo3" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+               <effect>
+                  <InnerShadow />
+               </effect></ImageView>
+            <ImageView fx:id="CartaT3p01" fitHeight="127.0" fitWidth="94.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#handleClickPosizioneTavolo3" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+               <effect>
+                  <InnerShadow />
+               </effect></ImageView>
+            <ImageView fx:id="CartaT3p11" fitHeight="127.0" fitWidth="102.0" layoutX="10.0" layoutY="137.0" onMouseClicked="#handleClickPosizioneTavolo3" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <effect>
+                  <InnerShadow />
+               </effect></ImageView>
          </children>
       </GridPane>
       <Label layoutX="1091.0" layoutY="271.0" prefHeight="60.0" prefWidth="173.0" text="TURNO DI" textFill="WHITE">
