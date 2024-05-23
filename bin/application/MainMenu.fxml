@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #e45a5a, #15a3c7); -fx-border-color: #FFFFFF; -fx-border-width: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MenuController">
    <children>
       <Circle layoutX="229.0" layoutY="277.0" radius="219.0" stroke="BLACK" strokeType="INSIDE">
          <fill>
@@ -17,30 +23,22 @@
                <stops>
                   <Stop>
                      <color>
-                        <Color />
+                        <Color red="0.8941176533699036" green="0.3529411852359772" blue="0.3529411852359772" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.5738255033557047">
+                     <color>
+                        <Color red="0.8941176533699036" green="0.3529411852359772" blue="0.3529411852359772" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.6610738255033557">
+                     <color>
+                        <Color red="0.08235294371843338" green="0.6392157077789307" blue="0.7803921699523926" />
                      </color>
                   </Stop>
                   <Stop offset="1.0">
                      <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Circle>
-      <Circle layoutX="1048.0" layoutY="289.0" radius="219.0" stroke="BLACK" strokeType="INSIDE">
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
+                        <Color red="0.08235294371843338" green="0.6392157077789307" blue="0.7803921699523926" />
                      </color>
                   </Stop>
                </stops>
@@ -48,7 +46,189 @@
          </fill>
       </Circle>
       <Circle layoutX="640.0" layoutY="277.0" radius="219.0" stroke="BLACK" strokeType="INSIDE">
+         <effect>
+            <InnerShadow />
+         </effect>
          <fill>
+            <LinearGradient endX="0.8104265402843602" endY="1.0" startY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.08235294371843338" green="0.6392157077789307" blue="0.7803921699523926" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006711409395973154">
+                     <color>
+                        <Color red="0.08235294371843338" green="0.6392157077789307" blue="0.7803921699523926" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.7818791946308725">
+                     <color>
+                        <Color red="0.8941176533699036" green="0.3529411852359772" blue="0.3529411852359772" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.8941176533699036" green="0.3529411852359772" blue="0.3529411852359772" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Circle>
+      <Button fx:id="CreaPartita" layoutX="477.0" layoutY="387.0" mnemonicParsing="false" onAction="#VaiaPrePartita" prefHeight="36.0" prefWidth="326.0" style="-fx-background-radius: 30;" text="Partita Normale" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Eras Bold ITC" size="24.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect>
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8941176533699036" green="0.3529411852359772" blue="0.3529411852359772" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.08235294371843338" green="0.6392157077789307" blue="0.7803921699523926" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </textFill></Button>
+      <Circle layoutX="1048.0" layoutY="277.0" radius="219.0" stroke="BLACK" strokeType="INSIDE">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8941176533699036" green="0.3529411852359772" blue="0.3529411852359772" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.3523489932885906">
+                     <color>
+                        <Color red="0.8941176533699036" green="0.3529411852359772" blue="0.3529411852359772" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.44966442953020136">
+                     <color>
+                        <Color red="0.08235294371843338" green="0.6392157077789307" blue="0.7803921699523926" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.08235294371843338" green="0.6392157077789307" blue="0.7803921699523926" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Circle>
+      <ImageView fitHeight="241.0" fitWidth="274.0" layoutX="109.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Immagini/Menu/Podium-PNG-Clipart.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="58.0" fitWidth="43.0" layoutX="208.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Immagini/Menu/lotad.gif" />
+         </image>
+      </ImageView>
+      <ImageView layoutX="1087.0" layoutY="309.0">
+         <image>
+            <Image url="@../Immagini/Menu/trapinch.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="212.0" fitWidth="157.0" layoutX="970.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Immagini/Menu/41361625cc44df07f81a620eac766468.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="38.0" fitWidth="43.0" layoutX="130.0" layoutY="241.0">
+         <image>
+            <Image url="@../Immagini/Menu/eevee.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="51.0" fitWidth="43.0" layoutX="281.0" layoutY="252.0">
+         <image>
+            <Image url="@../Immagini/Menu/dewott.gif" />
+         </image>
+      </ImageView>
+      <ImageView layoutX="490.0" layoutY="260.0">
+         <image>
+            <Image url="@../Immagini/Menu/croconaw.gif" />
+         </image>
+      </ImageView>
+      <ImageView layoutX="509.0" layoutY="281.0">
+         <image>
+            <Image url="@../Immagini/Menu/empoleon.gif" />
+         </image>
+      </ImageView>
+      <ImageView layoutX="561.0" layoutY="299.0">
+         <image>
+            <Image url="@../Immagini/Menu/simisage.gif" />
+         </image>
+      </ImageView>
+      <ImageView layoutX="689.0" layoutY="171.0">
+         <image>
+            <Image url="@../Immagini/Menu/spheal.gif" />
+         </image>
+      </ImageView>
+      <ImageView layoutX="710.0" layoutY="169.0">
+         <image>
+            <Image url="@../Immagini/Menu/flygon.gif" />
+         </image>
+      </ImageView>
+      <ImageView layoutX="642.0" layoutY="134.0">
+         <image>
+            <Image url="@../Immagini/Menu/breloom.gif" />
+         </image>
+      </ImageView>
+      <Label layoutX="585.0" layoutY="211.0" text="VS" textFill="WHITE">
+         <font>
+            <Font name="Eras Bold ITC" size="84.0" />
+         </font>
+      </Label>
+      <Button fx:id="VediClassifica" layoutX="67.0" layoutY="387.0" mnemonicParsing="false" onAction="#VaiaClassifica" prefHeight="36.0" prefWidth="326.0" style="-fx-background-radius: 30;" text="Classifica" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Eras Bold ITC" size="24.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9473684430122375" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006711409395973154">
+                     <color>
+                        <Color red="0.9473684430122375" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Button>
+      <Button fx:id="CreaTorneo" layoutX="886.0" layoutY="387.0" mnemonicParsing="false" onAction="#VaiaTorneo" prefHeight="36.0" prefWidth="326.0" style="-fx-background-radius: 30;" text="Torneo" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Eras Bold ITC" size="24.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect>
+         <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
                   <Stop>
@@ -58,42 +238,74 @@
                   </Stop>
                   <Stop offset="1.0">
                      <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
+                        <Color red="0.08235294371843338" green="0.6392157077789307" blue="0.7803921699523926" />
                      </color>
                   </Stop>
                </stops>
             </LinearGradient>
-         </fill>
-      </Circle>
-      <Button fx:id="Logout" layoutX="52.0" layoutY="601.0" mnemonicParsing="false" onAction="#Logout" prefHeight="43.0" prefWidth="342.0" text="Torna al login" />
-      <Button fx:id="CreaPartita" layoutX="591.0" layoutY="423.0" mnemonicParsing="false" onAction="#VaiaPrePartita" text="Crea una partita" />
-      <Button fx:id="CreaTorneo" layoutX="978.0" layoutY="387.0" mnemonicParsing="false" onAction="#VaiaTorneo" prefHeight="36.0" prefWidth="140.0" text="Torneo" />
-      <Button fx:id="VediClassifica" layoutX="191.0" layoutY="374.0" mnemonicParsing="false" onAction="#VaiaClassifica" text="Classifica" />
-      <ImageView fitHeight="241.0" fitWidth="274.0" layoutX="109.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
+         </textFill>
+      </Button>
+      <ImageView layoutX="970.0" layoutY="309.0" rotate="180.0">
          <image>
-            <Image url="@../Immagini/Menu/Podium-PNG-Clipart.png" />
+            <Image url="@../Immagini/Menu/trapinch.gif" />
          </image>
+         <rotationAxis>
+            <Point3D y="1.0" />
+         </rotationAxis>
       </ImageView>
-      <ImageView fitHeight="68.0" fitWidth="70.0" layoutX="194.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Immagini/Menu/lotad.gif" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="212.0" fitWidth="157.0" layoutX="970.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Immagini/Menu/41361625cc44df07f81a620eac766468.png" />
-         </image>
-      </ImageView>
-      <Button layoutX="877.0" layoutY="602.0" mnemonicParsing="false" onAction="#VaiAdminPanel" prefHeight="43.0" prefWidth="342.0" text="Pannello di controllo" />
-      <ImageView fitHeight="56.0" fitWidth="64.0" layoutX="121.0" layoutY="223.0">
-         <image>
-            <Image url="@../Immagini/Menu/eevee.gif" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="84.0" fitWidth="82.0" layoutX="268.0" layoutY="215.0">
-         <image>
-            <Image url="@../Immagini/Menu/dewott.gif" />
-         </image>
-      </ImageView>
+      <Button fx:id="Logout" layoutX="66.0" layoutY="602.0" mnemonicParsing="false" onAction="#Logout" prefHeight="36.0" prefWidth="326.0" style="-fx-background-radius: 30;" text="Logout" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Eras Bold ITC" size="24.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Button>
+      <Button layoutX="885.0" layoutY="602.0" mnemonicParsing="false" onAction="#VaiAdminPanel" prefHeight="36.0" prefWidth="326.0" style="-fx-background-radius: 30;" text="Admin Panel" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Eras Bold ITC" size="24.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Button>
    </children>
+   <effect>
+      <InnerShadow />
+   </effect>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
 </AnchorPane>
