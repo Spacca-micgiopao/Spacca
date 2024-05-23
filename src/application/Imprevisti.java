@@ -117,19 +117,15 @@ public class Imprevisti {
 
         carta.setValore(valoreCarta);
     }
-    public void carteimprevisto(Carta cartaSelezionata, boolean annullatore){
-    	if(cartaSelezionata.getColore().equals("annulla")) {
-        	annullatore = true;
-        } else {
-        	annullatore = false;
-        }
-        if(cartaSelezionata.getColore().equals("random")) {
-        	Random rand = new Random();
-        	int randomnum = rand.nextInt();       
+    public void carteimprevisto(Carta cartaSelezionata) {
+        
+        if (cartaSelezionata.getColore().equals("random")) {
+            Random rand = new Random();
+            int randomnum = rand.nextInt(2);  // Per ottenere 0 o 1
             int valore = (randomnum == 0) ? 0 : 8;
             cartaSelezionata.setValore(valore);
+            System.out.println("valore rand = " + cartaSelezionata.getValore());
         }
-    	
     }
 
 }
