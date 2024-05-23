@@ -5,6 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
@@ -12,12 +13,12 @@
 
 <AnchorPane fx:id="Backtomenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-border-color: #FFFFFF; -fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #e45a5a, #15a3c7); -fx-border-width: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AdminPanelController">
    <children>
-      <Label alignment="CENTER" layoutX="39.0" layoutY="26.0" prefHeight="133.0" prefWidth="388.0" text="RESETTA ALLE IMPOSTAZIONI DI FABBRICA,CANCELLA TUTTI I DATI SALVATI" textAlignment="CENTER" wrapText="true">
+      <Label alignment="CENTER" layoutX="26.0" layoutY="27.0" prefHeight="133.0" prefWidth="388.0" text="RESETTA ALLE IMPOSTAZIONI DI FABBRICA,CANCELLA TUTTI I DATI SALVATI" textAlignment="CENTER" wrapText="true">
          <font>
-            <Font size="24.0" />
+            <Font name="Eras Bold ITC" size="27.0" />
          </font>
       </Label>
-      <Button layoutX="140.0" layoutY="159.0" mnemonicParsing="false" onAction="#Pulisci" prefHeight="66.0" prefWidth="187.0" style="-fx-background-color: red;" text="RESET">
+      <Button layoutX="127.0" layoutY="184.0" mnemonicParsing="false" onAction="#Pulisci" prefHeight="66.0" prefWidth="187.0" style="-fx-background-color: red;" text="RESET">
          <effect>
             <InnerShadow />
          </effect>
@@ -25,18 +26,21 @@
             <Font name="Impact" size="24.0" />
          </font>
       </Button>
-      <Label layoutX="179.0" layoutY="285.0" text="Statistiche">
+      <Label layoutX="156.0" layoutY="285.0" text="Statistiche">
          <font>
-            <Font size="24.0" />
+            <Font name="Eras Bold ITC" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="LabelStatistiche" layoutX="102.0" layoutY="320.0" prefHeight="166.0" prefWidth="263.0" />
+      <Label fx:id="LabelStatistiche" layoutX="18.0" layoutY="326.0" prefHeight="336.0" prefWidth="399.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Eras Bold ITC" size="27.0" />
+         </font></Label>
       <Label layoutX="567.0" layoutY="93.0" text="Cambia nome utente" />
       <Label layoutX="769.0" layoutY="93.0" text="Cambia Password" />
       <TextField fx:id="Usernamechange" layoutX="548.0" layoutY="147.0" />
       <TextField fx:id="Passwordchange" layoutX="742.0" layoutY="147.0" />
       <Button layoutX="1035.0" layoutY="135.0" mnemonicParsing="false" onAction="#CambioAccesso" text="Conferma" />
-      <Button layoutX="477.0" layoutY="636.0" mnemonicParsing="false" onAction="#Backtomenu" prefHeight="36.0" prefWidth="326.0" style="-fx-background-radius: 30;" text="Main Menu" textAlignment="CENTER" wrapText="true">
+      <Button layoutX="700.0" layoutY="636.0" mnemonicParsing="false" onAction="#Backtomenu" prefHeight="36.0" prefWidth="326.0" style="-fx-background-radius: 30;" text="Main Menu" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="Eras Bold ITC" size="24.0" />
          </font>
@@ -84,5 +88,9 @@
             </LinearGradient>
          </textFill>
       </Button>
+      <Pane layoutX="419.0" layoutY="18.0" prefHeight="696.0" prefWidth="40.0" style="-fx-background-color: #FFFFFF;" />
    </children>
+   <effect>
+      <InnerShadow />
+   </effect>
 </AnchorPane>

@@ -19,8 +19,10 @@ public class Salvataggi implements Serializable{
 		this.gamecontroller = gamecontroller;
 	}
 	
-	public static void setFile(String nome) {
+	public static void setFile(String nome) throws IOException {
 			file = new File("src/Salvataggi/"+nome+".ser");
+			if(!file.exists())
+				file.createNewFile();
 	}
 	
 	//Salva in un file serializzato i dati importanti di una partita,in questo caso salva
@@ -51,8 +53,7 @@ public class Salvataggi implements Serializable{
 			out.writeObject(gamecontroller.carteTavolo2);
 			out.writeObject(gamecontroller.carteTavolo3);
 			//per capire se siamo in una partita con il bot
-			out.writeObject(gamecontroller.botgioco);
-			
+			out.writeBoolean(gamecontroller.botgioco);
 			fileout.close();
 			out.close(); 
 		} 
@@ -63,7 +64,7 @@ public class Salvataggi implements Serializable{
 
 
 	//Carica il dati della pertita scelta
-	public void caricaPartita(GameController gc) throws EOFException{
+	public void caricaPartita(GameController gc) throws EOFException {
 		try {
 			FileInputStream filein = new FileInputStream(file);
 			ObjectInputStream in = new ObjectInputStream(filein);
@@ -89,9 +90,8 @@ public class Salvataggi implements Serializable{
 			gc.carteTavolo3 =(String[]) in.readObject();
 			//bot gioco
 			gc.botgioco = in.readBoolean();
-			
-			in.close();
 			filein.close();
+			in.close();
 		} catch (IOException  | ClassNotFoundException e) {
 			e.printStackTrace();
 		}

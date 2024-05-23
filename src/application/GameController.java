@@ -36,7 +36,7 @@ public class GameController  implements Serializable{
 	public static int flag;
 	private Salvataggi salvataggio = new Salvataggi(this);
 	
-	public boolean botgioco;
+	public boolean botgioco = false;
 	//Mostrare le informazioni
 	public static String player1Name;
 	public static String player2Name;
@@ -115,7 +115,7 @@ public class GameController  implements Serializable{
     
 	//nomi dei giocatori
     public void setPlayersNames() {
-    	if(Torneo == false) {
+    	if(Torneo == false && flag != 1) {
 	        player1Name = ControllerPrePartita.getPlayer1(); 
 	        player2Name = ControllerPrePartita.getPlayer2();
         }
