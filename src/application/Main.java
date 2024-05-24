@@ -110,6 +110,7 @@ public class Main extends Application {
 	        primaryStage.setWidth(1280);
 	        primaryStage.sizeToScene();
 	        primaryStage.setScene(scene);
+	        primaryStage.setResizable(false);
 	        primaryStage.show();
 	    }
 	    
@@ -124,6 +125,7 @@ public class Main extends Application {
 	        primaryStage.setWidth(1280);
 	        primaryStage.sizeToScene();
 	        primaryStage.setScene(scene);
+	        primaryStage.setResizable(false);
 	        primaryStage.show();
     	
 	    	
@@ -139,6 +141,7 @@ public class Main extends Application {
 	        primaryStage.setHeight(720);
 	        primaryStage.setWidth(1280);
 	        primaryStage.sizeToScene();
+	        primaryStage.setResizable(false);
 	        primaryStage.show();
 	    }
 	    
@@ -152,7 +155,9 @@ public class Main extends Application {
 	        primaryStage.setHeight(720);
 	        primaryStage.setWidth(1280);
 	        primaryStage.setScene(scene);
+	        primaryStage.setResizable(false);
 	        primaryStage.sizeToScene();
+	        
 	        primaryStage.show();
     	
 	    	
