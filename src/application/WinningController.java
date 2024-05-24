@@ -73,6 +73,7 @@ public class WinningController {
     			   player = new MediaPlayer(sound);
     			   //continua sempre a suonare
     			   player.setCycleCount(MediaPlayer.INDEFINITE);
+    			   player.setVolume(0.1);
     			   player.play();
     		}catch(Exception e ) {
     			System.out.println("errore riproduzione");

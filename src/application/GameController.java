@@ -811,4 +811,5 @@ public class GameController  implements Serializable{
         ImageView posizioneTavoloCliccata = (ImageView) event.getSource();
         handleClickPosizioneTavolo(event, posizioneTavoloCliccata, 3);
     }
+
 }
