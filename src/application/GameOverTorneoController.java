@@ -25,9 +25,7 @@ public class GameOverTorneoController {
 	private String[] G; //tutti  giocatori torneo
 	private int[] numeroVittorieG;
 	private List<String> vincitori;
-	private ArrayList<String> VincitoriPari;
 	private int numeroPartita;
-	private String vincitore;
 	private MediaPlayer player;
 	@FXML
 	private Label LabelVincitorFinale;
@@ -35,10 +33,6 @@ public class GameOverTorneoController {
 	private Label G1P1,G2P1,G1P2,G2P2,G1P3,G2P3,G1P4,G2P4,G1P5,G2P5,G1P6,G2P6;
 	@FXML
 	private Label[] InsiemeGiocatoriPartite;
-	@FXML
-	private Label Pareggiante1,Pareggiante2,Pareggiante3,Pareggiante4;
-	@FXML 
-	private Label[] LabelPareggianti;
 	@FXML
 	private Label VincitoreP1,VincitoreP2,VincitoreP3,VincitoreP4,VincitoreP5,VincitoreP6;
 	@FXML
@@ -64,10 +58,8 @@ public class GameOverTorneoController {
 		this.vittoriaSuTavoloG2= GameController.getVittoriaSuTavoloG2();
 	}
 	public void setPartite() {
-		
 		this.partite = PreTorneo4Controller.getPartite();
-    	
-	}
+    }
 	public void setNumeroPartita() {
 		
 		this.numeroPartita = GameController.getNumeroPartita();
@@ -129,7 +121,7 @@ public class GameOverTorneoController {
     			   player = new MediaPlayer(sound);
     			   //continua sempre a suonare
     			   player.setCycleCount(MediaPlayer.INDEFINITE);
-    			   player.setVolume(0.5);
+    			   player.setVolume(0.1);
     			   player.play();
     		}catch(Exception e ) {
     			System.out.println("errore riproduzione");
@@ -141,8 +133,7 @@ public class GameOverTorneoController {
 		InsiemeGiocatoriPartite = new Label[] {G1P1,G2P1,G1P2,G2P2,G1P3,G2P3,G1P4,G2P4,G1P5,G2P5,G1P6,G2P6};
 		LabelVincitoriSingole  =  new Label[] {VincitoreP1, VincitoreP2, VincitoreP3,VincitoreP4,VincitoreP5,VincitoreP6};
 		LabelPunteggiVittorie = new Label[] {PunteggioVittoriaG1,PunteggioVittoriaG2,PunteggioVittoriaG3,PunteggioVittoriaG4};
-		LabelPareggianti =  new  Label[] {Pareggiante1,Pareggiante2,  Pareggiante3,  Pareggiante4};
-		
+
 		setVittoriaSuTavolo(); 
 		setPartite();
 		setNumeroPartita();
@@ -151,39 +142,14 @@ public class GameOverTorneoController {
 		setG();
 		setNumeroVittorieG();
 		calcoloPunteggioUltimaPartita();
-		VincitoriPari = new ArrayList<>();
 		SalvaTorneo.Elimina();
-		boolean pareggio=false;
 		int max= numeroVittorieG[0];
 		
 		for(int i=1;i<numeroVittorieG.length;i++) {
 			if(numeroVittorieG[i]>max) {
 				max=numeroVittorieG[i];
-			}else if(numeroVittorieG[i]== max) {
-				pareggio=true;
 			}
 		}
-		if(pareggio==true) {
-			LabelVincitorFinale.setText("VINCITORI A PARIMERITO");
-			for(int i=0;i<numeroVittorieG.length;i++) {
-				if(numeroVittorieG[i]==max) {
-					VincitoriPari.add(G[i].toUpperCase());
-				}
-			}
-			for(int  i=0;i<VincitoriPari.size();i++) {
-				LabelPareggianti[i].setText(VincitoriPari.get(i));
-			}
-		}
-		if(pareggio==false) {
-			LabelVincitorFinale.setText(" VINCITORE :");
-			for(int i=0;i<numeroVittorieG.length;i++) {
-				if(max==numeroVittorieG[i]) {
-					vincitore=G[i].toUpperCase();
-				}
-			}
-			Pareggiante2.setText(vincitore);
-		}
-			
 	    for(int i=0;i<partite.size();i++) {
 			String  partita=  partite.get(i);
 			String[] giocatori = partita.split(" vs ");
