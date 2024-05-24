@@ -16,7 +16,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #e45a5a, #15a3c7); -fx-border-color: #FFFFFF; -fx-border-width: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GameOverTorneoController">
    <children>
-      <Label fx:id="LabelVincitorFinale" layoutX="128.0" layoutY="51.0" prefHeight="65.0" prefWidth="786.0" text="FINE TORNEO">
+      <Label fx:id="LabelVincitorFinale" layoutX="128.0" layoutY="51.0" prefHeight="65.0" prefWidth="421.0" text="FINE TORNEO">
          <font>
             <Font name="Eras Bold ITC" size="55.0" />
          </font>
@@ -42,17 +42,17 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <Label fx:id="Pareggiante2" layoutX="386.0" layoutY="63.0" prefHeight="25.0" prefWidth="189.0" textFill="WHITE">
+      <Label fx:id="Pareggiante2" layoutX="640.0" layoutY="63.0" prefHeight="25.0" prefWidth="189.0" textFill="WHITE">
          <font>
             <Font name="Eras Bold ITC" size="36.0" />
          </font>
       </Label>
-      <Label fx:id="Pareggiante3" layoutX="386.0" layoutY="63.0" prefHeight="25.0" prefWidth="189.0" textFill="WHITE">
+      <Label fx:id="Pareggiante3" layoutX="640.0" layoutY="63.0" prefHeight="25.0" prefWidth="189.0" textFill="WHITE">
          <font>
             <Font name="Eras Bold ITC" size="36.0" />
          </font>
       </Label>
-      <Label fx:id="Pareggiante4" layoutX="386.0" layoutY="63.0" prefHeight="25.0" prefWidth="189.0" textFill="WHITE">
+      <Label fx:id="Pareggiante4" layoutX="640.0" layoutY="63.0" prefHeight="25.0" prefWidth="189.0" textFill="WHITE">
          <font>
             <Font name="Eras Bold ITC" size="36.0" />
          </font>
