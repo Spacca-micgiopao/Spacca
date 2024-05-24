@@ -2,27 +2,55 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.media.MediaView?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FilmatiFinaliController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FilmatiFinaliController">
    <children>
       <MediaView fx:id="MediaViewFinale" fitHeight="800.0" fitWidth="1280.0" />
-      <Label fx:id="LabelGiocatore" contentDisplay="CENTER" layoutX="408.0" layoutY="578.0" prefHeight="169.0" prefWidth="791.0" textAlignment="CENTER" textFill="#1b9d87">
+      <Label fx:id="LabelGiocatore" contentDisplay="CENTER" layoutX="409.0" layoutY="537.0" prefHeight="169.0" prefWidth="791.0" textAlignment="CENTER" textFill="#1b9d87">
          <font>
             <Font name="Cooper Black" size="70.0" />
          </font>
       </Label>
-      <Button layoutX="1181.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleBottoneUscita" text="USCITA" textFill="#ff0606">
-         <font>
-            <Font name="Cooper Black" size="12.0" />
-         </font>
-      </Button>
       <Label layoutX="56.0" layoutY="52.0" text="FINE PARTITA">
          <font>
-            <Font name="Cooper Black" size="21.0" />
+            <Font name="Eras Bold ITC" size="21.0" />
          </font>
       </Label>
+      <Button layoutX="940.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleBottoneUscita" prefHeight="36.0" prefWidth="326.0" style="-fx-background-radius: 30;" text="Esci" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Eras Bold ITC" size="24.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9473684430122375" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006711409395973154">
+                     <color>
+                        <Color red="0.9473684430122375" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Button>
    </children>
 </AnchorPane>
