@@ -28,6 +28,8 @@ public class PreTorneo4Controller {
 	@FXML
 	private TextField[] InsiemeTextField;
 	@FXML
+	private Label Errori;
+	@FXML
 	private Label G1P1, G2P1, G1P2, G2P2, G1P3, G2P3, G1P4, G2P4, G1P5, G2P5, G1P6, G2P6;
 	@FXML
 	private Label[] labelGiocatori;
@@ -78,12 +80,15 @@ public class PreTorneo4Controller {
 	}
 	
 	public void HandleConfermaGiocatori(ActionEvent event) throws IOException {
-		for(int i=0;i<4;i++) {
-			G[i]= InsiemeTextField[i].getText().replaceAll("\\s+", "");
-		}
-		//DA INSERIRE CONTROLLI PER VERIFICARE CORRETTEZZA NOMI INSERITI
-		inserimentoPartite();
-		//quando si confermano i nomi giocatori viene visualizzato elenco di tutte le partite
+			if(InputG1.getText().isBlank() || InputG2.getText().isBlank() || InputG3.getText().isBlank() || InputG4.getText().isBlank()) 
+				Errori.setText("Il torneo deve avere per forza 4 giocatori");
+			else {
+				for(int i=0;i<4;i++) {
+					G[i]= InsiemeTextField[i].getText().replaceAll("\\s+", "");
+				}
+			inserimentoPartite();
+			}
+			//quando si confermano i nomi giocatori viene visualizzato elenco di tutte le partite
 	}
 	
 	public void inserimentoPartite() {
@@ -102,12 +107,13 @@ public class PreTorneo4Controller {
 	    	labelGiocatori[partitaIndex].setText(giocatore1);
             labelGiocatori[partitaIndex + 1].setText(giocatore2);
             partitaIndex+=2;
-	      }
+	     }
 	}
 	
 	//Inizia partita
 	public void handleBottoneIniziaAGiocare(ActionEvent event) {
     	player.stop();
+    	if(partite.size() > 0)
     	try {
     		Random rand = new Random();
 			String s = "";

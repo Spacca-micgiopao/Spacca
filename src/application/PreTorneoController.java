@@ -70,7 +70,8 @@ public class PreTorneoController implements Initializable {
 	public void handleConfermaTipoTorneo(ActionEvent event) {
     	player.stop();
 		try {
-			main.showPreTorneo4Scene();
+			if(ScegliTipoTorneo.getValue() != null)
+				main.showPreTorneo4Scene();
 		}catch(Exception e) {
 			System.out.println("errore caricamento preTorneo4");
 		}
@@ -78,9 +79,11 @@ public class PreTorneoController implements Initializable {
 	
 	public void Caricatorneo(ActionEvent event) {
 		try {
+			if(CaricaTorneo.getValue() != null) {
 			GameController.flag = 2;
 			SalvaTorneo.setFile(CaricaTorneo.getValue());
 			main.showScenaGiocoScene();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

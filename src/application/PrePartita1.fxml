@@ -188,6 +188,11 @@
             <Image url="@../Sfondo/RegolePartita.png" />
          </image>
       </ImageView>
+      <Label fx:id="Errori" layoutX="909.0" layoutY="499.0" prefHeight="188.0" prefWidth="334.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Eras Bold ITC" size="23.0" />
+         </font>
+      </Label>
    </children>
    <effect>
       <InnerShadow />

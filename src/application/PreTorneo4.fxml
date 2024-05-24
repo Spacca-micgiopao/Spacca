@@ -235,6 +235,11 @@
             <Blend />
          </effect>
       </Pane>
+      <Label fx:id="Errori" layoutX="28.0" layoutY="531.0" prefHeight="105.0" prefWidth="418.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Eras Bold ITC" size="27.0" />
+         </font>
+      </Label>
    </children>
    <effect>
       <InnerShadow />
