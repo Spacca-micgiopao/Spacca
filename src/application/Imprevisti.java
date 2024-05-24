@@ -58,6 +58,10 @@ public class Imprevisti {
                 if (coloreCarta.equals("rosa")) {
                     valoreCarta *= 2;
                 }
+            case "Raddoppia punti carte rosse":
+                if (coloreCarta.equals("rosso")) {
+                    valoreCarta *= 2;
+                }
                 break;
             case "Raddoppia punti carte blu":
                 if (coloreCarta.equals("blu")) {

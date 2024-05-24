@@ -109,5 +109,14 @@ public class FilmatiFinaliController {
 	public void handleBottoneUscita(ActionEvent event) {
     	stage.close();
     }
+	
+	public void handleBottoneMenu(ActionEvent event) {
+		try {
+			main.showMainMenuScene();
+		} catch (Exception e) {
+			System.out.println("errore nel caricamento del main menu");
+			e.printStackTrace();
+		}
+    }
 }
        
