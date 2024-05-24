@@ -10,7 +10,13 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 
 public class Main extends Application {
+	
+    public static void main(String[] args) {
 
+        // Launch the Application 
+        launch(args);   
+
+    }
 	 private Stage primaryStage;
 	 //File e cartelle dove vengono salvati i dati creati all'avvio in caso non presenti
 	 private File Dir = new File("src/Data/");
