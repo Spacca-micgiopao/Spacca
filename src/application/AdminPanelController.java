@@ -35,8 +35,6 @@ public class AdminPanelController implements Initializable{
 			this.stage= stage;
 	}
 	
-	private int Npartite;
-	
 	//Per eliminare tutti i dati salvati
 	public void Pulisci(ActionEvent event) throws IOException {
 		File dir = new File("src/Salvataggi/");
@@ -51,7 +49,6 @@ public class AdminPanelController implements Initializable{
 		ClassificaController.elimina();
 		DatiAccesso.delete();
 		LoginController.accesso.put("admin", "");
-		Npartite = 0;
 		Scrivistats();
 		SalvaTorneo.Cancella();
 		try {
@@ -65,8 +62,7 @@ public class AdminPanelController implements Initializable{
 	
 	//Per scrivere le statistiche e al caso aggiornarle
 	public void Scrivistats() {
-		LabelStatistiche.setText("Numero di giocatori registrati: "+ClassificaController.LSGiocatori.size()+"\n"+
-				 "Numero di partite salvate: "+Npartite+"\n");
+		LabelStatistiche.setText("Numero di giocatori registrati: "+ClassificaController.LSGiocatori.size()+"\n");
 	}
 	
 	//Modifica username e password e fa il logout

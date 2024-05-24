@@ -265,8 +265,6 @@ public class GameController  implements Serializable{
         	SalvaTorneo.CaricaTorneo(this);
         	PreTorneo4Controller.partite = this.partite;
         	PreTorneo4Controller.G = this.G;
-
-        	System.out.print(numeroPartita+"");
         	Torneo = true;
         	flag = 0;
         }

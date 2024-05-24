@@ -73,6 +73,7 @@ public class ControllerPrePartita implements Initializable{
 			infopartita.ScriviDati();
 			classficacontroller.getNomi(G1, G2);
 			try {
+				GameController.flag = 0;
 				main.showScenaGiocoScene();
 			} catch (Exception e) {
 				e.printStackTrace();;
