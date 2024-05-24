@@ -129,6 +129,7 @@ public class GameOverTorneoController {
     			   player = new MediaPlayer(sound);
     			   //continua sempre a suonare
     			   player.setCycleCount(MediaPlayer.INDEFINITE);
+    			   player.setVolume(0.5);
     			   player.play();
     		}catch(Exception e ) {
     			System.out.println("errore riproduzione");
@@ -239,7 +240,7 @@ public class GameOverTorneoController {
 	                        LabelNomiTuttiGiocatori[posizione].setText(nome);
 	                        posizione++;
 	                    } else {
-	                        break; // Esci se assegnato tutti i punteggi e nomi disponibili alle label
+	                        break; 
 	                    }
 	                }
 	            }
