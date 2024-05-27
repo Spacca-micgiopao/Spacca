@@ -16,7 +16,7 @@ public class Loginalertcontroller {
 	@FXML
 	private Button conferma;
 	private Stage stage;
-	private File DatiAccesso = new File("src/Data/DatiAccesso.txt");
+	private File DatiAccesso = new File("Data/DatiAccesso.txt");
 	
 	public void conferma(ActionEvent event) throws IOException {
 		LoginController.accesso.clear();

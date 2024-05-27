@@ -61,6 +61,7 @@ public class MenuController{
 		}
 		catch(Exception e) {
 			System.out.println("errore nel caricamento scena PreTorneo");
+			e.printStackTrace();
 		}
 	}
 	

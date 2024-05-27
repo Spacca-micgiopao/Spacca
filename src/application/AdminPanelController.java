@@ -26,7 +26,7 @@ public class AdminPanelController implements Initializable{
 	@FXML
 	private ChoiceBox<String> ScegliPartita,ScegliTorneo;
 	
-	private File DatiAccesso = new File("src/Data/DatiAccesso.txt");
+	private File DatiAccesso = new File("Data/DatiAccesso.txt");
 	public void setMain(Main main) {
     	this.main= main;
     }

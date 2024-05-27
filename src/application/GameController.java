@@ -205,10 +205,10 @@ public class GameController  implements Serializable{
     //Sfondo e musica
     public void insertMusic() {
     	try {
-    		Media sound = new Media(new File("src/Musica/MusicaSottofondoGioco1.mp3").toURI().toString());
+    		Media sound = new Media(new File("Musica/MusicaSottofondoGioco1.mp3").toURI().toString());
     		player = new MediaPlayer(sound);
     		player.setCycleCount(MediaPlayer.INDEFINITE);
-    		player.play();
+    		//player.play();
     		player.setVolume(0.02);
     			}catch(Exception e ) {
     				System.out.println("errore riproduzione");
@@ -372,7 +372,7 @@ public class GameController  implements Serializable{
     			}
     			
     		}
-    		player.stop();
+    		//player.stop();
     		numeroPartita++; //per il torneo
     		if(Torneo==false) {
 	    		//Calcolo punteggio finale
@@ -454,7 +454,7 @@ public class GameController  implements Serializable{
     
     //Bottone uscita dalla partita 
     public void handleBottoneUscita(ActionEvent event) {
-    	player.stop();
+    	//player.stop();
     	flag = 0;
     	//Se siamo in un torneo all'uscita torno al pre torneo
     	if(Torneo == true) {

@@ -34,7 +34,7 @@ public class PreTorneoController implements Initializable {
 	public void insertMusic() {
     	//MUSICA
         	try {
-    			 Media sound = new Media(new File("src/Musica/marioMusic.mp3").toURI().toString());
+    			 Media sound = new Media(new File("Musica/marioMusic.mp3").toURI().toString());
     			   player = new MediaPlayer(sound);
     			   //continua sempre a suonare
     			   player.setCycleCount(MediaPlayer.INDEFINITE);
@@ -46,7 +46,7 @@ public class PreTorneoController implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		insertMusic();
+		//insertMusic();
 		ScegliTipoTorneo.getItems().addAll(tipiTorneo);
 		ScegliTipoTorneo.setOnAction(this::getTipoTorneo);
 		CaricaTorneo.getItems().clear();
@@ -68,7 +68,7 @@ public class PreTorneoController implements Initializable {
 		return SecondoGiocatoreBot;
 	}
 	public void handleConfermaTipoTorneo(ActionEvent event) {
-    	player.stop();
+    	//player.stop();
 		try {
 			if(ScegliTipoTorneo.getValue() != null)
 				main.showPreTorneo4Scene();
@@ -90,7 +90,7 @@ public class PreTorneoController implements Initializable {
     }
 	
 	public void handleBottoneMenu(ActionEvent event) {
-		player.stop();
+		//player.stop();
     	try {
     		main.showMainMenuScene();
     	}catch(Exception e) {

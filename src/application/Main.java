@@ -19,10 +19,10 @@ public class Main extends Application {
     }
 	 private Stage primaryStage;
 	 //File e cartelle dove vengono salvati i dati creati all'avvio in caso non presenti
-	 private File Dir = new File("src/Data/");
-	 private File DatiGiocatori = new File("src/Data/DatiGiocatori.ser");
-	 private File DatiAccesso = new File("src/Data/DatiAccesso.txt");
-	 private File Salvataggi = new File("src/Salvataggi/");
+	 private File Dir = new File("Data/");
+	 private File DatiGiocatori = new File("Data/DatiGiocatori.ser");
+	 private File DatiAccesso = new File("Data/DatiAccesso.txt");
+	 private File Salvataggi = new File("Salvataggi/");
 	 
 	    @Override
 	    public void start(Stage primaryStage) throws Exception {
@@ -41,8 +41,8 @@ public class Main extends Application {
 	    	ClassificaController.CaricaNomi();
 	        this.primaryStage = primaryStage;
 	        primaryStage.setTitle("SPACCA");
-	        Image icon = new Image("Icona.png");
-	        primaryStage.getIcons().add(icon);
+	        //Image icon = new Image("Icona.png");
+	        //primaryStage.getIcons().add(icon);
 	        showLoginScene();
 	        if(!DatiAccesso.exists())
 	        	LoginController.accesso.put("admin", "");
@@ -100,7 +100,7 @@ public class Main extends Application {
 	    
 	    public void showPreTorneoScene() throws Exception{
 	    	SalvaTorneo.Preparazione();
-	    	FXMLLoader loader = new FXMLLoader(getClass().getResource("PreparazioneTorneo.fxml"));
+	    	FXMLLoader loader = new FXMLLoader(getClass().getResource("PreParazioneTorneo.fxml"));
 		    Parent root = loader.load();
 	        PreTorneoController controller = loader.getController();
 	        controller.setMain(this);
