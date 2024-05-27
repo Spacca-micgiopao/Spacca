@@ -53,7 +53,7 @@ public class PreTorneo4Controller {
 	public void insertMusic() {
     	//MUSICA
         	try {
-    			 Media sound = new Media(new File("src/Musica/marioMusic.mp3").toURI().toString());
+    			 Media sound = new Media(new File("Musica/marioMusic.mp3").toURI().toString());
     			   player = new MediaPlayer(sound);
     			   //continua sempre a suonare
     			   player.setCycleCount(MediaPlayer.INDEFINITE);

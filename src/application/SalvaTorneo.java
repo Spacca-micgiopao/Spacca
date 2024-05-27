@@ -14,8 +14,8 @@ import java.util.List;
 public class SalvaTorneo implements Serializable {
 
 	private static final long serialVersionUID = 7423889382853862983L;
-	static File dir = new File("src/SalvataggiTorneo");
-	static File file = new File("src/SalvataggiTorneo/Torneo1.ser");
+	static File dir = new File("SalvataggiTorneo/");
+	static File file = new File("SalvataggiTorneo/Torneo1.ser");
 	protected static String[] Tornei;
 	
 	//Crea cartelle e carica la lista dei tornei,da usare allo start
@@ -32,7 +32,7 @@ public class SalvaTorneo implements Serializable {
 	
 	protected static void setFile(String s) throws IOException {
 		if(Tornei.length < 10) {
-			file = new File("src/SalvataggiTorneo/"+s+".ser");
+			file = new File("SalvataggiTorneo/"+s+".ser");
 			if(!dir.exists())
 				dir.mkdir();
 			if(!file.exists())
@@ -94,7 +94,7 @@ public class SalvaTorneo implements Serializable {
 		String[] n = dir.list();
 			if(dir.isDirectory() && dir.exists()) {
 				for(int i = 0;i<n.length;i++) {
-					File f = new File("src/SalvataggiTorneo/"+n[i]);
+					File f = new File("SalvataggiTorneo/"+n[i]);
 					f.delete();
 				}
 			}

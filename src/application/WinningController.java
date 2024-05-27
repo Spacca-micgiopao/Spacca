@@ -69,12 +69,12 @@ public class WinningController {
 	public void insertMusic() {
     	//MUSICA
         	try {
-    			 Media sound = new Media(new File("src/Musica/WinningMusic.mpeg").toURI().toString());
+    			 Media sound = new Media(new File("Musica/WinningMusic.mpeg").toURI().toString());
     			   player = new MediaPlayer(sound);
     			   //continua sempre a suonare
     			   player.setCycleCount(MediaPlayer.INDEFINITE);
     			   player.setVolume(0.1);
-    			   player.play();
+    			   //player.play();
     		}catch(Exception e ) {
     			System.out.println("errore riproduzione");
     		}
@@ -127,7 +127,7 @@ public class WinningController {
 		 
 	}
 	public void VaiAPartitaSuccessiva(ActionEvent event) throws IOException {
-		player.stop();
+		//player.stop();
 		try {
 			main.showScenaGiocoScene();
 		} catch (Exception e) {

@@ -14,7 +14,7 @@ public class InfoPartita {
 	//Caricare il file con i dati delle partite
 	
 	public static void Preparazione() {
-		File dir = new File("src/Salvataggi/");
+		File dir = new File("Salvataggi/");
 		if(dir.isDirectory() && dir.exists()) {
 			Partite = dir.list();
 			for(int i = 0;i<Partite.length;i++) {
@@ -35,7 +35,7 @@ public class InfoPartita {
 	//Metodo per scrivere i dati sul file
 	public void ScriviDati() throws IOException {
 		if(Partite.length < 20) {
-			File dir = new File("src/Salvataggi/");
+			File dir = new File("Salvataggi/");
 			if(!dir.exists())
 				dir.mkdir();
 			if(dir.list() != null) 

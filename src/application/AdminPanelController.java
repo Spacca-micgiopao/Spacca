@@ -37,11 +37,11 @@ public class AdminPanelController implements Initializable{
 	
 	//Per eliminare tutti i dati salvati
 	public void Pulisci(ActionEvent event) throws IOException {
-		File dir = new File("src/Salvataggi/");
+		File dir = new File("Salvataggi/");
 		String[] n = dir.list();
 			if(dir.isDirectory() && dir.exists()) {
 				for(int i = 0;i<n.length;i++) {
-					File f = new File("src/Salvataggi/"+n[i]);
+					File f = new File("Salvataggi/"+n[i]);
 					f.delete();
 				}
 			}

@@ -52,7 +52,7 @@ public class FilmatiFinaliController {
 		
 		//se pareggio
 		 if(vittoriaSuTavoloG1 ==  vittoriaSuTavoloG2) {
-			   String videoPathPareggio = "src/AnimazioniVincita/AnimazionePareggio.mp4";
+			   String videoPathPareggio = "AnimazioniVincita/AnimazionePareggio.mp4";
 		       
 				Media media = new Media(new File(videoPathPareggio).toURI().toString());
 				// Crea il media player

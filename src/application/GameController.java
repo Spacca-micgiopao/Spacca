@@ -115,11 +115,11 @@ public class GameController  implements Serializable{
     
 	//nomi dei giocatori
     public void setPlayersNames() {
-    	if(Torneo == false && flag != 1) {
-	        player1Name = ControllerPrePartita.getPlayer1(); 
-	        player2Name = ControllerPrePartita.getPlayer2();
-        }
-    	if(Torneo==true && flag != 2) {
+    	if(flag == 0 || flag == 2) {
+    		player1Name = ControllerPrePartita.getPlayer1(); 
+ 	        player2Name = ControllerPrePartita.getPlayer2();
+    	}
+    	else if(Torneo==true && flag != 2) {
     		String partita = partite.get(numeroPartita);
     		String[] giocatori = partita.split(" vs ");
     		player1Name = giocatori[0];
@@ -218,7 +218,7 @@ public class GameController  implements Serializable{
     //INIZIALIZZAZIONE se il flag = 1 la partita è stata caricata e inizierà in modo diverso da una partita iniziata da 0
     public void initialize() throws FileNotFoundException,EOFException {
 	 
-    	insertMusic();
+    	//insertMusic();
     	//per le ImageView: creazione di una lista contenente tutte le ImageView per facilitare 
         //l'aggiunta delle immagini in aggiorna interfaccia
         //giocatore1

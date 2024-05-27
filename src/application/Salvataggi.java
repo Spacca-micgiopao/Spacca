@@ -20,7 +20,7 @@ public class Salvataggi implements Serializable{
 	}
 	
 	public static void setFile(String nome) throws IOException {
-			file = new File("src/Salvataggi/"+nome+".ser");
+			file = new File("Salvataggi/"+nome+".ser");
 			if(!file.exists())
 				file.createNewFile();
 	}
@@ -144,7 +144,7 @@ public class Salvataggi implements Serializable{
 				if(CG1 != null) {
 					String colore = CG1.getColore();
 					int valore = CG1.getValore();
-					String percorsoImmagine=  "src/Immagini/" + colore + "_" + valore + ".png";
+					String percorsoImmagine=  "Immagini/" + colore + "_" + valore + ".png";
 					Image image = new Image("file:" + percorsoImmagine);
 					CG1.setImage(image);
 				}
@@ -155,7 +155,7 @@ public class Salvataggi implements Serializable{
 	public static void associazioneImmaginiATavolo(String[] carteTavolo1,List<ImageView> imageViewsTavolo1) {
 		for(int i=0;i<carteTavolo1.length;i++) {
 			if(carteTavolo1[i]!=null) {
-				String percorsoImmagine = "src/Immagini/"+carteTavolo1[i]+".png";
+				String percorsoImmagine = "Immagini/"+carteTavolo1[i]+".png";
 				Image image = new Image("file:" + percorsoImmagine);
 				imageViewsTavolo1.get(i).setImage(image);
 			}
