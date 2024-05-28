@@ -28,7 +28,7 @@ public class ClassificaController implements Initializable,Serializable{
 	@FXML
 	private ListView<Giocatori> Classifica;
 	public static ArrayList<Giocatori> LSGiocatori = new ArrayList<Giocatori>();
-	protected static File DatiGiocatori = new File("Data/DatiGiocatori.ser");
+	protected static File DatiGiocatori = new File("SPACCA/src/Data/DatiGiocatori.ser");
 	
 	public void setMain(Main main) {
 		this.main = main;

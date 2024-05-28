@@ -26,7 +26,7 @@ public class AdminPanelController implements Initializable{
 	@FXML
 	private ChoiceBox<String> ScegliPartita,ScegliTorneo;
 	
-	private File DatiAccesso = new File("Data/DatiAccesso.txt");
+	private File DatiAccesso = new File("SPACCA/src/Data/DatiAccesso.txt");
 	public void setMain(Main main) {
     	this.main= main;
     }
@@ -37,11 +37,11 @@ public class AdminPanelController implements Initializable{
 	
 	//Per eliminare tutti i dati salvati
 	public void Pulisci(ActionEvent event) throws IOException {
-		File dir = new File("Salvataggi/");
+		File dir = new File("SPACCA/src/Salvataggi/");
 		String[] n = dir.list();
 			if(dir.isDirectory() && dir.exists()) {
 				for(int i = 0;i<n.length;i++) {
-					File f = new File("Salvataggi/"+n[i]);
+					File f = new File("SPACCA/src/Salvataggi/"+n[i]);
 					f.delete();
 				}
 			}

@@ -32,7 +32,7 @@ public class SalvaTorneo implements Serializable {
 	
 	protected static void setFile(String s) throws IOException {
 		if(Tornei.length < 10) {
-			file = new File("SalvataggiTorneo/"+s+".ser");
+			file = new File("SPACCA/src/SalvataggiTorneo/"+s+".ser");
 			if(!dir.exists())
 				dir.mkdir();
 			if(!file.exists())

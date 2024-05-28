@@ -19,10 +19,10 @@ public class Main extends Application {
     }
 	 private Stage primaryStage;
 	 //File e cartelle dove vengono salvati i dati creati all'avvio in caso non presenti
-	 private File Dir = new File("Data/");
-	 private File DatiGiocatori = new File("Data/DatiGiocatori.ser");
-	 private File DatiAccesso = new File("Data/DatiAccesso.txt");
-	 private File Salvataggi = new File("Salvataggi/");
+	 private File Dir = new File("SPACCA/src/Data/");
+	 private File DatiGiocatori = new File("SPACCA/src/Data/DatiGiocatori.ser");
+	 private File DatiAccesso = new File("SPACCA/src/Data/DatiAccesso.txt");
+	 private File Salvataggi = new File("SPACCA/src/Salvataggi/");
 	 
 	    @Override
 	    public void start(Stage primaryStage) throws Exception {

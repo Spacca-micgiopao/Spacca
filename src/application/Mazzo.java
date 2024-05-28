@@ -37,7 +37,7 @@ public class Mazzo implements Serializable{
 	public void CreaMazzoCompleto() {
 		
         //percorso della cartella "Immagini" 
-        String percorsoCartella = "src/Immagini";
+        String percorsoCartella = "SPACCA/src/Immagini";
 
         // Creazione un oggetto File per la cartella
         File cartella = new File(percorsoCartella);
