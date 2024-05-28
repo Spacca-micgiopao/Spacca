@@ -67,7 +67,7 @@ public class PreTorneo4Controller {
 	public void initialize() throws FileNotFoundException {
 		setSecondogiocatoreBot();
 		
-		insertMusic();
+		//insertMusic();
 		partite.clear();
 
 		 InsiemeTextField = new TextField[]{InputG1,InputG2,InputG3,InputG4};
@@ -112,7 +112,7 @@ public class PreTorneo4Controller {
 	
 	//Inizia partita
 	public void handleBottoneIniziaAGiocare(ActionEvent event) {
-    	player.stop();
+    	//player.stop();
     	if(partite.size() > 0)
     	try {
     		Random rand = new Random();
@@ -122,6 +122,8 @@ public class PreTorneo4Controller {
 			}
 			s = s+"-"+rand.nextInt(10)+""+rand.nextInt(10)+""+rand.nextInt(10);
 			SalvaTorneo.setFile(s);
+			MenuController.Torneo = true;
+			GameController.flag = 0;
     		main.showScenaGiocoScene();
     	}catch(Exception e) {
     		System.out.println("Errore nel caricamento scenaGioco");
@@ -131,7 +133,7 @@ public class PreTorneo4Controller {
 	
 	//Per tornare al main menu
 	public void handleBottoneMenu(ActionEvent event) {
-		player.stop();
+		//player.stop();
     	try {
     		main.showMainMenuScene();
     	}catch(Exception e) {

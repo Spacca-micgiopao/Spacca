@@ -74,6 +74,7 @@ public class PreTorneoController implements Initializable {
 				main.showPreTorneo4Scene();
 		}catch(Exception e) {
 			System.out.println("errore caricamento preTorneo4");
+			e.printStackTrace();
 		}
     }
 	

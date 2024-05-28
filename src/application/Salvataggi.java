@@ -76,8 +76,8 @@ public class Salvataggi implements Serializable{
 			out.writeInt(gamecontroller.punteggioG2Tavolo2);
 			out.writeInt(gamecontroller.punteggioG2Tavolo3);
 			//Nomi dei partecipanti
-			out.writeObject(gamecontroller.player1Name);
-			out.writeObject(gamecontroller.player2Name); 
+			out.writeObject(GameController.player1Name);
+			out.writeObject(GameController.player2Name); 
 			//Carte di ogni giocatore
 			out.writeObject(gamecontroller.listaCarteGiocatore1);
 			out.writeObject(gamecontroller.listaCarteGiocatore2);
@@ -112,8 +112,8 @@ public class Salvataggi implements Serializable{
 			gc.punteggioG2Tavolo2 = in.readInt();
 			gc.punteggioG2Tavolo3 = in.readInt();
 			//Nomi dei partecipanti
-			gc.player1Name = (String) in.readObject();
-			gc.player2Name = (String) in.readObject();
+			GameController.player1Name = (String) in.readObject();
+			GameController.player2Name = (String) in.readObject();
 			//Carte di ogni giocatore
 			gc.listaCarteGiocatore1 = (ListView<Carta>) in.readObject();
 			gc.listaCarteGiocatore2 = (ListView<Carta>) in.readObject();

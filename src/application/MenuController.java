@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class MenuController{
 	
 	private Stage stage;
-	private static boolean Torneo = false;
+	public static boolean Torneo = false;
 	private Main main;
 	
 	@FXML

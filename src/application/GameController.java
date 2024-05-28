@@ -115,11 +115,11 @@ public class GameController  implements Serializable{
     
 	//nomi dei giocatori
     public void setPlayersNames() {
-    	if(flag == 0 || flag == 2) {
+    	if(flag == 0 && Torneo == false) {
     		player1Name = ControllerPrePartita.getPlayer1(); 
  	        player2Name = ControllerPrePartita.getPlayer2();
     	}
-    	else if(Torneo==true && flag != 2) {
+    	else if(Torneo==true) {
     		String partita = partite.get(numeroPartita);
     		String[] giocatori = partita.split(" vs ");
     		player1Name = giocatori[0];
@@ -251,15 +251,10 @@ public class GameController  implements Serializable{
         imageViewsTavolo3.add(CartaT3p10);
         imageViewsTavolo3.add(CartaT3p01);
         imageViewsTavolo3.add(CartaT3p11);
-
-        	
-    	if(flag == 0 || flag == 2) {
-	    	getTorneo();
-	    	setPlayersNames();
-	    	setSecondoGiocatoreBot();
-	    	setbotgioco();
-	    }
-    	
+        
+    	mazzoGiocatore1 = new Mazzo();
+    	mazzoGiocatore2 = new Mazzo();
+        
         if(flag == 2) {
         	partite.clear();
         	SalvaTorneo.CaricaTorneo(this);
@@ -267,7 +262,17 @@ public class GameController  implements Serializable{
         	PreTorneo4Controller.G = this.G;
         	Torneo = true;
         	flag = 0;
+        	getTorneo();
         }
+    	
+        if(flag == 0) {
+	    	getTorneo();
+	    	setPlayersNames();
+	    	setSecondoGiocatoreBot();
+	    	setbotgioco();
+	    }
+    	
+
    
         	
     	mostraRettangoloSeBotAttivo();
@@ -302,8 +307,6 @@ public class GameController  implements Serializable{
     	mazzoCompleto.CreaMazzoCompleto();
        
     	if(flag == 0) {
-    	mazzoGiocatore1 = new Mazzo();
-    	mazzoGiocatore2 = new Mazzo();
     	carteTavolo1 = new String[4]; carteTavolo2 = new String[4]; carteTavolo3= new String[4];
         mazzoGiocatore1.caricaCarteIniziali(3,mazzoCompleto); //carica tre carte iniziali
         mazzoGiocatore2.caricaCarteIniziali(3, mazzoCompleto);
