@@ -52,7 +52,7 @@ public class FilmatiFinaliController {
 		
 		//se pareggio
 		 if(vittoriaSuTavoloG1 ==  vittoriaSuTavoloG2) {
-			   String videoPathPareggio = "AnimazioniVincita/AnimazionePareggio.mp4";
+			   String videoPathPareggio = "SPACCA/src/AnimazioniVincita/AnimazionePareggio.mp4";
 		       
 				Media media = new Media(new File(videoPathPareggio).toURI().toString());
 				// Crea il media player
@@ -68,7 +68,7 @@ public class FilmatiFinaliController {
 		        mediaView.setFitHeight(800); // Imposta l'altezza desiderata
 		        
 			     // Riproduci il video
-			     mediaPlayer.play();
+			     //mediaPlayer.play();
         }else {
 	
 			String videoPath1 = "src/AnimazioniVincita/AnimazioneVincita .mp4";
@@ -99,7 +99,7 @@ public class FilmatiFinaliController {
 	        }
 	        Salvataggi.file.delete();
 	        ClassificaController.salva();
-	        mediaPlayer.play();
+	        //mediaPlayer.play();
         }
 	
 	
