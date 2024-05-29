@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.media.MediaView?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
@@ -12,7 +11,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FilmatiFinaliController">
    <children>
-      <MediaView fx:id="MediaViewFinale" fitHeight="720.0" fitWidth="1280.0" />
       <Label fx:id="LabelGiocatore" contentDisplay="CENTER" layoutX="409.0" layoutY="537.0" prefHeight="169.0" prefWidth="791.0" textAlignment="CENTER" textFill="#1b9d87">
          <font>
             <Font name="Eras Bold ITC" size="70.0" />
